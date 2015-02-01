@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rodriguez.scoremydivepremium" >
+
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher_trans"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.MyTheme" >
+        <activity
+            android:name=".Home"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name" >       <!-- we may not use this -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Welcome">
+            <intent-filter>
+                <action android:name="android.intent.action.Home.Welcome" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Home" />
+        </activity>
+
+        <activity
+            android:name=".DiverHistory">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.DiverHistory" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Welcome" />
+        </activity>
+
+        <activity
+            android:name=".MeetScores">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.MeetScores" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DiverHistory" />
+        </activity>
+
+        <activity
+            android:name=".DiverEdit">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.DiverEdit" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Welcome" />
+        </activity>
+
+        <activity
+            android:name=".DiverDelete"
+            android:theme="@style/Theme.AppCompat.Dialog">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.DiverDelete" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Welcome" />
+        </activity>
+
+        <activity
+            android:name=".MeetResults">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.MeetResults" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Welcome" />
+        </activity>
+
+        <activity
+            android:name=".MeetEdit">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.MeetEdit" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Welcome" />
+        </activity>
+
+        <activity
+            android:name=".MeetDelete"
+            android:theme="@style/Theme.AppCompat.Dialog">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.MeetDelete" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Welcome" />
+        </activity>
+
+        <activity
+            android:name=".Choose">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.Choose" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Welcome" />
+        </activity>
+
+        <activity
+            android:name=".ChooseDiver">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.ChooseDiver" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Home" />
+        </activity>
+
+        <activity
+            android:name=".ChooseSummary">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.ChooseSummary" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChooseDiver" />
+        </activity>
+
+        <activity
+            android:name=".EnterDiver">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.EnterDiver" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Welcome" />
+        </activity>
+
+        <activity
+            android:name=".EnterMeet">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.EnterMeet" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Welcome" />
+        </activity>
+
+        <activity android:name=".Dives" >
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.Dives" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChooseSummary" />
+        </activity>
+
+        <activity
+            android:name=".HowTo">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.HowTo" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ChangeDiveScore">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.ChangeDiveScore" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChooseSummary" />
+        </activity>
+
+        <activity
+            android:name=".FailedDive"
+            android:theme="@style/Theme.AppCompat.Dialog">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.FailedDive" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChooseSummary" />
+        </activity>
+
+        <activity
+            android:name=".EditQuickScoreValue"
+            android:theme="@style/Theme.AppCompat.Dialog"
+            android:windowSoftInputMode="stateAlwaysVisible">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.EditQuickScoreValue" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".QuickScoreEdit" />
+        </activity>
+
+        <activity
+            android:name=".EnterFinalDiveScore">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.EnterFinalDiveScore" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChooseSummary" />
+        </activity>
+
+        <activity
+            android:name=".RemoveDiverFromMeet"
+            android:theme="@style/Theme.AppCompat.Dialog">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.RemoveDiverFromMeet" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChooseDiver" />
+        </activity>
+
+        <activity
+            android:name=".About"
+            android:label=""
+            android:theme="@style/Theme.AppCompat.Dialog" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Home" />
+        </activity>
+
+        <activity
+            android:name=".ViewDiveInfo">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.ViewDiveInfo" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MeetScores" />
+        </activity>
+
+        <activity
+            android:name=".Rankings">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.Rankings" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".RankingsByMeet">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.RankingsByMeet" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Rankings" />
+        </activity>
+
+        <activity
+            android:name=".Reports">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.Reports" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Welcome" />
+        </activity>
+
+        <activity
+            android:name=".EnterDiveList">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.EnterDiveList" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChooseDiver" />
+        </activity>
+
+        <activity
+            android:name=".ChooseDivesFromList">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.ChooseDivesFromList" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EnterDiveList" />
+        </activity>
+
+        <activity
+            android:name=".EnterScoreFromList">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.EnterScoreFromList" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChooseDivesFromList" />
+        </activity>
+
+        <activity
+            android:name=".EditDiveList">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.EditDiveList" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EnterDiveList" />
+        </activity>
+
+        <activity
+            android:name=".EnterTotalScoreFromDiveList">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.EnterTotalScoreFromDiveList" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChooseDivesFromList" />
+        </activity>
+
+        <activity
+            android:name=".QuickScore">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.QuickScore" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Home" />
+        </activity>
+        
+        <activity
+            android:name=".QuickScoreEdit">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.QuickScoreEdit" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".QuickScore" />
+        </activity>
+    </application>
+
+</manifest>
