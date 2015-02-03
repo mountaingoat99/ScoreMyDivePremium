@@ -329,5 +329,11 @@
     <string name="save">Save</string>
     <string name="delete_score_sheet">Delete Score Sheet</string>
     <string name="edit_dive_list_info">After entering all the dives in the list you will have the option to score them. You can edit a dive by long clicking the dive name.</string>
+    <string name="home_quick_text">I don\'t want anything fancy, just let me enter the diver names, meet names, and the final scores, and save the results.</string>
+    <string name="home_detailed_text">I am ready to do this! Let\'s enter some dive lists, calculate some scores and see how many PR\'s we can get today!</string>
+    <string name="meets_divers_button">Meet and Divers</string>
+    <string name="home_meets_divers_text">I need to enter at least one of each of these before entering judges scores, calculating totals, and getting reports.</string>
+    <string name="home_reports_button">Reports</string>
+    <string name="home_reports_text">I need to score a detailed meet before I can generate reports or share the results through email\/social media.</string>
 
 </resources>
