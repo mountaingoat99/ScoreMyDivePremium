@@ -88,7 +88,7 @@ public class EditQuickScoreValue extends ActionBarActivity {
                 db.UpdateAQuickScore(sheetId, diveNumber, updateValue );
                 Bundle b = new Bundle();
                 b.putInt("keySheet", sheetId);
-                Intent intent = new Intent(context, QuickScoreEdit.class);
+                Intent intent = new Intent(context, QuickScore.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtras(b);
                 startActivity(intent);
@@ -100,7 +100,7 @@ public class EditQuickScoreValue extends ActionBarActivity {
             public void onClick(View v) {
                 Bundle b = new Bundle();
                 b.putInt("keySheet", sheetId);
-                Intent intent = new Intent(context, QuickScoreEdit.class);
+                Intent intent = new Intent(context, QuickScore.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtras(b);
                 startActivity(intent);
