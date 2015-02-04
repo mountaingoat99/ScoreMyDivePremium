@@ -88,7 +88,7 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
 
         dataAdapter = new ArrayAdapter<>(this,
                 R.layout.spinner_item, scoreSheets);
-        dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
+        dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         dataAdapter.insert("  Choose a Score Sheet", 0);
         spinner.setAdapter(dataAdapter);
 
