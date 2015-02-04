@@ -15,5 +15,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="spinner_text">16sp</dimen>
+    <dimen name="spinner_text_phone">18sp</dimen>
 
 </resources>
