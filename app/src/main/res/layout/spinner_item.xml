@@ -2,7 +2,10 @@
 
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:textSize="@dimen/spinner_text"
-    android:gravity="left"
-    android:textColor="@color/random_text"/>
+    android:layout_height="40dp"
+    android:textSize="@dimen/text_size_mini"
+    android:gravity="center_vertical"
+    android:layout_marginRight="24dp"
+    android:layout_marginEnd="24dp"
+    android:textColor="@color/black"
+    android:background="@drawable/layer_card_background_spinner_phone"/>
