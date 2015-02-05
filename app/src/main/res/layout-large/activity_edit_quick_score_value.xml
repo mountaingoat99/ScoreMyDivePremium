@@ -14,7 +14,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="8dp"
+        android:paddingTop="16dp"
         android:paddingBottom="4dp"
         android:paddingLeft="8dp"
         android:paddingStart="8dp"
@@ -36,7 +36,7 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="Dive 1"
-                android:textSize="@dimen/text_size_medium"
+                android:textSize="@dimen/text_size_large"
                 android:textColor="@color/primary_text"
                 android:background="@color/primary_light"/>
 
@@ -47,9 +47,9 @@
                 android:layout_below="@id/Header"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text=""
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary_text"
                 android:inputType="textCapWords"
                 android:visibility="invisible"
@@ -73,9 +73,9 @@
                 android:layout_below="@id/Header"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text=""
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary_text"
                 android:inputType="numberDecimal"
                 android:visibility="invisible"
@@ -115,7 +115,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_weight="1"
                 android:text="@string/save"
-                android:textSize="@dimen/button_text_medium"
+                android:textSize="@dimen/button_text_large"
                 android:textColor="@color/primary"/>
 
             <Button
@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cancel"
-                android:textSize="@dimen/button_text_medium"
+                android:textSize="@dimen/button_text_large"
                 android:textColor="@color/primary"/>
 
         </LinearLayout>

@@ -56,6 +56,9 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(savedInstanceState != null){
+            sheetId = savedInstanceState.getInt("keySheet");
+        }
         setContentView(R.layout.activity_quick_score);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -72,6 +75,9 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
         Bundle b = getIntent().getExtras();
         if(b != null){
             sheetId = b.getInt("keySheet");
+        }
+
+        if(sheetId > 0 ) {
             layout2.setVisibility(View.VISIBLE);
             fillText();
         }
@@ -83,6 +89,15 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
         loadSavedPreferences();
         if (!firstAlertQuickEdit) {
             showAlert();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        if(sheetId > 0) {
+            outState.putInt("keySheet", sheetId);
         }
     }
 
@@ -413,7 +428,7 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
         Spinner spinner = (Spinner) parent;
-        spinPosition = position;
+        //spinPosition = position;
         if(spinner.getId() == R.id.spinnerScoreSheets && position >= 1){
             sheetId = getId();
             layout2.setVisibility(View.VISIBLE);
@@ -486,11 +501,12 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
                 public void onClick(View v) {
                     QuickScoreDatabase db = new QuickScoreDatabase(getApplicationContext());
                     db.deleteSheet(sheetId);
+                    sheetId = 0;
                     dialog.cancel();
                     Intent intent = new Intent(context, QuickScore.class);
-                    Bundle b = new Bundle();
-                    b.putInt("keyPosition", 0);
-                    intent.putExtras(b);
+                    //Bundle b = new Bundle();
+                    //b.putInt("keyPosition", 0);
+                    //intent.putExtras(b);
                     startActivity(intent);
                 }
             });

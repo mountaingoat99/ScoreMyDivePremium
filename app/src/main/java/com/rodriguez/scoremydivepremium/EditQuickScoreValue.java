@@ -19,6 +19,7 @@ import com.info.sqlite.helper.QuickScoreDatabase;
 public class EditQuickScoreValue extends ActionBarActivity {
 
     private TextView header;
+    private View view1, view2;
     private EditText sheetName, score;
     private Button btnUpdate, btnReturn;
     private int sheetId, diveNumber;
@@ -37,6 +38,8 @@ public class EditQuickScoreValue extends ActionBarActivity {
         header = (TextView)findViewById(R.id.Header);
         sheetName = (EditText)findViewById(R.id.sheetName);
         score = (EditText)findViewById(R.id.score);
+        view1 = findViewById(R.id.view1);
+        view2 = findViewById(R.id.view2);
 
         sheetName.requestFocus();
         score.requestFocus();
@@ -57,13 +60,19 @@ public class EditQuickScoreValue extends ActionBarActivity {
         if(diveNumber == 0){
             header.setText("Update Name");
             sheetName.setVisibility(View.VISIBLE);
+            view1.setVisibility(View.VISIBLE);
             sheetName.setHint(Name);
+            sheetName.setHintTextColor(getResources().getColor(R.color.secondary_text));
             score.setVisibility(View.INVISIBLE);
+            view2.setVisibility(View.INVISIBLE);
         }else{
             header.setText("Dive " + diveNumber);
             sheetName.setVisibility(View.INVISIBLE);
+            view1.setVisibility(View.INVISIBLE);
             score.setVisibility(View.VISIBLE);
+            view2.setVisibility(View.VISIBLE);
             score.setHint(Name);
+            score.setHintTextColor(getResources().getColor(R.color.secondary_text));
         }
     }
 

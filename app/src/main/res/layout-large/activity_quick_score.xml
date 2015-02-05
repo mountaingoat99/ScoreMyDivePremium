@@ -19,11 +19,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingStart="16dp"
-            android:paddingRight="16dp"
-            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"
+            android:paddingRight="8dp"
+            android:paddingEnd="8dp"
             android:background="@drawable/layer_card_background">
 
             <Spinner
@@ -37,16 +37,16 @@
                 android:id="@+id/buttonNewScoreSheet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:layout_gravity="end"
                 android:text="@string/new_score_sheet"
                 android:textSize="@dimen/button_text"
                 android:textColor="@color/primary"
                 android:background="@color/primary_light"
-                style="@android:style/Widget.Holo"/>
+                style="?android:attr/borderlessButtonStyle"/>
 
         </LinearLayout>
 
@@ -58,7 +58,7 @@
             android:layout_below="@id/layout1"
             android:orientation="vertical"
             android:paddingTop="16dp"
-            android:paddingBottom="16dp"
+            android:paddingBottom="8dp"
             android:paddingLeft="8dp"
             android:paddingStart="8dp"
             android:paddingRight="8dp"
@@ -74,12 +74,11 @@
                     android:id="@+id/enterName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     android:text="@string/name_meet"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/primary_text"
+                    android:textColor="@color/secondary_text"
                     android:background="@color/primary_light"/>
 
                 <TextView
@@ -87,13 +86,15 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/enterName"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:textSize="@dimen/text_size_medium"
-                    android:textColor="@color/primary"
+                    android:textColor="@color/primary_text"
                     android:longClickable="true"
                     android:background="@color/primary_light"
                     android:text="Zoe Rodriguez - Carthage Meet">
@@ -105,10 +106,10 @@
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
                     android:layout_below="@id/editNameMeet"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:background="@color/black" />
+                    android:background="@color/primary" />
 
                 <TableLayout
                     android:id="@+id/tableLayout1"
@@ -136,18 +137,33 @@
                             android:layout_marginEnd="8dp"
                             android:text="@string/dive_1"
                             android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/primary_text"
-                            android:background="@color/primary_light"/>
+                            android:textColor="@color/secondary_text"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="bottom"/>
 
-                        <TextView
-                            android:id="@+id/score1"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/primary"
-                            android:longClickable="true"
-                            android:background="@color/primary_light"/>
+                            android:orientation="vertical"
+                            android:background="@color/primary_light">
+
+                            <TextView
+                                android:id="@+id/score1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="15"
+                                android:textSize="@dimen/text_size_medium"
+                                android:textColor="@color/primary_text"
+                                android:longClickable="true"
+                                android:background="@color/primary_light"/>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:background="@color/primary"/>
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
@@ -163,19 +179,34 @@
                             android:layout_marginEnd="8dp"
                             android:text="@string/dive_2"
                             android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/primary_text"
+                            android:textColor="@color/secondary_text"
                             android:longClickable="true"
-                            android:background="@color/primary_light"/>
+                            android:background="@color/primary_light"
+                            android:layout_gravity="bottom"/>
 
-                        <TextView
-                            android:id="@+id/score2"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/primary"
-                            android:longClickable="true"
-                            android:background="@color/primary_light"/>
+                            android:orientation="vertical"
+                            android:background="@color/primary_light">
+
+                            <TextView
+                                android:id="@+id/score2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="0.0"
+                                android:textSize="@dimen/text_size_medium"
+                                android:textColor="@color/primary_text"
+                                android:longClickable="true"
+                                android:background="@color/primary_light"/>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:background="@color/primary"/>
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
@@ -191,18 +222,33 @@
                             android:layout_marginEnd="8dp"
                             android:text="@string/dive_3"
                             android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/primary_text"
-                            android:background="@color/primary_light"/>
+                            android:textColor="@color/secondary_text"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="bottom"/>
 
-                        <TextView
-                            android:id="@+id/score3"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/primary"
-                            android:longClickable="true"
-                            android:background="@color/primary_light"/>
+                            android:orientation="vertical"
+                            android:background="@color/primary_light">
+
+                            <TextView
+                                android:id="@+id/score3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="0.0"
+                                android:textSize="@dimen/text_size_medium"
+                                android:textColor="@color/primary_text"
+                                android:longClickable="true"
+                                android:background="@color/primary_light"/>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:background="@color/primary"/>
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
@@ -228,18 +274,33 @@
                             android:layout_marginEnd="8dp"
                             android:text="@string/dive_4"
                             android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/primary_text"
-                            android:background="@color/primary_light"/>
+                            android:textColor="@color/secondary_text"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="bottom"/>
 
-                        <TextView
-                            android:id="@+id/score4"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/primary"
-                            android:longClickable="true"
-                            android:background="@color/primary_light"/>
+                            android:orientation="vertical"
+                            android:background="@color/primary_light">
+
+                            <TextView
+                                android:id="@+id/score4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="0.0"
+                                android:textSize="@dimen/text_size_medium"
+                                android:textColor="@color/primary_text"
+                                android:longClickable="true"
+                                android:background="@color/primary_light"/>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:background="@color/primary"/>
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
@@ -255,18 +316,33 @@
                             android:layout_marginEnd="8dp"
                             android:text="@string/dive_5"
                             android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/primary_text"
-                            android:background="@color/primary_light"/>
+                            android:textColor="@color/secondary_text"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="bottom"/>
 
-                        <TextView
-                            android:id="@+id/score5"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/primary"
-                            android:longClickable="true"
-                            android:background="@color/primary_light"/>
+                            android:orientation="vertical"
+                            android:background="@color/primary_light">
+
+                            <TextView
+                                android:id="@+id/score5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="0.0"
+                                android:textSize="@dimen/text_size_medium"
+                                android:textColor="@color/primary_text"
+                                android:longClickable="true"
+                                android:background="@color/primary_light"/>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:background="@color/primary"/>
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
@@ -282,18 +358,33 @@
                             android:layout_marginEnd="8dp"
                             android:text="@string/dive_6"
                             android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/primary_text"
-                            android:background="@color/primary_light"/>
+                            android:textColor="@color/secondary_text"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="bottom"/>
 
-                        <TextView
-                            android:id="@+id/score6"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/primary"
-                            android:longClickable="true"
-                            android:background="@color/primary_light"/>
+                            android:orientation="vertical"
+                            android:background="@color/primary_light">
+
+                            <TextView
+                                android:id="@+id/score6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="0.0"
+                                android:textSize="@dimen/text_size_medium"
+                                android:textColor="@color/primary_text"
+                                android:longClickable="true"
+                                android:background="@color/primary_light"/>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:background="@color/primary"/>
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
@@ -319,18 +410,33 @@
                             android:layout_marginEnd="8dp"
                             android:text="@string/dive_7"
                             android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/primary_text"
-                            android:background="@color/primary_light"/>
+                            android:textColor="@color/secondary_text"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="bottom"/>
 
-                        <TextView
-                            android:id="@+id/score7"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/primary"
-                            android:longClickable="true"
-                            android:background="@color/primary_light"/>
+                            android:orientation="vertical"
+                            android:background="@color/primary_light">
+
+                            <TextView
+                                android:id="@+id/score7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="0.0"
+                                android:textSize="@dimen/text_size_medium"
+                                android:textColor="@color/primary_text"
+                                android:longClickable="true"
+                                android:background="@color/primary_light"/>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:background="@color/primary"/>
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
@@ -346,18 +452,33 @@
                             android:layout_marginEnd="8dp"
                             android:text="@string/dive_8"
                             android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/primary_text"
-                            android:background="@color/primary_light"/>
+                            android:textColor="@color/secondary_text"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="bottom"/>
 
-                        <TextView
-                            android:id="@+id/score8"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/primary"
-                            android:longClickable="true"
-                            android:background="@color/primary_light"/>
+                            android:orientation="vertical"
+                            android:background="@color/primary_light">
+
+                            <TextView
+                                android:id="@+id/score8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="0.0"
+                                android:textSize="@dimen/text_size_medium"
+                                android:textColor="@color/primary_text"
+                                android:longClickable="true"
+                                android:background="@color/primary_light"/>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:background="@color/primary"/>
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
@@ -373,18 +494,33 @@
                             android:layout_marginEnd="8dp"
                             android:text="@string/dive_9"
                             android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/primary_text"
-                            android:background="@color/primary_light"/>
+                            android:textColor="@color/secondary_text"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="bottom"/>
 
-                        <TextView
-                            android:id="@+id/score9"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/primary"
-                            android:longClickable="true"
-                            android:background="@color/primary_light"/>
+                            android:orientation="vertical"
+                            android:background="@color/primary_light">
+
+                            <TextView
+                                android:id="@+id/score9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="0.0"
+                                android:textSize="@dimen/text_size_medium"
+                                android:textColor="@color/primary_text"
+                                android:longClickable="true"
+                                android:background="@color/primary_light"/>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:background="@color/primary"/>
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
@@ -402,8 +538,6 @@
                         android:layout_marginTop="16dp"
                         android:background="@color/primary_light">
 
-
-
                         <TextView
                             android:id="@+id/score10view"
                             android:layout_width="wrap_content"
@@ -412,18 +546,33 @@
                             android:layout_marginEnd="8dp"
                             android:text="@string/dive_10"
                             android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/primary_text"
-                            android:background="@color/primary_light"/>
+                            android:textColor="@color/secondary_text"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="bottom"/>
 
-                        <TextView
-                            android:id="@+id/score10"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/primary"
-                            android:longClickable="true"
-                            android:background="@color/primary_light"/>
+                            android:orientation="vertical"
+                            android:background="@color/primary_light">
+
+                            <TextView
+                                android:id="@+id/score10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="0.0"
+                                android:textSize="@dimen/text_size_medium"
+                                android:textColor="@color/primary_text"
+                                android:longClickable="true"
+                                android:background="@color/primary_light"/>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:background="@color/primary"/>
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
@@ -439,18 +588,33 @@
                             android:layout_marginEnd="8dp"
                             android:text="@string/dive_11"
                             android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/primary_text"
-                            android:background="@color/primary_light"/>
+                            android:textColor="@color/secondary_text"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="bottom"/>
 
-                        <TextView
-                            android:id="@+id/score11"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/primary"
-                            android:longClickable="true"
-                            android:background="@color/primary_light"/>
+                            android:orientation="vertical"
+                            android:background="@color/primary_light">
+
+                            <TextView
+                                android:id="@+id/score11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="0.00"
+                                android:textSize="@dimen/text_size_medium"
+                                android:textColor="@color/primary_text"
+                                android:longClickable="true"
+                                android:background="@color/primary_light"/>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:background="@color/primary"/>
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
@@ -466,16 +630,18 @@
                             android:layout_marginEnd="8dp"
                             android:text="@string/totals"
                             android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/primary_text"
-                            android:background="@color/primary_light"/>
+                            android:textColor="@color/secondary_text"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="bottom"/>
 
                         <TextView
                             android:id="@+id/total"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
                             android:text="0.0"
                             android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/primary"
+                            android:textColor="@color/primary_text"
                             android:background="@color/primary_light"/>
 
                         <View
