@@ -126,15 +126,6 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_quick_score_edit);
-        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
-
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                savePreferences("firstAlertWelcome", true);
-                dialog.cancel();
-            }
-        });
 
         dialog.show();
     }
@@ -144,14 +135,6 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_quick_score_edit);
-        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
-
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        });
 
         dialog.show();
     }

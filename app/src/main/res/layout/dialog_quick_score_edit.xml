@@ -12,8 +12,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="8dp"
-        android:paddingBottom="4dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:paddingLeft="8dp"
         android:paddingStart="8dp"
         android:paddingRight="8dp"
@@ -26,25 +26,11 @@
             android:text="@string/dialog_edit_quick_list_info"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="16dp"
             android:id="@+id/textView"
             android:textSize="@dimen/text_size_small"
             android:textColor="@color/primary_text"
             android:gravity="center"
             android:background="@color/primary_light"/>
-
-        <Button
-            android:id="@+id/buttonOkay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="8dp"
-            android:layout_gravity="end"
-            android:text="@string/ok"
-            android:textSize="@dimen/button_text_large"
-            android:textColor="@color/primary"
-            android:background="@color/primary_light"
-            style="?android:attr/borderlessButtonStyle"/>
 
     </LinearLayout>
 
