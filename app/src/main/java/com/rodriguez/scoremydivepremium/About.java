@@ -12,8 +12,6 @@ import android.widget.Button;
 
 public class About extends ActionBarActivity {
 
-    private Button cancel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -22,19 +20,7 @@ public class About extends ActionBarActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        cancel = (Button)findViewById(R.id.buttonOkay);
 
-        addListenerOnButton();
-    }
-
-    void addListenerOnButton(){
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
     @Override
