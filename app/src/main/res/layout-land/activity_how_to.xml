@@ -58,41 +58,15 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout12"
-        android:layout_width="fill_parent"
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/layout11"
         android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingStart="8dp"
-        android:paddingRight="8dp"
-        android:paddingEnd="8dp"
-        android:background="@drawable/layer_card_background">
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/youtubeplayappy"
-            android:contentDescription="@string/youtubelink" />
-
-        <Button
-            android:id="@+id/buttonOkay"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ok"
-            android:textSize="@dimen/button_text_medium"
-            android:textColor="@color/primary"
-            android:background="@color/primary_light"
-            android:layout_gravity="end"/>
-
-    </LinearLayout>
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/youtubeplayappy"
+        android:contentDescription="@string/youtubelink" />
 
 </RelativeLayout>
 
