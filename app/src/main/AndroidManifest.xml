@@ -16,17 +16,15 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Home"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name" >       <!-- we may not use this -->
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" > <!-- we may not use this -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".Welcome">
+        <activity android:name=".Welcome" >
             <intent-filter>
                 <action android:name="android.intent.action.Home.Welcome" />
 
@@ -37,9 +35,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Home" />
         </activity>
-
-        <activity
-            android:name=".DiverHistory">
+        <activity android:name=".DiverHistory" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.DiverHistory" />
 
@@ -50,9 +46,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Welcome" />
         </activity>
-
-        <activity
-            android:name=".MeetScores">
+        <activity android:name=".MeetScores" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.MeetScores" />
 
@@ -63,9 +57,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DiverHistory" />
         </activity>
-
-        <activity
-            android:name=".DiverEdit">
+        <activity android:name=".DiverEdit" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.DiverEdit" />
 
@@ -76,10 +68,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Welcome" />
         </activity>
-
         <activity
             android:name=".DiverDelete"
-            android:theme="@style/Theme.AppCompat.Dialog">
+            android:theme="@style/Theme.AppCompat.Dialog" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.DiverDelete" />
 
@@ -90,9 +81,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Welcome" />
         </activity>
-
-        <activity
-            android:name=".MeetResults">
+        <activity android:name=".MeetResults" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.MeetResults" />
 
@@ -103,9 +92,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Welcome" />
         </activity>
-
-        <activity
-            android:name=".MeetEdit">
+        <activity android:name=".MeetEdit" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.MeetEdit" />
 
@@ -116,10 +103,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Welcome" />
         </activity>
-
         <activity
             android:name=".MeetDelete"
-            android:theme="@style/Theme.AppCompat.Dialog">
+            android:theme="@style/Theme.AppCompat.Dialog" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.MeetDelete" />
 
@@ -130,9 +116,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Welcome" />
         </activity>
-
-        <activity
-            android:name=".Choose">
+        <activity android:name=".Choose" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.Choose" />
 
@@ -143,9 +127,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Welcome" />
         </activity>
-
-        <activity
-            android:name=".ChooseDiver">
+        <activity android:name=".ChooseDiver" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.ChooseDiver" />
 
@@ -156,9 +138,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Home" />
         </activity>
-
-        <activity
-            android:name=".ChooseSummary">
+        <activity android:name=".ChooseSummary" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.ChooseSummary" />
 
@@ -169,9 +149,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ChooseDiver" />
         </activity>
-
-        <activity
-            android:name=".EnterDiver">
+        <activity android:name=".EnterDiver" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.EnterDiver" />
 
@@ -182,9 +160,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Welcome" />
         </activity>
-
-        <activity
-            android:name=".EnterMeet">
+        <activity android:name=".EnterMeet" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.EnterMeet" />
 
@@ -195,7 +171,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Welcome" />
         </activity>
-
         <activity android:name=".Dives" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.Dives" />
@@ -207,18 +182,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ChooseSummary" />
         </activity>
-
-        <activity
-            android:name=".HowTo">
+        <activity android:name=".HowTo" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.HowTo" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".ChangeDiveScore">
+        <activity android:name=".ChangeDiveScore" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.ChangeDiveScore" />
 
@@ -229,10 +200,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ChooseSummary" />
         </activity>
-
         <activity
             android:name=".FailedDive"
-            android:theme="@style/Theme.AppCompat.Dialog">
+            android:theme="@style/Theme.AppCompat.Dialog" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.FailedDive" />
 
@@ -243,11 +213,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ChooseSummary" />
         </activity>
-
         <activity
             android:name=".EditQuickScoreValue"
             android:theme="@style/Theme.AppCompat.Dialog"
-            android:windowSoftInputMode="stateAlwaysVisible">
+            android:windowSoftInputMode="stateAlwaysVisible" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.EditQuickScoreValue" />
 
@@ -258,9 +227,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".QuickScoreEdit" />
         </activity>
-
-        <activity
-            android:name=".EnterFinalDiveScore">
+        <activity android:name=".EnterFinalDiveScore" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.EnterFinalDiveScore" />
 
@@ -271,10 +238,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ChooseSummary" />
         </activity>
-
         <activity
             android:name=".RemoveDiverFromMeet"
-            android:theme="@style/Theme.AppCompat.Dialog">
+            android:theme="@style/Theme.AppCompat.Dialog" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.RemoveDiverFromMeet" />
 
@@ -285,7 +251,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ChooseDiver" />
         </activity>
-
         <activity
             android:name=".About"
             android:label=""
@@ -294,9 +259,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Home" />
         </activity>
-
-        <activity
-            android:name=".ViewDiveInfo">
+        <activity android:name=".ViewDiveInfo" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.ViewDiveInfo" />
 
@@ -307,18 +270,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MeetScores" />
         </activity>
-
-        <activity
-            android:name=".Rankings">
+        <activity android:name=".Rankings" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.Rankings" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".RankingsByMeet">
+        <activity android:name=".RankingsByMeet" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.RankingsByMeet" />
 
@@ -329,9 +288,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Rankings" />
         </activity>
-
-        <activity
-            android:name=".Reports">
+        <activity android:name=".Reports" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.Reports" />
 
@@ -340,11 +297,9 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
+                android:value=".Home" />
         </activity>
-
-        <activity
-            android:name=".EnterDiveList">
+        <activity android:name=".EnterDiveList" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.EnterDiveList" />
 
@@ -355,9 +310,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ChooseDiver" />
         </activity>
-
-        <activity
-            android:name=".ChooseDivesFromList">
+        <activity android:name=".ChooseDivesFromList" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.ChooseDivesFromList" />
 
@@ -368,9 +321,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".EnterDiveList" />
         </activity>
-
-        <activity
-            android:name=".EnterScoreFromList">
+        <activity android:name=".EnterScoreFromList" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.EnterScoreFromList" />
 
@@ -381,9 +332,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ChooseDivesFromList" />
         </activity>
-
-        <activity
-            android:name=".EditDiveList">
+        <activity android:name=".EditDiveList" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.EditDiveList" />
 
@@ -394,9 +343,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".EnterDiveList" />
         </activity>
-
-        <activity
-            android:name=".EnterTotalScoreFromDiveList">
+        <activity android:name=".EnterTotalScoreFromDiveList" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.EnterTotalScoreFromDiveList" />
 
@@ -407,9 +354,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ChooseDivesFromList" />
         </activity>
-
-        <activity
-            android:name=".QuickScore">
+        <activity android:name=".QuickScore" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.QuickScore" />
 
@@ -420,9 +365,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Home" />
         </activity>
-        
-        <activity
-            android:name=".QuickScoreEdit">
+        <activity android:name=".QuickScoreEdit" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.QuickScoreEdit" />
 
@@ -432,6 +375,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".QuickScore" />
+        </activity>
+        <activity
+            android:name=".MeetsDivers"
+            android:label="@string/title_activity_meets_divers"
+            android:parentActivityName=".Home" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Home" />
         </activity>
     </application>
 

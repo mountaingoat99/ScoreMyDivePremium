@@ -2,6 +2,7 @@ package com.rodriguez.scoremydivepremium;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
@@ -10,11 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.info.sqlite.helper.JudgeScoreDatabase;
 
 
 public class Home extends ActionBarActivity {
 
-    private Button btnQuick, btnDetailed;
+    private Button btnQuick, btnDetailed, btnMeetDivers, btnReports;
     private final Context context = this;
 
     @Override
@@ -24,6 +28,8 @@ public class Home extends ActionBarActivity {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         btnQuick = (Button)findViewById(R.id.buttonQuickScore);
         btnDetailed = (Button)findViewById(R.id.buttonDetailScore);
+        btnMeetDivers = (Button)findViewById(R.id.buttonMeetsDivers);
+        btnReports = (Button)findViewById(R.id.buttonReports);
 
         addListenerOnButton();
     }
@@ -54,6 +60,31 @@ public class Home extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+
+        btnMeetDivers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnReports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // check db on a separate thread
+                ValidMeet val = new ValidMeet();
+                boolean validMeet = val.doInBackground();
+                if (validMeet) {
+                    Intent intent = new Intent(context, Reports.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(),
+                            "No scores have been entered, so no reports can be generated",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     @Override
@@ -81,5 +112,14 @@ public class Home extends ActionBarActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private class ValidMeet extends AsyncTask<Boolean, Object, Object> {
+        JudgeScoreDatabase db = new JudgeScoreDatabase(getApplicationContext());
+        Boolean validmeet;
+        @Override
+        protected Boolean doInBackground(Boolean... params) {
+            return validmeet = db.checkJudgesScores();
+        }
     }
 }

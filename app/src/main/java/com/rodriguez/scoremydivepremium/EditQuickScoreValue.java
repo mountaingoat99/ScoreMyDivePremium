@@ -30,7 +30,8 @@ public class EditQuickScoreValue extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_quick_score_value);ActionBar actionBar = getSupportActionBar();
+        setContentView(R.layout.activity_edit_quick_score_value);
+        ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         btnUpdate = (Button)findViewById(R.id.buttonUpdate);

@@ -335,5 +335,6 @@
     <string name="home_meets_divers_text">I need to enter at least one of each of these before entering judges scores, calculating totals, and getting reports.</string>
     <string name="home_reports_button">Reports</string>
     <string name="home_reports_text">I need to score a detailed meet before I can generate reports or share the results through email\/social media.</string>
+    <string name="title_activity_meets_divers">MeetsDivers</string>
 
 </resources>

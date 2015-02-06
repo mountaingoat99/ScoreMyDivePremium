@@ -6,10 +6,12 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -43,13 +45,8 @@ public class Reports extends ActionBarActivity implements OnItemSelectedListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reports);
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
-        }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setUpView();
-
         addListenerOnButton();
         loadSpinnerName();
         loadSpinnerMeet();
@@ -393,7 +390,7 @@ public class Reports extends ActionBarActivity implements OnItemSelectedListener
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 R.layout.spinner_item, reportName);
-        dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
+        dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinnerReports.setAdapter(dataAdapter);
 //        spinnerReports.setAdapter(
 //                new NothingSelectedSpinnerAdapter(
@@ -411,7 +408,7 @@ public class Reports extends ActionBarActivity implements OnItemSelectedListener
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 R.layout.spinner_item, newList);
-        dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
+        dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         dataAdapter.insert("  Choose Meet", 0);
         spinnerMeet.setAdapter(dataAdapter);
 
@@ -426,7 +423,7 @@ public class Reports extends ActionBarActivity implements OnItemSelectedListener
         List<String> diverName = diver.doInBackground();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 R.layout.spinner_item, diverName);
-        dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
+        dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         dataAdapter.insert("  Choose Name", 0);
         spinnerName.setAdapter(dataAdapter);
 //        spinnerName.setAdapter(
