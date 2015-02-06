@@ -466,36 +466,45 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.menu_delete_quick_list) {
+
+            if(sheetId > 0) {
+
             final Dialog dialog = new Dialog(context);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.dialog_delete_quick_score);
             Button cancelButton = (Button) dialog.findViewById(R.id.buttonCancel);
             Button yesButton = (Button) dialog.findViewById(R.id.buttonYes);
-
             cancelButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     dialog.cancel();
                 }
             });
-
             yesButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    QuickScoreDatabase db = new QuickScoreDatabase(getApplicationContext());
-                    db.deleteSheet(sheetId);
-                    sheetId = 0;
-                    dialog.cancel();
-                    Intent intent = new Intent(context, QuickScore.class);
-                    //Bundle b = new Bundle();
-                    //b.putInt("keyPosition", 0);
-                    //intent.putExtras(b);
-                    startActivity(intent);
+
+
+                        QuickScoreDatabase db = new QuickScoreDatabase(getApplicationContext());
+                        db.deleteSheet(sheetId);
+                        sheetId = 0;
+                        dialog.cancel();
+                        Intent intent = new Intent(context, QuickScore.class);
+                        //Bundle b = new Bundle();
+                        //b.putInt("keyPosition", 0);
+                        //intent.putExtras(b);
+                        startActivity(intent);
                 }
             });
 
             dialog.show();
             return true;
+
+            } else {
+                Toast.makeText(getApplicationContext(),
+                        "Please choose a dive sheet first",
+                        Toast.LENGTH_LONG).show();
+            }
         }
 
         if(id == R.id.menu_how_to){
