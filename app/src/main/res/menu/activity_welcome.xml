@@ -11,9 +11,4 @@
         android:orderInCategory="200"
         divingscores:showAsAction="collapseActionView" />
 
-    <item android:id="@+id/menu_about"
-        android:title="@string/about_string"
-        android:orderInCategory="200"
-        divingscores:showAsAction="collapseActionView" />
-
 </menu>

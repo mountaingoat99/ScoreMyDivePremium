@@ -188,6 +188,9 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Home" />
         </activity>
         <activity android:name=".ChangeDiveScore" >
             <intent-filter>
@@ -377,12 +380,16 @@
                 android:value=".QuickScore" />
         </activity>
         <activity
-            android:name=".MeetsDivers"
-            android:label="@string/title_activity_meets_divers"
-            android:parentActivityName=".Home" >
+            android:name=".MeetsDivers">
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.MeetsDivers" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="Home" />
+                android:value=".Home" />
         </activity>
     </application>
 

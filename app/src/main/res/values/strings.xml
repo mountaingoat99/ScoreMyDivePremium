@@ -128,11 +128,11 @@
     <string name="radio_judge_9">9 Judges</string>
     <string name="enter_scores">Enter Scores</string>
     <string name="enter_name">Choose Diver</string>
-    <string name="enter_diver_name">Enter New Diver</string>
+    <string name="enter_diver_name">New Diver</string>
     <string name="enter_existing_meet">Enter Existing Meet</string>
     <string name="choose_name">Choose Meet</string>
     <string name="existing_diver">Existing Diver</string>
-    <string name="enter_new_meet">Enter New Meet</string>
+    <string name="enter_new_meet">New Meet</string>
     <string name="title_activity_choose_summary">Choose Dives</string>
     <string name="diver_name">Diver Name:</string>
     <string name="meet_name">Meet Name:</string>
@@ -152,13 +152,13 @@
     <string name="score_total">Total:</string>
     <string name="score_8">Score 8:</string>
     <string name="score_9">Score 9:</string>
-    <string name="enter_new_diver_info">Enter New Diver</string>
+    <string name="enter_new_diver_info">New Diver</string>
     <string name="name">Name:</string>
     <string name="age">Age:</string>
     <string name="grade">Grade:</string>
     <string name="school">School:</string>
     <string name="title_activity_enter_diver">Enter New Diver</string>
-    <string name="enter_new_meet_info">Enter New Meet</string>
+    <string name="enter_new_meet_info">New Meet</string>
     <string name="enter_school">School:</string>
     <string name="enter_state">State:</string>
     <string name="enter_city">City:</string>
@@ -244,7 +244,7 @@
                         Updating the Judges Scores will always recalculate the Total Score.</string>
     <string name="how_to1">\t In the Quick Score mode the only thing that will be saved is a score sheet name that you can edit, the dive
                             scores, and the total for a meet. In the Detailed Scores you can save info about multiple divers, meets, and all details
-                            from a meet: Dive name, DOD, position, judge scores, total scores, dates, ect\#8230</string>
+                            from a meet: Dive name, DOD, position, judge scores, total scores, dates, etc.</string>
     <string name="how_to2">\t You can enter multiple divers during a meet. Calculate scores by either entering the judges scores
                         or just enter the total score. The detailed section will keep a running total of the score as the meet progresses.
                         You can also edit the scores in case you entered the wrong value, or enter a failed dive. Use the Android
@@ -336,5 +336,7 @@
     <string name="home_reports_button">Reports</string>
     <string name="home_reports_text">I need to score a detailed meet before I can generate reports or share the results through email\/social media.</string>
     <string name="title_activity_meets_divers">MeetsDivers</string>
+    <string name="enter_diver_meets">Enter:</string>
+    <string name="view_meets_divers">View:</string>
 
 </resources>

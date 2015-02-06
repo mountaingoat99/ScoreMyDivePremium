@@ -64,6 +64,8 @@ public class Home extends ActionBarActivity {
         btnMeetDivers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context, MeetsDivers.class);
+                startActivity(intent);
 
             }
         });
@@ -109,6 +111,10 @@ public class Home extends ActionBarActivity {
             case R.id.menu_about:
                 Intent intent2 = new Intent(context, About.class);
                 startActivity(intent2);
+                break;
+            case R.id.menu_rankings:
+                Intent intent1 = new Intent(context, Rankings.class);
+                startActivity(intent1);
                 break;
         }
         return super.onOptionsItemSelected(item);
