@@ -25,7 +25,7 @@ public class HowTo extends ActionBarActivity {
         setContentView(R.layout.activity_how_to);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         cancel = (Button)findViewById(R.id.buttonOkay);
