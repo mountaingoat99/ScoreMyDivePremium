@@ -30,12 +30,12 @@
 
             <EditText
                 android:id="@+id/editTextNameE"
+                android:layout_toRightOf="@+id/enterNameN"
+                android:layout_toEndOf="@+id/enterNameN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_toRightOf="@+id/enterNameN"
-                android:layout_toEndOf="@+id/enterNameN"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:layout_alignParentEnd="true"
@@ -50,9 +50,9 @@
 
             <TextView
                 android:id="@+id/enterNameN"
+                android:layout_alignBaseline="@+id/editTextNameE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/editTextNameE"
                 android:text="@string/name"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"

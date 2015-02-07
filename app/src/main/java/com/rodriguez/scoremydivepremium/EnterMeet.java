@@ -51,6 +51,11 @@ OnClickListener {
         txtDate = (EditText)findViewById(R.id.editTextDate);
         txtDate.setOnClickListener(this);
 
+        Bundle b = getIntent().getExtras();
+        if (b != null) {
+            txtDate.setText(b.getString("dateKey"));
+        }
+
         addListenerOnButton();
 
         // shared preference for the alert dialog
@@ -111,27 +116,35 @@ OnClickListener {
     public void onClick(View v) {
  
         if (v == txtDate) {
+
+            boolean fromMeetEnter = true;
+
+            Intent intent = new Intent(context, DatePickerCustom.class);
+            Bundle b = new Bundle();
+            b.putBoolean("meetEnterKey", fromMeetEnter);
+            intent.putExtras(b);
+            startActivity(intent);
  
             // Process to get Current Date
-            final Calendar c = Calendar.getInstance();
-            int mYear = c.get(Calendar.YEAR);
-            int mMonth = c.get(Calendar.MONTH);
-            int mDay = c.get(Calendar.DAY_OF_MONTH);
- 
-            // Launch Date Picker Dialog
-            DatePickerDialog dpd = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
- 
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                int monthOfYear, int dayOfMonth) {
-                            // Display Selected date in textbox
-                            txtDate.setText(dayOfMonth + "-"
-                                    + (monthOfYear + 1) + "-" + year); 
-                        }
-                    }, mYear, mMonth, mDay
-            );
-            dpd.show();
+//            final Calendar c = Calendar.getInstance();
+//            int mYear = c.get(Calendar.YEAR);
+//            int mMonth = c.get(Calendar.MONTH);
+//            int mDay = c.get(Calendar.DAY_OF_MONTH);
+//
+//            // Launch Date Picker Dialog
+//            DatePickerDialog dpd = new DatePickerDialog(this,
+//                    new DatePickerDialog.OnDateSetListener() {
+//
+//                        @Override
+//                        public void onDateSet(DatePicker view, int year,
+//                                int monthOfYear, int dayOfMonth) {
+//                            // Display Selected date in textbox
+//                            txtDate.setText(dayOfMonth + "-"
+//                                    + (monthOfYear + 1) + "-" + year);
+//                        }
+//                    }, mYear, mMonth, mDay
+//            );
+//            dpd.show();
         }
     }
 	
