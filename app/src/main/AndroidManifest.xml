@@ -44,7 +44,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
+                android:value=".MeetsDivers" />
         </activity>
         <activity android:name=".MeetScores" >
             <intent-filter>
@@ -90,7 +90,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
+                android:value=".MeetsDivers" />
         </activity>
         <activity android:name=".MeetEdit" >
             <intent-filter>

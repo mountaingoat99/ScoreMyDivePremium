@@ -3,124 +3,151 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".diverHistory" >
-    
-    <LinearLayout
-        android:id="@+id/layout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp" >
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/nameHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:text=""
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/random_text"/>
-    
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"/>
-    
-        <TextView
-            android:id="@+id/ageHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:text=""
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/random_text" />
-    
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout1"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp" >
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/schoolHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:text=""
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/random_text"/>
-    
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/gradeHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:text=""
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/random_text"/>
-    
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"/>
-    
-    </LinearLayout>
-    
-    <View
-        android:id="@+id/line1F"
+        android:id="@+id/layout3"
         android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/layout2"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@color/header" />
-    
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/line1F"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:drawSelectorOnTop="false"
-        android:textSize="@dimen/text_size_medium"
-        android:textColor="@color/random_text">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:paddingRight="8dp"
+        android:paddingEnd="8dp"
+        android:background="@drawable/layer_card_background">
 
-    </ListView>    
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_light">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/primary_light"/>
+
+            <TextView
+                android:id="@+id/nameHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text=""
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/primary_light"/>
+
+            <TextView
+                android:id="@+id/ageHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text=""
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/primary_light"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/primary_light" >
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/primary_light"/>
+
+            <TextView
+                android:id="@+id/schoolHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text=""
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/primary_light"/>
+
+            <TextView
+                android:id="@+id/gradeHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text=""
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/primary_light"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout3"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:paddingRight="8dp"
+        android:paddingEnd="8dp"
+        android:background="@drawable/layer_card_background">
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:drawSelectorOnTop="false"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/primary_text"
+            android:background="@color/primary_light">
+
+        </ListView>
+
+    </LinearLayout>
 
 </RelativeLayout>

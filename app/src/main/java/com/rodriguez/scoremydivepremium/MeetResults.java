@@ -41,7 +41,7 @@ public class MeetResults extends ActionBarActivity {
         setContentView(R.layout.activity_meet_results);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         myList = (ListView)findViewById(R.id.list);
@@ -156,10 +156,6 @@ public class MeetResults extends ActionBarActivity {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
-            case R.id.menu_how_to:
-                Intent intent3 = new Intent(context, HowTo.class);
-                startActivity(intent3);
-                break;
             case R.id.menu_rankings:
                 Intent intent2 = new Intent(context, Rankings.class);
                 startActivity(intent2);
