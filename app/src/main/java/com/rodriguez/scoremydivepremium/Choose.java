@@ -35,7 +35,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
 		setContentView(R.layout.activity_choose);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         spinnerMeet = (Spinner)findViewById(R.id.spinnerMeetName);
@@ -55,7 +55,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
     public void onBackPressed(){
 
         final Context context = this;
-        Intent intent = new Intent(context, Welcome.class);
+        Intent intent = new Intent(context, Home.class);
         startActivity(intent);
     }
    
@@ -69,9 +69,6 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
 		dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
         dataAdapter.insert("  Choose a Meet", 0);
         spinnerMeet.setAdapter(dataAdapter);
-// 		spinnerMeet.setAdapter(
-// 				new NothingSelectedSpinnerAdapter(
-// 						dataAdapter, R.layout.meet_name_spinner_row_nothing_selected, this));
 	}
    
    public void addListenerOnButton()

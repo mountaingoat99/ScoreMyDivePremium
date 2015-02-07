@@ -60,21 +60,18 @@ public class MeetScores extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_meet_scores);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
         setupView();
         
         Bundle b = getIntent().getExtras();
         diverId = b.getInt("key");
         meetId = b.getInt("key2");
 
-        //getDiveCount();
         getDiveNumber();
         fillText();
         fillMeet();
@@ -675,7 +672,8 @@ public class MeetScores extends ActionBarActivity {
         switch (item.getItemId())
         {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                //NavUtils.navigateUpFromSameTask(this);
+                finish();
                 return true;
             case R.id.action_email:
                 emailFile();

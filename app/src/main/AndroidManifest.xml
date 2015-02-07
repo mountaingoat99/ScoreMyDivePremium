@@ -125,7 +125,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
+                android:value=".Home" />
         </activity>
         <activity android:name=".ChooseDiver" >
             <intent-filter>

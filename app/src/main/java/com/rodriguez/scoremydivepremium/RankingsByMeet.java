@@ -46,7 +46,7 @@ public class RankingsByMeet extends ActionBarActivity {
         setContentView(R.layout.activity_rankings_by_meet);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         myList = (ListView)findViewById(R.id.list);
@@ -123,7 +123,8 @@ public class RankingsByMeet extends ActionBarActivity {
         switch (item.getItemId())
         {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                //NavUtils.navigateUpFromSameTask(this);
+                finish();
                 return true;
             case R.id.action_email:
                 emailFile();

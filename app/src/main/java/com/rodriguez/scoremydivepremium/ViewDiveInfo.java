@@ -34,7 +34,7 @@ public class ViewDiveInfo extends ActionBarActivity {
     private TextView diveType;
     private TextView diveStyle;
     private TextView divePosition;
-    private TextView diveNumberView;
+    //private TextView diveNumberView;
     private TextView diveDD;
     private TextView name;
     private TextView meetName;
@@ -51,7 +51,7 @@ public class ViewDiveInfo extends ActionBarActivity {
     private TextView s7;
     private TextView total;
     private TextView failedText;
-    private Button returnButton;
+    //private Button returnButton;
     private int diverId, meetId, diveNumber, judgeTotal;
     private String s1String = "0.00";
     private String s2String = "0.00";
@@ -77,7 +77,7 @@ public class ViewDiveInfo extends ActionBarActivity {
         setContentView(R.layout.activity_view_dive_info);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setUpView();
@@ -87,10 +87,10 @@ public class ViewDiveInfo extends ActionBarActivity {
         meetId = b.getInt("keyMeet");
         diveNumber = b.getInt("keyDiveNumber");
         getJudgeTotal();
-        showDiveNumber();
+        //showDiveNumber();
         fillText();
         showDiveScores();
-        addListenerOnButton();
+        //addListenerOnButton();
     }
 
     private void showDiveScores(){
@@ -117,31 +117,28 @@ public class ViewDiveInfo extends ActionBarActivity {
         s6String = Double.toString(scores.get(5));
         s7String = Double.toString(scores.get(6));
 
+        if (judgeTotal >= 3) {
+            s1.setText(s1String);
+            s2.setText(s2String);
+            s3.setText(s3String);
+        }
+        if (judgeTotal >= 5) {
+            s4v.setVisibility(View.VISIBLE);
+            s4.setVisibility(View.VISIBLE);
+            s4.setText(s4String);
 
-            if (judgeTotal >= 3) {
-                s1.setText(s1String);
-                s2.setText(s2String);
-                s3.setText(s3String);
-            }
-            if (judgeTotal >= 5) {
-                s4v.setVisibility(View.VISIBLE);
-                s4.setVisibility(View.VISIBLE);
-                s4.setText(s4String);
-
-                s5v.setVisibility(View.VISIBLE);
-                s5.setVisibility(View.VISIBLE);
-                s5.setText(s5String);
-            }
-            if (judgeTotal == 7) {
-                s6v.setVisibility(View.VISIBLE);
-                s6.setVisibility(View.VISIBLE);
-                s6.setText(s6String);
-
-                s7v.setVisibility(View.VISIBLE);
-                s7.setVisibility(View.VISIBLE);
-                s7.setText(s7String);
-            }
-
+            s5v.setVisibility(View.VISIBLE);
+            s5.setVisibility(View.VISIBLE);
+            s5.setText(s5String);
+        }
+        if (judgeTotal == 7) {
+            s6v.setVisibility(View.VISIBLE);
+            s6.setVisibility(View.VISIBLE);
+            s6.setText(s6String);
+            s7v.setVisibility(View.VISIBLE);
+            s7.setVisibility(View.VISIBLE);
+            s7.setText(s7String);
+        }
     }
 
     private void fillText(){
@@ -174,24 +171,24 @@ public class ViewDiveInfo extends ActionBarActivity {
         diveDD.setText(diveDDString);
     }
 
-    public void addListenerOnButton(){
-
-        returnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
+//    public void addListenerOnButton(){
+//
+//        returnButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+//    }
 
     private void getJudgeTotal(){
         GetJudgeTotal total = new GetJudgeTotal();
         judgeTotal = total.doInBackground();
     }
 
-    private void showDiveNumber(){
-        diveNumberView.setText("Dive Number " + diveNumber);
-    }
+//    private void showDiveNumber(){
+//        diveNumberView.setText("Dive Number " + diveNumber);
+//    }
 
 
     @Override
@@ -209,7 +206,8 @@ public class ViewDiveInfo extends ActionBarActivity {
         switch (item.getItemId())
         {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                //NavUtils.navigateUpFromSameTask(this);
+                finish();
                 return true;
             case R.id.action_email:
                 emailFile();
@@ -348,7 +346,7 @@ public class ViewDiveInfo extends ActionBarActivity {
     }
 
     private void setUpView(){
-        diveNumberView = (TextView)findViewById(R.id.TextView);
+        //diveNumberView = (TextView)findViewById(R.id.TextView);
         name = (TextView)findViewById(R.id.divername);
         meetName = (TextView)findViewById(R.id.meetname);
         diveType = (TextView) findViewById(R.id.diveTypeValue);
@@ -368,7 +366,7 @@ public class ViewDiveInfo extends ActionBarActivity {
         s7v = (TextView)findViewById(R.id.score7view);
         total = (TextView)findViewById(R.id.scoreTotal);
         failedText = (TextView)findViewById(R.id.failedText);
-        returnButton = (Button)findViewById(R.id.buttonReturn);
+        //returnButton = (Button)findViewById(R.id.buttonReturn);
     }
 
     private class GetDiveScore extends AsyncTask<String, Object, Object>{
