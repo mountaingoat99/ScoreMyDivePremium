@@ -30,7 +30,7 @@ public class EnterDiver extends ActionBarActivity {
         setContentView(R.layout.activity_enter_diver);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         addListenerOnButton();
@@ -67,7 +67,7 @@ public class EnterDiver extends ActionBarActivity {
 
     	        	Toast.makeText(getApplicationContext(),
     	        			"Diver has been saved", Toast.LENGTH_SHORT).show();
-    	        	Intent intent = new Intent(context, Welcome.class);
+    	        	Intent intent = new Intent(context, MeetsDivers.class);
         			startActivity(intent);
     	        } 
     		}
@@ -77,7 +77,7 @@ public class EnterDiver extends ActionBarActivity {
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) 
     {
-        getMenuInflater().inflate(R.menu.activity_enter_diver, menu);
+        //getMenuInflater().inflate(R.menu.activity_enter_diver, menu);
         return true;
     }
 	

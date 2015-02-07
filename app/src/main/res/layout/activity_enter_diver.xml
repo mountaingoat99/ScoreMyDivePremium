@@ -3,143 +3,169 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:ignore="NotSibling" >
 
-    <TextView
-        android:id="@+id/EnterMeetM"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/header"
-        android:gravity="center"
-        android:text="@string/enter_new_diver_info"
-        android:textSize="@dimen/text_size_large"
-        android:textColor="@color/header_text"/>
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:paddingRight="8dp"
+        android:paddingEnd="8dp"
+        android:background="@drawable/layer_card_background">
 
-    <EditText
-        android:id="@+id/editTextNameE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/EnterMeetM"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_toRightOf="@+id/enterNameN"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_marginRight="8dp"
-        android:layout_alignParentEnd="true"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/random_text">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/primary_light">
 
-        <requestFocus />
-    </EditText>
+            <EditText
+                android:id="@+id/editTextNameE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_toRightOf="@+id/enterNameN"
+                android:layout_toEndOf="@+id/enterNameN"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/primary_text">
 
-    <TextView
-        android:id="@+id/enterNameN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editTextNameE"
-        android:layout_marginLeft="8dp"
-        android:text="@string/name"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/static_text"/>
-    
-    <EditText
-        android:id="@+id/editTextAgeN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextNameE"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_toRightOf="@+id/enterNameN"
-        android:ems="10"
-        android:inputType="number"
-        android:layout_marginRight="8dp"
-        android:layout_alignParentEnd="true"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/random_text">
+                <requestFocus />
+            </EditText>
 
-    </EditText>
+            <TextView
+                android:id="@+id/enterNameN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/editTextNameE"
+                android:text="@string/name"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
 
-    <TextView
-        android:id="@+id/enterAgeN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editTextAgeN"
-        android:layout_alignLeft="@+id/EnterMeetM"
-        android:text="@string/age"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/static_text"/>
-    
-    <EditText
-        android:id="@+id/editTextGradeN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextAgeN"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_toRightOf="@+id/enterNameN"
-        android:ems="10"
-        android:inputType="text"
-        android:layout_marginRight="8dp"
-        android:layout_alignParentEnd="true"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/random_text">
+            <EditText
+                android:id="@+id/editTextAgeN"
+                android:layout_below="@id/editTextNameE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_toRightOf="@+id/enterNameN"
+                android:layout_toEndOf="@+id/enterNameN"
+                android:ems="10"
+                android:inputType="number"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/primary_text">
 
-    </EditText>
+            </EditText>
 
-    <TextView
-        android:id="@+id/enterGradeN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editTextGradeN"
-        android:layout_marginLeft="8dp"
-        android:text="@string/grade"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/static_text"/>
-    
-    <EditText
-        android:id="@+id/editTextSchoolN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextGradeN"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_toRightOf="@+id/enterNameN"
-        android:ems="10"
-        android:inputType="text"
-        android:layout_marginRight="8dp"
-        android:layout_alignParentEnd="true"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/random_text">
+            <TextView
+                android:id="@+id/enterAgeN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/editTextAgeN"
+                android:text="@string/age"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
 
-    </EditText>
+            <EditText
+                android:id="@+id/editTextGradeN"
+                android:layout_below="@id/editTextAgeN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_toRightOf="@+id/enterNameN"
+                android:layout_toEndOf="@+id/enterNameN"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/primary_text">
 
-    <TextView
-        android:id="@+id/enterSchoolN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editTextSchoolN"
-        android:layout_marginLeft="8dp"
-        android:text="@string/school"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/static_text"/>
+            </EditText>
 
-    <Button
-        android:id="@+id/buttonDiverEnter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextSchoolN"
-        android:text="@string/enter"
-        android:textSize="@dimen/button_text"
-        android:textColor="@color/button_text"
-        style="@android:style/Widget.Holo.Button"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true" />
+            <TextView
+                android:id="@+id/enterGradeN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/editTextGradeN"
+                android:text="@string/grade"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
+
+            <EditText
+                android:id="@+id/editTextSchoolN"
+                android:layout_below="@id/editTextGradeN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_toRightOf="@+id/enterSchoolN"
+                android:layout_toEndOf="@+id/enterSchoolN"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/primary_text">
+
+            </EditText>
+
+            <TextView
+                android:id="@+id/enterSchoolN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/editTextSchoolN"
+                android:text="@string/school"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
+
+        </RelativeLayout>
+
+            <Button
+                android:id="@+id/buttonDiverEnter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter"
+                android:textSize="@dimen/button_text_medium"
+                android:textColor="@color/primary"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_gravity="end"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

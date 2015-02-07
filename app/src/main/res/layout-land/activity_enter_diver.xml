@@ -16,10 +16,10 @@
         android:orientation="vertical"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingStart="8dp"
-        android:paddingRight="8dp"
-        android:paddingEnd="8dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
         android:background="@drawable/layer_card_background">
 
         <RelativeLayout
@@ -29,13 +29,13 @@
             android:background="@color/primary_light">
 
             <EditText
-                android:id="@+id/editTextNameED"
+                android:id="@+id/editTextNameE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_toRightOf="@+id/enterNameED"
-                android:layout_toEndOf="@+id/enterNameED"
+                android:layout_toRightOf="@+id/enterNameN"
+                android:layout_toEndOf="@+id/enterNameN"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:layout_alignParentEnd="true"
@@ -44,30 +44,30 @@
                 android:layout_marginEnd="8dp"
                 android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary_text">
-
+        
                 <requestFocus />
             </EditText>
-
+        
             <TextView
-                android:id="@+id/enterNameED"
+                android:id="@+id/enterNameN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/editTextNameED"
+                android:layout_alignBaseline="@+id/editTextNameE"
                 android:text="@string/name"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
-
+            
             <EditText
-                android:id="@+id/editTextAgeED"
-                android:layout_below="@id/editTextNameED"
+                android:id="@+id/editTextAgeN"
+                android:layout_below="@id/editTextNameE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_toRightOf="@+id/enterNameED"
-                android:layout_toEndOf="@+id/enterNameED"
+                android:layout_toRightOf="@+id/enterNameN"
+                android:layout_toEndOf="@+id/enterNameN"
                 android:ems="10"
                 android:inputType="number"
                 android:layout_alignParentEnd="true"
@@ -76,29 +76,29 @@
                 android:layout_marginEnd="8dp"
                 android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary_text">
-
+        
             </EditText>
-
+        
             <TextView
-                android:id="@+id/EditAgeED"
+                android:id="@+id/enterAgeN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/editTextAgeED"
+                android:layout_alignBaseline="@+id/editTextAgeN"
                 android:text="@string/age"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
-
+            
             <EditText
-                android:id="@+id/editTextGradeED"
-                android:layout_below="@id/editTextAgeED"
+                android:id="@+id/editTextGradeN"
+                android:layout_below="@id/editTextAgeN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_toRightOf="@+id/enterNameED"
-                android:layout_toEndOf="@+id/enterNameED"
+                android:layout_toRightOf="@+id/enterNameN"
+                android:layout_toEndOf="@+id/enterNameN"
                 android:ems="10"
                 android:inputType="text"
                 android:layout_marginRight="8dp"
@@ -107,25 +107,25 @@
                 android:layout_alignParentRight="true"
                 android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary_text">
-
+        
             </EditText>
-
+        
             <TextView
                 android:id="@+id/enterGradeN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/editTextGradeED"
+                android:layout_alignBaseline="@+id/editTextGradeN"
                 android:text="@string/grade"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
-
+            
             <EditText
-                android:id="@+id/editTextSchoolED"
-                android:layout_below="@id/editTextGradeED"
+                android:id="@+id/editTextSchoolN"
+                android:layout_below="@id/editTextGradeN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_toRightOf="@+id/enterSchoolN"
@@ -138,34 +138,33 @@
                 android:layout_alignParentRight="true"
                 android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary_text">
-
+        
             </EditText>
-
+        
             <TextView
                 android:id="@+id/enterSchoolN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/editTextSchoolED"
+                android:layout_alignBaseline="@+id/editTextSchoolN"
                 android:text="@string/school"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
         </RelativeLayout>
-
-        <Button
-            android:id="@+id/buttonDiverE"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/edit"
-            android:textSize="@dimen/button_text_medium"
-            android:textColor="@color/primary"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_gravity="end"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"/>
-
+        
+            <Button
+                android:id="@+id/buttonDiverEnter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter"
+                android:textSize="@dimen/button_text_medium"
+                android:textColor="@color/primary"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_gravity="end"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"/>
+      
     </LinearLayout>
 
 </RelativeLayout>
