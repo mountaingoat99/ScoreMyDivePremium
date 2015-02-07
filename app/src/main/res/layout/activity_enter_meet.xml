@@ -3,229 +3,286 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:ignore="NotSibling" >
 
-    <TextView
-        android:id="@+id/EnterMeetM"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/header"
-        android:gravity="center"
-        android:text="@string/enter_new_meet_info"
-        android:textSize="@dimen/text_size_large"
-        android:textColor="@color/header_text"/>
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:paddingRight="8dp"
+        android:paddingEnd="8dp"
+        android:background="@drawable/layer_card_background">
 
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/EnterMeetM"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_toRightOf="@+id/enterName"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_marginRight="8dp"
-        android:layout_alignParentEnd="true"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/random_text">
-
-        <requestFocus />
-    </EditText>
-
-    <TextView
-        android:id="@+id/enterName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editTextName"
-        android:layout_marginLeft="8dp"
-        android:text="@string/name"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/static_text"/>
-
-    <EditText
-        android:id="@+id/editTextSchool"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextName"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_toRightOf="@+id/enterName"
-        android:ems="10"
-        android:inputType="text"
-        android:layout_marginRight="8dp"
-        android:layout_alignParentEnd="true"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/random_text">
-
-    </EditText>
-
-    <TextView
-        android:id="@+id/enterSchool"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editTextSchool"
-        android:layout_alignLeft="@+id/EnterMeetM"
-        android:text="@string/enter_school"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/static_text"/>
-
-    <EditText
-        android:id="@+id/editTextCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextSchool"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_toRightOf="@+id/enterName"
-        android:ems="10"
-        android:inputType="text"
-        android:layout_marginRight="8dp"
-        android:layout_alignParentEnd="true"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/random_text">
-    </EditText>
-
-    <TextView
-        android:id="@+id/enterCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editTextCity"
-        android:layout_marginLeft="8dp"
-        android:text="@string/enter_city"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/static_text"/>
-
-    <EditText
-        android:id="@+id/editTextState"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextCity"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_toRightOf="@+id/enterName"
-        android:ems="10"
-        android:inputType="text"
-        android:layout_marginRight="8dp"
-        android:layout_alignParentEnd="true"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/random_text">
-    </EditText>
-
-    <TextView
-        android:id="@+id/enterState"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editTextState"
-        android:layout_marginLeft="8dp"
-        android:text="@string/enter_state"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/static_text"/>
-
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextState"
-        android:layout_below="@+id/editTextState"
-        android:layout_marginTop="8dp"
-        android:focusable="false"
-        android:ems="10"
-        android:hint="@string/date_enter_style"
-        android:maxLines="1"
-        android:layout_marginRight="8dp"
-        android:layout_alignParentEnd="true"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/random_text"/>
-
-    <TextView
-        android:id="@+id/TextDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editTextDate"
-        android:layout_alignLeft="@+id/enterState"
-        android:text="@string/enter_date"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/static_text"/>
-    
-    <TextView
-        android:id="@+id/enterJudges"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/TextDate"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="26dp"
-        android:gravity="center"
-        android:text="@string/enter_judges"
-        android:textSize="@dimen/text_size_small"
-        android:textColor="@color/static_text"/>
-    
-    <RadioGroup
-        android:id="@+id/radioGroupMeet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/editTextDate"
-        android:layout_alignRight="@id/editTextDate"
-        android:layout_below="@id/editTextDate"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/enterJudges"
-        android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/radio3J"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:text="@string/radio_judge_3"
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/button_text"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+            android:layout_marginTop="8dp"
+            android:background="@color/primary_light">
 
-        <RadioButton
-            android:id="@+id/radio5J"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/radio_judge_5"
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/button_text"/>
-        
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_toRightOf="@+id/enterName"
+                android:layout_toEndOf="@+id/enterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/primary_text">
 
-        <RadioButton
-            android:id="@+id/radio7J"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/radio_judge_7"
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/button_text"/>
-    </RadioGroup>    
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:id="@+id/enterName"
+                android:layout_alignBaseline="@+id/editTextName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
+
+            <EditText
+                android:id="@+id/editTextSchool"
+                android:layout_below="@+id/editTextName"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/enterName"
+                android:layout_toEndOf="@+id/enterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/primary_text">
+
+            </EditText>
+
+            <TextView
+                android:id="@+id/enterSchool"
+                android:layout_alignBaseline="@+id/editTextSchool"
+                android:layout_alignLeft="@+id/enterName"
+                android:layout_alignStart="@+id/enterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/school"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
+
+            <EditText
+                android:id="@+id/editTextCity"
+                android:layout_below="@+id/editTextSchool"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/enterName"
+                android:layout_toEndOf="@+id/enterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/primary_text">
+            </EditText>
+
+            <TextView
+                android:id="@+id/enterCity"
+                android:layout_alignBaseline="@+id/editTextCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/city"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
+
+            <EditText
+                android:id="@+id/editTextState"
+                android:layout_below="@+id/editTextCity"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/enterName"
+                android:layout_toEndOf="@+id/enterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/primary_text">
+            </EditText>
+
+            <TextView
+                android:id="@+id/enterState"
+                android:layout_alignBaseline="@+id/editTextState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_state"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_below="@+id/editTextState"
+                android:layout_alignLeft="@+id/editTextState"
+                android:layout_alignStart="@+id/editTextState"
+                android:hint="@string/date_enter_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:focusable="false"
+                android:ems="10"
+                android:maxLines="1"
+                android:inputType="date"
+                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/primary_text"/>
+
+            <TextView
+                android:id="@+id/TextDate"
+                android:layout_alignBaseline="@+id/editTextDate"
+                android:layout_alignLeft="@+id/enterState"
+                android:layout_alignStart="@+id/enterState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_date"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
+
+            <TextView
+                android:id="@+id/enterJudges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextDate"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/enter_judges"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/secondary_text"
+                android:background="@color/primary_light"/>
+
+            <RadioGroup
+                android:id="@+id/radioGroupMeet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/enterJudges"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:background="@color/primary_light">
+
+                <RadioButton
+                    android:id="@+id/radio2J"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/radio_judge_two"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/primary_text"
+                    android:background="@color/primary_light"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/primary_light" />
+
+                <RadioButton
+                    android:id="@+id/radio3J"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/radio_judge_3"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/primary_text"
+                    android:background="@color/primary_light"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/primary_light"/>
+
+                <RadioButton
+                    android:id="@+id/radio5J"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/radio_judge_5"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/primary_text"
+                    android:background="@color/primary_light"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/primary_light"/>
+
+                <RadioButton
+                    android:id="@+id/radio7J"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/radio_judge_7"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/primary_text"
+                    android:background="@color/primary_light"/>
+
+            </RadioGroup>
+
+        </RelativeLayout>
     
-    <Button
-        android:id="@+id/buttonMeet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@id/editTextDate"
-        android:layout_below="@id/radioGroupMeet"
-        android:text="@string/enter"
-        android:textSize="@dimen/button_text"
-        android:textColor="@color/button_text"
-        style="@android:style/Widget.Holo.Button"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true" />
+        <Button
+            android:id="@+id/buttonMeet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter"
+            android:textSize="@dimen/button_text_medium"
+            android:textColor="@color/primary"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_gravity="end"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
     
 </RelativeLayout>
