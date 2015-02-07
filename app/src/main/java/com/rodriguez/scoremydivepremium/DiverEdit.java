@@ -33,7 +33,7 @@ public class DiverEdit extends ActionBarActivity {
         setContentView(R.layout.activity_diver_edit);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         name = (EditText)findViewById(R.id.editTextNameED);
@@ -152,7 +152,7 @@ public class DiverEdit extends ActionBarActivity {
                                 + ageEdit + ", " + gradeEdit + ", "
                                 + schoolEdit, Toast.LENGTH_LONG
                 ).show();
-                Intent intent = new Intent(context, Welcome.class);
+                Intent intent = new Intent(context, MeetsDivers.class);
                 startActivity(intent);
             }
         });
@@ -161,23 +161,23 @@ public class DiverEdit extends ActionBarActivity {
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) 
     {
-        getMenuInflater().inflate(R.menu.activity_diver_edit, menu);
+        //getMenuInflater().inflate(R.menu.activity_diver_edit, menu);
         return true;
     }
 	
     @Override
     public boolean onOptionsItemSelected(MenuItem item) 
     {
-        final Context context = this;
+        //final Context context = this;
         switch (item.getItemId())
         {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
-            case R.id.menu_how_to:
-                Intent intent3 = new Intent(context, HowTo.class);
-                startActivity(intent3);
-                break;
+//            case R.id.menu_how_to:
+//                Intent intent3 = new Intent(context, HowTo.class);
+//                startActivity(intent3);
+//                break;
         }
         return super.onOptionsItemSelected(item);
     }
