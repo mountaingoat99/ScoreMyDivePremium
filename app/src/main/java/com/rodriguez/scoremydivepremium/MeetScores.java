@@ -84,6 +84,7 @@ public class MeetScores extends ActionBarActivity {
         loadSavedPreferences();
         if(!firstAlertMeetScores){
             showDialog();
+            savePreferences("firstAlertMeetScores", true);
         }
     }
 
@@ -109,16 +110,6 @@ public class MeetScores extends ActionBarActivity {
         dialog.setCanceledOnTouchOutside(true);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_see_dive_info);
-        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
-
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                savePreferences("firstAlertMeetScores", true);
-                dialog.cancel();
-            }
-        });
-
         dialog.show();
     }
 
@@ -449,7 +440,7 @@ public class MeetScores extends ActionBarActivity {
         meetDateString = meet.get(4);
 		
 		// formats the date
-		SimpleDateFormat indate = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+		SimpleDateFormat indate = new SimpleDateFormat("MM - dd - yyyy", Locale.US);
 		SimpleDateFormat outdate = new SimpleDateFormat("MMM dd, yyyy", Locale.US);
 		try{
 			Date DateString = indate.parse(meetDateString);
