@@ -3,8 +3,10 @@ package com.rodriguez.scoremydivepremium;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -34,6 +36,7 @@ public class MeetEdit extends ActionBarActivity implements
             schoolEdit, cityEdit, stateEdit, dateEdit, judgeString;
 	private int meetId, judges, judgeChecked;
     private final Context context = this;
+    public int idMeet;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) 
@@ -65,7 +68,12 @@ public class MeetEdit extends ActionBarActivity implements
             judges = b.getInt("judgeKey");
             setJudgesChecked();
             date.setText(b.getString("dateKey"));
-
+            nameString = b.getString("nameStr");
+            schoolString = b.getString("schoolStr");
+            cityString = b.getString("cityStr");
+            stateString = b.getString("stateStr");
+            dateString = b.getString("dateStr");
+            judgeString = b.getString("judgeStr");
             // if we are getting the date we will send 0 as the key and get it back,
             // then we will only fill the text from the db on entry to the page,
             // not re-load after setting date dialog
@@ -76,6 +84,19 @@ public class MeetEdit extends ActionBarActivity implements
         }
 
         addListenerOnButton();
+        savePreferences("idMeet", meetId);
+    }
+
+    private void loadSavedPreferences(){
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        idMeet = sp.getInt("idMeet", 0);
+    }
+
+    private void savePreferences(String key, int value){
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putInt(key, value);
+        editor.apply();
     }
 
     private void setupView() {
@@ -96,7 +117,6 @@ public class MeetEdit extends ActionBarActivity implements
         GetInfoForMeet meetinfo = new GetInfoForMeet();
         meetInfo = meetinfo.doInBackground();
 
-		
 		if(!meetInfo.isEmpty()){
 			nameString = meetInfo.get(0);
 			schoolString = meetInfo.get(1);
@@ -147,69 +167,11 @@ public class MeetEdit extends ActionBarActivity implements
 		}
 	}
 
-    private class EditNameinDB extends AsyncTask<String, Object, Object>{
-		MeetDatabase db = new MeetDatabase(getApplicationContext());
-
-        @Override
-        protected Object doInBackground(String... params) {
-            db.editMeetName(meetId, nameEdit);
-            return null;
-        }
-	}
-
-    private class EditSchoolinDB extends AsyncTask<String, Object, Object>{
-        MeetDatabase db = new MeetDatabase(getApplicationContext());
-
-        @Override
-        protected Object doInBackground(String... params) {
-            db.editMeetSchool(meetId, schoolEdit);
-            return null;
-        }
-	}
-
-    private class EditCityinDB extends AsyncTask<String, Object, Object>{
-		MeetDatabase db = new MeetDatabase(getApplicationContext());
-
-        @Override
-        protected Object doInBackground(String... params) {
-            db.editMeetCity(meetId, cityEdit);
-            return null;
-        }
-	}
-
-    private class EditStateinDB extends AsyncTask<String, Object, Object>{
-		MeetDatabase db = new MeetDatabase(getApplicationContext());
-
-        @Override
-        protected Object doInBackground(String... params) {
-            db.editMeetState(meetId, stateEdit);
-            return null;
-        }
-	}
-
-    private class EditDateinDB extends AsyncTask<String, Object, Object>{
-		MeetDatabase db = new MeetDatabase(getApplicationContext());
-
-        @Override
-        protected Object doInBackground(String... params) {
-            db.editMeetDate(meetId, dateEdit);
-            return null;
-        }
-	}
-
-    private class EditJudgeinDB extends AsyncTask<String, Object, Object>{
-        MeetDatabase db = new MeetDatabase(getApplicationContext());
-
-        @Override
-        protected Object doInBackground(String... params) {
-            db.editMeetJudges(meetId, judges);
-            return null;
-        }
-    }
-	
 	public void addListenerOnButton()
     {
 		final Context context = this;
+
+        loadSavedPreferences();
 
         Button btnEditMeet = (Button) findViewById(R.id.buttonMeetE);
     	btnEditMeet.setOnClickListener(new OnClickListener() {
@@ -318,6 +280,12 @@ public class MeetEdit extends ActionBarActivity implements
             if (state.getText() != null) {
                 b.putString("stateKey", state.getText().toString().trim());
             }
+            b.putString("nameStr", nameString);
+            b.putString("schoolStr", schoolString);
+            b.putString("cityStr", cityString);
+            b.putString("stateStr", stateString);
+            b.putString("dateStr", dateString);
+            b.putString("judgeStr", judgeString);
             b.putInt("judgeKey", judges);
             b.putInt("key", 0);
             b.putBoolean("meetEnterKey", false);
@@ -366,6 +334,66 @@ public class MeetEdit extends ActionBarActivity implements
                 judge5.setChecked(false);
                 judge7.setChecked(true);
                 break;
+        }
+    }
+
+    private class EditNameinDB extends AsyncTask<String, Object, Object>{
+        MeetDatabase db = new MeetDatabase(getApplicationContext());
+
+        @Override
+        protected Object doInBackground(String... params) {
+            db.editMeetName(idMeet, nameEdit);
+            return null;
+        }
+    }
+
+    private class EditSchoolinDB extends AsyncTask<String, Object, Object>{
+        MeetDatabase db = new MeetDatabase(getApplicationContext());
+
+        @Override
+        protected Object doInBackground(String... params) {
+            db.editMeetSchool(idMeet, schoolEdit);
+            return null;
+        }
+    }
+
+    private class EditCityinDB extends AsyncTask<String, Object, Object>{
+        MeetDatabase db = new MeetDatabase(getApplicationContext());
+
+        @Override
+        protected Object doInBackground(String... params) {
+            db.editMeetCity(idMeet, cityEdit);
+            return null;
+        }
+    }
+
+    private class EditStateinDB extends AsyncTask<String, Object, Object>{
+        MeetDatabase db = new MeetDatabase(getApplicationContext());
+
+        @Override
+        protected Object doInBackground(String... params) {
+            db.editMeetState(idMeet, stateEdit);
+            return null;
+        }
+    }
+
+    private class EditDateinDB extends AsyncTask<String, Object, Object>{
+        MeetDatabase db = new MeetDatabase(getApplicationContext());
+
+        @Override
+        protected Object doInBackground(String... params) {
+            db.editMeetDate(idMeet, dateEdit);
+            return null;
+        }
+    }
+
+    private class EditJudgeinDB extends AsyncTask<String, Object, Object>{
+        MeetDatabase db = new MeetDatabase(getApplicationContext());
+
+        @Override
+        protected Object doInBackground(String... params) {
+            db.editMeetJudges(idMeet, judges);
+            return null;
         }
     }
 

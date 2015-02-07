@@ -19,6 +19,7 @@ public class DatePickerCustom extends ActionBarActivity {
     private Button btnDone;
     private int judges, meetId;
     private String nameString, schoolString, cityString, stateString, dateString;
+    private String nameStr, schoolStr, cityStr, stateStr, dateStr, judgeStr;
     private boolean fromMeetEnter;
     private final Context context = this;
 
@@ -43,6 +44,12 @@ public class DatePickerCustom extends ActionBarActivity {
             judges = b.getInt("judgeKey");
             dateString = b.getString("dateKey");
             meetId = b.getInt("key");
+            nameStr = b.getString("nameStr");
+            schoolStr = b.getString("schoolStr");
+            cityStr = b.getString("cityStr");
+            stateStr = b.getString("stateStr");
+            dateStr = b.getString("dateStr");
+            judgeStr = b.getString("judgeStr");
             fromMeetEnter = b.getBoolean("meetEnterKey");
         }
 
@@ -63,7 +70,6 @@ public class DatePickerCustom extends ActionBarActivity {
                 b.putString("stateKey", stateString);
                 b.putInt("judgeKey", judges);
                 b.putString("dateKey", dateString);
-                b.putInt("key", meetId);
 
                 if (fromMeetEnter) {
                     Intent intent = new Intent(context, EnterMeet.class);
@@ -72,6 +78,13 @@ public class DatePickerCustom extends ActionBarActivity {
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(context, MeetEdit.class);
+                    b.putInt("key", meetId);
+                    b.putString("nameStr", nameStr);
+                    b.putString("schoolStr", schoolStr);
+                    b.putString("cityStr", cityStr);
+                    b.putString("stateStr", stateStr);
+                    b.putString("dateStr", dateStr);
+                    b.putString("judgeStr", judgeStr);
                     intent.putExtras(b);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
