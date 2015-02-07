@@ -17,7 +17,8 @@ public class DatePickerCustom extends ActionBarActivity {
 
     private DatePicker datePicker;
     private Button btnDone;
-    private String dateString;
+    private int judges, meetId;
+    private String nameString, schoolString, cityString, stateString, dateString;
     private boolean fromMeetEnter;
     private final Context context = this;
 
@@ -35,7 +36,13 @@ public class DatePickerCustom extends ActionBarActivity {
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
+            nameString = b.getString("meetNameKey");
+            schoolString = b.getString("schoolKey");
+            cityString = b.getString("cityKey");
+            stateString = b.getString("stateKey");
+            judges = b.getInt("judgeKey");
             dateString = b.getString("dateKey");
+            meetId = b.getInt("key");
             fromMeetEnter = b.getBoolean("meetEnterKey");
         }
 
@@ -50,15 +57,23 @@ public class DatePickerCustom extends ActionBarActivity {
 
                 getTheDate();
                 Bundle b = new Bundle();
+                b.putString("meetNameKey", nameString);
+                b.putString("schoolKey", schoolString);
+                b.putString("cityKey", cityString);
+                b.putString("stateKey", stateString);
+                b.putInt("judgeKey", judges);
                 b.putString("dateKey", dateString);
+                b.putInt("key", meetId);
 
                 if (fromMeetEnter) {
                     Intent intent = new Intent(context, EnterMeet.class);
                     intent.putExtras(b);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(context, MeetEdit.class);
                     intent.putExtras(b);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
             }

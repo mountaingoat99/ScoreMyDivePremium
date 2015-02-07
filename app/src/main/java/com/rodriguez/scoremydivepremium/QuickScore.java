@@ -2,6 +2,7 @@ package com.rodriguez.scoremydivepremium;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -469,31 +470,35 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
 
             if(sheetId > 0) {
 
-            final Dialog dialog = new Dialog(context);
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(R.layout.dialog_delete_quick_score);
-            Button cancelButton = (Button) dialog.findViewById(R.id.buttonCancel);
-            Button yesButton = (Button) dialog.findViewById(R.id.buttonYes);
-            cancelButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                final Dialog dialog = new Dialog(context);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.dialog_delete_quick_score);
+                Button cancelButton = (Button) dialog.findViewById(R.id.buttonCancel);
+                Button yesButton = (Button) dialog.findViewById(R.id.buttonYes);
+
+                dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        loadSpinner();
+                        layout2.setVisibility(View.INVISIBLE);
+                    }
+                });
+
+                cancelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
                     dialog.cancel();
-                }
-            });
-            yesButton.setOnClickListener(new View.OnClickListener() {
+                    }
+                });
+
+                yesButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-
-                        QuickScoreDatabase db = new QuickScoreDatabase(getApplicationContext());
-                        db.deleteSheet(sheetId);
-                        sheetId = 0;
-                        dialog.cancel();
-                        Intent intent = new Intent(context, QuickScore.class);
-                        //Bundle b = new Bundle();
-                        //b.putInt("keyPosition", 0);
-                        //intent.putExtras(b);
-                        startActivity(intent);
+                    QuickScoreDatabase db = new QuickScoreDatabase(getApplicationContext());
+                    db.deleteSheet(sheetId);
+                    sheetId = 0;
+                    dialog.cancel();
                 }
             });
 

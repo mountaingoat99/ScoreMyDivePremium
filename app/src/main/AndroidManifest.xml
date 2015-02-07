@@ -101,7 +101,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
+                android:value=".MeetsDivers" />
         </activity>
         <activity
             android:name=".MeetDelete"
@@ -169,7 +169,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
+                android:value=".MeetsDivers" />
         </activity>
         <activity android:name=".Dives" >
             <intent-filter>

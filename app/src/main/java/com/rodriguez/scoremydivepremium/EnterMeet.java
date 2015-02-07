@@ -3,11 +3,14 @@ package com.rodriguez.scoremydivepremium;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -19,6 +22,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,11 +35,12 @@ public class EnterMeet extends ActionBarActivity implements
 OnClickListener {
 
     private RadioGroup radioJudgesGroup;
+    private RadioButton j2, j3, j5, j7;
     private TextView name, school, city, state;
 	private EditText txtDate;
+    private Button btnEnterMeet;
     private int judges, judgeChecked;
 	private String nameString, schoolString, cityString, stateString, dateString;
-    public boolean firstAlert2Judges;
     private final Context context = this;
 	
 	@Override
@@ -45,133 +50,78 @@ OnClickListener {
         setContentView(R.layout.activity_enter_meet);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        txtDate = (EditText)findViewById(R.id.editTextDate);
+        setUpViews();
         txtDate.setOnClickListener(this);
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
+            if (b.getString("meetNameKey") != null) {
+                name.setText(b.getString("meetNameKey"));
+            }
+            if (b.getString("schoolKey") != null) {
+                school.setText(b.getString("schoolKey"));
+            }
+            if (b.getString("cityKey") != null) {
+                city.setText(b.getString("cityKey"));
+            }
+            if (b.getString("stateKey") != null) {
+                state.setText(b.getString("stateKey"));
+            }
+            judges = b.getInt("judgeKey");
+            setJudgesChecked();
             txtDate.setText(b.getString("dateKey"));
         }
 
         addListenerOnButton();
-
-        // shared preference for the alert dialog
-        loadSavedPreferences();
-        if (!firstAlert2Judges) {
-            showAlert();
-        }
     }
 
-    private void loadSavedPreferences(){
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        firstAlert2Judges = sp.getBoolean("firstAlertTwoJudges",false);
-    }
-
-    private void savePreferences(String key, boolean value){
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean(key, value);
-        editor.apply();
-    }
-
-    private void showAlert(){
-
-        final Dialog dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_judge_2_info);
-        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
-
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                savePreferences("firstAlertTwoJudges", true);
-                dialog.cancel();
-            }
-        });
-
-        dialog.show();
-    }
-
-    private void showAlertForMenu(){
-
-        final Dialog dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_judge_2_info);
-        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
-
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        });
-
-        dialog.show();
-    }
-	
 	@Override
     public void onClick(View v) {
  
         if (v == txtDate) {
 
-            boolean fromMeetEnter = true;
+            checkRadios();
 
+            // works, but testing out pure dialog here
+            boolean fromMeetEnter = true;
             Intent intent = new Intent(context, DatePickerCustom.class);
             Bundle b = new Bundle();
+            if (name.getText() != null) {
+                b.putString("meetNameKey", name.getText().toString().trim());
+            }
+            if (school.getText() != null) {
+                b.putString("schoolKey", school.getText().toString().trim());
+            }
+            if (city.getText() != null) {
+                b.putString("cityKey", city.getText().toString().trim());
+            }
+            if (state.getText() != null) {
+                b.putString("stateKey", state.getText().toString().trim());
+            }
+            b.putInt("judgeKey", judges);
             b.putBoolean("meetEnterKey", fromMeetEnter);
             intent.putExtras(b);
             startActivity(intent);
- 
-            // Process to get Current Date
-//            final Calendar c = Calendar.getInstance();
-//            int mYear = c.get(Calendar.YEAR);
-//            int mMonth = c.get(Calendar.MONTH);
-//            int mDay = c.get(Calendar.DAY_OF_MONTH);
-//
-//            // Launch Date Picker Dialog
-//            DatePickerDialog dpd = new DatePickerDialog(this,
-//                    new DatePickerDialog.OnDateSetListener() {
-//
-//                        @Override
-//                        public void onDateSet(DatePicker view, int year,
-//                                int monthOfYear, int dayOfMonth) {
-//                            // Display Selected date in textbox
-//                            txtDate.setText(dayOfMonth + "-"
-//                                    + (monthOfYear + 1) + "-" + year);
-//                        }
-//                    }, mYear, mMonth, mDay
-//            );
-//            dpd.show();
-        }
+
+         }
     }
 	
 	public void addListenerOnButton()
     {
     	final Context context = this;
-    	radioJudgesGroup = (RadioGroup)findViewById(R.id.radioGroupMeet);
-        Button btnEnterMeet = (Button) findViewById(R.id.buttonMeet);
+
     	btnEnterMeet.setOnClickListener(new OnClickListener() {
             public void onClick(View arg0) {
-                name = (TextView) findViewById(R.id.editTextName);
+
                 nameString = name.getText().toString().trim();
-                school = (TextView) findViewById(R.id.editTextSchool);
                 schoolString = school.getText().toString().trim();
-                city = (TextView) findViewById(R.id.editTextCity);
                 cityString = city.getText().toString().trim();
-                state = (TextView) findViewById(R.id.editTextState);
                 stateString = state.getText().toString().trim();
-                txtDate = (EditText) findViewById(R.id.editTextDate);
                 dateString = txtDate.getText().toString().trim();
-                judgeChecked = radioJudgesGroup.getCheckedRadioButtonId();
-                if (judgeChecked == R.id.radio3J)
-                    judges = 3;
-                if (judgeChecked == R.id.radio5J)
-                    judges = 5;
-                if (judgeChecked == R.id.radio7J)
-                    judges = 7;
+                checkRadios();
 
                 if (nameString.isEmpty() || schoolString.isEmpty()
                         || stateString.isEmpty() || dateString.isEmpty()) {
@@ -182,17 +132,76 @@ OnClickListener {
                     newmeet.doInBackground();
                     Toast.makeText(getApplicationContext(),
                             "Meet has been saved", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context, Welcome.class);
+                    Intent intent = new Intent(context, MeetsDivers.class);
                     startActivity(intent);
                 }
             }
         });
     }
-	
+
+    private void checkRadios() {
+
+        judgeChecked = radioJudgesGroup.getCheckedRadioButtonId();
+        if (judgeChecked == R.id.radio2J)
+            judges = 2;
+        if (judgeChecked == R.id.radio3J)
+            judges = 3;
+        if (judgeChecked == R.id.radio5J)
+            judges = 5;
+        if (judgeChecked == R.id.radio7J)
+            judges = 7;
+
+    }
+
+    private void setJudgesChecked() {
+
+        switch (judges){
+            case 2:
+                j2.setChecked(true);
+                j3.setChecked(false);
+                j5.setChecked(false);
+                j7.setChecked(false);
+                break;
+            case 3:
+                j2.setChecked(false);
+                j3.setChecked(true);
+                j5.setChecked(false);
+                j7.setChecked(false);
+                break;
+            case 5:
+                j2.setChecked(false);
+                j3.setChecked(false);
+                j5.setChecked(true);
+                j7.setChecked(false);
+                break;
+            case 7:
+                j2.setChecked(false);
+                j3.setChecked(false);
+                j5.setChecked(false);
+                j7.setChecked(true);
+                break;
+        }
+    }
+
+    private void setUpViews() {
+
+        txtDate = (EditText)findViewById(R.id.editTextDate);
+        name = (TextView) findViewById(R.id.editTextName);
+        school = (TextView) findViewById(R.id.editTextSchool);
+        city = (TextView) findViewById(R.id.editTextCity);
+        state = (TextView) findViewById(R.id.editTextState);
+        radioJudgesGroup = (RadioGroup)findViewById(R.id.radioGroupMeet);
+        j2 = (RadioButton)findViewById(R.id.radio2J);
+        j3 = (RadioButton)findViewById(R.id.radio3J);
+        j5 = (RadioButton)findViewById(R.id.radio5J);
+        j7 = (RadioButton)findViewById(R.id.radio7J);
+        btnEnterMeet = (Button) findViewById(R.id.buttonMeet);
+    }
+
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) 
     {
-        getMenuInflater().inflate(R.menu.activity_enter_meet, menu);
+        //getMenuInflater().inflate(R.menu.activity_enter_meet, menu);
         return true;
     }
 	
@@ -204,9 +213,6 @@ OnClickListener {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
-            case R.id.menu_how_to:
-                showAlertForMenu();
-                break;
         }
         return super.onOptionsItemSelected(item);
     }

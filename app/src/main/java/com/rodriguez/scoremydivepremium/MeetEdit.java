@@ -28,11 +28,12 @@ public class MeetEdit extends ActionBarActivity implements
         OnClickListener{
 
     private RadioGroup radioJudgesGroup;
-    private RadioButton judge3, judge5, judge7;
+    private RadioButton judge2, judge3, judge5, judge7;
 	private EditText name, school, city, state, date;
 	private String nameString, schoolString, cityString, stateString, dateString, nameEdit,
             schoolEdit, cityEdit, stateEdit, dateEdit, judgeString;
 	private int meetId, judges, judgeChecked;
+    private final Context context = this;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) 
@@ -41,16 +42,39 @@ public class MeetEdit extends ActionBarActivity implements
         setContentView(R.layout.activity_meet_edit);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setupView();
         date.setOnClickListener(this);
 
         Bundle b = getIntent().getExtras();
-        meetId = b.getInt("key");
+        if (b != null) {
+            if (b.getString("meetNameKey") != null) {
+                name.setText(b.getString("meetNameKey"));
+            }
+            if (b.getString("schoolKey") != null) {
+                school.setText(b.getString("schoolKey"));
+            }
+            if (b.getString("cityKey") != null) {
+                city.setText(b.getString("cityKey"));
+            }
+            if (b.getString("stateKey") != null) {
+                state.setText(b.getString("stateKey"));
+            }
+            judges = b.getInt("judgeKey");
+            setJudgesChecked();
+            date.setText(b.getString("dateKey"));
 
-        fillEditText();
+            // if we are getting the date we will send 0 as the key and get it back,
+            // then we will only fill the text from the db on entry to the page,
+            // not re-load after setting date dialog
+            if (b.getInt("key") > 0) {
+                meetId = b.getInt("key");
+                fillEditText();
+            }
+        }
+
         addListenerOnButton();
     }
 
@@ -61,6 +85,7 @@ public class MeetEdit extends ActionBarActivity implements
         state = (EditText)findViewById(R.id.editTextStateEM);
         date = (EditText)findViewById(R.id.editTextDateEM);
         radioJudgesGroup = (RadioGroup)findViewById(R.id.radioGroupMeet);
+        judge2 = (RadioButton)findViewById(R.id.radio2J);
         judge3 = (RadioButton)findViewById(R.id.radio3J);
         judge5 = (RadioButton)findViewById(R.id.radio5J);
         judge7 = (RadioButton)findViewById(R.id.radio7J);
@@ -86,17 +111,27 @@ public class MeetEdit extends ActionBarActivity implements
 			state.setText(stateString);
 			date.setText(dateString);
 
+            if(judgeString.equals("2")){
+                judge2.setChecked(true);
+                judge3.setChecked(false);
+                judge5.setChecked(false);
+                judge7.setChecked(false);
+            }
+
             if(judgeString.equals("3")){
+                judge2.setChecked(false);
                 judge3.setChecked(true);
                 judge5.setChecked(false);
                 judge7.setChecked(false);
             }
             if(judgeString.equals("5")){
+                judge2.setChecked(false);
                 judge5.setChecked(true);
                 judge3.setChecked(false);
                 judge7.setChecked(false);
             }
             if (judgeString.equals("7")) {
+                judge2.setChecked(false);
                 judge7.setChecked(true);
                 judge3.setChecked(false);
                 judge5.setChecked(false);
@@ -186,6 +221,8 @@ public class MeetEdit extends ActionBarActivity implements
                 stateEdit = state.getText().toString().trim();
                 dateEdit = date.getText().toString().trim();
                 judgeChecked = radioJudgesGroup.getCheckedRadioButtonId();
+                if (judgeChecked == R.id.radio2J)
+                    judges = 2;
                 if (judgeChecked == R.id.radio3J)
                     judges = 3;
                 if (judgeChecked == R.id.radio5J)
@@ -228,7 +265,7 @@ public class MeetEdit extends ActionBarActivity implements
                                 + stateEdit + ", " + dateEdit + ", Judges: "
                                 + judges, Toast.LENGTH_LONG
                 ).show();
-                Intent intent = new Intent(context, Welcome.class);
+                Intent intent = new Intent(context, MeetsDivers.class);
                 startActivity(intent);
             }
         });
@@ -237,7 +274,7 @@ public class MeetEdit extends ActionBarActivity implements
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) 
     {
-        getMenuInflater().inflate(R.menu.activity_meet_edit, menu);
+        //getMenuInflater().inflate(R.menu.activity_meet_edit, menu);
         return true;
     }
 	
@@ -263,26 +300,72 @@ public class MeetEdit extends ActionBarActivity implements
 
         if (v == date) {
 
-            // Process to get Current Date
-            final Calendar c = Calendar.getInstance();
-            int mYear = c.get(Calendar.YEAR);
-            int mMonth = c.get(Calendar.MONTH);
-            int mDay = c.get(Calendar.DAY_OF_MONTH);
+            checkRadios();
 
-            // Launch Date Picker Dialog
-            DatePickerDialog dpd = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
+            // works, but testing out pure dialog here
+            boolean fromMeetEnter = true;
+            Intent intent = new Intent(context, DatePickerCustom.class);
+            Bundle b = new Bundle();
+            if (name.getText() != null) {
+                b.putString("meetNameKey", name.getText().toString().trim());
+            }
+            if (school.getText() != null) {
+                b.putString("schoolKey", school.getText().toString().trim());
+            }
+            if (city.getText() != null) {
+                b.putString("cityKey", city.getText().toString().trim());
+            }
+            if (state.getText() != null) {
+                b.putString("stateKey", state.getText().toString().trim());
+            }
+            b.putInt("judgeKey", judges);
+            b.putInt("key", 0);
+            b.putBoolean("meetEnterKey", false);
+            intent.putExtras(b);
+            startActivity(intent);
+        }
+    }
 
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-                            // Display Selected date in textbox
-                            date.setText(dayOfMonth + "-"
-                                    + (monthOfYear + 1) + "-" + year);
-                        }
-                    }, mYear, mMonth, mDay
-            );
-            dpd.show();
+    private void checkRadios() {
+
+        judgeChecked = radioJudgesGroup.getCheckedRadioButtonId();
+        if (judgeChecked == R.id.radio2J)
+            judges = 2;
+        if (judgeChecked == R.id.radio3J)
+            judges = 3;
+        if (judgeChecked == R.id.radio5J)
+            judges = 5;
+        if (judgeChecked == R.id.radio7J)
+            judges = 7;
+    }
+
+    private void setJudgesChecked() {
+
+        switch (judges){
+            case 2:
+                judge2.setChecked(true);
+                judge3.setChecked(false);
+                judge5.setChecked(false);
+                judge7.setChecked(false);
+                break;
+            case 3:
+                judge2.setChecked(false);
+                judge3.setChecked(true);
+                judge5.setChecked(false);
+                judge7.setChecked(false);
+                break;
+            case 5:
+                judge2.setChecked(false);
+                judge3.setChecked(false);
+                judge5.setChecked(true);
+                judge7.setChecked(false);
+                break;
+            case 7:
+                judge2.setChecked(false);
+                judge3.setChecked(false);
+                judge5.setChecked(false);
+                judge7.setChecked(true);
+                break;
         }
     }
 
