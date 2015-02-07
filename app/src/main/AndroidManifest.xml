@@ -229,7 +229,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".QuickScoreEdit" />
+                android:value=".QuickScore" />
         </activity>
         <activity android:name=".EnterFinalDiveScore" >
             <intent-filter>
@@ -368,17 +368,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Home" />
-        </activity>
-        <activity android:name=".QuickScoreEdit" >
-            <intent-filter>
-                <action android:name="com.rodriguez.Home.QuickScoreEdit" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".QuickScore" />
         </activity>
         <activity android:name=".MeetsDivers" >
             <intent-filter>

@@ -78,6 +78,7 @@ public class DiverDelete extends ActionBarActivity {
     {
     	final Context context = this;
         Button btnDelete = (Button) findViewById(R.id.buttonDiverDeleteE);
+        Button btnCancel = (Button) findViewById(R.id.buttonDiverCancel);
     	btnDelete.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -89,8 +90,15 @@ public class DiverDelete extends ActionBarActivity {
                 Toast.makeText(getApplicationContext(),
                         "Diver " + nameString + " has been deleted",
                         Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(context, Welcome.class);
+                Intent intent = new Intent(context, MeetsDivers.class);
                 startActivity(intent);
+            }
+        });
+
+        btnCancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -98,7 +106,7 @@ public class DiverDelete extends ActionBarActivity {
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) 
     {
-        getMenuInflater().inflate(R.menu.activity_diver_delete, menu);
+        //getMenuInflater().inflate(R.menu.activity_diver_delete, menu);
         return true;
     }
 	

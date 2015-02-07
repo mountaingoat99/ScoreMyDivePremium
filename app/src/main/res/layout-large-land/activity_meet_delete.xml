@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:ignore="NotSibling"
@@ -24,7 +24,7 @@
         android:background="@drawable/layer_card_background">
 
         <TextView
-            android:id="@+id/DeleteDiver"
+            android:id="@+id/DeleteMeet"
             android:text="@string/are_you_sure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:background="@color/primary_light"/>
 
         <TextView
-            android:id="@+id/deleteName"
+            android:id="@+id/deleteMName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -46,34 +46,45 @@
             android:textColor="@color/secondary_text" />
 
         <TextView
-            android:id="@+id/deleteAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text=""
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/secondary_text" />
-
-        <TextView
-            android:id="@+id/deleteGrade"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text=""
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/secondary_text" />
-
-        <TextView
             android:id="@+id/deleteSchool"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
+            android:text=""
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/secondary_text" />
+
+        <TextView
+            android:id="@+id/deleteCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text=""
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/secondary_text" />
+
+        <TextView
+            android:id="@+id/deleteState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text=""
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/secondary_text" />
+
+        <TextView
+            android:id="@+id/deleteDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:text=""
             android:textSize="@dimen/text_size_small"
             android:textColor="@color/secondary_text" />
@@ -89,7 +100,7 @@
             android:layout_marginBottom="8dp">
 
             <Button
-                android:id="@+id/buttonDiverDeleteE"
+                android:id="@+id/buttonMeetDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/delete"
@@ -101,7 +112,7 @@
                 android:layout_weight="1"/>
 
             <Button
-                android:id="@+id/buttonDiverCancel"
+                android:id="@+id/buttonMeetCancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cancel"
@@ -113,5 +124,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
+    
 </RelativeLayout>

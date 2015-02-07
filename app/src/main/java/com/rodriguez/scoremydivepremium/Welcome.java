@@ -63,7 +63,7 @@ public class Welcome extends ActionBarActivity implements OnItemSelectedListener
        // shared preference for the alert dialog
        loadSavedPreferences();
        if (!firstAlertWelcome) {
-           showAlert();
+           //showAlert();
        }
    }
 
@@ -87,40 +87,40 @@ public class Welcome extends ActionBarActivity implements OnItemSelectedListener
         editor.apply();
     }
 
-    private void showAlert(){
-
-        final Dialog dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_welcome_info);
-        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
-
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                savePreferences("firstAlertWelcome", true);
-                dialog.cancel();
-            }
-        });
-
-        dialog.show();
-    }
-
-    private void showMenuHowToAlert(){
-
-        final Dialog dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_welcome_info);
-        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
-
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        });
-
-        dialog.show();
-    }
+//    private void showAlert(){
+//
+//        final Dialog dialog = new Dialog(context);
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialog.setContentView(R.layout.dialog_welcome_info);
+//        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
+//
+//        okButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                savePreferences("firstAlertWelcome", true);
+//                dialog.cancel();
+//            }
+//        });
+//
+//        dialog.show();
+//    }
+//
+//    private void showMenuHowToAlert(){
+//
+//        final Dialog dialog = new Dialog(context);
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialog.setContentView(R.layout.dialog_welcome_info);
+//        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
+//
+//        okButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.cancel();
+//            }
+//        });
+//
+//        dialog.show();
+//    }
 
     // call a separate thread to get the diver names - originally was making the database call in the
     // UI thread. Bad form. Don't be bad.
@@ -403,7 +403,7 @@ public class Welcome extends ActionBarActivity implements OnItemSelectedListener
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
             case R.id.menu_how_to:
-                showMenuHowToAlert();
+                //showMenuHowToAlert();
                 break;
             case R.id.menu_about:
                 Intent intent2 = new Intent(context, About.class);

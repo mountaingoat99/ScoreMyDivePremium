@@ -6,9 +6,4 @@
         android:orderInCategory="200"
         divingscores:showAsAction="collapseActionView" />
 
-    <item android:id="@+id/menu_how_to"
-        android:title="@string/how_to_string"
-        android:orderInCategory="200"
-        divingscores:showAsAction="collapseActionView" />
-
 </menu>

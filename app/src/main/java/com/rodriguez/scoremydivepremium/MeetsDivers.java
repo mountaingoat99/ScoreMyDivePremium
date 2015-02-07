@@ -36,7 +36,6 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
     private int diveCount = 0, meetCount = 0, diverId = 0, meetId = 0;
     private String stringId = "";
     private final Context context = this;
-    public boolean firstAlertWelcome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,59 +53,6 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
         loadSpinnerMeet();
         spinnerName.setOnItemSelectedListener(this);
         spinnerMeet.setOnItemSelectedListener(this);
-
-        // shared preference for the alert dialog
-        loadSavedPreferences();
-        if (!firstAlertWelcome) {
-            showAlert();
-        }
-    }
-
-    private void loadSavedPreferences(){
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        firstAlertWelcome = sp.getBoolean("firstAlertWelcome",false);
-    }
-
-    private void savePreferences(String key, boolean value){
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean(key, value);
-        editor.apply();
-    }
-
-    private void showAlert(){
-
-        final Dialog dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_welcome_info);
-        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
-
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                savePreferences("firstAlertWelcome", true);
-                dialog.cancel();
-            }
-        });
-
-        dialog.show();
-    }
-
-    private void showMenuHowToAlert(){
-
-        final Dialog dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_welcome_info);
-        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
-
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        });
-
-        dialog.show();
     }
 
     private void loadSpinnerName(){
@@ -326,9 +272,6 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
-            case R.id.menu_how_to:
-                showMenuHowToAlert();
-                break;
             case R.id.menu_rankings:
                 Intent intent1 = new Intent(context, Rankings.class);
                 startActivity(intent1);

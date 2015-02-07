@@ -80,6 +80,7 @@ public class MeetDelete extends ActionBarActivity {
     {
     	final Context context = this;
         Button btnDelete = (Button) findViewById(R.id.buttonMeetDelete);
+        Button btnCancel = (Button) findViewById(R.id.buttonMeetCancel);
     	btnDelete.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -90,8 +91,15 @@ public class MeetDelete extends ActionBarActivity {
                 Toast.makeText(getApplicationContext(),
                         "Meet " + nameString + " has been deleted",
                         Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(context, Welcome.class);
+                Intent intent = new Intent(context, MeetsDivers.class);
                 startActivity(intent);
+            }
+        });
+
+        btnCancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -99,7 +107,7 @@ public class MeetDelete extends ActionBarActivity {
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) 
     {
-        getMenuInflater().inflate(R.menu.activity_meet_delete, menu);
+        //getMenuInflater().inflate(R.menu.activity_meet_delete, menu);
         return true;
     }
 	
