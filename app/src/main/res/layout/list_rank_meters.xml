@@ -3,14 +3,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="120dp"
-    android:padding="4dp">
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:background="@color/primary_light">
 
     <TextView android:id="@+id/meetName"
-        android:textSize="@dimen/text_size_large"
-        android:textColor="@color/random_text"
+        android:textSize="@dimen/text_size_medium"
+        android:textColor="@color/primary_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:background="@color/primary_light"
         android:text=""/>
 
     <TextView android:id="@+id/board"
@@ -18,21 +22,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/meetName"
         android:layout_marginTop="8dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
         android:layout_marginRight="6dp"
-        android:textSize="@dimen/text_size_medium"
-        android:textColor="@color/random_text"
+        android:layout_marginEnd="6dp"
+        android:textSize="@dimen/text_size_mini"
+        android:textColor="@color/primary_text"
+        android:background="@color/primary_light"
         android:text=""/>
 
     <TextView android:id="@+id/boardSize"
-        android:textSize="@dimen/text_size_medium"
+        android:textSize="@dimen/text_size_mini"
         android:layout_below="@id/meetName"
         android:layout_toRightOf="@id/board"
+        android:layout_toEndOf="@id/board"
         android:layout_alignBaseline="@id/board"
         android:layout_marginTop="8dp"
-        android:layout_marginRight="30dp"
-        android:textColor="@color/random_text"
+        android:textColor="@color/primary_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/primary_light"
         android:text="@string/meter"/>
 
 </RelativeLayout>
