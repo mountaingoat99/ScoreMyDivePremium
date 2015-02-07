@@ -338,5 +338,8 @@
     <string name="title_activity_meets_divers">MeetsDivers</string>
     <string name="enter_diver_meets">Enter:</string>
     <string name="view_meets_divers">View:</string>
+    <string name="radio_judge_two">2</string>
+    <string name="title_activity_date_picker_custom">DatePickerCustom</string>
+    <string name="done">Done</string>
 
 </resources>
