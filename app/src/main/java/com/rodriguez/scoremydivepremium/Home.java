@@ -13,12 +13,17 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.info.sqlite.helper.DiverDatabase;
 import com.info.sqlite.helper.JudgeScoreDatabase;
+import com.info.sqlite.helper.MeetDatabase;
+
+import java.util.Objects;
 
 
 public class Home extends ActionBarActivity {
 
     private Button btnQuick, btnDetailed, btnMeetDivers, btnReports;
+    private boolean diverCheck = false, meetCheck = false;
     private final Context context = this;
 
     @Override
@@ -56,8 +61,32 @@ public class Home extends ActionBarActivity {
         btnDetailed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Choose.class);
-                startActivity(intent);
+
+                CheckDiver diver = new CheckDiver();
+                diverCheck = diver.doInBackground();
+                CheckMeet meet = new CheckMeet();
+                meetCheck = meet.doInBackground();
+
+                if(diverCheck && meetCheck) {
+                    Intent intent = new Intent(context, Choose.class);
+                    startActivity(intent);
+                } else {
+                    if (!diverCheck && meetCheck) {
+                        Toast.makeText(getApplicationContext(),
+                                "Please add a diver and a meet",
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    if(!diverCheck){
+                        Toast.makeText(getApplicationContext(),
+                                "Please add a diver before starting a meet",
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    Toast.makeText(getApplicationContext(),
+                            "There have been no meets added yet",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -66,7 +95,6 @@ public class Home extends ActionBarActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(context, MeetsDivers.class);
                 startActivity(intent);
-
             }
         });
 
@@ -126,6 +154,26 @@ public class Home extends ActionBarActivity {
         @Override
         protected Boolean doInBackground(Boolean... params) {
             return validmeet = db.checkJudgesScores();
+        }
+    }
+
+    private class CheckDiver extends AsyncTask<Boolean, Object, Object> {
+        DiverDatabase db = new DiverDatabase(getApplicationContext());
+        Boolean diver;
+
+        @Override
+        protected Boolean doInBackground(Boolean... params) {
+            return diver = db.checkDiver();
+        }
+    }
+
+    private class CheckMeet extends AsyncTask<Boolean, Object, Object> {
+        MeetDatabase db = new MeetDatabase(getApplicationContext());
+        Boolean meet;
+
+        @Override
+        protected Boolean doInBackground(Boolean... params) {
+            return meet = db.checkMeet();
         }
     }
 }
