@@ -376,7 +376,7 @@
         </activity>
         <activity
             android:name=".DiveNumberEnter"
-            android:theme="@style/Theme.AppCompat.Dialog" >
+            android:theme="@style/Theme.DialogTheme" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.DiveNumberEnter" />
 
@@ -389,7 +389,7 @@
         </activity>
         <activity
             android:name=".DiveChoose"
-            android:theme="@style/Theme.AppCompat.Dialog" >
+            android:theme="@style/Theme.DialogTheme" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.DiveChoose" />
 

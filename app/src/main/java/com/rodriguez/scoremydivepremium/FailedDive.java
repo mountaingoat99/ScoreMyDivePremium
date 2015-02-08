@@ -31,7 +31,8 @@ public class FailedDive extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_failed_dive);ActionBar actionBar = getSupportActionBar();
+        setContentView(R.layout.activity_failed_dive);
+        ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         failButton = (Button)findViewById(R.id.buttonFailDive);

@@ -58,8 +58,7 @@ public class ChooseSummary extends ActionBarActivity implements OnItemSelectedLi
     final Context context = this;
 
     @Override
-		public void onCreate(Bundle savedInstanceState)
-	{
+		public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choose_summary);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();

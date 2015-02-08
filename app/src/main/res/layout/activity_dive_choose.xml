@@ -157,6 +157,22 @@
                 android:textColor="@color/primary_text"
                 android:background="@color/primary_light"/>
 
+            <TextView
+                android:id="@+id/showDD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/radioFree"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="DD: 2.3"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/primary_text"
+                android:gravity="start"
+                android:background="@color/primary_light"/>
+
         </RelativeLayout>
 
         <LinearLayout
