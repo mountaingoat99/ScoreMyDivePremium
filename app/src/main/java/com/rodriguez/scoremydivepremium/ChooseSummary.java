@@ -481,7 +481,7 @@ public class ChooseSummary extends ActionBarActivity implements OnItemSelectedLi
 
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                     R.layout.spinner_item, diveName);
-            dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
+            dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
             dataAdapter.insert("  Choose a Dive Category", 0);
             spinner.setAdapter(dataAdapter);
 //            spinner.setAdapter(
