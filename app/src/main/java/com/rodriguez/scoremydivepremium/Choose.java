@@ -101,6 +101,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_list_info_warning);
         dialog.show();
+        savePreferences("firstAlertChooseDiver", true);
     }
 
     private void showAlertForHowTo(){
