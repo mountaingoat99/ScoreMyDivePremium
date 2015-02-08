@@ -76,12 +76,9 @@
 
             <RadioGroup
                 android:id="@+id/radioGroupDives"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/TextViewDiveTotals"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
                 android:orientation="horizontal"
                 android:background="@color/primary_light">
 
@@ -101,7 +98,7 @@
                     android:onClick="onrbd6Click"
                     android:text="@string/six_dives"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/button_text"
+                    android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
 
                 <View
@@ -119,7 +116,7 @@
                     android:onClick="onrbd11Click"
                     android:text="@string/eleven_dives"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/button_text"
+                    android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
 
                 <View
@@ -143,129 +140,85 @@
 
             <LinearLayout
                 android:id="@+id/layout3"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/TextViewDiveType"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
                 android:orientation="horizontal"
                 android:background="@color/primary_light">
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="@color/primary_light"/>
 
                 <RadioButton
                     android:id="@+id/radioType1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:checked="true"
                     android:enabled="true"
-                    android:gravity="center_vertical|end"
                     android:onClick="onrbd1Click"
                     android:text="@string/one_meter"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/button_text"
-                    android:background="@color/primary_light"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight=".8"
+                    android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
 
                 <RadioButton
                     android:id="@+id/radioType3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:checked="false"
                     android:enabled="true"
                     android:onClick="onrbd3Click"
                     android:text="@string/three_meter"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/button_text"
-                    android:background="@color/primary_light"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
+                    android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layout4"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/layout1"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
                 android:orientation="horizontal"
                 android:background="@color/primary_light">
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="@color/primary_light"/>
 
                 <RadioButton
                     android:id="@+id/radioType5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:checked="false"
                     android:enabled="true"
                     android:onClick="onrbd5Click"
                     android:text="@string/five_meter"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/button_text"
-                    android:background="@color/primary_light"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight=".8"
+                    android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
 
                 <RadioButton
                     android:id="@+id/radioType75"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:checked="false"
                     android:enabled="true"
                     android:onClick="onrbd75Click"
                     android:text="@string/seven_five_meter"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/button_text"
-                    android:background="@color/primary_light"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
+                    android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
 
                 <RadioButton
                     android:id="@+id/radioType10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:enabled="true"
                     android:gravity="center_vertical|end"
                     android:onClick="onrbd10Click"
                     android:text="@string/ten_meter"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/button_text"
-                    android:background="@color/primary_light"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
+                    android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
 
             </LinearLayout>
@@ -285,7 +238,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="@dimen/button_text_medium"
+                    android:textSize="@dimen/text_size_medium"
                     android:textColor="@color/primary"/>
 
                 <Button
@@ -295,7 +248,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="@dimen/button_text_medium"
+                    android:textSize="@dimen/text_size_medium"
                     android:textColor="@color/primary"/>
 
             </LinearLayout>
