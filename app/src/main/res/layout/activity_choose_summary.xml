@@ -77,69 +77,82 @@
 
         </LinearLayout>
 
-        <View
-            android:id="@+id/View0"
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
+        <LinearLayout
+            android:id="@+id/layout12"
             android:layout_below="@id/layout11"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@color/header" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"
+            android:paddingRight="8dp"
+            android:paddingEnd="8dp"
+            android:background="@drawable/layer_card_background">
 
-    	<TextView
-    	    android:id="@+id/dbName"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:layout_below="@id/View0"
-    	    android:layout_marginLeft="8dp"
-    	    android:layout_marginTop="8dp"
-    	    android:text="@string/diver_name"
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/static_text" />
-    	
-    	<TextView
-    	    android:id="@+id/divername"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:layout_alignBaseline="@id/dbName"
-    	    android:layout_below="@id/View0"
-    	    android:layout_marginLeft="8dp"
-    	    android:layout_marginTop="8dp"
-    	    android:layout_toRightOf="@id/dbName"
-    	    android:text=""
-            android:textSize="@dimen/text_size_medium"
-            android:textColor="@color/random_text" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary_light">
 
-    	<TextView
-    	    android:id="@+id/dbMeet"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:layout_below="@id/dbName"
-    	    android:layout_marginLeft="8dp"
-    	    android:layout_marginTop="8dp"
-    	    android:text="@string/meet_name"
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/static_text" />
-    	
-    	<TextView
-    	    android:id="@+id/meetname"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:layout_alignBaseline="@id/dbMeet"
-    	    android:layout_below="@id/divername"
-    	    android:layout_marginLeft="8dp"
-    	    android:layout_marginTop="8dp"
-    	    android:layout_toRightOf="@+id/dbName"
-    	    android:text=""
-            android:textSize="@dimen/text_size_medium"
-            android:textColor="@color/random_text" />
+                <TextView
+                    android:id="@+id/dbName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/diver_name"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/secondary_text"/>
+
+                <TextView
+                    android:id="@+id/divername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/dbName"
+                    android:layout_below="@id/View0"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/dbName"
+                    android:text=""
+                    android:textSize="@dimen/text_size_medium"
+                    android:textColor="@color/primary_text"/>
+
+                <TextView
+                    android:id="@+id/dbMeet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dbName"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/meet_name"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/secondary_text"/>
+
+                <TextView
+                    android:id="@+id/meetname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/dbMeet"
+                    android:layout_below="@id/divername"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/dbName"
+                    android:text=""
+                    android:textSize="@dimen/text_size_medium"
+                    android:textColor="@color/primary_text"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
     	
     	<View
     	    android:id="@+id/View2C"
     	    android:layout_width="fill_parent"
     	    android:layout_height="1dp"
-    	    android:layout_below="@id/dbMeet"
+    	    android:layout_below="@id/layout12"
     	    android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
