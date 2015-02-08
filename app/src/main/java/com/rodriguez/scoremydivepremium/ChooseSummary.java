@@ -86,7 +86,7 @@ public class ChooseSummary extends ActionBarActivity implements OnItemSelectedLi
     @Override
     public void onBackPressed(){
         final Context context = this;
-        Intent intent = new Intent(context, ChooseDiver.class);
+        Intent intent = new Intent(context, Choose.class);
         Bundle b = new Bundle();
         b.putInt("keyDiver", diverId);
         b.putInt("keyMeet", meetId);

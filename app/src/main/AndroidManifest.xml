@@ -116,17 +116,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Home" />
         </activity>
-        <activity android:name=".ChooseDiver" >
-            <intent-filter>
-                <action android:name="com.rodriguez.Home.ChooseDiver" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Home" />
-        </activity>
         <activity android:name=".ChooseSummary" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.ChooseSummary" />
@@ -136,7 +125,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ChooseDiver" />
+                android:value=".Choose" />
         </activity>
         <activity android:name=".EnterDiver" >
             <intent-filter>
@@ -242,7 +231,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ChooseDiver" />
+                android:value=".Choose" />
         </activity>
         <activity
             android:name=".About"
@@ -301,7 +290,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ChooseDiver" />
+                android:value=".Choose" />
         </activity>
         <activity android:name=".ChooseDivesFromList" >
             <intent-filter>
