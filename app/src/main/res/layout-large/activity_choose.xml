@@ -89,7 +89,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@color/primary_light"
                 android:textSize="@dimen/text_size_medium"
-                android:textColor="@color/primary_text"/>
+                android:textColor="@color/secondary_text"/>
 
             <View
                 android:id="@+id/view1"
@@ -161,7 +161,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@color/primary_light"
                 android:textSize="@dimen/text_size_medium"
-                android:textColor="@color/primary_text"/>
+                android:textColor="@color/secondary_text"/>
 
             <View
                 android:id="@+id/view2"
