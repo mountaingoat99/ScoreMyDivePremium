@@ -81,7 +81,8 @@ public class ChooseDiver extends ActionBarActivity implements OnItemSelectedList
         loadSavedPreferences();
         if (!firstAlertChooseDiver) {
             showAlert();
-        }    }
+        }
+    }
 
     private void loadSavedPreferences(){
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
