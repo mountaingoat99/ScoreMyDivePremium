@@ -41,7 +41,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
     private RadioButton rbd6, rbd11, rbd1, rbd3, rbd10, rbd75, rbd5;
     private RadioGroup radioGroupTotal;
     private TextView DiveTotal, BoardType;
-    private View layout1, layout2;
+    private View layout1, layout2, view1, view2;
     private Button btnList, btnNext;
 	private int meetSpinPosition, meetId = 0, diverSpinnerPosition, diverId = 0, diveTotal = 6;;
     private double boardType = 1;
@@ -131,13 +131,13 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         dialog.show();
     }
 
-    @Override
-    public void onBackPressed(){
-
-        final Context context = this;
-        Intent intent = new Intent(context, Home.class);
-        startActivity(intent);
-    }
+//    @Override
+//    public void onBackPressed(){
+//
+//        final Context context = this;
+//        Intent intent = new Intent(context, Home.class);
+//        startActivity(intent);
+//    }
    
    private void loadSpinnerMeet(){
        GetMeetInfo meet = new GetMeetInfo();
@@ -263,11 +263,11 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
                diverId = getDiverId();
            }
            diverSpinnerPosition = position;
-           checkDiveTotal();
-           checkBoardType();
-           checkForYesList();
-           checkListFilled();
        }
+       checkDiveTotal();
+       checkBoardType();
+       checkForYesList();
+       checkListFilled();
 	}
    
    public int getMeetId(){
@@ -325,6 +325,8 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         if(checkBoardType){
             layout1.setVisibility(View.GONE);
             layout2.setVisibility(View.GONE);
+            view1.setVisibility(View.GONE);
+            view2.setVisibility(View.GONE);
             GetBoardType boardtype = new GetBoardType();
             String typeOfDive = boardtype.doInBackground();
             showDiveTotal = showDiveTotal + " - " + typeOfDive + " Meter" ;
@@ -333,6 +335,8 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         }else {
             layout1.setVisibility(View.VISIBLE);
             layout2.setVisibility(View.VISIBLE);
+            view1.setVisibility(View.VISIBLE);
+            view2.setVisibility(View.VISIBLE);
             BoardType.setVisibility(View.VISIBLE);
         }
     }
@@ -441,7 +445,8 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         switch (item.getItemId()) 
         {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                //NavUtils.navigateUpFromSameTask(this);
+                finish();
                 return true;
             case R.id.menu_enter_diver:
                 Intent intent = new Intent(context, EnterDiver.class);
@@ -482,6 +487,8 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         radioGroupTotal = (RadioGroup)findViewById(R.id.radioGroupDives);
         layout1 = findViewById(R.id.layout1);
         layout2 = findViewById(R.id.layout2);
+        view1 = findViewById(R.id.view1);
+        view2 = findViewById(R.id.view2);
         rbd6 = (RadioButton)findViewById(R.id.radioDives6);
         rbd11 = (RadioButton)findViewById(R.id.radioDives11);
         rbd1 = (RadioButton)findViewById(R.id.radioType1);
