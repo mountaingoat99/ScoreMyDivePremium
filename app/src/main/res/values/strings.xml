@@ -341,5 +341,12 @@
     <string name="radio_judge_two">2</string>
     <string name="title_activity_date_picker_custom">DatePickerCustom</string>
     <string name="done">Done</string>
+    <string name="enter_dive_number">Enter Dive Number</string>
+    <string name="dive_category">Dive Category</string>
+    <string name="choose_dive_type">Dive Type</string>
+    <string name="choose_dive_position">Dive Position</string>
+    <string name="enter_dives">Enter Dives</string>
+    <string name="type_number">Type Number</string>
+    <string name="choose_dives">Choose Dives</string>
 
 </resources>
