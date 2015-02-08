@@ -17,4 +17,14 @@
         android:orderInCategory="200"
         divingscores:showAsAction="collapseActionView" />
 
+    <item android:id="@+id/menu_remove_diver_from_meet"
+        android:title="@string/remove_diver_from_meet"
+        android:orderInCategory="400"
+        divingscores:showAsAction="collapseActionView" />
+
+    <item android:id="@+id/menu_how_to"
+        android:title="@string/how_to_string"
+        android:orderInCategory="500"
+        divingscores:showAsAction="collapseActionView" />
+
 </menu>

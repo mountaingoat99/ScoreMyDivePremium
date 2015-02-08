@@ -18,12 +18,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:paddingLeft="8dp"
-            android:paddingStart="8dp"
-            android:paddingRight="8dp"
-            android:paddingEnd="8dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="16dp"
+            android:paddingEnd="16dp"
             android:background="@drawable/layer_card_background">
 
             <Spinner
@@ -45,12 +45,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:paddingLeft="8dp"
-            android:paddingStart="8dp"
-            android:paddingRight="8dp"
-            android:paddingEnd="8dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="16dp"
+            android:paddingEnd="16dp"
             android:background="@drawable/layer_card_background">
 
             <Spinner
@@ -63,45 +63,28 @@
                 android:layout_marginBottom="8dp"
                 android:prompt="@string/choose_diver" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout6"
-            android:layout_below="@id/layout3"
-            android:layout_marginTop="8dp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:paddingLeft="8dp"
-            android:paddingStart="8dp"
-            android:paddingRight="8dp"
-            android:paddingEnd="8dp"
-            android:background="@drawable/layer_card_background">
-
             <TextView
                 android:id="@+id/TextViewDiveTotals"
                 android:text="@string/how_many_dives"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:background="@color/primary_light"
                 android:textSize="@dimen/text_size_medium"
-                android:textColor="@color/secondary_text"/>
+                android:textColor="@color/primary_text"/>
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="4dp"
                 android:background="@color/primary"/>
 
             <RadioGroup
                 android:id="@+id/radioGroupDives"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 android:background="@color/primary_light">
 
@@ -157,22 +140,22 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:background="@color/primary_light"
                 android:textSize="@dimen/text_size_medium"
-                android:textColor="@color/secondary_text"/>
+                android:textColor="@color/primary_text"/>
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="4dp"
                 android:background="@color/primary"/>
 
             <LinearLayout
                 android:id="@+id/layout1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 android:background="@color/primary_light">
 
@@ -226,7 +209,7 @@
                 android:id="@+id/layout2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 android:background="@color/primary_light">
 
@@ -274,7 +257,7 @@
                 android:id="@+id/layout5"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 android:background="@color/primary_light">
 
