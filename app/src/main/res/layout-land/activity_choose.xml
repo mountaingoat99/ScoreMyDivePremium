@@ -63,6 +63,23 @@
                 android:layout_marginBottom="8dp"
                 android:prompt="@string/choose_diver" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout6"
+            android:layout_below="@id/layout3"
+            android:layout_marginTop="8dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"
+            android:paddingRight="8dp"
+            android:paddingEnd="8dp"
+            android:background="@drawable/layer_card_background">
+
             <TextView
                 android:id="@+id/TextViewDiveTotals"
                 android:text="@string/how_many_dives"
