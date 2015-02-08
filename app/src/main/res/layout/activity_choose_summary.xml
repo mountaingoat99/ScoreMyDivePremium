@@ -23,7 +23,7 @@
             android:paddingRight="8dp"
             android:paddingEnd="8dp"
             android:background="@drawable/layer_card_background">
-        
+
             <TextView
                 android:id="@+id/TextViewChooseC"
                 android:layout_width="fill_parent"
@@ -31,20 +31,9 @@
                 android:background="@color/primary_light"
                 android:layout_gravity="start"
                 android:layout_marginTop="8dp"
-                android:text="@string/please_choose"
+                android:text="@string/enter_dives"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text" />
-
-            <Spinner
-                android:id="@+id/spinnerDiveCatC"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:drawSelectorOnTop="true"
-                android:background="@color/primary_light"/>
 
             <LinearLayout
                 android:id="@+id/layout1"
@@ -54,8 +43,8 @@
                 android:background="@color/primary_light">
 
                 <Button
-                    android:id="@+id/buttonJudgeScore"
-                    android:text="@string/enter_judge_scores"
+                    android:id="@+id/buttonTypeNumber"
+                    android:text="@string/type_number"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -64,8 +53,8 @@
                     android:textColor="@color/primary"/>
 
                 <Button
-                    android:id="@+id/buttonTotalScore"
-                    android:text="@string/enter_total_score"
+                    android:id="@+id/buttonChooseDives"
+                    android:text="@string/choose_dives"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -360,8 +360,9 @@
         </activity>
         <activity
             android:name=".DatePickerCustom"
-            android:theme="@style/Theme.SelectDate">
-            <!--android:theme="@style/Theme.AppCompat.Dialog"-->
+            android:theme="@style/Theme.SelectDate" >
+
+            <!-- android:theme="@style/Theme.AppCompat.Dialog" -->
 
             <intent-filter>
                 <action android:name="com.rodriguez.Home.MeetsDivers" />
@@ -372,6 +373,32 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DatePickerCustom" />
+        </activity>
+        <activity
+            android:name=".DiveNumberEnter"
+            android:theme="@style/Theme.AppCompat.Dialog" >
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.DiveNumberEnter" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DiveNumberEnter" />
+        </activity>
+        <activity
+            android:name=".DiveChoose"
+            android:theme="@style/Theme.AppCompat.Dialog" >
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.DiveChoose" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DiveChoose" />
         </activity>
     </application>
 

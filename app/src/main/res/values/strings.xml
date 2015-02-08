@@ -225,7 +225,7 @@
     <string name="yes">Yes</string>
     <string name="return_button">Return</string>
     <string name="enter_judge_scores">Enter Scores</string>
-    <string name="enter_total_score">Enter Total Score</string>
+    <string name="enter_total_score">Enter Total</string>
     <string name="total_score">Total Score:</string>
     <string name="initial_total_score">0.0</string>
     <string name="change_dive_scores">Change a Score</string>
@@ -348,5 +348,7 @@
     <string name="enter_dives">Enter Dives</string>
     <string name="type_number">Type Number</string>
     <string name="choose_dives">Choose Dives</string>
+    <string name="title_activity_dive_number_enter">Dive Number Enter</string>
+    <string name="title_activity_dive_choose">Dive Choose</string>
 
 </resources>
