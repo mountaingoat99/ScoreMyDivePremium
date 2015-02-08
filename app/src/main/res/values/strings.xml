@@ -295,7 +295,7 @@
     <string name="dialog_list_info">You can enter scores two different ways. If you use a dive list you have to enter
                                     all the dives first. Once the list is complete you can choose the "Next" button and
                                     score the dives in the list in any order, or edit them anytime. If you do not
-                                    want to use a list, just hit the "Next" button and you will enter the dive information
+                                    want to use a list, just hit the "Enter Scores" button and you will enter the dive information
                                     and score each dive at the same time. Use the menu button in the next screen if you need to
                                     change a dive score.</string>
     <string name="welcome_info">More Options</string>

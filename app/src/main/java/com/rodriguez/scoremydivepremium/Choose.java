@@ -100,16 +100,6 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_list_info_warning);
-        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
-
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                savePreferences("firstAlertChooseDiver", true);
-                dialog.cancel();
-            }
-        });
-
         dialog.show();
     }
 
@@ -118,25 +108,16 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_list_info_warning);
-        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
-
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        });
-
         dialog.show();
     }
 
-//    @Override
-//    public void onBackPressed(){
-//
-//        final Context context = this;
-//        Intent intent = new Intent(context, Home.class);
-//        startActivity(intent);
-//    }
+    @Override
+    public void onBackPressed(){
+
+        final Context context = this;
+        Intent intent = new Intent(context, Home.class);
+        startActivity(intent);
+    }
    
    private void loadSpinnerMeet(){
        GetMeetInfo meet = new GetMeetInfo();
@@ -255,12 +236,16 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
            meetSpinPosition = position;
            if (position >= 1) {
                meetId = getMeetId();
+           } else {
+               meetId = 0;
            }
        } else {
+           diverSpinnerPosition = position;
            if(position >= 1){
                diverId = getDiverId();
+           } else {
+               diverId = 0;
            }
-           diverSpinnerPosition = position;
        }
        checkDiveTotal();
        checkBoardType();
@@ -459,7 +444,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
                 startActivity(intent2);
                 break;
             case R.id.menu_remove_diver_from_meet:
-                if(diverId != 0) {
+                if(diverId != 0 && meetId != 0) {
                     Intent intent3 = new Intent(context, RemoveDiverFromMeet.class);
                     Bundle b = new Bundle();
                     b.putInt("keyDiver", diverId);
@@ -469,7 +454,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
                     break;
                 }else{
                     Toast.makeText(getApplicationContext(),
-                            "Please Choose a Diver",
+                            "Please Choose a Diver and a Meet",
                             Toast.LENGTH_LONG).show();
                     break;
                 }
