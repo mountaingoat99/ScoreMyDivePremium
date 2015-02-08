@@ -11,6 +11,9 @@ import java.util.ArrayList;
 
 public class BackPlatformDatabase extends DatabaseHelper {
 
+    public BackPlatformDatabase() {
+        super(); }
+
     public BackPlatformDatabase(Context context) {
         super(context); }
 

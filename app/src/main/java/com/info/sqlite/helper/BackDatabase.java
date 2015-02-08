@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 public class BackDatabase extends DatabaseHelper {
 
+    public BackDatabase() {super();}
+
     public BackDatabase(Context context) { super(context); }
 
     public ArrayList<DiveStyleSpinner> getBackOneNames(){

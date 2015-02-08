@@ -350,5 +350,6 @@
     <string name="choose_dives">Choose Dives</string>
     <string name="title_activity_dive_number_enter">Dive Number Enter</string>
     <string name="title_activity_dive_choose">Dive Choose</string>
+    <string name="dive_dd_text">Dive DD:</string>
 
 </resources>

@@ -614,6 +614,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + "DELETE FROM " + TABLE_DIVE_TOTALS + " WHERE " + MEET_ID + " = old." + KEY_ID + "; "
             + "DELETE FROM " + TABLE_DIVE_TYPE + " WHERE " + MEET_ID + " = old." + KEY_ID + "; END";
 
+    public DatabaseHelper(){
+        super (null, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}

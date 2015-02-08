@@ -1,22 +1,18 @@
 package com.rodriguez.scoremydivepremium;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DialerFilter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,7 +42,7 @@ public class ChooseSummary extends ActionBarActivity implements OnItemSelectedLi
     //private Spinner spinner;
     private Button btnType, btnChooseDives;
     //private Button judgeButton, totalbutton;
-	private int diverId, meetId, diveTotal, diveType,diverSpinnerPosition, diveNumber;
+	private int diverId, meetId, diveTotal, diveType, diveNumber;
     private double boardType;
     private String s1String, s2String, s3String, s4String, s5String, s6String, s7String,
             s8String, s9String, s10String, s11String;
@@ -72,7 +68,7 @@ public class ChooseSummary extends ActionBarActivity implements OnItemSelectedLi
 		Bundle b = getIntent().getExtras();
 		diverId = b.getInt("keyDiver");
 		meetId = b.getInt("keyMeet");
-        diverSpinnerPosition = b.getInt("keySpin");
+        //diverSpinnerPosition = b.getInt("keySpin");
         fillType();
         //loadSpinnerData();
         getDiveTotals();
@@ -94,7 +90,7 @@ public class ChooseSummary extends ActionBarActivity implements OnItemSelectedLi
         Bundle b = new Bundle();
         b.putInt("keyDiver", diverId);
         b.putInt("keyMeet", meetId);
-        b.putInt("keySpin", diverSpinnerPosition);
+        //b.putInt("keySpin", diverSpinnerPosition);
         intent.putExtras(b);
         startActivity(intent);
     }
@@ -114,7 +110,7 @@ public class ChooseSummary extends ActionBarActivity implements OnItemSelectedLi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DiveChoose.class);
-                //TODO add bundle items
+
                 startActivity(intent);
             }
         });
@@ -163,6 +159,8 @@ public class ChooseSummary extends ActionBarActivity implements OnItemSelectedLi
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position,
                                long id) {
+
+
 
         if(boardType == 1.0 || boardType == 3.0) {
             switch (position) {

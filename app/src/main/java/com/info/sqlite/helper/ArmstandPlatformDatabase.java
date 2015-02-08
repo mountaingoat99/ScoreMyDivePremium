@@ -11,6 +11,9 @@ import java.util.ArrayList;
 
 public class ArmstandPlatformDatabase extends DatabaseHelper {
 
+    public ArmstandPlatformDatabase() {
+        super(); }
+
     public ArmstandPlatformDatabase(Context context) {
         super(context); }
 

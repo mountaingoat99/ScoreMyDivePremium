@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 public class InwardDatabase extends DatabaseHelper {
 
+    public InwardDatabase() { super(); }
+
     public InwardDatabase(Context context) { super(context); }
 
     public ArrayList<DiveStyleSpinner> getInwardOneNames(){

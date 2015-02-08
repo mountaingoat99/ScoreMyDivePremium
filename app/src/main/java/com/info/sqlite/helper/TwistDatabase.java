@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 public class TwistDatabase extends DatabaseHelper {
 
+    public TwistDatabase() { super(); }
+
     public TwistDatabase(Context context) { super(context); }
 
     public ArrayList<DiveStyleSpinner> getTwistOneNames(){
