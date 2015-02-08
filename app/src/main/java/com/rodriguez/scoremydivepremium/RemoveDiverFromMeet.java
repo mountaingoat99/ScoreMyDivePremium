@@ -54,7 +54,7 @@ public class RemoveDiverFromMeet extends ActionBarActivity {
             public void onClick(View v) {
                 RemoveDiver remove = new RemoveDiver();
                 remove.doInBackground();
-                Intent intent1 = new Intent(context, Welcome.class);
+                Intent intent1 = new Intent(context, MeetsDivers.class);
                 startActivity(intent1);
             }
         });

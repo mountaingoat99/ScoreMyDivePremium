@@ -78,7 +78,7 @@ public class DiverHistory extends ActionBarActivity {
 			Toast.makeText(getApplicationContext(),
         			"Diver is corrupted, please delete and add again",
         			Toast.LENGTH_LONG).show();
-			Intent intent = new Intent(getBaseContext(), Welcome.class);
+			Intent intent = new Intent(getBaseContext(), MeetsDivers.class);
 			startActivity(intent);
 		}
 	}

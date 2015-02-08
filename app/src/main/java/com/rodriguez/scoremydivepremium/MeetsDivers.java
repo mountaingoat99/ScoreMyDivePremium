@@ -1,18 +1,14 @@
 package com.rodriguez.scoremydivepremium;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -260,7 +256,7 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_welcome, menu);
+        getMenuInflater().inflate(R.menu.activity_meets_divers, menu);
         return true;
     }
 

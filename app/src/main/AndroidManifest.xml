@@ -24,17 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Welcome" >
-            <intent-filter>
-                <action android:name="android.intent.action.Home.Welcome" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Home" />
-        </activity>
         <activity android:name=".DiverHistory" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.DiverHistory" />
@@ -79,7 +68,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
+                android:value=".MeetsDivers" />
         </activity>
         <activity android:name=".MeetResults" >
             <intent-filter>
@@ -114,7 +103,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
+                android:value=".MeetsDivers" />
         </activity>
         <activity android:name=".Choose" >
             <intent-filter>

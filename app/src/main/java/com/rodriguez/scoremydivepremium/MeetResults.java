@@ -95,7 +95,7 @@ public class MeetResults extends ActionBarActivity {
 			Toast.makeText(getApplicationContext(),
         			"Meet is corrupted, please delete and add again",
         			Toast.LENGTH_LONG).show();
-			Intent intent = new Intent(getBaseContext(), Welcome.class);
+			Intent intent = new Intent(getBaseContext(), MeetsDivers.class);
 			startActivity(intent);
 		}
 	}

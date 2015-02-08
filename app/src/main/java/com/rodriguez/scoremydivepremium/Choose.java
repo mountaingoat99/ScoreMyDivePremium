@@ -62,11 +62,10 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
    private void loadSpinnerMeet(){
        GetMeetInfo meet = new GetMeetInfo();
        List<String> meetName = meet.doInBackground();
-		
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 R.layout.spinner_item, meetName);
 		
-		dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
+		dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         dataAdapter.insert("  Choose a Meet", 0);
         spinnerMeet.setAdapter(dataAdapter);
 	}

@@ -71,7 +71,7 @@ public class MeetDelete extends ActionBarActivity {
 			Toast.makeText(getApplicationContext(),
         			"Meet if is corrupted, please edit or add again",
         			Toast.LENGTH_LONG).show();
-			Intent intent = new Intent(getBaseContext(), Welcome.class);
+			Intent intent = new Intent(getBaseContext(), MeetsDivers.class);
 			startActivity(intent);
 		}
 	}
