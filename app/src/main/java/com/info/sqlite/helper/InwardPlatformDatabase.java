@@ -11,9 +11,6 @@ import java.util.ArrayList;
 
 public class InwardPlatformDatabase extends DatabaseHelper {
 
-    public InwardPlatformDatabase() {
-        super(); }
-
     public InwardPlatformDatabase(Context context) {
         super(context); }
 

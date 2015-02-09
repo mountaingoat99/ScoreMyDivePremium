@@ -11,10 +11,6 @@ import java.util.ArrayList;
 
 public class ReverseDatabase extends DatabaseHelper {
 
-    public ReverseDatabase() {
-        super();
-    }
-
     public ReverseDatabase(Context context) { super(context); }
 
     public ArrayList<DiveStyleSpinner> getReverseOneNames(){

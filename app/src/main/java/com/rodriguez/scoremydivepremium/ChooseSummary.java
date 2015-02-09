@@ -32,7 +32,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChooseSummary extends ActionBarActivity implements OnItemSelectedListener {
+public class ChooseSummary extends ActionBarActivity {
 
 	private TextView name, meetName, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11,
 					s1v, s2v, s3v, s4v, s5v, s6v, s7v, s8v, s9v, s10v, s11v, total,
@@ -110,7 +110,12 @@ public class ChooseSummary extends ActionBarActivity implements OnItemSelectedLi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DiveChoose.class);
-
+                Bundle b = new Bundle();
+                b.putInt("keyDiver", diverId);
+                b.putInt("keyMeet", meetId);
+                b.putInt("diveNumber", diveNumber);
+                b.putDouble("boardType", boardType);
+                intent.putExtras(b);
                 startActivity(intent);
             }
         });
@@ -156,53 +161,53 @@ public class ChooseSummary extends ActionBarActivity implements OnItemSelectedLi
 //        });
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position,
-                               long id) {
-
-
-
-        if(boardType == 1.0 || boardType == 3.0) {
-            switch (position) {
-                case 1:
-                    diveType = 1;
-                    break;
-                case 2:
-                    diveType = 2;
-                    break;
-                case 3:
-                    diveType = 3;
-                    break;
-                case 4:
-                    diveType = 4;
-                    break;
-                case 5:
-                    diveType = 5;
-                    break;
-            }
-        } else {
-            switch (position) {
-                case 1:
-                    diveType = 6;
-                    break;
-                case 2:
-                    diveType = 7;
-                    break;
-                case 3:
-                    diveType = 8;
-                    break;
-                case 4:
-                    diveType = 9;
-                    break;
-                case 5:
-                    diveType = 10;
-                    break;
-                case 6:
-                    diveType = 11;
-                    break;
-            }
-        }
-    }
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position,
+//                               long id) {
+//
+//
+//
+//        if(boardType == 1.0 || boardType == 3.0) {
+//            switch (position) {
+//                case 1:
+//                    diveType = 1;
+//                    break;
+//                case 2:
+//                    diveType = 2;
+//                    break;
+//                case 3:
+//                    diveType = 3;
+//                    break;
+//                case 4:
+//                    diveType = 4;
+//                    break;
+//                case 5:
+//                    diveType = 5;
+//                    break;
+//            }
+//        } else {
+//            switch (position) {
+//                case 1:
+//                    diveType = 6;
+//                    break;
+//                case 2:
+//                    diveType = 7;
+//                    break;
+//                case 3:
+//                    diveType = 8;
+//                    break;
+//                case 4:
+//                    diveType = 9;
+//                    break;
+//                case 5:
+//                    diveType = 10;
+//                    break;
+//                case 6:
+//                    diveType = 11;
+//                    break;
+//            }
+//        }
+//    }
 
     private void getDiveTotals(){
         SearchDiveTotals total = new SearchDiveTotals();
@@ -498,35 +503,35 @@ public class ChooseSummary extends ActionBarActivity implements OnItemSelectedLi
     }
 
     // here we need to send the spinner in fromm the dialog and then fill them
-	private void loadCatSpinnerData(Spinner spinner){
-
-        if(boardType == 1.0 || boardType == 3.0) {
-
-            GetSpringboardDiveName dives = new GetSpringboardDiveName();
-            List<String> diveName = dives.doInBackground();
-
-            ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
-                    R.layout.spinner_item, diveName);
-            dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-            dataAdapter.insert("  Choose a Dive Category", 0);
-            spinner.setAdapter(dataAdapter);
-
-        } else {
-
-            GetPlatformDiveName divesP = new GetPlatformDiveName();
-            List<String> diveName = divesP.doInBackground();
-
-            ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
-                    R.layout.spinner_item, diveName);
-            dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
-            dataAdapter.insert("  Choose a Dive Category", 0);
-            spinner.setAdapter(dataAdapter);
-        }
-	}
-
-    private void loadTypeSpinnerData(Spinner spinner) {
-
-    }
+//	private void loadCatSpinnerData(Spinner spinner){
+//
+//        if(boardType == 1.0 || boardType == 3.0) {
+//
+//            GetSpringboardDiveName dives = new GetSpringboardDiveName();
+//            List<String> diveName = dives.doInBackground();
+//
+//            ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
+//                    R.layout.spinner_item, diveName);
+//            dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+//            dataAdapter.insert("  Choose a Dive Category", 0);
+//            spinner.setAdapter(dataAdapter);
+//
+//        } else {
+//
+//            GetPlatformDiveName divesP = new GetPlatformDiveName();
+//            List<String> diveName = divesP.doInBackground();
+//
+//            ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
+//                    R.layout.spinner_item, diveName);
+//            dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
+//            dataAdapter.insert("  Choose a Dive Category", 0);
+//            spinner.setAdapter(dataAdapter);
+//        }
+//	}
+//
+//    private void loadTypeSpinnerData(Spinner spinner) {
+//
+//    }
 
     private void fillType(){
         String boardString = "";
@@ -637,10 +642,10 @@ public class ChooseSummary extends ActionBarActivity implements OnItemSelectedLi
         return super.onOptionsItemSelected(item);
     }
 
-	@Override
-	public void onNothingSelected(AdapterView<?> parent) {
-		
-	}
+//	@Override
+//	public void onNothingSelected(AdapterView<?> parent) {
+//
+//	}
 
 
     private class SearchDiveTotals extends AsyncTask<Integer, Object, Object> {

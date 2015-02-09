@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 public class ForwardDatabase extends DatabaseHelper{
 
-    public ForwardDatabase() { super(); }
-
     public ForwardDatabase(Context context) { super(context); }
 
     public ArrayList<DiveStyleSpinner> getForwardOneNames(){

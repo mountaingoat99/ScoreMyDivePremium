@@ -11,9 +11,6 @@ import java.util.ArrayList;
 
 public class TwistPlatformDatabase extends DatabaseHelper {
 
-    public TwistPlatformDatabase() {
-        super(); }
-
     public TwistPlatformDatabase(Context context) {
         super(context); }
 

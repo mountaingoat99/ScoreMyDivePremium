@@ -2,41 +2,48 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp">
+    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+    android:background="@color/primary_light">
 
     <TextView
         android:id="@+id/diveId"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:textSize="@dimen/spinner_text"
+        android:textSize="@dimen/text_size_super_mini"
         android:gravity="center"
         android:layout_marginLeft="8dp"
-        android:textColor="@color/random_text"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
         android:text=""
-        android:singleLine="false"/>
+        android:singleLine="false"
+        android:background="@color/primary_light"/>
 
     <TextView
         android:id="@+id/placeholder"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_toRightOf="@id/diveId"
-        android:textSize="@dimen/spinner_text"
+        android:layout_toEndOf="@id/diveId"
+        android:textSize="@dimen/text_size_super_mini"
         android:gravity="center"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:textColor="@color/random_text"
+        android:textColor="@color/black"
         android:text="@string/dash"
-        android:singleLine="false"/>
+        android:singleLine="false"
+        android:background="@color/primary_light"/>
 
     <TextView
         android:id="@+id/diveStyle"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_toRightOf="@id/placeholder"
-        android:textSize="@dimen/spinner_text"
+        android:layout_toEndOf="@id/placeholder"
+        android:textSize="@dimen/text_size_super_mini"
         android:gravity="center"
-        android:textColor="@color/random_text"
+        android:textColor="@color/black"
         android:text=""
-        android:singleLine="false"/>
+        android:singleLine="false"
+        android:background="@color/primary_light"/>
 
 </RelativeLayout>

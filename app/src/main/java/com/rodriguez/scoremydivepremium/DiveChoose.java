@@ -20,20 +20,9 @@ import android.widget.TextView;
 import com.info.Helpers.DiveStyleSpinner;
 import com.info.controls.DiveChooseController;
 import com.info.controls.SpinnerDiveStyleCustomBaseAdpater;
-import com.info.sqlite.helper.ArmstandPlatformDatabase;
-import com.info.sqlite.helper.BackDatabase;
-import com.info.sqlite.helper.BackPlatformDatabase;
 import com.info.sqlite.helper.DiveTotalDatabase;
 import com.info.sqlite.helper.DivesDatabase;
-import com.info.sqlite.helper.ForwardDatabase;
-import com.info.sqlite.helper.ForwardPlatformDatabase;
-import com.info.sqlite.helper.InwardDatabase;
-import com.info.sqlite.helper.InwardPlatformDatabase;
 import com.info.sqlite.helper.PlatformDivesDatabase;
-import com.info.sqlite.helper.ReverseDatabase;
-import com.info.sqlite.helper.ReversePlatformDatabase;
-import com.info.sqlite.helper.TwistDatabase;
-import com.info.sqlite.helper.TwistPlatformDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +34,8 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
     private RadioButton rdStraight, rdPike, rdTuck, rdFree;
     private TextView diveddView, name;
     private Button btnJudgeScore, btnTotalScore;
-    private int diverId, meetId, diveTotal, diveType, diveNumber, divePosition;;
-    private double boardType, multiplier = 0.0;;
+    private int diverId, meetId, diveTotal, diveType, diveNumber, divePosition;
+    private double boardType, multiplier = 0.0;
     private String stringId;
     private ArrayList<DiveStyleSpinner> searchDives;
     final Context context = this;
@@ -70,7 +59,6 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
         Bundle b = getIntent().getExtras();
         diverId = b.getInt("keyDiver");
         meetId = b.getInt("keyMeet");
-        diveType = b.getInt("diveType");
         diveNumber = b.getInt("diveNumber");
         boardType = b.getDouble("boardType");
 
@@ -106,7 +94,9 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
 
             DiveChooseController dive = new DiveChooseController();
             diveType = dive.SetDiveTypeNumber(position, boardType);
-            loadTypeSpinnerData();
+            if (diveType > 0 ) {
+                loadTypeSpinnerData();
+            }
 
         // Dive Type Spinner
         } else {
@@ -140,7 +130,7 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
 
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                     R.layout.spinner_item, diveName);
-            dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
+            dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
             dataAdapter.insert("  Choose a Dive Category", 0);
             spinnerDiveCat.setAdapter(dataAdapter);
         }
@@ -149,14 +139,14 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
     private void loadTypeSpinnerData() {
 
         DiveChooseController dive = new DiveChooseController();
-        searchDives = dive.GetDiveCat(diveType, boardType);
+        searchDives = dive.GetDiveCat(diveType, boardType, context);
         spinnerDiveType.setAdapter(new SpinnerDiveStyleCustomBaseAdpater(this, searchDives));
     }
 
     private void DisableRadioButtons(){
 
         DiveChooseController dive = new DiveChooseController();
-        ArrayList<Double> ddList = dive.GetTheDD(stringId, diveType, boardType);
+        ArrayList<Double> ddList = dive.GetTheDD(stringId, diveType, boardType, context);
 
         double testS = ddList.get(0);
         double testP = ddList.get(1);
@@ -165,34 +155,34 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
 
         if (testS == 0.0){
             rdStraight.setEnabled(false);
-            rdStraight.setTextColor(this.getResources().getColor(R.color.primary_text));
+            rdStraight.setTextColor(this.getResources().getColor(R.color.secondary_text));
         }else {
             rdStraight.setEnabled(true);
-            rdStraight.setTextColor(this.getResources().getColor(R.color.secondary_text));
+            rdStraight.setTextColor(this.getResources().getColor(R.color.primary_text));
         }
 
         if (testP == 0.0){
             rdPike.setEnabled(false);
-            rdPike.setTextColor(this.getResources().getColor(R.color.primary_text));
+            rdPike.setTextColor(this.getResources().getColor(R.color.secondary_text));
         }else {
             rdPike.setEnabled(true);
-            rdPike.setTextColor(this.getResources().getColor(R.color.secondary_text));
+            rdPike.setTextColor(this.getResources().getColor(R.color.primary_text));
         }
 
         if (testT == 0.0){
             rdTuck.setEnabled(false);
-            rdTuck.setTextColor(this.getResources().getColor(R.color.primary_text));
+            rdTuck.setTextColor(this.getResources().getColor(R.color.secondary_text));
         }else {
             rdTuck.setEnabled(true);
-            rdTuck.setTextColor(this.getResources().getColor(R.color.secondary_text));
+            rdTuck.setTextColor(this.getResources().getColor(R.color.primary_text));
         }
 
         if (testF == 0.0){
             rdFree.setEnabled(false);
-            rdFree.setTextColor(this.getResources().getColor(R.color.primary_text));
+            rdFree.setTextColor(this.getResources().getColor(R.color.secondary_text));
         }else {
             rdFree.setEnabled(true);
-            rdFree.setTextColor(this.getResources().getColor(R.color.secondary_text));
+            rdFree.setTextColor(this.getResources().getColor(R.color.primary_text));
         }
     }
 
@@ -249,7 +239,7 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
             stringId = name.getText().toString();
 
             DiveChooseController dive = new DiveChooseController();
-            multiplier = dive.GetMultiplier(stringId, diveType, divePosition, boardType);
+            multiplier = dive.GetMultiplier(stringId, diveType, divePosition, boardType, context);
 
             String ddString = "Dive DD: " + multiplier;
             diveddView.setText(ddString);
@@ -340,7 +330,5 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
             return dives = db.getPlatformDiveNames();
         }
     }
-
-
 }
 

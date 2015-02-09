@@ -1,15 +1,29 @@
 package com.rodriguez.scoremydivepremium;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.info.sqlite.helper.DiveTotalDatabase;
 
 
 public class DiveNumberEnter extends ActionBarActivity {
+
+    private EditText diveNumberEnter;
+    private TextView diveddView;
+    private Button btnJudgeScore, btnTotalScore;
+    private int diverId, meetId, diveTotal, diveType, diveNumber, divePosition;
+    private double boardType, multiplier = 0.0;
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +33,40 @@ public class DiveNumberEnter extends ActionBarActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        diveNumberEnter = (EditText)findViewById(R.id.editDiveDD);
+        diveddView = (TextView)findViewById(R.id.showDD);
+
+        Bundle b = getIntent().getExtras();
+        diverId = b.getInt("keyDiver");
+        meetId = b.getInt("keyMeet");
+        diveNumber = b.getInt("diveNumber");
+        boardType = b.getDouble("boardType");
+
+        getDiveTotals();
+        addListenerOnButton();
     }
 
+    private void addListenerOnButton() {
+
+        btnJudgeScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnTotalScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+    private void getDiveTotals(){
+        SearchDiveTotals total = new SearchDiveTotals();
+        diveTotal = total.doInBackground();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -42,5 +88,14 @@ public class DiveNumberEnter extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class SearchDiveTotals extends AsyncTask<Integer, Object, Object> {
+        DiveTotalDatabase db = new DiveTotalDatabase(getApplicationContext());
+
+        @Override
+        protected Integer doInBackground(Integer... params) {
+            return db.searchTotals(meetId, diverId);
+        }
     }
 }

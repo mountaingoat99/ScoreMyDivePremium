@@ -11,9 +11,6 @@ import java.util.ArrayList;
 
 public class ForwardPlatformDatabase extends DatabaseHelper {
 
-    public ForwardPlatformDatabase() {
-        super(); }
-
     public ForwardPlatformDatabase(Context context) {
         super(context); }
 

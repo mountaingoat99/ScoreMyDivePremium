@@ -11,9 +11,6 @@ import java.util.ArrayList;
 
 public class ReversePlatformDatabase extends DatabaseHelper {
 
-    public ReversePlatformDatabase() {
-        super(); }
-
     public ReversePlatformDatabase(Context context) {
         super(context); }
 

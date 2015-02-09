@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.info.sqlite.model.AllPlatformDB;
+import com.info.sqlite.model.AllSpringboardDB;
 import com.info.sqlite.model.ArmstandPlatformDB;
 import com.info.sqlite.model.BackDB;
 import com.info.sqlite.model.BackPlatformDB;
@@ -27,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	protected static final String LOG = "DatabaseHelper";
 	
 	// Database Version
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 1;
 	
 	// Database name
 	private static final String DATABASE_NAME = "DIVE_DOD";
@@ -57,6 +59,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     protected static final String TABLE_SCORES = "scores";
     protected static final String TABLE_JUDGE_SCORES = "judge_scores";
     protected static final String TABLE_DIVE_NUMBER = "dive_number";
+
+    // all platform dives
+    protected static final String TABLE_ALL_PLATFORM_DIVES = "all_platform_dives";
+    // all springboard dives
+    protected static final String TABLE_ALL_SPRINGBOARD_DIVES = "all_springboard_dives";
+    private static final String NAME = "name";
+
+    public static String getTableAllSpringboardDives() {
+        return TABLE_ALL_SPRINGBOARD_DIVES;
+    }
+
+    public static String getTableAllPlatformDives() {
+        return TABLE_ALL_PLATFORM_DIVES;
+    }
 
     // version 2 database
     protected static final String TABLE_DIVE_LIST = "dive_list";
@@ -418,6 +434,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		return LOG;
 	}
 
+    // all dives types
+    public static final String CREATE_TABLE_ALL_PLATFORM_DIVES = "CREATE TABLE IF NOT EXISTS "
+            + TABLE_ALL_PLATFORM_DIVES + "(" + KEY_ID + " INTEGER, "
+            + TEN_METER + " TEXT, " + SEVEN_FIVE_METER + " TEXT, " + FIVE_METER + " TEXT, "
+            + NAME + " TEXT, " + TEN_S + " REAL, " + TEN_P + " REAL, "
+            + TEN_T + " REAL, " + TEN_F + " REAL, " + SEVEN_FIVE_S + " REAL, "
+            + SEVEN_FIVE_P + " REAL, " + SEVEN_FIVE_T + " REAL, " + SEVEN_FIVE_F + " REAL, "
+            + FIVE_S + " REAL, " +  FIVE_P + " REAL, " + FIVE_T + " REAL, " + FIVE_F + " REAL "
+            + ")";
+
+    public static final String CREATE_TABLE_ALL_SPRINGBOARD_DIVES = "CREATE TABLE IF NOT EXISTS "
+            + TABLE_ALL_SPRINGBOARD_DIVES + "(" + KEY_ID + " INTEGER, "
+            + ONE_METER + " TEXT, " + THREE_METER + " TEXT, "
+            + NAME + " TEXT, " + ONE_S + " REAL, " + ONE_P + " REAL, "
+            + ONE_T + " REAL, " + ONE_F + " REAL, " + THREE_S + " REAL, "
+            + THREE_P + " REAL, " + THREE_T + " REAL, " + THREE_F + " REAL "
+            + ")";
+
 	// table create statements
 	public static final String CREATE_TABLE_FORWARD = "CREATE TABLE IF NOT EXISTS "
 			+ TABLE_FORWARD + "(" + KEY_ID + " INTEGER, "
@@ -579,7 +613,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + "FOREIGN KEY (" + MEET_ID + ") REFERENCES " + TABLE_MEET_NAME + " (id), "
             + "FOREIGN KEY (" + DIVER_ID + ") REFERENCES " + TABLE_DIVER_NAME + " (id))";
 
-    // Version 2 database changes
     public static final String CREATE_TABLE_DIVE_LIST = "CREATE TABLE IF NOT EXISTS "
             + TABLE_DIVE_LIST + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + MEET_ID + " INTEGER, "  + DIVER_ID + " INTEGER, "
@@ -614,16 +647,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + "DELETE FROM " + TABLE_DIVE_TOTALS + " WHERE " + MEET_ID + " = old." + KEY_ID + "; "
             + "DELETE FROM " + TABLE_DIVE_TYPE + " WHERE " + MEET_ID + " = old." + KEY_ID + "; END";
 
-    public DatabaseHelper(){
-        super (null, DATABASE_NAME, null, DATABASE_VERSION);
-    }
-
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+
+        db.execSQL(CREATE_TABLE_ALL_PLATFORM_DIVES);
+        db.execSQL(CREATE_TABLE_ALL_SPRINGBOARD_DIVES);
 		db.execSQL(CREATE_TABLE_BACK);
 		db.execSQL(CREATE_TABLE_FORWARD);
 		db.execSQL(CREATE_TABLE_INWARD);
@@ -654,6 +686,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL((MEET_DELETE_TRIGGER));
 
 		// call the methods to fill the dive table data
+        fillAllPlatform(db);
+        fillAllSpringboard(db);
         fillForwardDives(db);
         fillBackDives(db);
         fillInwardDives(db);
@@ -679,9 +713,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         switch (newVersion){
             case 2:
-                db.execSQL(CREATE_TABLE_DIVE_LIST);
-                db.execSQL(CREATE_TABLE_QUICK_SCORE);
-                fillSampleQuickScore(db);
+                //db.execSQL(CREATE_TABLE_DIVE_LIST);
+                //db.execSQL(CREATE_TABLE_QUICK_SCORE);
+                //fillSampleQuickScore(db);
                 break;
             default:
                 throw new IllegalStateException(
@@ -740,6 +774,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(DIGITS, score.getDigits());
 
         db.insert(TABLE_SCORES, null, values);
+    }
+
+    public void createTableAllPlatformDives(AllPlatformDB all, SQLiteDatabase db) {
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID, all.getId());
+        values.put(TEN_METER, all.getTenMeter());
+        values.put(SEVEN_FIVE_METER, all.getSevenFiveMeter());
+        values.put(FIVE_METER, all.getFiveMeter());
+        values.put(NAME, all.getName());
+        values.put(TEN_S, all.getTenA());
+        values.put(TEN_P, all.getTenB());
+        values.put(TEN_T, all.getTenC());
+        values.put(TEN_F, all.getTenD());
+        values.put(SEVEN_FIVE_S, all.getSevenFiveA());
+        values.put(SEVEN_FIVE_P, all.getSevenFiveB());
+        values.put(SEVEN_FIVE_T, all.getSevenFiveC());
+        values.put(SEVEN_FIVE_F, all.getSevenFiveD());
+        values.put(FIVE_S, all.getFiveA());
+        values.put(FIVE_P, all.getFiveB());
+        values.put(FIVE_T, all.getFiveC());
+        values.put(FIVE_F, all.getFiveD());
+
+        db.insert(TABLE_ALL_PLATFORM_DIVES, null, values);
+
+    }
+
+    public void createAllSpringboardDives(AllSpringboardDB all, SQLiteDatabase db) {
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID, all.getId());
+        values.put(ONE_METER, all.getOneMeter());
+        values.put(THREE_METER, all.getThreeMeter());
+        values.put(NAME, all.getName());
+        values.put(ONE_S, all.getOneA());
+        values.put(ONE_P, all.getOneB());
+        values.put(ONE_T, all.getOneC());
+        values.put(ONE_F, all.getOneD());
+        values.put(THREE_S, all.getThreeA());
+        values.put(THREE_P, all.getThreeB());
+        values.put(THREE_T, all.getThreeC());
+        values.put(THREE_F, all.getThreeD());
+
+        db.insert(TABLE_FORWARD, null, values);
+
     }
 
     public void createForward(ForwardDB forward, SQLiteDatabase db) {
@@ -1077,6 +1156,304 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         createScores(score19, db);
         createScores(score20, db);
         createScores(score21, db);
+    }
+
+    // fill alldives tables
+    private void fillAllSpringboard(SQLiteDatabase db) {
+
+        AllSpringboardDB all1 = new AllSpringboardDB();
+        AllSpringboardDB all2 = new AllSpringboardDB();
+        AllSpringboardDB all3 = new AllSpringboardDB();
+        AllSpringboardDB all4 = new AllSpringboardDB();
+        AllSpringboardDB all5 = new AllSpringboardDB();
+        AllSpringboardDB all6 = new AllSpringboardDB();
+        AllSpringboardDB all7 = new AllSpringboardDB();
+        AllSpringboardDB all8 = new AllSpringboardDB();
+        AllSpringboardDB all9 = new AllSpringboardDB();
+        AllSpringboardDB all10 = new AllSpringboardDB();
+        AllSpringboardDB all11 = new AllSpringboardDB();
+        AllSpringboardDB all12 = new AllSpringboardDB();
+        AllSpringboardDB all13 = new AllSpringboardDB();
+        AllSpringboardDB all14 = new AllSpringboardDB();
+        AllSpringboardDB all15 = new AllSpringboardDB();
+        AllSpringboardDB all16 = new AllSpringboardDB();
+        AllSpringboardDB all17 = new AllSpringboardDB();
+        AllSpringboardDB all18 = new AllSpringboardDB();
+        AllSpringboardDB all19 = new AllSpringboardDB();
+        AllSpringboardDB all20 = new AllSpringboardDB();
+        AllSpringboardDB all21 = new AllSpringboardDB();
+        AllSpringboardDB all22 = new AllSpringboardDB();
+        AllSpringboardDB all23 = new AllSpringboardDB();
+        AllSpringboardDB all24 = new AllSpringboardDB();
+        AllSpringboardDB all25 = new AllSpringboardDB();
+
+        AllSpringboardDB all26 = new AllSpringboardDB();
+        AllSpringboardDB all27 = new AllSpringboardDB();
+        AllSpringboardDB all28 = new AllSpringboardDB();
+        AllSpringboardDB all29 = new AllSpringboardDB();
+        AllSpringboardDB all30 = new AllSpringboardDB();
+        AllSpringboardDB all31 = new AllSpringboardDB();
+        AllSpringboardDB all32 = new AllSpringboardDB();
+        AllSpringboardDB all33 = new AllSpringboardDB();
+        AllSpringboardDB all34 = new AllSpringboardDB();
+        AllSpringboardDB all35 = new AllSpringboardDB();
+        AllSpringboardDB all36 = new AllSpringboardDB();
+        AllSpringboardDB all37 = new AllSpringboardDB();
+        AllSpringboardDB all38 = new AllSpringboardDB();
+        AllSpringboardDB all39 = new AllSpringboardDB();
+        AllSpringboardDB all40 = new AllSpringboardDB();
+        AllSpringboardDB all41 = new AllSpringboardDB();
+        AllSpringboardDB all42 = new AllSpringboardDB();
+        AllSpringboardDB all43 = new AllSpringboardDB();
+        AllSpringboardDB all44 = new AllSpringboardDB();
+        AllSpringboardDB all45 = new AllSpringboardDB();
+        AllSpringboardDB all46 = new AllSpringboardDB();
+        AllSpringboardDB all47 = new AllSpringboardDB();
+        AllSpringboardDB all48 = new AllSpringboardDB();
+        AllSpringboardDB all49 = new AllSpringboardDB();
+        AllSpringboardDB all50 = new AllSpringboardDB();
+
+
+        AllSpringboardDB all51 = new AllSpringboardDB();
+        AllSpringboardDB all52 = new AllSpringboardDB();
+        AllSpringboardDB all53 = new AllSpringboardDB();
+        AllSpringboardDB all54 = new AllSpringboardDB();
+        AllSpringboardDB all55 = new AllSpringboardDB();
+        AllSpringboardDB all56 = new AllSpringboardDB();
+        AllSpringboardDB all57 = new AllSpringboardDB();
+        AllSpringboardDB all58 = new AllSpringboardDB();
+        AllSpringboardDB all59 = new AllSpringboardDB();
+        AllSpringboardDB all60 = new AllSpringboardDB();
+        AllSpringboardDB all61 = new AllSpringboardDB();
+        AllSpringboardDB all62 = new AllSpringboardDB();
+        AllSpringboardDB all63 = new AllSpringboardDB();
+        AllSpringboardDB all64 = new AllSpringboardDB();
+        AllSpringboardDB all65 = new AllSpringboardDB();
+        AllSpringboardDB all66 = new AllSpringboardDB();
+        AllSpringboardDB all67 = new AllSpringboardDB();
+        AllSpringboardDB all68 = new AllSpringboardDB();
+        AllSpringboardDB all69 = new AllSpringboardDB();
+        AllSpringboardDB all70 = new AllSpringboardDB();
+        AllSpringboardDB all71 = new AllSpringboardDB();
+        AllSpringboardDB all72 = new AllSpringboardDB();
+        AllSpringboardDB all73 = new AllSpringboardDB();
+        AllSpringboardDB all74 = new AllSpringboardDB();
+        AllSpringboardDB all75 = new AllSpringboardDB();
+
+        AllSpringboardDB all76 = new AllSpringboardDB();
+        AllSpringboardDB all77 = new AllSpringboardDB();
+        AllSpringboardDB all78 = new AllSpringboardDB();
+        AllSpringboardDB all79 = new AllSpringboardDB();
+        AllSpringboardDB all80 = new AllSpringboardDB();
+        AllSpringboardDB all81 = new AllSpringboardDB();
+        AllSpringboardDB all82 = new AllSpringboardDB();
+        AllSpringboardDB all83 = new AllSpringboardDB();
+        AllSpringboardDB all84 = new AllSpringboardDB();
+        AllSpringboardDB all85 = new AllSpringboardDB();
+        AllSpringboardDB all86 = new AllSpringboardDB();
+        AllSpringboardDB all87 = new AllSpringboardDB();
+        AllSpringboardDB all88 = new AllSpringboardDB();
+        AllSpringboardDB all89 = new AllSpringboardDB();
+        AllSpringboardDB all90 = new AllSpringboardDB();
+        AllSpringboardDB all91 = new AllSpringboardDB();
+        AllSpringboardDB all92 = new AllSpringboardDB();
+        AllSpringboardDB all93 = new AllSpringboardDB();
+        AllSpringboardDB all94 = new AllSpringboardDB();
+        AllSpringboardDB all95 = new AllSpringboardDB();
+        AllSpringboardDB all96 = new AllSpringboardDB();
+        AllSpringboardDB all97 = new AllSpringboardDB();
+        AllSpringboardDB all98 = new AllSpringboardDB();
+        AllSpringboardDB all99 = new AllSpringboardDB();
+        AllSpringboardDB all100 = new AllSpringboardDB();
+
+        AllSpringboardDB all101 = new AllSpringboardDB();
+        AllSpringboardDB all102 = new AllSpringboardDB();
+        AllSpringboardDB all103 = new AllSpringboardDB();
+        AllSpringboardDB all104 = new AllSpringboardDB();
+        AllSpringboardDB all105 = new AllSpringboardDB();
+        AllSpringboardDB all106 = new AllSpringboardDB();
+        AllSpringboardDB all107 = new AllSpringboardDB();
+        AllSpringboardDB all108 = new AllSpringboardDB();
+        AllSpringboardDB all109 = new AllSpringboardDB();
+        AllSpringboardDB all110 = new AllSpringboardDB();
+        AllSpringboardDB all111 = new AllSpringboardDB();
+        AllSpringboardDB all112 = new AllSpringboardDB();
+        AllSpringboardDB all113 = new AllSpringboardDB();
+        AllSpringboardDB all114 = new AllSpringboardDB();
+        AllSpringboardDB all115 = new AllSpringboardDB();
+        AllSpringboardDB all116 = new AllSpringboardDB();
+        AllSpringboardDB all117 = new AllSpringboardDB();
+        AllSpringboardDB all118 = new AllSpringboardDB();
+        AllSpringboardDB all119 = new AllSpringboardDB();
+        AllSpringboardDB all120 = new AllSpringboardDB();
+        AllSpringboardDB all121 = new AllSpringboardDB();
+        AllSpringboardDB all122 = new AllSpringboardDB();
+        AllSpringboardDB all123 = new AllSpringboardDB();
+        AllSpringboardDB all124 = new AllSpringboardDB();
+        AllSpringboardDB all125 = new AllSpringboardDB();
+
+        AllSpringboardDB all126 = new AllSpringboardDB();
+        AllSpringboardDB all127 = new AllSpringboardDB();
+        AllSpringboardDB all128 = new AllSpringboardDB();
+        AllSpringboardDB all129 = new AllSpringboardDB();
+        AllSpringboardDB all130 = new AllSpringboardDB();
+        AllSpringboardDB all131 = new AllSpringboardDB();
+        AllSpringboardDB all132 = new AllSpringboardDB();
+        AllSpringboardDB all133 = new AllSpringboardDB();
+
+
+
+        for (int i = 1; i < 134; i++) {
+            //String allString =
+
+        }
+
+        createAllSpringboardDives(all1, db);
+
+    }
+
+    private void fillAllPlatform(SQLiteDatabase db) {
+
+        AllSpringboardDB all1 = new AllSpringboardDB();
+        AllSpringboardDB all2 = new AllSpringboardDB();
+        AllSpringboardDB all3 = new AllSpringboardDB();
+        AllSpringboardDB all4 = new AllSpringboardDB();
+        AllSpringboardDB all5 = new AllSpringboardDB();
+        AllSpringboardDB all6 = new AllSpringboardDB();
+        AllSpringboardDB all7 = new AllSpringboardDB();
+        AllSpringboardDB all8 = new AllSpringboardDB();
+        AllSpringboardDB all9 = new AllSpringboardDB();
+        AllSpringboardDB all10 = new AllSpringboardDB();
+        AllSpringboardDB all11 = new AllSpringboardDB();
+        AllSpringboardDB all12 = new AllSpringboardDB();
+        AllSpringboardDB all13 = new AllSpringboardDB();
+        AllSpringboardDB all14 = new AllSpringboardDB();
+        AllSpringboardDB all15 = new AllSpringboardDB();
+        AllSpringboardDB all16 = new AllSpringboardDB();
+        AllSpringboardDB all17 = new AllSpringboardDB();
+        AllSpringboardDB all18 = new AllSpringboardDB();
+        AllSpringboardDB all19 = new AllSpringboardDB();
+        AllSpringboardDB all20 = new AllSpringboardDB();
+        AllSpringboardDB all21 = new AllSpringboardDB();
+        AllSpringboardDB all22 = new AllSpringboardDB();
+        AllSpringboardDB all23 = new AllSpringboardDB();
+        AllSpringboardDB all24 = new AllSpringboardDB();
+        AllSpringboardDB all25 = new AllSpringboardDB();
+
+        AllSpringboardDB all26 = new AllSpringboardDB();
+        AllSpringboardDB all27 = new AllSpringboardDB();
+        AllSpringboardDB all28 = new AllSpringboardDB();
+        AllSpringboardDB all29 = new AllSpringboardDB();
+        AllSpringboardDB all30 = new AllSpringboardDB();
+        AllSpringboardDB all31 = new AllSpringboardDB();
+        AllSpringboardDB all32 = new AllSpringboardDB();
+        AllSpringboardDB all33 = new AllSpringboardDB();
+        AllSpringboardDB all34 = new AllSpringboardDB();
+        AllSpringboardDB all35 = new AllSpringboardDB();
+        AllSpringboardDB all36 = new AllSpringboardDB();
+        AllSpringboardDB all37 = new AllSpringboardDB();
+        AllSpringboardDB all38 = new AllSpringboardDB();
+        AllSpringboardDB all39 = new AllSpringboardDB();
+        AllSpringboardDB all40 = new AllSpringboardDB();
+        AllSpringboardDB all41 = new AllSpringboardDB();
+        AllSpringboardDB all42 = new AllSpringboardDB();
+        AllSpringboardDB all43 = new AllSpringboardDB();
+        AllSpringboardDB all44 = new AllSpringboardDB();
+        AllSpringboardDB all45 = new AllSpringboardDB();
+        AllSpringboardDB all46 = new AllSpringboardDB();
+        AllSpringboardDB all47 = new AllSpringboardDB();
+        AllSpringboardDB all48 = new AllSpringboardDB();
+        AllSpringboardDB all49 = new AllSpringboardDB();
+        AllSpringboardDB all50 = new AllSpringboardDB();
+
+
+        AllSpringboardDB all51 = new AllSpringboardDB();
+        AllSpringboardDB all52 = new AllSpringboardDB();
+        AllSpringboardDB all53 = new AllSpringboardDB();
+        AllSpringboardDB all54 = new AllSpringboardDB();
+        AllSpringboardDB all55 = new AllSpringboardDB();
+        AllSpringboardDB all56 = new AllSpringboardDB();
+        AllSpringboardDB all57 = new AllSpringboardDB();
+        AllSpringboardDB all58 = new AllSpringboardDB();
+        AllSpringboardDB all59 = new AllSpringboardDB();
+        AllSpringboardDB all60 = new AllSpringboardDB();
+        AllSpringboardDB all61 = new AllSpringboardDB();
+        AllSpringboardDB all62 = new AllSpringboardDB();
+        AllSpringboardDB all63 = new AllSpringboardDB();
+        AllSpringboardDB all64 = new AllSpringboardDB();
+        AllSpringboardDB all65 = new AllSpringboardDB();
+        AllSpringboardDB all66 = new AllSpringboardDB();
+        AllSpringboardDB all67 = new AllSpringboardDB();
+        AllSpringboardDB all68 = new AllSpringboardDB();
+        AllSpringboardDB all69 = new AllSpringboardDB();
+        AllSpringboardDB all70 = new AllSpringboardDB();
+        AllSpringboardDB all71 = new AllSpringboardDB();
+        AllSpringboardDB all72 = new AllSpringboardDB();
+        AllSpringboardDB all73 = new AllSpringboardDB();
+        AllSpringboardDB all74 = new AllSpringboardDB();
+        AllSpringboardDB all75 = new AllSpringboardDB();
+
+        AllSpringboardDB all76 = new AllSpringboardDB();
+        AllSpringboardDB all77 = new AllSpringboardDB();
+        AllSpringboardDB all78 = new AllSpringboardDB();
+        AllSpringboardDB all79 = new AllSpringboardDB();
+        AllSpringboardDB all80 = new AllSpringboardDB();
+        AllSpringboardDB all81 = new AllSpringboardDB();
+        AllSpringboardDB all82 = new AllSpringboardDB();
+        AllSpringboardDB all83 = new AllSpringboardDB();
+        AllSpringboardDB all84 = new AllSpringboardDB();
+        AllSpringboardDB all85 = new AllSpringboardDB();
+        AllSpringboardDB all86 = new AllSpringboardDB();
+        AllSpringboardDB all87 = new AllSpringboardDB();
+        AllSpringboardDB all88 = new AllSpringboardDB();
+        AllSpringboardDB all89 = new AllSpringboardDB();
+        AllSpringboardDB all90 = new AllSpringboardDB();
+        AllSpringboardDB all91 = new AllSpringboardDB();
+        AllSpringboardDB all92 = new AllSpringboardDB();
+        AllSpringboardDB all93 = new AllSpringboardDB();
+        AllSpringboardDB all94 = new AllSpringboardDB();
+        AllSpringboardDB all95 = new AllSpringboardDB();
+        AllSpringboardDB all96 = new AllSpringboardDB();
+        AllSpringboardDB all97 = new AllSpringboardDB();
+        AllSpringboardDB all98 = new AllSpringboardDB();
+        AllSpringboardDB all99 = new AllSpringboardDB();
+        AllSpringboardDB all100 = new AllSpringboardDB();
+
+        AllSpringboardDB all101 = new AllSpringboardDB();
+        AllSpringboardDB all102 = new AllSpringboardDB();
+        AllSpringboardDB all103 = new AllSpringboardDB();
+        AllSpringboardDB all104 = new AllSpringboardDB();
+        AllSpringboardDB all105 = new AllSpringboardDB();
+        AllSpringboardDB all106 = new AllSpringboardDB();
+        AllSpringboardDB all107 = new AllSpringboardDB();
+        AllSpringboardDB all108 = new AllSpringboardDB();
+        AllSpringboardDB all109 = new AllSpringboardDB();
+        AllSpringboardDB all110 = new AllSpringboardDB();
+        AllSpringboardDB all111 = new AllSpringboardDB();
+        AllSpringboardDB all112 = new AllSpringboardDB();
+        AllSpringboardDB all113 = new AllSpringboardDB();
+        AllSpringboardDB all114 = new AllSpringboardDB();
+        AllSpringboardDB all115 = new AllSpringboardDB();
+        AllSpringboardDB all116 = new AllSpringboardDB();
+        AllSpringboardDB all117 = new AllSpringboardDB();
+        AllSpringboardDB all118 = new AllSpringboardDB();
+        AllSpringboardDB all119 = new AllSpringboardDB();
+        AllSpringboardDB all120 = new AllSpringboardDB();
+        AllSpringboardDB all121 = new AllSpringboardDB();
+        AllSpringboardDB all122 = new AllSpringboardDB();
+        AllSpringboardDB all123 = new AllSpringboardDB();
+        AllSpringboardDB all124 = new AllSpringboardDB();
+        AllSpringboardDB all125 = new AllSpringboardDB();
+
+        AllSpringboardDB all126 = new AllSpringboardDB();
+        AllSpringboardDB all127 = new AllSpringboardDB();
+        AllSpringboardDB all128 = new AllSpringboardDB();
+        AllSpringboardDB all129 = new AllSpringboardDB();
+        AllSpringboardDB all130 = new AllSpringboardDB();
+        AllSpringboardDB all131 = new AllSpringboardDB();
+        AllSpringboardDB all132 = new AllSpringboardDB();
+        AllSpringboardDB all133 = new AllSpringboardDB();
+
     }
 
     // fill dive tables with data
