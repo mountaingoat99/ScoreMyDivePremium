@@ -776,7 +776,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(TABLE_SCORES, null, values);
     }
 
-    public void createTableAllPlatformDives(AllPlatformDB all, SQLiteDatabase db) {
+    public void createAllPlatformDives(AllPlatformDB all, SQLiteDatabase db) {
 
         ContentValues values = new ContentValues();
         values.put(KEY_ID, all.getId());
@@ -1301,14 +1301,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         AllSpringboardDB all132 = new AllSpringboardDB();
         AllSpringboardDB all133 = new AllSpringboardDB();
 
-
-
-        for (int i = 1; i < 134; i++) {
-            //String allString =
-
-        }
-
         createAllSpringboardDives(all1, db);
+
+
+
+
 
     }
 
