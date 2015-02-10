@@ -352,5 +352,7 @@
     <string name="title_activity_dive_choose">Dive Choose</string>
     <string name="dive_dd_text">Dive DD:</string>
     <string name="enter_dive_position">Enter Dive Position</string>
+    <string name="dive_number_hint">103</string>
+    <string name="dive_position_hint">B</string>
 
 </resources>

@@ -52,7 +52,7 @@ public class DiveNumberEnter extends ActionBarActivity {
         diveNumber = b.getInt("diveNumber");
         boardType = b.getDouble("boardType");
 
-        diveddView.setText("Dive DD: 0.0");
+        diveddView.setText("Dive DD: ");
         getDiveTotals();
         addListenerOnButton();
         doATextWatcher();
@@ -73,9 +73,7 @@ public class DiveNumberEnter extends ActionBarActivity {
                     int id = Integer.parseInt(editDiveNum.getText().toString().trim());
                     int pos = ConvertDivePosition(editDivePos.getText().toString().trim());
                     multiplier = num.GetMultiplier(id, pos, boardType, context);
-                    diveddView.setText("Dive DD: " + String.valueOf(multiplier));
-                } else {
-                    diveddView.setText("Dive DD: 0.0");
+                    doesDiveExist();
                 }
             }
 
@@ -97,10 +95,7 @@ public class DiveNumberEnter extends ActionBarActivity {
                     int id = Integer.parseInt(editDiveNum.getText().toString().trim());
                     int pos = ConvertDivePosition(editDivePos.getText().toString().trim());
                     multiplier = num.GetMultiplier(id, pos, boardType, context);
-                    diveddView.setText(String.valueOf(multiplier));
-                    diveddView.setText("Dive DD: " + String.valueOf(multiplier));
-                } else {
-                    diveddView.setText("Dive DD: 0.0");
+                    doesDiveExist();
                 }
             }
 
@@ -109,6 +104,20 @@ public class DiveNumberEnter extends ActionBarActivity {
 
             }
         });
+    }
+
+    private void doesDiveExist() {
+
+        if (multiplier > 0.0){
+            diveddView.setText(String.valueOf(multiplier));
+            diveddView.setText("Dive DD: " + String.valueOf(multiplier));
+            btnJudgeScore.setEnabled(true);
+            btnTotalScore.setEnabled(true);
+        } else {
+            diveddView.setText("Dive does not exist");
+            btnTotalScore.setEnabled(false);
+            btnJudgeScore.setEnabled(false);
+        }
     }
 
     private int ConvertDivePosition(String pos) {
