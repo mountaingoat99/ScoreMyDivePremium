@@ -817,7 +817,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(THREE_T, all.getThreeC());
         values.put(THREE_F, all.getThreeD());
 
-        db.insert(TABLE_FORWARD, null, values);
+        db.insert(TABLE_ALL_SPRINGBOARD_DIVES, null, values);
 
     }
 

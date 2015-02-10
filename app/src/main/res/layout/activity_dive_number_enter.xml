@@ -23,7 +23,7 @@
         android:background="@drawable/layer_card_background">
 
         <TextView
-            android:id="@+id/diveAndDD"
+            android:id="@+id/diveNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/enter_dive_number"
@@ -33,7 +33,34 @@
             android:background="@color/primary_light"/>
 
         <EditText
-            android:id="@+id/editDiveDD"
+            android:id="@+id/editDiveNum"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:inputType="number"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/primary_text"
+            android:textCursorDrawable="@null">
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/divePos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_dive_position"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/secondary_text"
+            android:gravity="start"
+            android:background="@color/primary_light"/>
+
+        <EditText
+            android:id="@+id/editDivePos"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -46,7 +73,6 @@
             android:textSize="@dimen/text_size_medium"
             android:textColor="@color/primary_text"
             android:textCursorDrawable="@null">
-            <requestFocus />
         </EditText>
 
         <TextView

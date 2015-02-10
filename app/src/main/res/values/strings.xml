@@ -351,5 +351,6 @@
     <string name="title_activity_dive_number_enter">Dive Number Enter</string>
     <string name="title_activity_dive_choose">Dive Choose</string>
     <string name="dive_dd_text">Dive DD:</string>
+    <string name="enter_dive_position">Enter Dive Position</string>
 
 </resources>

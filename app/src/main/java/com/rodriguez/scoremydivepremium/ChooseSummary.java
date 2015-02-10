@@ -101,7 +101,12 @@ public class ChooseSummary extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DiveNumberEnter.class);
-                //TODO add bundle items
+                Bundle b = new Bundle();
+                b.putInt("keyDiver", diverId);
+                b.putInt("keyMeet", meetId);
+                b.putInt("diveNumber", diveNumber);
+                b.putDouble("boardType", boardType);
+                intent.putExtras(b);
                 startActivity(intent);
             }
         });
