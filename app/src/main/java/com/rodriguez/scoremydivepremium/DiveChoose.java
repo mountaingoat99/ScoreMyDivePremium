@@ -22,7 +22,6 @@ import android.widget.Toast;
 import com.info.Helpers.DiveStyleSpinner;
 import com.info.controls.DiveChooseController;
 import com.info.controls.SpinnerDiveStyleCustomBaseAdpater;
-import com.info.sqlite.helper.DiveTotalDatabase;
 import com.info.sqlite.helper.DivesDatabase;
 import com.info.sqlite.helper.PlatformDivesDatabase;
 
@@ -36,9 +35,9 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
     private RadioButton rdStraight, rdPike, rdTuck, rdFree;
     private TextView diveddView, name;
     private Button btnJudgeScore, btnTotalScore;
-    private int diverId, meetId, diveTotal, diveType, diveNumber, divePosition;
+    private int diverId, meetId, diveType, diveNumber, divePosition;
     private double boardType, multiplier = 0.0;
-    private String stringId;
+    private String stringId, divePosString;
     private ArrayList<DiveStyleSpinner> searchDives;
     final Context context = this;
     private static final String KEY_TEXT_VALUE = "textValue";
@@ -67,7 +66,7 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
         }
 
         loadCatSpinnerData();
-        getDiveTotals();
+        //getDiveTotals();
         addListenerOnButton();
         checkRadios();
     }
@@ -80,20 +79,36 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
 
                 if (multiplier != 0.0) {
 
+                    // divetype in string
+                    String diveTypeName = spinnerDiveCat.getSelectedItem().toString();
+                    //dive Name in string
                     TextView name = (TextView) findViewById(R.id.diveStyle);
+                    String diveName = name.getText().toString();
+                    // diveID
                     TextView id = (TextView) findViewById(R.id.diveId);
-                    String i = id.getText().toString();
-                    String diveTypeName = i + " - " + name.getText().toString();
+                    int diveId = Integer.parseInt(id.getText().toString());
 
                     Intent intent = new Intent(context, Dives.class);
                     Bundle b = new Bundle();
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
-                    b.putInt("diveType", diveType);
+                    b.putInt("diveNumber", diveNumber);
+                    // BoardSize
                     b.putDouble("boardType", boardType);
+                    // DD
                     b.putDouble("multiplier", multiplier);
-                    b.putString("diveName", diveTypeName);
-                    //TODO add position and diveName String
+                    // diveType Int
+                    b.putInt("diveType", diveType);
+                    // diveType String
+                    b.putString("diveTypeString", diveTypeName);
+                    // diveID
+                    b.putInt("diveID", diveId);
+                    // dive name
+                    b.putString("diveName", diveName);
+                    // position int
+                    b.putInt("positionNum", divePosition);
+                    // position String
+                    b.putString("postionString", divePosString);
                     intent.putExtras(b);
                     startActivity(intent);
 
@@ -112,21 +127,36 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
 
                 if (multiplier != 0.0) {
 
+                    // divetype in string
+                    String diveTypeName = spinnerDiveCat.getSelectedItem().toString();
+                    //dive Name in string
                     TextView name = (TextView) findViewById(R.id.diveStyle);
+                    String diveName = name.getText().toString();
+                    // diveID
                     TextView id = (TextView) findViewById(R.id.diveId);
-                    String i = id.getText().toString();
-                    String diveTypeName = i + " - " + name.getText().toString();
+                    int diveId = Integer.parseInt(id.getText().toString());
 
                     Intent intent = new Intent(context, EnterFinalDiveScore.class);
                     Bundle b = new Bundle();
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
-                    b.putInt("diveType", diveType);
+                    b.putInt("diveNumber", diveNumber);
+                    // BoardSize
                     b.putDouble("boardType", boardType);
+                    // DD
                     b.putDouble("multiplier", multiplier);
-
-                    b.putString("diveName", diveTypeName);
-                    //TODO add position and diveName String
+                    // diveType Int
+                    b.putInt("diveType", diveType);
+                    // diveType String
+                    b.putString("diveTypeString", diveTypeName);
+                    // diveID
+                    b.putInt("diveID", diveId);
+                    // dive name
+                    b.putString("diveName", diveName);
+                    // position int
+                    b.putInt("positionNum", divePosition);
+                    // position String
+                    b.putString("postionString", divePosString);
                     intent.putExtras(b);
                     startActivity(intent);
 
@@ -250,6 +280,7 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
                 rdStraight.setChecked(true);
                 rdTuck.setChecked(false);
                 divePosition = 1;
+                divePosString = "A";
                 getMultiplier();
             }
         });
@@ -261,6 +292,7 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
                 rdStraight.setChecked(false);
                 rdTuck.setChecked(false);
                 divePosition = 2;
+                divePosString = "B";
                 getMultiplier();
             }
         });
@@ -272,6 +304,7 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
                 rdStraight.setChecked(false);
                 rdTuck.setChecked(true);
                 divePosition = 3;
+                divePosString = "C";
                 getMultiplier();
             }
         });
@@ -283,6 +316,7 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
                 rdStraight.setChecked(false);
                 rdTuck.setChecked(false);
                 divePosition = 4;
+                divePosString = "D";
                 getMultiplier();
             }
         });
@@ -304,10 +338,10 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
         }
     }
 
-    private void getDiveTotals(){
-        SearchDiveTotals total = new SearchDiveTotals();
-        diveTotal = total.doInBackground();
-    }
+//    private void getDiveTotals(){
+//        SearchDiveTotals total = new SearchDiveTotals();
+//        diveTotal = total.doInBackground();
+//    }
 
     private void setUpView() {
 
@@ -355,14 +389,14 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
 
     }
 
-    private class SearchDiveTotals extends AsyncTask<Integer, Object, Object> {
-        DiveTotalDatabase db = new DiveTotalDatabase(getApplicationContext());
-
-        @Override
-        protected Integer doInBackground(Integer... params) {
-            return db.searchTotals(meetId, diverId);
-        }
-    }
+//    private class SearchDiveTotals extends AsyncTask<Integer, Object, Object> {
+//        DiveTotalDatabase db = new DiveTotalDatabase(getApplicationContext());
+//
+//        @Override
+//        protected Integer doInBackground(Integer... params) {
+//            return db.searchTotals(meetId, diverId);
+//        }
+//    }
 
     private class GetSpringboardDiveName extends AsyncTask<List<String>, Object, Object> {
         DivesDatabase db = new DivesDatabase(getApplicationContext());

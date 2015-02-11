@@ -19,10 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.info.controls.DiveNumberEnterController;
-import com.info.sqlite.helper.AllSpringboardDatabase;
-import com.info.sqlite.helper.DiveTotalDatabase;
-
-import org.apache.http.cookie.CookieIdentityComparator;
 
 
 public class DiveNumberEnter extends ActionBarActivity {
@@ -30,8 +26,9 @@ public class DiveNumberEnter extends ActionBarActivity {
     private EditText editDiveNum, editDivePos;
     private TextView diveddView;
     private Button btnJudgeScore, btnTotalScore;
-    private int diverId, meetId, diveTotal, diveType, diveNumber, divePosition;
+    private int diverId, meetId, diveType, diveNumber, divePosition;
     private double boardType, multiplier = 0.0;
+    private String divePosString;
     final Context context = this;
 
     @Override
@@ -57,7 +54,7 @@ public class DiveNumberEnter extends ActionBarActivity {
         }
 
         diveddView.setText("Dive DD: ");
-        getDiveTotals();
+        //getDiveTotals();
         addListenerOnButton();
         doATextWatcher();
     }
@@ -125,24 +122,29 @@ public class DiveNumberEnter extends ActionBarActivity {
     }
 
     private int ConvertDivePosition(String pos) {
-        int position = 0;
         if (pos.equals("A") || pos.equals("a")){
-            position = 1;
+            divePosString = "A";
+            divePosition = 1;
         }
         if (pos.equals("B") || pos.equals("b")){
-            position = 2;
+            divePosString = "B";
+            divePosition = 2;
         }
         if (pos.equals("C") || pos.equals("c")){
-            position = 3;
+            divePosString = "C";
+            divePosition = 3;
         }
         if (pos.equals("D") || pos.equals("d")){
-            position = 4;
+            divePosString = "D";
+            divePosition = 4;
         }
 
-        return position;
+        return divePosition;
     }
 
     private void addListenerOnButton() {
+
+
 
         btnJudgeScore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,19 +153,37 @@ public class DiveNumberEnter extends ActionBarActivity {
                 if (multiplier != 0.0) {
 
                     DiveNumberEnterController db = new DiveNumberEnterController();
+                    // diveType in String
                     String diveTypeName = db.GetDiveType(Integer.parseInt(editDiveNum.getText().toString().trim()), boardType);
+                    // diveType Int
+                    int firstDigit = Integer.parseInt(editDiveNum.getText().toString().trim());
+                    diveType = DiveNumberEnterController.firstDigit(firstDigit);
+                    // dive Name in string
                     String diveName = db.GetDiveName(Integer.parseInt(editDiveNum.getText().toString().trim()), boardType, context);
+                    // TODO don't need this, we'll do it in next screen
                     String diveNameToSend = diveTypeName + " - " + diveName;
 
                     Intent intent = new Intent(context, Dives.class);
                     Bundle b = new Bundle();
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
-                    b.putInt("diveType", diveType);
+                    b.putInt("diveNumber", diveNumber);
+                    // BoardSize
                     b.putDouble("boardType", boardType);
+                    // DD
                     b.putDouble("multiplier", multiplier);
-                    b.putString("diveName", diveNameToSend);
-                    //TODO add position and diveName String
+                    // diveType Int
+                    b.putInt("diveType", diveType);
+                    // diveType String
+                    b.putString("diveTypeString", diveTypeName);
+                    // diveID
+                    b.putInt("diveID", Integer.parseInt(editDiveNum.getText().toString().trim()));
+                    // dive name
+                    b.putString("diveName", diveName);
+                    // position int
+                    b.putInt("positionNum", divePosition);
+                    // position String
+                    b.putString("postionString", divePosString);
                     intent.putExtras(b);
                     startActivity(intent);
 
@@ -183,19 +203,37 @@ public class DiveNumberEnter extends ActionBarActivity {
                 if (multiplier != 0.0) {
 
                     DiveNumberEnterController db = new DiveNumberEnterController();
+                    // diveType in String
                     String diveTypeName = db.GetDiveType(Integer.parseInt(editDiveNum.getText().toString().trim()), boardType);
+                    // diveType Int
+                    int firstDigit = Integer.parseInt(editDiveNum.getText().toString().trim());
+                    diveType = DiveNumberEnterController.firstDigit(firstDigit);
+                    // dive Name in string
                     String diveName = db.GetDiveName(Integer.parseInt(editDiveNum.getText().toString().trim()), boardType, context);
+                    // TODO don't need this, we'll do it in next screen
                     String diveNameToSend = diveTypeName + " - " + diveName;
 
                     Intent intent = new Intent(context, EnterFinalDiveScore.class);
                     Bundle b = new Bundle();
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
-                    b.putInt("diveType", diveType);
+                    b.putInt("diveNumber", diveNumber);
+                    // BoardSize
                     b.putDouble("boardType", boardType);
+                    // DD
                     b.putDouble("multiplier", multiplier);
-                    b.putString("diveName", diveNameToSend);
-                    //TODO add position and diveName String
+                    // diveType Int
+                    b.putInt("diveType", diveType);
+                    // diveType String
+                    b.putString("diveTypeString", diveTypeName);
+                    // diveID
+                    b.putInt("diveID", Integer.parseInt(editDiveNum.getText().toString().trim()));
+                    // dive name
+                    b.putString("diveName", diveName);
+                    // position int
+                    b.putInt("positionNum", divePosition);
+                    // position String
+                    b.putString("postionString", divePosString);
                     intent.putExtras(b);
                     startActivity(intent);
 
@@ -209,10 +247,10 @@ public class DiveNumberEnter extends ActionBarActivity {
         });
     }
 
-    private void getDiveTotals(){
-        SearchDiveTotals total = new SearchDiveTotals();
-        diveTotal = total.doInBackground();
-    }
+//    private void getDiveTotals(){
+//        SearchDiveTotals total = new SearchDiveTotals();
+//        diveTotal = total.doInBackground();
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -236,12 +274,12 @@ public class DiveNumberEnter extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class SearchDiveTotals extends AsyncTask<Integer, Object, Object> {
-        DiveTotalDatabase db = new DiveTotalDatabase(getApplicationContext());
-
-        @Override
-        protected Integer doInBackground(Integer... params) {
-            return db.searchTotals(meetId, diverId);
-        }
-    }
+//    private class SearchDiveTotals extends AsyncTask<Integer, Object, Object> {
+//        DiveTotalDatabase db = new DiveTotalDatabase(getApplicationContext());
+//
+//        @Override
+//        protected Integer doInBackground(Integer... params) {
+//            return db.searchTotals(meetId, diverId);
+//        }
+//    }
 }

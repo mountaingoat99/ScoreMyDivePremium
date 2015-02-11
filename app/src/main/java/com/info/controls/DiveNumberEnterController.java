@@ -105,7 +105,7 @@ public class DiveNumberEnterController {
         return diveName;
     }
 
-    private static int firstDigit(int n) {
+    public static int firstDigit(int n) {
         while (n < -9 || 9 < n) n /= 10;
         return Math.abs(n);
     }

@@ -66,8 +66,10 @@ public class ChooseSummary extends ActionBarActivity {
         //spinner.setOnItemSelectedListener(this);
 
 		Bundle b = getIntent().getExtras();
-		diverId = b.getInt("keyDiver");
-		meetId = b.getInt("keyMeet");
+        if(b != null) {
+            diverId = b.getInt("keyDiver");
+            meetId = b.getInt("keyMeet");
+        }
         //diverSpinnerPosition = b.getInt("keySpin");
         fillType();
         //loadSpinnerData();

@@ -33,16 +33,17 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
 {
 	//private Spinner spinner;
     //private RadioButton radioTuck, radioPike, radioFree, radioStraight;
-    private TextView view4, view5, view6, view7, DD , diveNameString;
+    private TextView view4, view5, view6, view7, DD , diveNameView;
     private Spinner score1, score2, score3, score4, score5, score6, score7;
-    private int judges, diverId, meetId, diveType, diveNumber, divePosition;
+    private int judges, diverId, meetId, diveType, diveNumber, divePosition, diveId;
     private double boardType = 0.0;
     double diveTotal;
     private double sc1, sc2, sc3, sc4, sc5, sc6, sc7, diveScoreTotal = 0.0, multiplier = 0.0;
     //private ArrayList<DiveStyleSpinner> searchDives;
     private ArrayList<Double> Scores = new ArrayList<>();
     private boolean ifZeroTotal = true;
-    private String failedDive = "P", nameString = "", stringId, className = "nonList";
+    private String failedDive = "P", diveNameString = "", stringId, className = "nonList",
+                    diveTypeName, divePosString;
     private static final String KEY_TEXT_VALUE = "textValue";
 	
     @Override
@@ -63,10 +64,15 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
         if (b != null) {
             diverId = b.getInt("keyDiver");
             meetId = b.getInt("keyMeet");
-            diveType = b.getInt("diveType");
+            diveNumber = b.getInt("diveNumber");
             boardType = b.getDouble("boardType");
             multiplier = b.getDouble("multiplier");
-            nameString = b.getString("diveName");
+            diveType = b.getInt("diveType");
+            diveTypeName = b.getString("diveTypeString");
+            diveId = b.getInt("diveID");
+            diveNameString = b.getString("diveName");
+            divePosition = b.getInt("positionNum");
+            divePosString = b.getString("postionString");
         }
 
         score1.setOnItemSelectedListener(this);
@@ -80,7 +86,7 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
         loadScoreSpinners();
         //loadSpinnerData();
         setTitle();
-        getDiveNumber();
+        //getDiveNumber();
         getJudges();
         showScores();
         addListenerOnButton();
@@ -94,6 +100,17 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
     }
 
     @Override
+    public void onBackPressed(){
+        final Context context = this;
+        Intent intent = new Intent(context, ChooseSummary.class);
+        Bundle b = new Bundle();
+        b.putInt("keyDiver", diverId);
+        b.putInt("keyMeet", meetId);
+        intent.putExtras(b);
+        startActivity(intent);
+    }
+
+    @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position,
                                long id) {
 //        name = (TextView) findViewById(R.id.diveStyle);
@@ -104,10 +121,10 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
         //getMultiplier();
     }
 
-    private void getDiveNumber(){
-        GetDiveNumber num = new GetDiveNumber();
-        diveNumber = num.doInBackground();
-    }
+//    private void getDiveNumber(){
+//        GetDiveNumber num = new GetDiveNumber();
+//        diveNumber = num.doInBackground();
+//    }
 
 //    private void DisableRadioButtons(){
 //        int diveId;
@@ -812,8 +829,10 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
 //    }
 
     private void setTitle(){
-        diveNameString = (TextView)findViewById(R.id.diveNameString);
-        diveNameString.setText(nameString);
+        diveNameView = (TextView)findViewById(R.id.diveNameString);
+        String fullName = Integer.toString(diveId) + divePosString + " - "
+                + diveNameString + " - DD: " + Double.toString(multiplier);
+        diveNameView.setText(fullName);
 
 //        switch(diveType){
 //            case 1:
@@ -999,15 +1018,15 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
         }
     }
 
-    private class GetDiveNumber extends AsyncTask<Integer, Object, Object>{
-        DiveNumberDatabase db = new DiveNumberDatabase(getApplicationContext());
-        int num;
-
-        @Override
-        protected Integer doInBackground(Integer... params) {
-            return num = db.getDiveNumber(meetId, diverId);
-        }
-    }
+//    private class GetDiveNumber extends AsyncTask<Integer, Object, Object>{
+//        DiveNumberDatabase db = new DiveNumberDatabase(getApplicationContext());
+//        int num;
+//
+//        @Override
+//        protected Integer doInBackground(Integer... params) {
+//            return num = db.getDiveNumber(meetId, diverId);
+//        }
+//    }
 
     private class GetScoreNames extends AsyncTask<List<String>, Object, Object>{
         ScoresDatabase db = new ScoresDatabase(getApplicationContext());
