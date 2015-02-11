@@ -4,9 +4,9 @@
     android:id="@+id/standard_spinner_format"
     android:layout_width="match_parent"
     android:layout_height="45dp"
-    android:gravity="center_vertical"
-    android:textSize="@dimen/spinner_text"
-    android:layout_marginLeft="16dp"
-    android:textColor="@color/random_text">
+    android:gravity="center_horizontal"
+    android:textSize="@dimen/text_size_mini"
+    android:textColor="@color/primary_text"
+    android:background="@color/primary_light">
     
 </TextView>

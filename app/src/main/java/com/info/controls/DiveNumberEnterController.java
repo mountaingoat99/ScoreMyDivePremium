@@ -25,42 +25,63 @@ public class DiveNumberEnterController {
         return multiplier;
     }
 
-    public double GetDiveType(int id, double boardType) {
+    public String GetDiveType(int id, double boardType) {
 
         int testDiveType = 0;
-        int diveType = 0;
+        String diveType = null;
 
         if (boardType == 1.0 || boardType == 3.0) {
 
-            testDiveType = firstDigit(id);
-            if (testDiveType < 1 || testDiveType > 5)
-                return 0;
-            diveType = testDiveType;
+            if (testDiveType < 1 || testDiveType > 5) {
+                testDiveType = firstDigit(id);
+                switch (testDiveType) {
+                    case 1:
+                        diveType = "Forward Dive";
+                        break;
+                    case 2:
+                        diveType = "Back Dive";
+                        break;
+                    case 3:
+                        diveType = "Reverse Dive";
+                        break;
+                    case 4:
+                        diveType = "Inward Dive";
+                        break;
+                    case 5:
+                        diveType = "Twist Dive";
+                        break;
+                }
+            } else {
+                return "Not Valid";
+            }
 
         } else {
 
             testDiveType = firstDigit(id);
-            if (testDiveType < 1 || testDiveType > 6)
-                return 0;
-            switch (testDiveType) {
-                case 1:
-                    diveType = 6;
-                    break;
-                case 2:
-                    diveType = 7;
-                    break;
-                case 3:
-                    diveType = 8;
-                    break;
-                case 4:
-                    diveType = 9;
-                    break;
-                case 5:
-                    diveType = 10;
-                    break;
-                case 6:
-                    diveType = 11;
-                    break;
+            if (testDiveType < 1 || testDiveType > 6) {
+
+                switch (testDiveType) {
+                    case 1:
+                        diveType = "Front Platform Dives";
+                        break;
+                    case 2:
+                        diveType = "Back Platform Dives";
+                        break;
+                    case 3:
+                        diveType = "Reverse Platform Dives";
+                        break;
+                    case 4:
+                        diveType = "Inward Platform Dives";
+                        break;
+                    case 5:
+                        diveType = "Twist Platform Dives";
+                        break;
+                    case 6:
+                        diveType = "Armstand Platform Dives";
+                        break;
+                }
+            } else {
+                return "Not Valid";
             }
         }
         return diveType;
@@ -68,7 +89,7 @@ public class DiveNumberEnterController {
 
     public String GetDiveName(int id, double boardType, Context context) {
 
-        String diveName = null;
+        String diveName;
 
         if(boardType == 1.0 || boardType == 3.0){
 

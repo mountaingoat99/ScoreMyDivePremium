@@ -69,10 +69,13 @@ public class EnterFinalDiveScore extends ActionBarActivity implements OnItemSele
         setUpView();
 
         Bundle b = getIntent().getExtras();
-        diverId = b.getInt("keyDiver");
-        meetId = b.getInt("keyMeet");
-        diveType = b.getInt("diveType");
-        boardType = b.getDouble("boardType");
+        if(b != null) {
+            diverId = b.getInt("keyDiver");
+            meetId = b.getInt("keyMeet");
+            diveType = b.getInt("diveType");
+            boardType = b.getDouble("boardType");
+            multiplier = b.getDouble("multiplier");
+        }
 
         spinner.setOnItemSelectedListener(this);
         loadSpinnerData();

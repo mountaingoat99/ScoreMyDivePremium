@@ -1,6 +1,7 @@
 package com.rodriguez.scoremydivepremium;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.info.Helpers.DiveStyleSpinner;
 import com.info.controls.DiveChooseController;
@@ -57,10 +59,12 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
         spinnerDiveType.setOnItemSelectedListener(this);
 
         Bundle b = getIntent().getExtras();
-        diverId = b.getInt("keyDiver");
-        meetId = b.getInt("keyMeet");
-        diveNumber = b.getInt("diveNumber");
-        boardType = b.getDouble("boardType");
+        if(b != null) {
+            diverId = b.getInt("keyDiver");
+            meetId = b.getInt("keyMeet");
+            diveNumber = b.getInt("diveNumber");
+            boardType = b.getDouble("boardType");
+        }
 
         loadCatSpinnerData();
         getDiveTotals();
@@ -74,6 +78,31 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
             @Override
             public void onClick(View v) {
 
+                if (multiplier != 0.0) {
+
+                    TextView name = (TextView) findViewById(R.id.diveStyle);
+                    TextView id = (TextView) findViewById(R.id.diveId);
+                    String i = id.getText().toString();
+                    String diveTypeName = i + " - " + name.getText().toString();
+
+                    Intent intent = new Intent(context, Dives.class);
+                    Bundle b = new Bundle();
+                    b.putInt("keyDiver", diverId);
+                    b.putInt("keyMeet", meetId);
+                    b.putInt("diveType", diveType);
+                    b.putDouble("boardType", boardType);
+                    b.putDouble("multiplier", multiplier);
+                    b.putString("diveName", diveTypeName);
+                    //TODO add position and diveName String
+                    intent.putExtras(b);
+                    startActivity(intent);
+
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Dive and Position is not valid, " +
+                                    "Please Choose a Valid Combination.",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -81,6 +110,32 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
             @Override
             public void onClick(View v) {
 
+                if (multiplier != 0.0) {
+
+                    TextView name = (TextView) findViewById(R.id.diveStyle);
+                    TextView id = (TextView) findViewById(R.id.diveId);
+                    String i = id.getText().toString();
+                    String diveTypeName = i + " - " + name.getText().toString();
+
+                    Intent intent = new Intent(context, EnterFinalDiveScore.class);
+                    Bundle b = new Bundle();
+                    b.putInt("keyDiver", diverId);
+                    b.putInt("keyMeet", meetId);
+                    b.putInt("diveType", diveType);
+                    b.putDouble("boardType", boardType);
+                    b.putDouble("multiplier", multiplier);
+
+                    b.putString("diveName", diveTypeName);
+                    //TODO add position and diveName String
+                    intent.putExtras(b);
+                    startActivity(intent);
+
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Dive and Position is not valid, " +
+                                    "Please Choose a Valid Combination.",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

@@ -1,6 +1,7 @@
 package com.rodriguez.scoremydivepremium;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -15,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.info.controls.DiveNumberEnterController;
 import com.info.sqlite.helper.AllSpringboardDatabase;
@@ -47,10 +49,12 @@ public class DiveNumberEnter extends ActionBarActivity {
         btnTotalScore = (Button)findViewById(R.id.buttonTotalScore);
 
         Bundle b = getIntent().getExtras();
-        diverId = b.getInt("keyDiver");
-        meetId = b.getInt("keyMeet");
-        diveNumber = b.getInt("diveNumber");
-        boardType = b.getDouble("boardType");
+        if (b != null) {
+            diverId = b.getInt("keyDiver");
+            meetId = b.getInt("keyMeet");
+            diveNumber = b.getInt("diveNumber");
+            boardType = b.getDouble("boardType");
+        }
 
         diveddView.setText("Dive DD: ");
         getDiveTotals();
@@ -144,6 +148,31 @@ public class DiveNumberEnter extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
+                if (multiplier != 0.0) {
+
+                    DiveNumberEnterController db = new DiveNumberEnterController();
+                    String diveTypeName = db.GetDiveType(Integer.parseInt(editDiveNum.getText().toString().trim()), boardType);
+                    String diveName = db.GetDiveName(Integer.parseInt(editDiveNum.getText().toString().trim()), boardType, context);
+                    String diveNameToSend = diveTypeName + " - " + diveName;
+
+                    Intent intent = new Intent(context, Dives.class);
+                    Bundle b = new Bundle();
+                    b.putInt("keyDiver", diverId);
+                    b.putInt("keyMeet", meetId);
+                    b.putInt("diveType", diveType);
+                    b.putDouble("boardType", boardType);
+                    b.putDouble("multiplier", multiplier);
+                    b.putString("diveName", diveNameToSend);
+                    //TODO add position and diveName String
+                    intent.putExtras(b);
+                    startActivity(intent);
+
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Dive and Position is not valid, " +
+                                    "Please Choose a Valid Combination.",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -151,6 +180,31 @@ public class DiveNumberEnter extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
+                if (multiplier != 0.0) {
+
+                    DiveNumberEnterController db = new DiveNumberEnterController();
+                    String diveTypeName = db.GetDiveType(Integer.parseInt(editDiveNum.getText().toString().trim()), boardType);
+                    String diveName = db.GetDiveName(Integer.parseInt(editDiveNum.getText().toString().trim()), boardType, context);
+                    String diveNameToSend = diveTypeName + " - " + diveName;
+
+                    Intent intent = new Intent(context, EnterFinalDiveScore.class);
+                    Bundle b = new Bundle();
+                    b.putInt("keyDiver", diverId);
+                    b.putInt("keyMeet", meetId);
+                    b.putInt("diveType", diveType);
+                    b.putDouble("boardType", boardType);
+                    b.putDouble("multiplier", multiplier);
+                    b.putString("diveName", diveNameToSend);
+                    //TODO add position and diveName String
+                    intent.putExtras(b);
+                    startActivity(intent);
+
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Dive and Position is not valid, " +
+                                    "Please Choose a Valid Combination.",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

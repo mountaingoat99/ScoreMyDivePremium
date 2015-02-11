@@ -11,12 +11,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingStart="8dp"
-        android:paddingRight="8dp"
-        android:paddingEnd="8dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
         android:background="@drawable/layer_card_background">
 
         <TextView
@@ -27,7 +27,7 @@
             android:layout_marginTop="8dp"
             android:gravity="start"
             android:text="103B - Forward Dive DD: 1.6"
-            android:textSize="@dimen/text_size_small"
+            android:textSize="@dimen/text_size_medium"
             android:textColor="@color/secondary_text"
             android:background="@color/primary_light"/>
 
@@ -35,14 +35,14 @@
             android:id="@+id/view1"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             android:background="@color/primary"/>
 
         <LinearLayout
             android:id="@+id/layout3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:background="@color/primary_light">
 
             <View
@@ -58,7 +58,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_1"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/static_text"
                 android:background="@color/primary_light"/>
 
@@ -79,12 +79,6 @@
                 android:layout_weight="1"
                 android:background="@color/primary_light"/>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/primary_light"/>
-
             <TextView
                 android:id="@+id/score2"
                 android:layout_width="wrap_content"
@@ -92,12 +86,40 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_2"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/static_text"
                 android:background="@color/primary_light"/>
 
             <Spinner
                 android:id="@+id/editScore2"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/random_text"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="none"
+                android:background="@color/primary_light">
+            </Spinner>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/primary_light"/>
+
+            <TextView
+                android:id="@+id/score3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:layout_marginEnd="6dp"
+                android:text="@string/score_3"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/static_text"
+                android:background="@color/primary_light"/>
+
+            <Spinner
+                android:id="@+id/editScore3"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
@@ -119,42 +141,8 @@
             android:id="@+id/layout4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:background="@color/primary_light">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/primary_light"/>
-
-            <TextView
-                android:id="@+id/score3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="6dp"
-                android:layout_marginEnd="6dp"
-                android:text="@string/score_3"
-                android:textSize="@dimen/text_size_mini"
-                android:textColor="@color/static_text"
-                android:background="@color/primary_light"/>
-
-            <Spinner
-                android:id="@+id/editScore3"
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_small"
-                android:textColor="@color/random_text"
-                android:scrollbarStyle="insideInset"
-                android:scrollbars="none"
-                android:background="@color/primary_light">
-            </Spinner>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/primary_light"/>
 
             <View
                 android:layout_width="0dp"
@@ -169,7 +157,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_4"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/static_text"
                 android:background="@color/primary_light"/>
 
@@ -190,21 +178,6 @@
                 android:layout_weight="1"
                 android:background="@color/primary_light"/>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout5"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@color/primary_light">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/primary_light"/>
-
             <TextView
                 android:id="@+id/score5"
                 android:layout_width="wrap_content"
@@ -212,7 +185,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_5"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/static_text"
                 android:background="@color/primary_light"/>
 
@@ -233,12 +206,6 @@
                 android:layout_weight="1"
                 android:background="@color/primary_light"/>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/primary_light"/>
-
             <TextView
                 android:id="@+id/score6"
                 android:layout_width="wrap_content"
@@ -246,7 +213,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_6"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/static_text"
                 android:background="@color/primary_light"/>
 
@@ -273,7 +240,7 @@
             android:id="@+id/layout6"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:background="@color/primary_light">
 
             <View
@@ -289,7 +256,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_7"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/static_text"
                 android:background="@color/primary_light"/>
 
@@ -310,6 +277,28 @@
                 android:layout_weight="1"
                 android:background="@color/primary_light"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:layout_marginEnd="6dp"
+                android:text="@string/score_6"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/static_text"
+                android:visibility="invisible"
+                android:background="@color/primary_light"/>
+
+            <Spinner
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/random_text"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="none"
+                android:visibility="invisible"
+                android:background="@color/primary_light">
+            </Spinner>
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
@@ -322,7 +311,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_6"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/static_text"
                 android:visibility="invisible"
                 android:background="@color/primary_light"/>
