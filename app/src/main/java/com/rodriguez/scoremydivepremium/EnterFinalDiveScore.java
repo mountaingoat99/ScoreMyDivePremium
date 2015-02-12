@@ -27,7 +27,7 @@ import com.info.sqlite.helper.ResultDatabase;
 public class EnterFinalDiveScore extends ActionBarActivity {
     private Spinner spinner;
     private EditText score1;
-    private TextView diveNameView;
+    private TextView diveNameView, diveDDView;
     //private RadioButton radioTuck, radioPike, radioFree, radioStraight;
     private int diverId, meetId, diveType, diveNumber, diveTotal, divePosition, diveId;
     private double boardType = 0.0;
@@ -89,6 +89,7 @@ public class EnterFinalDiveScore extends ActionBarActivity {
         b.putInt("keyDiver", diverId);
         b.putInt("keyMeet", meetId);
         intent.putExtras(b);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
@@ -391,8 +392,10 @@ public class EnterFinalDiveScore extends ActionBarActivity {
 
     private void setTitle(){
         diveNameView = (TextView)findViewById(R.id.diveNameString);
+        diveDDView = (TextView)findViewById(R.id.diveDDString);
         String fullName = Integer.toString(diveId) + divePosString + " - "
-                + diveNameString + " - DD: " + Double.toString(multiplier);
+                + diveNameString;
+        diveDDView.setText("Dive DD: " + Double.toString(multiplier));
         diveNameView.setText(fullName);
 
 
@@ -452,6 +455,7 @@ public class EnterFinalDiveScore extends ActionBarActivity {
                         b.putInt("keyMeet", meetId);
                         Intent intent = new Intent(context, ChooseSummary.class);
                         intent.putExtras(b);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }else {
                         Toast.makeText(getApplicationContext(),

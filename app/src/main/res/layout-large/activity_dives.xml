@@ -20,13 +20,25 @@
         android:background="@drawable/layer_card_background">
 
         <TextView
+            android:id="@+id/diveDDString"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="8dp"
+            android:gravity="start"
+            android:text="DD: 1.6"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/secondary_text"
+            android:background="@color/primary_light"/>
+
+        <TextView
             android:id="@+id/diveNameString"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginTop="8dp"
             android:gravity="start"
-            android:text="103B - Forward Dive DD: 1.6"
+            android:text="103B - Forward Dive"
             android:textSize="@dimen/text_size_medium"
             android:textColor="@color/secondary_text"
             android:background="@color/primary_light"/>
@@ -341,6 +353,8 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:textSize="@dimen/text_size_medium"
             android:layout_gravity="end"
             android:textColor="@color/primary"/>

@@ -33,7 +33,7 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
 {
 	//private Spinner spinner;
     //private RadioButton radioTuck, radioPike, radioFree, radioStraight;
-    private TextView view4, view5, view6, view7, DD , diveNameView;
+    private TextView view4, view5, view6, view7, DD , diveNameView, diveDDView;
     private Spinner score1, score2, score3, score4, score5, score6, score7;
     private int judges, diverId, meetId, diveType, diveNumber, divePosition, diveId;
     private double boardType = 0.0;
@@ -107,6 +107,7 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
         b.putInt("keyDiver", diverId);
         b.putInt("keyMeet", meetId);
         intent.putExtras(b);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
@@ -503,6 +504,7 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
                         b.putInt("keyMeet", meetId);
                         Intent intent = new Intent(context, ChooseSummary.class);
                         intent.putExtras(b);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(),
@@ -830,8 +832,10 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
 
     private void setTitle(){
         diveNameView = (TextView)findViewById(R.id.diveNameString);
+        diveDDView = (TextView)findViewById(R.id.diveDDString);
         String fullName = Integer.toString(diveId) + divePosString + " - "
-                + diveNameString + " - DD: " + Double.toString(multiplier);
+                + diveNameString;
+        diveDDView.setText("Dive DD: " + Double.toString(multiplier));
         diveNameView.setText(fullName);
 
 //        switch(diveType){
