@@ -40,7 +40,7 @@ public class ChooseSummary extends ActionBarActivity {
     private String infoString1, infoString2, infoString3, infoString4, infoString5,
                     infoString6, infoString7, infoString8, infoString9, infoString10, infoString11;
     private String typeString, noDive = "There are no scores entered yet.";
-    private Boolean failed;
+    private Boolean failed, hasList;
     private Double totalScore;
     final Context context = this;
 
@@ -85,12 +85,14 @@ public class ChooseSummary extends ActionBarActivity {
         btnType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hasList = false;
                 Intent intent = new Intent(context, DiveNumberEnter.class);
                 Bundle b = new Bundle();
                 b.putInt("keyDiver", diverId);
                 b.putInt("keyMeet", meetId);
                 b.putInt("diveNumber", diveNumber);
                 b.putDouble("boardType", boardType);
+                b.putBoolean("hasList", hasList);
                 intent.putExtras(b);
                 startActivity(intent);
             }
@@ -99,12 +101,14 @@ public class ChooseSummary extends ActionBarActivity {
         btnChooseDives.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hasList = false;
                 Intent intent = new Intent(context, DiveChoose.class);
                 Bundle b = new Bundle();
                 b.putInt("keyDiver", diverId);
                 b.putInt("keyMeet", meetId);
                 b.putInt("diveNumber", diveNumber);
                 b.putDouble("boardType", boardType);
+                b.putBoolean("hasList", hasList);
                 intent.putExtras(b);
                 startActivity(intent);
             }

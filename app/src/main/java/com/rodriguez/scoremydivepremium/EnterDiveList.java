@@ -57,6 +57,7 @@ public class EnterDiveList extends ActionBarActivity {
     private Button btnScore, btnChooseDive, btnTypeNumber;
     private int diverId, meetId, diveTotal, divePosition, diveType = 1, newDiveType = 0, diveNumber = 0;
     private double boardType, multiplier = 0.0;
+    private boolean hasList;
     private String infoString1 = "", infoString2 = "", infoString3 = "", infoString4 = "", infoString5 = "",
             infoString6 = "", infoString7 = "", infoString8 = "", infoString9 = "", infoString10 = "", infoString11 = "",
             stringId, ddString;
@@ -160,12 +161,14 @@ public class EnterDiveList extends ActionBarActivity {
         btnTypeNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hasList = true;
                 Intent intent = new Intent(context, DiveNumberEnter.class);
                 Bundle b = new Bundle();
                 b.putInt("keyDiver", diverId);
                 b.putInt("keyMeet", meetId);
                 b.putInt("diveNumber", diveNumber);
                 b.putDouble("boardType", boardType);
+                b.putBoolean("hasList", hasList);
                 intent.putExtras(b);
                 startActivity(intent);
             }
@@ -174,12 +177,14 @@ public class EnterDiveList extends ActionBarActivity {
         btnChooseDive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hasList = true;
                 Intent intent = new Intent(context, DiveChoose.class);
                 Bundle b = new Bundle();
                 b.putInt("keyDiver", diverId);
                 b.putInt("keyMeet", meetId);
                 b.putInt("diveNumber", diveNumber);
                 b.putDouble("boardType", boardType);
+                b.putBoolean("hasList", hasList);
                 intent.putExtras(b);
                 startActivity(intent);
             }

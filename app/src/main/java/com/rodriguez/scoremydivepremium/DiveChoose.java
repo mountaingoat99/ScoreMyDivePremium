@@ -34,10 +34,12 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
     private Spinner spinnerDiveCat, spinnerDiveType;
     private RadioButton rdStraight, rdPike, rdTuck, rdFree;
     private TextView diveddView, name;
-    private Button btnJudgeScore, btnTotalScore;
+    private View layoutScore, layoutList;
+    private Button btnJudgeScore, btnTotalScore, btnAddToList;
     private int diverId, meetId, diveType, diveNumber, divePosition;
     private double boardType, multiplier = 0.0;
     private String stringId, divePosString;
+    private boolean hasList;
     private ArrayList<DiveStyleSpinner> searchDives;
     final Context context = this;
     private static final String KEY_TEXT_VALUE = "textValue";
@@ -63,12 +65,24 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
             meetId = b.getInt("keyMeet");
             diveNumber = b.getInt("diveNumber");
             boardType = b.getDouble("boardType");
+            hasList = b.getBoolean("hasList");
         }
 
         loadCatSpinnerData();
         //getDiveTotals();
         addListenerOnButton();
         checkRadios();
+        hideButtons();
+    }
+
+    private void hideButtons(){
+        if(hasList){
+            layoutScore.setVisibility(View.GONE);
+            layoutList.setVisibility(View.VISIBLE);
+        } else {
+            layoutScore.setVisibility(View.VISIBLE);
+            layoutList.setVisibility(View.GONE);
+        }
     }
 
     private void addListenerOnButton() {
@@ -354,6 +368,9 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
         diveddView = (TextView)findViewById(R.id.showDD);
         btnJudgeScore = (Button)findViewById(R.id.buttonJudgeScore);
         btnTotalScore = (Button)findViewById(R.id.buttonTotalScore);
+        btnAddToList = (Button)findViewById(R.id.buttonAddToList);
+        layoutList = findViewById(R.id.layoutList);
+        layoutScore = findViewById(R.id.layoutScore);
     }
 
     @Override

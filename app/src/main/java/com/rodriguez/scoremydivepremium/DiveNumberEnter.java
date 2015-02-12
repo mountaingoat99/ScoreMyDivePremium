@@ -25,10 +25,12 @@ public class DiveNumberEnter extends ActionBarActivity {
 
     private EditText editDiveNum, editDivePos;
     private TextView diveddView;
-    private Button btnJudgeScore, btnTotalScore;
+    private View layoutScore, layoutList;
+    private Button btnJudgeScore, btnTotalScore, btnAddToList;
     private int diverId, meetId, diveType, diveNumber, divePosition;
     private double boardType, multiplier = 0.0;
     private String divePosString;
+    private boolean hasList;
     final Context context = this;
 
     @Override
@@ -39,11 +41,7 @@ public class DiveNumberEnter extends ActionBarActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        editDiveNum = (EditText)findViewById(R.id.editDiveNum);
-        editDivePos = (EditText)findViewById(R.id.editDivePos);
-        diveddView = (TextView)findViewById(R.id.showDD);
-        btnJudgeScore = (Button)findViewById(R.id.buttonJudgeScore);
-        btnTotalScore = (Button)findViewById(R.id.buttonTotalScore);
+        setUpViews();
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
@@ -51,12 +49,24 @@ public class DiveNumberEnter extends ActionBarActivity {
             meetId = b.getInt("keyMeet");
             diveNumber = b.getInt("diveNumber");
             boardType = b.getDouble("boardType");
+            hasList = b.getBoolean("hasList");
         }
 
         diveddView.setText("Dive DD: ");
         //getDiveTotals();
         addListenerOnButton();
         doATextWatcher();
+        hideButtons();
+    }
+
+    private void hideButtons(){
+        if(hasList){
+            layoutScore.setVisibility(View.GONE);
+            layoutList.setVisibility(View.VISIBLE);
+        } else {
+            layoutScore.setVisibility(View.VISIBLE);
+            layoutList.setVisibility(View.GONE);
+        }
     }
 
     private void doATextWatcher() {
@@ -251,6 +261,17 @@ public class DiveNumberEnter extends ActionBarActivity {
 //        SearchDiveTotals total = new SearchDiveTotals();
 //        diveTotal = total.doInBackground();
 //    }
+
+    private void setUpViews() {
+        editDiveNum = (EditText)findViewById(R.id.editDiveNum);
+        editDivePos = (EditText)findViewById(R.id.editDivePos);
+        diveddView = (TextView)findViewById(R.id.showDD);
+        btnJudgeScore = (Button)findViewById(R.id.buttonJudgeScore);
+        btnTotalScore = (Button)findViewById(R.id.buttonTotalScore);
+        btnAddToList = (Button)findViewById(R.id.buttonAddToList);
+        layoutList = findViewById(R.id.layoutList);
+        layoutScore = findViewById(R.id.layoutScore);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
