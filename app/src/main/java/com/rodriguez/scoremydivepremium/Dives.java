@@ -42,16 +42,16 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
     //private ArrayList<DiveStyleSpinner> searchDives;
     private ArrayList<Double> Scores = new ArrayList<>();
     private boolean ifZeroTotal = true;
-    private String failedDive = "P", diveNameString = "", stringId, className = "nonList",
+    private String failedDive = "P", diveNameString = "", className = "nonList",
                     diveTypeName, divePosString;
-    private static final String KEY_TEXT_VALUE = "textValue";
+    //private static final String KEY_TEXT_VALUE = "textValue";
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dives);
         if (savedInstanceState != null) {
-            stringId = savedInstanceState.getString(KEY_TEXT_VALUE);
+            //stringId = savedInstanceState.getString(KEY_TEXT_VALUE);
         }
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -96,7 +96,7 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
     @Override
     protected void onSaveInstanceState (Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(KEY_TEXT_VALUE, stringId);
+        //outState.putString(KEY_TEXT_VALUE, stringId);
     }
 
     @Override
@@ -911,7 +911,7 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
         view5 =  (TextView)findViewById(R.id.score5);
         view6 =  (TextView)findViewById(R.id.score6);
         view7 =  (TextView)findViewById(R.id.score7);
-        DD = (TextView)findViewById(R.id.Divider);
+        //DD = (TextView)findViewById(R.id.Divider);
         //spinner = (Spinner)findViewById(R.id.listDives);
     }
 
@@ -926,10 +926,9 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
         final Context context = this;
         switch (item.getItemId()){
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                onBackPressed();
                 return true;
             case R.id.menu_failed_dive:
-                //getMultiplier();
                 if (multiplier != 0.0) {
                     TextView name = (TextView) findViewById(R.id.diveStyle);
                     TextView id = (TextView) findViewById(R.id.diveId);
@@ -955,50 +954,50 @@ public class Dives extends ActionBarActivity implements OnItemSelectedListener
                             Toast.LENGTH_LONG).show();
                     break;
                 }
-            case R.id.menu_two_judge_option:
-                if (judges == 3) {
-                    //getMultiplier();
-                    if (multiplier != 0.0) {
-                        Double test3Spin;
-                        test3Spin = Double.parseDouble(score3.getSelectedItem().toString().trim());
-                        if (test3Spin == 0.0){
-                            getTwoJudgeScoreText();
-                            calcScores();
-                            if(ifZeroTotal) {
-                                updateJudgeScores();
-                                Bundle b = new Bundle();
-                                b.putInt("keyDiver", diverId);
-                                b.putInt("keyMeet", meetId);
-                                Intent intent = new Intent(context, ChooseSummary.class);
-                                intent.putExtras(b);
-                                startActivity(intent);
-                                break;
-                            } else {
-                                Toast.makeText(getApplicationContext(),
-                                        "Scores entered will be 0. Please enter accurate score" +
-                                                " or fail the dive using the menu button.",
-                                        Toast.LENGTH_LONG).show();
-                                break;
-                            }
-                        }else{
-                            Toast.makeText(getApplicationContext(),
-                                    "Please set the 3rd score to 0.0",
-                                    Toast.LENGTH_LONG).show();
-                            break;
-                        }
-                    }else{
-                        Toast.makeText(getApplicationContext(),
-                                "Dive and Position is not valid, " +
-                                        "Please Choose a Valid Combination.",
-                                Toast.LENGTH_LONG).show();
-                        break;
-                    }
-                }else{
-                    Toast.makeText(getApplicationContext(),
-                            "This can only be used on meets with 3 judges.",
-                            Toast.LENGTH_LONG).show();
-                    break;
-                }
+//            case R.id.menu_two_judge_option:
+//                if (judges == 3) {
+//                    //getMultiplier();
+//                    if (multiplier != 0.0) {
+//                        Double test3Spin;
+//                        test3Spin = Double.parseDouble(score3.getSelectedItem().toString().trim());
+//                        if (test3Spin == 0.0){
+//                            getTwoJudgeScoreText();
+//                            calcScores();
+//                            if(ifZeroTotal) {
+//                                updateJudgeScores();
+//                                Bundle b = new Bundle();
+//                                b.putInt("keyDiver", diverId);
+//                                b.putInt("keyMeet", meetId);
+//                                Intent intent = new Intent(context, ChooseSummary.class);
+//                                intent.putExtras(b);
+//                                startActivity(intent);
+//                                break;
+//                            } else {
+//                                Toast.makeText(getApplicationContext(),
+//                                        "Scores entered will be 0. Please enter accurate score" +
+//                                                " or fail the dive using the menu button.",
+//                                        Toast.LENGTH_LONG).show();
+//                                break;
+//                            }
+//                        }else{
+//                            Toast.makeText(getApplicationContext(),
+//                                    "Please set the 3rd score to 0.0",
+//                                    Toast.LENGTH_LONG).show();
+//                            break;
+//                        }
+//                    }else{
+//                        Toast.makeText(getApplicationContext(),
+//                                "Dive and Position is not valid, " +
+//                                        "Please Choose a Valid Combination.",
+//                                Toast.LENGTH_LONG).show();
+//                        break;
+//                    }
+//                }else{
+//                    Toast.makeText(getApplicationContext(),
+//                            "This can only be used on meets with 3 judges.",
+//                            Toast.LENGTH_LONG).show();
+//                    break;
+//                }
         }
         return super.onOptionsItemSelected(item);
     }

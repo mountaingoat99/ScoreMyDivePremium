@@ -39,7 +39,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/score1"
-            android:layout_below="@id/Divider"
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@id/score1"
             android:layout_toRightOf="@id/score1"
