@@ -21,8 +21,8 @@ public class FailedDive extends ActionBarActivity {
 
     private Button failButton;
     private Button returnButton;
-    private int diverId, meetId, diveNumber, diveType = 0, divePosition = 0, diverSpinnerPosition,
-            diveNumberFromList;
+    private int diverId, meetId, diveNumber, diveType = 0, divePosition = 0,
+            diveNumberFromList, diveId;
     private double boardType = 0.0, totalScore, diveScore, multiplier = 0.0;
     private String diveTypeName;
     private String className = "";
@@ -43,12 +43,12 @@ public class FailedDive extends ActionBarActivity {
             className = b.getString("className");
             meetId = b.getInt("keyMeet");
             diverId = b.getInt("keyDiver");
+            diveId = b.getInt("diveId");
             diveType = b.getInt("keyDiveType");
             diveTypeName = b.getString("keyDiveTypeName");
             divePosition = b.getInt("keyDivePosition");
             boardType = b.getDouble("boardType");
             diveNumberFromList = b.getInt("diveNumber");
-            diverSpinnerPosition = b.getInt("keySpin");
             multiplier = b.getDouble("multiplier");
         }
 
@@ -90,7 +90,6 @@ public class FailedDive extends ActionBarActivity {
                     Bundle b = new Bundle();
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
-                    b.putInt("keySpin", diverSpinnerPosition);
                     Intent intent = new Intent(context, ChooseDivesFromList.class);
                     intent.putExtras(b);
                     startActivity(intent);
@@ -121,7 +120,6 @@ public class FailedDive extends ActionBarActivity {
                     Bundle b = new Bundle();
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
-                    b.putInt("keySpin", diverSpinnerPosition);
                     Intent intent = new Intent(context, EnterScoreFromList.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtras(b);
@@ -210,7 +208,9 @@ public class FailedDive extends ActionBarActivity {
                 break;
         }
 
-        db.fillNewJudgeScores(meetId, diverId, diveNumber, diveCategory, diveTypeName, DivePosition,
+        String diveNameForDB = Integer.toString(diveId) + " - " + diveTypeName;
+
+        db.fillNewJudgeScores(meetId, diverId, diveNumber, diveCategory, diveNameForDB, DivePosition,
                 failedDive, total, sc1, sc2, sc3, sc4, sc5, sc6, sc7, multiplier);
     }
 
