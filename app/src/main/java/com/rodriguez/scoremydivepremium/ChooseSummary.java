@@ -9,28 +9,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.info.sqlite.helper.DiveNumberDatabase;
 import com.info.sqlite.helper.DiveTotalDatabase;
 import com.info.sqlite.helper.DiverDatabase;
-import com.info.sqlite.helper.DivesDatabase;
 import com.info.sqlite.helper.JudgeScoreDatabase;
 import com.info.sqlite.helper.MeetDatabase;
-import com.info.sqlite.helper.PlatformDivesDatabase;
 import com.info.sqlite.helper.ResultDatabase;
 import com.info.sqlite.helper.TypeDatabase;
 import com.info.sqlite.model.ResultsDB;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ChooseSummary extends ActionBarActivity {
 
@@ -39,10 +32,8 @@ public class ChooseSummary extends ActionBarActivity {
                     totalView, diveTypeText, diveTypeShow, diveInfo1, diveInfo2,
                     diveInfo3, diveInfo4, diveInfo5, diveInfo6, diveInfo7, diveInfo8,
                     diveInfo9, diveInfo10, diveInfo11;
-    //private Spinner spinner;
     private Button btnType, btnChooseDives;
-    //private Button judgeButton, totalbutton;
-	private int diverId, meetId, diveTotal, diveType, diveNumber;
+	private int diverId, meetId, diveTotal, diveNumber;
     private double boardType;
     private String s1String, s2String, s3String, s4String, s5String, s6String, s7String,
             s8String, s9String, s10String, s11String;
@@ -63,26 +54,19 @@ public class ChooseSummary extends ActionBarActivity {
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setUpView();
-        //spinner.setOnItemSelectedListener(this);
 
 		Bundle b = getIntent().getExtras();
         if(b != null) {
             diverId = b.getInt("keyDiver");
             meetId = b.getInt("keyMeet");
         }
-        //diverSpinnerPosition = b.getInt("keySpin");
+
         fillType();
-        //loadSpinnerData();
         getDiveTotals();
         getDiveNumber();
 		fillText();
         fillScores();
         addListenerOnButton();
-//        if(boardType == 1.0 || boardType == 3.0){
-//            header.setText("SpringBoard Dives");
-//        } else {
-//            header.setText("Platform Dives");
-//        }
 	}
 
     @Override
@@ -92,7 +76,6 @@ public class ChooseSummary extends ActionBarActivity {
         Bundle b = new Bundle();
         b.putInt("keyDiver", diverId);
         b.putInt("keyMeet", meetId);
-        //b.putInt("keySpin", diverSpinnerPosition);
         intent.putExtras(b);
         startActivity(intent);
     }
@@ -126,95 +109,8 @@ public class ChooseSummary extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-
-//        judgeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (diveType > 0) {
-//                    Bundle b = new Bundle();
-//                    b.putInt("keyDiver", diverId);
-//                    b.putInt("keyMeet", meetId);
-//                    b.putInt("diveType", diveType);
-//                    b.putDouble("boardType", boardType);
-//                    Intent intent = new Intent(context, Dives.class);
-//                    intent.putExtras(b);
-//                    startActivity(intent);
-//                } else {
-//                    Toast.makeText(getApplicationContext(),
-//                            "Please choose a dive category!",
-//                            Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
-//
-//        totalbutton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (diveType > 0) {
-//                    Bundle b = new Bundle();
-//                    b.putInt("keyDiver", diverId);
-//                    b.putInt("keyMeet", meetId);
-//                    b.putInt("diveType", diveType);
-//                    b.putDouble("boardType", boardType);
-//                    Intent intent = new Intent(context, EnterFinalDiveScore.class);
-//                    intent.putExtras(b);
-//                    startActivity(intent);
-//                } else {
-//                    Toast.makeText(getApplicationContext(),
-//                            "Please choose a dive category!",
-//                            Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
     }
 
-//    @Override
-//    public void onItemSelected(AdapterView<?> parent, View view, int position,
-//                               long id) {
-//
-//
-//
-//        if(boardType == 1.0 || boardType == 3.0) {
-//            switch (position) {
-//                case 1:
-//                    diveType = 1;
-//                    break;
-//                case 2:
-//                    diveType = 2;
-//                    break;
-//                case 3:
-//                    diveType = 3;
-//                    break;
-//                case 4:
-//                    diveType = 4;
-//                    break;
-//                case 5:
-//                    diveType = 5;
-//                    break;
-//            }
-//        } else {
-//            switch (position) {
-//                case 1:
-//                    diveType = 6;
-//                    break;
-//                case 2:
-//                    diveType = 7;
-//                    break;
-//                case 3:
-//                    diveType = 8;
-//                    break;
-//                case 4:
-//                    diveType = 9;
-//                    break;
-//                case 5:
-//                    diveType = 10;
-//                    break;
-//                case 6:
-//                    diveType = 11;
-//                    break;
-//            }
-//        }
-//    }
 
     private void getDiveTotals(){
         SearchDiveTotals total = new SearchDiveTotals();
@@ -364,9 +260,6 @@ public class ChooseSummary extends ActionBarActivity {
                     Toast.LENGTH_LONG).show();
             btnType.setEnabled(false);
             btnChooseDives.setEnabled(false);
-//            judgeButton.setVisibility(View.GONE);
-//            totalbutton.setVisibility(View.GONE);
-//            spinner.setEnabled(false);
             return;
         }
         numberOfDive = 7;
@@ -445,17 +338,13 @@ public class ChooseSummary extends ActionBarActivity {
                 //dive11 = true;
             }
         }
-        if(diveNumber == 11 && diveTotal == 11){
-            //spinner.setVisibility(View.GONE);
+        if(diveNumber == 11 && diveTotal == 11) {
             Toast.makeText(getApplicationContext(),
                     "Congratulations, all eleven dives are complete," +
                             " total score is " + totalString,
                     Toast.LENGTH_LONG).show();
             btnType.setEnabled(false);
             btnChooseDives.setEnabled(false);
-//            judgeButton.setVisibility(View.GONE);
-//            totalbutton.setVisibility(View.GONE);
-//            spinner.setEnabled(false);
         }
     }
 
@@ -509,37 +398,6 @@ public class ChooseSummary extends ActionBarActivity {
         return failed = db.checkFailed(meetId, diverId, numberDive);
     }
 
-    // here we need to send the spinner in fromm the dialog and then fill them
-//	private void loadCatSpinnerData(Spinner spinner){
-//
-//        if(boardType == 1.0 || boardType == 3.0) {
-//
-//            GetSpringboardDiveName dives = new GetSpringboardDiveName();
-//            List<String> diveName = dives.doInBackground();
-//
-//            ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
-//                    R.layout.spinner_item, diveName);
-//            dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-//            dataAdapter.insert("  Choose a Dive Category", 0);
-//            spinner.setAdapter(dataAdapter);
-//
-//        } else {
-//
-//            GetPlatformDiveName divesP = new GetPlatformDiveName();
-//            List<String> diveName = divesP.doInBackground();
-//
-//            ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
-//                    R.layout.spinner_item, diveName);
-//            dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
-//            dataAdapter.insert("  Choose a Dive Category", 0);
-//            spinner.setAdapter(dataAdapter);
-//        }
-//	}
-//
-//    private void loadTypeSpinnerData(Spinner spinner) {
-//
-//    }
-
     private void fillType(){
         String boardString = "";
         GetBoardType type = new GetBoardType();
@@ -561,7 +419,6 @@ public class ChooseSummary extends ActionBarActivity {
     }
 
     private void setUpView(){
-        //header = (TextView)findViewById(R.id.TextViewChooseC);
         name = (TextView)findViewById(R.id.divername);
         meetName = (TextView)findViewById(R.id.meetname);
         s1 = (TextView)findViewById(R.id.score1);
@@ -603,10 +460,6 @@ public class ChooseSummary extends ActionBarActivity {
         diveInfo11 = (TextView)findViewById(R.id.diveInfo11);
         btnType = (Button)findViewById(R.id.buttonTypeNumber);
         btnChooseDives = (Button)findViewById(R.id.buttonChooseDives);
-
-//        spinner = (Spinner)findViewById(R.id.spinnerDiveCatC);
-//        judgeButton = (Button)findViewById(R.id.buttonJudgeScore);
-//        totalbutton = (Button)findViewById(R.id.buttonTotalScore);
     }
 	
 	@Override
@@ -623,7 +476,6 @@ public class ChooseSummary extends ActionBarActivity {
         switch (item.getItemId())
         {
             case android.R.id.home:
-                //NavUtils.navigateUpFromSameTask(this);
                 finish();
                 return true;
             case R.id.menu_change_dive_score:
@@ -648,12 +500,6 @@ public class ChooseSummary extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-//	@Override
-//	public void onNothingSelected(AdapterView<?> parent) {
-//
-//	}
-
 
     private class SearchDiveTotals extends AsyncTask<Integer, Object, Object> {
         DiveTotalDatabase db = new DiveTotalDatabase(getApplicationContext());
@@ -704,28 +550,6 @@ public class ChooseSummary extends ActionBarActivity {
         @Override
         protected final ArrayList<Double> doInBackground(ArrayList<Double>... params) {
             return scoreList = db.getResultsList(meetId, diverId);
-        }
-    }
-
-    private class GetSpringboardDiveName extends AsyncTask<List<String>, Object, Object>{
-        DivesDatabase db = new DivesDatabase(getApplicationContext());
-        List<String> dives;
-
-        @SafeVarargs
-        @Override
-        protected final List<String> doInBackground(List<String>... params) {
-            return dives = db.getDiveNames();
-        }
-    }
-
-    private class GetPlatformDiveName extends AsyncTask<List<String>, Object, Object>{
-        PlatformDivesDatabase db = new PlatformDivesDatabase(getApplicationContext());
-        List<String> dives;
-
-        @SafeVarargs
-        @Override
-        protected final List<String> doInBackground(List<String>... params) {
-            return dives = db.getPlatformDiveNames();
         }
     }
 
