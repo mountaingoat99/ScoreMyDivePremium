@@ -354,6 +354,7 @@
     <string name="enter_dive_position">Enter Dive Position</string>
     <string name="dive_number_hint">103</string>
     <string name="dive_position_hint">B</string>
+    <string name="add_dive_to_list">Add Dive</string>
 
 
 </resources>
