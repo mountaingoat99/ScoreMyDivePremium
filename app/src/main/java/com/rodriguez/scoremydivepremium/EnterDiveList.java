@@ -421,7 +421,7 @@ public class EnterDiveList extends ActionBarActivity {
             Toast.makeText(getApplicationContext(),
                     "All six dives have been entered, " +
                             "Click on a dive to edit it",
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
             view1.setVisibility(View.VISIBLE);
             btnScore.setVisibility(View.VISIBLE);
             return;
@@ -462,7 +462,7 @@ public class EnterDiveList extends ActionBarActivity {
             Toast.makeText(getApplicationContext(),
                     "All eleven dives have been entered, " +
                             "Click on a dive to edit it",
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
             view1.setVisibility(View.VISIBLE);
             btnScore.setVisibility(View.VISIBLE);
         }

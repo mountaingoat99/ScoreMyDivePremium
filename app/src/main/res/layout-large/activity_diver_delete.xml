@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/delete"
-                android:textSize="@dimen/button_text_medium"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_marginEnd="16dp"
@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cancel"
-                android:textSize="@dimen/button_text_medium"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_weight="1"/>
