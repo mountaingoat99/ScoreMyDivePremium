@@ -23,6 +23,7 @@ import com.info.Helpers.DiveStyleSpinner;
 import com.info.controls.DiveChooseController;
 import com.info.controls.SpinnerDiveStyleCustomBaseAdpater;
 import com.info.sqlite.helper.DivesDatabase;
+import com.info.sqlite.helper.JudgeScoreDatabase;
 import com.info.sqlite.helper.PlatformDivesDatabase;
 
 import java.util.ArrayList;
@@ -69,7 +70,6 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
         }
 
         loadCatSpinnerData();
-        //getDiveTotals();
         addListenerOnButton();
         checkRadios();
         hideButtons();
@@ -182,6 +182,65 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
                 }
             }
         });
+
+        btnAddToList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (multiplier != 0.0){
+
+                    // divetype in string
+                    String diveTypeName = spinnerDiveCat.getSelectedItem().toString();
+                    //dive Name in string
+                    TextView name = (TextView) findViewById(R.id.diveStyle);
+                    String diveName = name.getText().toString();
+                    // diveID
+                    TextView id = (TextView) findViewById(R.id.diveId);
+                    String diveId = id.getText().toString();
+                    String diveNameForDB = diveId + " - " +  diveName;
+                    String divePositionForDB = divePositionCheck();
+
+                    int divenum = diveNumber += 1;
+
+                    JudgeScoreDatabase db = new JudgeScoreDatabase(getApplicationContext());
+                    db.fillNewJudgeScores(meetId, diverId, divenum, diveTypeName, diveNameForDB, divePositionForDB,
+                        "", 0.0,  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, multiplier);
+
+                    Intent intent = new Intent(context, EnterDiveList.class);
+                    Bundle b = new Bundle();
+                    b.putInt("keyDiver", diverId);
+                    b.putInt("keyMeet", meetId);
+                    intent.putExtras(b);
+                    startActivity(intent);
+
+                }else{
+                    Toast.makeText(getApplicationContext(),
+                            "Dive and Position is not valid, " +
+                                    "Please Choose a Valid Combination.",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    private String divePositionCheck() {
+
+        String DivePosition = null;
+        switch (divePosition) {
+            case 1:
+                DivePosition = "A - Straight";
+                break;
+            case 2:
+                DivePosition = "B - Pike";
+                break;
+            case 3:
+                DivePosition = "C - Tuck";
+                break;
+            case 4:
+                DivePosition = "D - Free";
+                break;
+        }
+        return DivePosition;
     }
 
     @Override
@@ -352,11 +411,6 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
         }
     }
 
-//    private void getDiveTotals(){
-//        SearchDiveTotals total = new SearchDiveTotals();
-//        diveTotal = total.doInBackground();
-//    }
-
     private void setUpView() {
 
         spinnerDiveCat = (Spinner)findViewById(R.id.spinnerDiveCatC);
@@ -405,15 +459,6 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
-//    private class SearchDiveTotals extends AsyncTask<Integer, Object, Object> {
-//        DiveTotalDatabase db = new DiveTotalDatabase(getApplicationContext());
-//
-//        @Override
-//        protected Integer doInBackground(Integer... params) {
-//            return db.searchTotals(meetId, diverId);
-//        }
-//    }
 
     private class GetSpringboardDiveName extends AsyncTask<List<String>, Object, Object> {
         DivesDatabase db = new DivesDatabase(getApplicationContext());

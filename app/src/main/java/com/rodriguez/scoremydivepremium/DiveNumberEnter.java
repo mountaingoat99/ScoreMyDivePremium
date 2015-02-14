@@ -2,7 +2,6 @@ package com.rodriguez.scoremydivepremium;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -19,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.info.controls.DiveNumberEnterController;
+import com.info.sqlite.helper.JudgeScoreDatabase;
 
 
 public class DiveNumberEnter extends ActionBarActivity {
@@ -53,7 +53,6 @@ public class DiveNumberEnter extends ActionBarActivity {
         }
 
         diveddView.setText("Dive DD: ");
-        //getDiveTotals();
         addListenerOnButton();
         doATextWatcher();
         hideButtons();
@@ -255,12 +254,68 @@ public class DiveNumberEnter extends ActionBarActivity {
                 }
             }
         });
+
+        btnAddToList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (multiplier != 0.0){
+
+                    DiveNumberEnterController db = new DiveNumberEnterController();
+                    // diveType in String
+                    String diveTypeName = db.GetDiveType(Integer.parseInt(editDiveNum.getText().toString().trim()), boardType);
+                    // diveType Int
+                    int firstDigit = Integer.parseInt(editDiveNum.getText().toString().trim());
+                    diveType = DiveNumberEnterController.firstDigit(firstDigit);
+                    // dive Name in string
+                    String diveName = db.GetDiveName(Integer.parseInt(editDiveNum.getText().toString().trim()), boardType, context);
+                    // TODO don't need this, we'll do it in next screen
+                    String diveid = editDiveNum.getText().toString().trim();
+                    String diveNameForDB = diveid + " - " + diveName;
+                    String divePositionForDB = divePositionCheck();
+
+                    int divenum = diveNumber += 1;
+
+                    JudgeScoreDatabase dbj = new JudgeScoreDatabase(getApplicationContext());
+                    dbj.fillNewJudgeScores(meetId, diverId, divenum, diveTypeName, diveNameForDB, divePositionForDB,
+                            "", 0.0,  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, multiplier);
+
+                    Intent intent = new Intent(context, EnterDiveList.class);
+                    Bundle b = new Bundle();
+                    b.putInt("keyDiver", diverId);
+                    b.putInt("keyMeet", meetId);
+                    intent.putExtras(b);
+                    startActivity(intent);
+
+                }else{
+                    Toast.makeText(getApplicationContext(),
+                            "Dive and Position is not valid, " +
+                                    "Please Choose a Valid Combination.",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
-//    private void getDiveTotals(){
-//        SearchDiveTotals total = new SearchDiveTotals();
-//        diveTotal = total.doInBackground();
-//    }
+    private String divePositionCheck() {
+
+        String DivePosition = null;
+        switch (divePosition) {
+            case 1:
+                DivePosition = "A - Straight";
+                break;
+            case 2:
+                DivePosition = "B - Pike";
+                break;
+            case 3:
+                DivePosition = "C - Tuck";
+                break;
+            case 4:
+                DivePosition = "D - Free";
+                break;
+        }
+        return DivePosition;
+    }
 
     private void setUpViews() {
         editDiveNum = (EditText)findViewById(R.id.editDiveNum);
@@ -294,13 +349,4 @@ public class DiveNumberEnter extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-//    private class SearchDiveTotals extends AsyncTask<Integer, Object, Object> {
-//        DiveTotalDatabase db = new DiveTotalDatabase(getApplicationContext());
-//
-//        @Override
-//        protected Integer doInBackground(Integer... params) {
-//            return db.searchTotals(meetId, diverId);
-//        }
-//    }
 }

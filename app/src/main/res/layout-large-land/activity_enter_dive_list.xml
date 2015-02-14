@@ -147,7 +147,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout13"
+            android:id="@+id/layoutScores"
             android:layout_below="@id/layout12"
             android:layout_marginTop="8dp"
             android:layout_width="fill_parent"
@@ -159,7 +159,8 @@
             android:paddingStart="16dp"
             android:paddingRight="16dp"
             android:paddingEnd="16dp"
-            android:background="@drawable/layer_card_background">
+            android:background="@drawable/layer_card_background"
+            android:visibility="invisible">
 
             <Button
                 android:id="@+id/buttonScore"
@@ -179,521 +180,545 @@
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="2dp"
-                android:background="@color/primary"/>
+                android:background="@color/primary"
+                android:visibility="gone"/>
 
-            <ScrollView
+            <!--<ScrollView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:background="@color/primary_light">-->
+
+            <TableLayout
+                android:id="@+id/tableLayout1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
                 android:background="@color/primary_light">
 
-                <TableLayout
-                    android:id="@+id/tableLayout1"
-                    android:layout_width="fill_parent"
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="5dip"
                     android:layout_marginTop="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="16dp">
+                    android:visibility="gone"
+                    android:background="@color/primary_light">
 
-                    <TableRow
-                        android:id="@+id/tableRow1"
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+
+                    <TextView
+                        android:id="@+id/score1view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="5dip"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone">
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/dive_1"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/score1view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dive_1"
-                            android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/static_text"
-                            android:visibility="visible"/>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/diveInfo1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/random_text"
-                            android:clickable="true"
-                            android:singleLine="false"
-                            android:visibility="visible"/>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/tableRow2"
+                    <TextView
+                        android:id="@+id/diveInfo1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="5dip"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone">
+                        android:text=""
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/primary_text"
+                        android:clickable="true"
+                        android:singleLine="false"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
 
-                        <TextView
-                            android:id="@+id/score2view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dive_2"
-                            android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/static_text"
-                            android:visibility="visible"/>
+                </TableRow>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:background="@color/primary_light">
 
-                        <TextView
-                            android:id="@+id/diveInfo2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/random_text"
-                            android:clickable="true"
-                            android:singleLine="false"
-                            android:visibility="visible"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/tableRow3"
+                    <TextView
+                        android:id="@+id/score2view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="5dip"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone">
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/dive_2"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/score3view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dive_3"
-                            android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/static_text"
-                            android:visibility="visible"/>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/diveInfo3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/random_text"
-                            android:clickable="true"
-                            android:singleLine="false"
-                            android:visibility="visible"/>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/tableRow4"
+                    <TextView
+                        android:id="@+id/diveInfo2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="5dip"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone">
+                        android:text=""
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/primary_text"
+                        android:clickable="true"
+                        android:singleLine="false"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
 
-                        <TextView
-                            android:id="@+id/score4view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dive_4"
-                            android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/static_text"
-                            android:visibility="visible"/>
+                </TableRow>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:background="@color/primary_light">
 
-                        <TextView
-                            android:id="@+id/diveInfo4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/random_text"
-                            android:clickable="true"
-                            android:singleLine="false"
-                            android:visibility="visible"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/tableRow5"
+                    <TextView
+                        android:id="@+id/score3view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="5dip"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone">
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/dive_3"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/score5view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dive_5"
-                            android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/static_text"
-                            android:visibility="visible"/>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/diveInfo5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/random_text"
-                            android:clickable="true"
-                            android:singleLine="false"
-                            android:visibility="visible"/>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/tableRow6"
+                    <TextView
+                        android:id="@+id/diveInfo3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="5dip"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone">
+                        android:text=""
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/primary_text"
+                        android:clickable="true"
+                        android:singleLine="false"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
 
-                        <TextView
-                            android:id="@+id/score6view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dive_6"
-                            android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/static_text"
-                            android:visibility="visible"/>
+                </TableRow>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                <TableRow
+                    android:id="@+id/tableRow4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:background="@color/primary_light">
 
-                        <TextView
-                            android:id="@+id/diveInfo6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/random_text"
-                            android:clickable="true"
-                            android:singleLine="false"
-                            android:visibility="visible"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/tableRow7"
+                    <TextView
+                        android:id="@+id/score4view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="5dip"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone">
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/dive_4"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/score7view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dive_7"
-                            android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/static_text"
-                            android:visibility="visible"/>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/diveInfo7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/random_text"
-                            android:clickable="true"
-                            android:singleLine="false"
-                            android:visibility="visible"/>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/tableRow8"
+                    <TextView
+                        android:id="@+id/diveInfo4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="5dip"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone">
+                        android:text=""
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/primary_text"
+                        android:clickable="true"
+                        android:singleLine="false"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
 
-                        <TextView
-                            android:id="@+id/score8view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dive_8"
-                            android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/static_text"
-                            android:visibility="visible"/>
+                </TableRow>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                <TableRow
+                    android:id="@+id/tableRow5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:background="@color/primary_light">
 
-                        <TextView
-                            android:id="@+id/diveInfo8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/random_text"
-                            android:clickable="true"
-                            android:singleLine="false"
-                            android:visibility="visible"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/tableRow9"
+                    <TextView
+                        android:id="@+id/score5view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="5dip"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone">
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/dive_5"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/score9view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dive_9"
-                            android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/static_text"
-                            android:visibility="visible"/>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/diveInfo9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/random_text"
-                            android:clickable="true"
-                            android:singleLine="false"
-                            android:visibility="visible"/>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/tableRow10"
+                    <TextView
+                        android:id="@+id/diveInfo5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="5dip"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone">
+                        android:text=""
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/primary_text"
+                        android:clickable="true"
+                        android:singleLine="false"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
 
-                        <TextView
-                            android:id="@+id/score10view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dive_10"
-                            android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/static_text"
-                            android:visibility="visible"/>
+                </TableRow>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                <TableRow
+                    android:id="@+id/tableRow6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:background="@color/primary_light">
 
-                        <TextView
-                            android:id="@+id/diveInfo10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/random_text"
-                            android:clickable="true"
-                            android:singleLine="false"
-                            android:visibility="visible"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/tableRow11"
+                    <TextView
+                        android:id="@+id/score6view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="5dip"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone">
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/dive_6"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/diveInfo6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/primary_text"
+                        android:clickable="true"
+                        android:singleLine="false"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                        <TextView
-                            android:id="@+id/score11view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dive_11"
-                            android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/static_text"
-                            android:visibility="visible"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                </TableRow>
 
-                        <TextView
-                            android:id="@+id/diveInfo11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textSize="@dimen/text_size_medium"
-                            android:textColor="@color/random_text"
-                            android:clickable="true"
-                            android:singleLine="false"
-                            android:visibility="visible"/>
+                <TableRow
+                    android:id="@+id/tableRow7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:background="@color/primary_light">
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
 
-                    </TableRow>
+                    <TextView
+                        android:id="@+id/score7view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/dive_7"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-                </TableLayout>
+                    <TextView
+                        android:id="@+id/diveInfo7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/primary_text"
+                        android:clickable="true"
+                        android:singleLine="false"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
 
-            </ScrollView>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:background="@color/primary_light">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+
+                    <TextView
+                        android:id="@+id/score8view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/dive_8"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
+
+                    <TextView
+                        android:id="@+id/diveInfo8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/primary_text"
+                        android:clickable="true"
+                        android:singleLine="false"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:background="@color/primary_light">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+
+                    <TextView
+                        android:id="@+id/score9view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/dive_9"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
+
+                    <TextView
+                        android:id="@+id/diveInfo9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/primary_text"
+                        android:clickable="true"
+                        android:singleLine="false"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:background="@color/primary_light">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+
+                    <TextView
+                        android:id="@+id/score10view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/dive_10"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
+
+                    <TextView
+                        android:id="@+id/diveInfo10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/primary_text"
+                        android:clickable="true"
+                        android:singleLine="false"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:background="@color/primary_light">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+
+                    <TextView
+                        android:id="@+id/score11view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/dive_11"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
+
+                    <TextView
+                        android:id="@+id/diveInfo11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/primary_text"
+                        android:clickable="true"
+                        android:singleLine="false"
+                        android:visibility="visible"
+                        android:background="@color/primary_light"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+
+                </TableRow>
+
+            </TableLayout>
+
+            <!--</ScrollView>-->
 
         </LinearLayout>
 

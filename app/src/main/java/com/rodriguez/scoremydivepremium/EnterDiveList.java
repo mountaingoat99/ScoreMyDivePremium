@@ -52,15 +52,15 @@ import java.util.List;
 public class EnterDiveList extends ActionBarActivity {
 
     private TextView diveInfo1, diveInfo2, diveInfo3, diveInfo4, diveInfo5, diveInfo6,
-                    diveInfo7, diveInfo8, diveInfo9, diveInfo10, diveInfo11, diverName, meetName, name;
+                    diveInfo7, diveInfo8, diveInfo9, diveInfo10, diveInfo11, diverName, meetName;
+    private View view1, layoutScores;
     private TableRow row1, row2, row3, row4,row5, row6, row7, row8, row9, row10, row11 ;
     private Button btnScore, btnChooseDive, btnTypeNumber;
-    private int diverId, meetId, diveTotal, divePosition, diveType = 1, newDiveType = 0, diveNumber = 0;
-    private double boardType, multiplier = 0.0;
+    private int diverId, meetId, diveTotal, diveNumber = 0;
+    private double boardType;
     private boolean hasList;
     private String infoString1 = "", infoString2 = "", infoString3 = "", infoString4 = "", infoString5 = "",
-            infoString6 = "", infoString7 = "", infoString8 = "", infoString9 = "", infoString10 = "", infoString11 = "",
-            stringId, ddString;
+            infoString6 = "", infoString7 = "", infoString8 = "", infoString9 = "", infoString10 = "", infoString11 = "";
 
     private final Context context = this;
     public boolean firstAlertEditDiveList;
@@ -189,22 +189,6 @@ public class EnterDiveList extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-
-//        btnEnter.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (multiplier != 0.0) {
-//                    updateJudgeScores();
-//                    finish();
-//                    startActivity(getIntent());
-//                } else {
-//                    Toast.makeText(getApplicationContext(),
-//                            "Dive and Position is not valid, " +
-//                                    "Please Choose a Valid Combination.",
-//                            Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
 
         btnScore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -390,6 +374,7 @@ public class EnterDiveList extends ActionBarActivity {
     private void fillDiveInfo(){
         if(diveNumber >= 1){
             updateListFilled(1);
+            layoutScores.setVisibility(View.VISIBLE);
             row1.setVisibility(View.VISIBLE);
             infoString1 = getDiveInfoFromDB(1);
             diveInfo1.setText(infoString1);
@@ -431,7 +416,7 @@ public class EnterDiveList extends ActionBarActivity {
                     "All six dives have been entered, " +
                             "Click on a dive to edit it",
                     Toast.LENGTH_LONG).show();
-            //btnEnter.setVisibility(View.GONE);
+            view1.setVisibility(View.VISIBLE);
             btnScore.setVisibility(View.VISIBLE);
             return;
         }
@@ -472,7 +457,7 @@ public class EnterDiveList extends ActionBarActivity {
                     "All eleven dives have been entered, " +
                             "Click on a dive to edit it",
                     Toast.LENGTH_LONG).show();
-            //btnEnter.setVisibility(View.GONE);
+            view1.setVisibility(View.VISIBLE);
             btnScore.setVisibility(View.VISIBLE);
         }
     }
@@ -484,12 +469,12 @@ public class EnterDiveList extends ActionBarActivity {
 
     private String getDiveInfoFromDB(int divenumber){
         int dash;
-        String cat, number, position, dd;
+        String number, position, dd;
         JudgeScoreDatabase db = new JudgeScoreDatabase(getApplicationContext());
         ArrayList<String> info;
         info = db.getCatAndName(meetId, diverId, divenumber);
         if(info.size() > 0){
-            cat = info.get(0);
+            //cat = info.get(0);
             number = info.get(1);
             dash = number.indexOf("-");
             number = number.substring((0), (dash)).trim();
@@ -498,75 +483,10 @@ public class EnterDiveList extends ActionBarActivity {
             position = position.substring((0), (dash)).trim();
             dd = info.get(3);
 
-            return cat + " - " + number + position + " - DD: " + dd;
+            return number + position + " - DD: " + dd;
         }
         return null;
     }
-
-//    private void updateJudgeScores(){
-//        JudgeScoreDatabase db = new JudgeScoreDatabase(getApplicationContext());
-//        String diveCategory = null;
-//        switch (diveType){
-//            case 1:
-//                diveCategory = "Forward Dive";
-//                break;
-//            case 2:
-//                diveCategory = "Back Dive";
-//                break;
-//            case 3:
-//                diveCategory = "Reverse Dive";
-//                break;
-//            case 4:
-//                diveCategory = "Inward Dive";
-//                break;
-//            case 5:
-//                diveCategory = "Twist Dive";
-//                break;
-//            case 6:
-//                diveCategory = "Front Platform Dives";
-//                break;
-//            case 7:
-//                diveCategory = "Back Platform Dives";
-//                break;
-//            case 8:
-//                diveCategory = "Reverse Platform Dives";
-//                break;
-//            case 9:
-//                diveCategory = "Inward Platform Dives";
-//                break;
-//            case 10:
-//                diveCategory = "Twist Platform Dives";
-//                break;
-//            case 11:
-//                diveCategory = "Armstand Platform Dives";
-//                break;
-//        }
-//
-//        String DivePosition = null;
-//        switch (divePosition){
-//            case 1:
-//                DivePosition = "A - Straight";
-//                break;
-//            case 2:
-//                DivePosition = "B - Pike";
-//                break;
-//            case 3:
-//                DivePosition = "C - Tuck";
-//                break;
-//            case 4:
-//                DivePosition = "D - Free";
-//                break;
-//        }
-//
-//        TextView name = (TextView) findViewById(R.id.diveStyle);
-//        TextView id = (TextView) findViewById(R.id.diveId);
-//        String i = id.getText().toString();
-//        String diveTypeName = i + " - " + name.getText().toString();
-//        int divenum = diveNumber += 1;
-//
-//        db.fillNewJudgeScores(meetId, diverId, divenum, diveCategory, diveTypeName, DivePosition,
-//                "", 0.0,  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, multiplier);
-//    }
 
     private void getDiveTotals(){
         SearchDiveTotals total = new SearchDiveTotals();
@@ -628,10 +548,11 @@ public class EnterDiveList extends ActionBarActivity {
         row9 = (TableRow)findViewById(R.id.tableRow9);
         row10 = (TableRow)findViewById(R.id.tableRow10);
         row11 = (TableRow)findViewById(R.id.tableRow11);
-        //btnEnter = (Button)findViewById(R.id.buttonEnter);
         btnScore = (Button)findViewById(R.id.buttonScore);
         btnChooseDive = (Button)findViewById(R.id.buttonChooseDives);
         btnTypeNumber = (Button)findViewById(R.id.buttonTypeNumber);
+        view1 = findViewById(R.id.view1);
+        layoutScores = findViewById(R.id.layoutScores);
     }
 
     @Override
@@ -646,7 +567,6 @@ public class EnterDiveList extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        final Context context = this;
         switch (item.getItemId()) {
             case android.R.id.home:
                 //NavUtils.navigateUpFromSameTask(this);
