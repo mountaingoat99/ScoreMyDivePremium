@@ -116,7 +116,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Home" />
         </activity>
-        <activity android:name=".ChooseSummary" >
+        <activity android:name=".ChooseSummary"
+            android:label="@string/enter_dives_scores">
             <intent-filter>
                 <action android:name="com.rodriguez.Home.ChooseSummary" />
 
@@ -281,7 +282,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Home" />
         </activity>
-        <activity android:name=".EnterDiveList" >
+        <activity android:name=".EnterDiveList"
+            android:label="@string/title_activity_enter_dive_list">
             <intent-filter>
                 <action android:name="com.rodriguez.Home.EnterDiveList" />
 

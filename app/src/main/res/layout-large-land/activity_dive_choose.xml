@@ -114,17 +114,20 @@
             android:gravity="start"
             android:background="@color/primary_light"/>
 
-        <RelativeLayout
+        <TableLayout
             android:id="@+id/layout4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@color/primary_light">
 
+            <TableRow>
+
             <RadioButton
                 android:id="@+id/radioStraight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/straight"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/primary_text"
@@ -134,8 +137,7 @@
                 android:id="@+id/radioPike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/radioStraight"
-                android:layout_toRightOf="@id/radioStraight"
+                android:layout_weight="1"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:text="@string/pike"
@@ -143,11 +145,15 @@
                 android:textColor="@color/primary_text"
                 android:background="@color/primary_light"/>
 
+            </TableRow>
+
+            <TableRow>
+
             <RadioButton
                 android:id="@+id/radioTuck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/radioStraight"
+                android:layout_weight="1"
                 android:text="@string/tuck"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/primary_text"
@@ -157,21 +163,20 @@
                 android:id="@+id/radioFree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/radioTuck"
-                android:layout_toRightOf="@id/radioTuck"
-                android:layout_alignStart="@id/radioPike"
-                android:layout_alignLeft="@id/radioPike"
-                android:layout_below="@id/radioPike"
+                android:layout_weight="1"
                 android:text="@string/free"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/primary_text"
                 android:background="@color/primary_light"/>
 
+            </TableRow>
+
+        </TableLayout>
+
             <TextView
                 android:id="@+id/showDD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/radioFree"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
@@ -182,8 +187,6 @@
                 android:textColor="@color/primary_text"
                 android:gravity="start"
                 android:background="@color/primary_light"/>
-
-        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/layoutScore"
