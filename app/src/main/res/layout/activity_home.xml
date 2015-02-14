@@ -43,7 +43,7 @@
             android:layout_weight="1"
             android:layout_gravity="end"
             android:text="@string/quick_score"
-            android:textSize="@dimen/button_text_medium"
+            android:textSize="@dimen/text_size_medium"
             android:textColor="@color/primary"
             android:background="@color/primary_light"
             style="?android:attr/borderlessButtonStyle"/>
@@ -85,7 +85,7 @@
             android:layout_weight="1"
             android:layout_gravity="end"
             android:text="@string/meets_divers_button"
-            android:textSize="@dimen/button_text_medium"
+            android:textSize="@dimen/text_size_medium"
             android:textColor="@color/primary"
             android:background="@color/primary_light"
             style="?android:attr/borderlessButtonStyle"/>
@@ -127,7 +127,7 @@
             android:layout_weight="1"
             android:layout_gravity="end"
             android:text="@string/detail_score"
-            android:textSize="@dimen/button_text_medium"
+            android:textSize="@dimen/text_size_medium"
             android:textColor="@color/primary"
             android:background="@color/primary_light"
             style="?android:attr/borderlessButtonStyle"/>
@@ -169,7 +169,7 @@
             android:layout_weight="1"
             android:layout_gravity="end"
             android:text="@string/home_reports_button"
-            android:textSize="@dimen/button_text_medium"
+            android:textSize="@dimen/text_size_medium"
             android:textColor="@color/primary"
             android:background="@color/primary_light"
             style="?android:attr/borderlessButtonStyle"/>

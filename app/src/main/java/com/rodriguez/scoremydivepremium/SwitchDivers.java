@@ -85,7 +85,7 @@ public class SwitchDivers extends ActionBarActivity {
                     return;
                 }
                 // if List go right to EnterDiveList
-                if(isComplete == 1 || isComplete == 2) {
+                if(isComplete == 1) {
                     Intent intent = new Intent(getBaseContext(), EnterDiveList.class);
                     Bundle b = new Bundle();
                     b.putInt("keyDiver", diverId);
@@ -95,24 +95,24 @@ public class SwitchDivers extends ActionBarActivity {
                     startActivity(intent);
                     return;
                 }
-                // if none but attached to a meet we send them to the Class that called them
-                if(sendingClass.equals("EnterDiveList")) {
-                    Intent intent = new Intent(getBaseContext(), EnterDiveList.class);
+                if(isComplete == 2){
+                    Intent intent = new Intent(getBaseContext(), ChooseDivesFromList.class);
                     Bundle b = new Bundle();
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
                     intent.putExtras(b);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
-                } else {
-                    Intent intent = new Intent(getBaseContext(), ChooseSummary.class);
-                    Bundle b = new Bundle();
-                    b.putInt("keyDiver", diverId);
-                    b.putInt("keyMeet", meetId);
-                    intent.putExtras(b);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    return;
                 }
+                // if none but attached to a meet we send them to the Choose Class
+                Intent intent = new Intent(getBaseContext(), Choose.class);
+                Bundle b = new Bundle();
+                b.putInt("keyDiver", diverId);
+                b.putInt("keyMeet", meetId);
+                intent.putExtras(b);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
     }

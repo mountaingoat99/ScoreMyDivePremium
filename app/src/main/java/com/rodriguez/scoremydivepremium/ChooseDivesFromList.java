@@ -17,6 +17,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.info.sqlite.helper.DiveNumberDatabase;
 import com.info.sqlite.helper.DiveTotalDatabase;
 import com.info.sqlite.helper.DiverDatabase;
 import com.info.sqlite.helper.JudgeScoreDatabase;
@@ -36,15 +37,15 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             s1v, s2v, s3v, s4v, s5v, s6v, s7v, s8v, s9v, s10v, s11v,
             diveTypeName, diveInfo1, diveInfo2, diveInfo3, diveInfo4, diveInfo5, diveInfo6,
             diveInfo7, diveInfo8, diveInfo9, diveInfo10, diveInfo11, totalView, diveTypeText;
+    private View layoutScores;
     private TableRow t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11;
-    private Button btnJudgeScore, btnTotalScore;
+    private Button btnJudgeScore, btnTotalScore, btnSwitchDiver;
     private String typeString, score1, score2, score3,
             score4, score5, score6, score7, score8, score9, score10, score11, info1, info2,
             info3, info4, info5, info6, info7, info8, info9, info10, info11,
-            noDive = "There are no scores entered yet.";
+            noDive = "No scores entered yet.";
     private int diverId, meetId, showDiveNumber,
-            diveTotal, diverSpinnerPosition;
-    //private int diveNumber;
+            diveTotal;
     private double  totalScore, boardType = 0.0;
     private double sc1, sc2, sc3, sc4, sc5, sc6, sc7, sc8, sc9, sc10, sc11;
     private boolean failed;
@@ -61,15 +62,15 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
         setUpView();
 
         Bundle b = getIntent().getExtras();
-        diverId = b.getInt("keyDiver");
-        meetId = b.getInt("keyMeet");
-        diverSpinnerPosition = b.getInt("keySpin");
+        if(b != null) {
+            diverId = b.getInt("keyDiver");
+            meetId = b.getInt("keyMeet");
+        }
 
         diveNumberSpinner.setOnItemSelectedListener(this);
         fillType();
         fillText();
         checkDiveTotal();
-        //getDiveNumber();
         loadSpinnerData();
         fillScores();
         addListenerOnButton();
@@ -79,11 +80,10 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
     @Override
     public void onBackPressed(){
         final Context context = this;
-        Intent intent = new Intent(context, Choose.class);
+        Intent intent = new Intent(context, EnterDiveList.class);
         Bundle b = new Bundle();
         b.putInt("keyDiver", diverId);
         b.putInt("keyMeet", meetId);
-        b.putInt("keySpin", diverSpinnerPosition);
         intent.putExtras(b);
         startActivity(intent);
     }
@@ -100,7 +100,6 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
                     b.putInt("diveNumber", showDiveNumber);
-                    b.putInt("keySpin", diverSpinnerPosition);
                     Intent intent = new Intent(context, EnterScoreFromList.class);
                     intent.putExtras(b);
                     startActivity(intent);
@@ -121,7 +120,6 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
                     b.putInt("diveNumber", showDiveNumber);
-                    b.putInt("keySpin", diverSpinnerPosition);
                     Intent intent = new Intent(context, EnterTotalScoreFromDiveList.class);
                     intent.putExtras(b);
                     startActivity(intent);
@@ -130,6 +128,18 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
                             "Please choose a dive!",
                             Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        btnSwitchDiver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(context, SwitchDivers.class);
+                Bundle b = new Bundle();
+                b.putInt("keyMeet", meetId);
+                b.putString("sendingClass", "ChooseDivesFromList");
+                intent.putExtras(b);
+                startActivity(intent);
             }
         });
     }
@@ -219,12 +229,9 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 R.layout.spinner_item, diveNum);
 
-        dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
+        dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         dataAdapter.insert("  Choose Dive Number", 0);
         diveNumberSpinner.setAdapter(dataAdapter);
-//        diveNumberSpinner.setAdapter(
-//                new NothingSelectedSpinnerAdapter(
-//                        dataAdapter, R.layout.diver_number_spinner_row_nothing_selected, this));
     }
 
     private void fillScores(){
@@ -238,12 +245,14 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
         String totalString = Double.toString(totalScore2);
         failed = checkFailedDive(1);
         if(sc1 != 0.0 || failed){
+            layoutScores.setVisibility(View.VISIBLE);
             totalView.setVisibility(View.VISIBLE);
             total.setVisibility(View.VISIBLE);
             total.setText(totalString);
             diveTypeText.setVisibility(View.VISIBLE);
             diveTypeName.setVisibility(View.VISIBLE);
             diveTypeName.setText(typeString);
+            diveNumberSpinner.setSelection(1);
         } else {
             totalView.setVisibility(View.GONE);
             diveTypeText.setVisibility(View.GONE);
@@ -260,12 +269,14 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             s1v.setVisibility(View.VISIBLE);
             s1.setVisibility(View.VISIBLE);
             s1.setText(failDive);
+            diveNumberSpinner.setSelection(2);
         }else {
             if(sc1 != 0.0){
                 t1.setVisibility(View.VISIBLE);
                 s1v.setVisibility(View.VISIBLE);
                 s1.setVisibility(View.VISIBLE);
                 s1.setText(score1);
+                diveNumberSpinner.setSelection(2);
             }
         }
         numberOfDive = 2;
@@ -277,12 +288,14 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             s2v.setVisibility(View.VISIBLE);
             s2.setVisibility(View.VISIBLE);
             s2.setText(failDive);
+            diveNumberSpinner.setSelection(3);
         }else {
             if(sc2 != 0.0){
                 t2.setVisibility(View.VISIBLE);
                 s2v.setVisibility(View.VISIBLE);
                 s2.setVisibility(View.VISIBLE);
                 s2.setText(score2);
+                diveNumberSpinner.setSelection(3);
             }
         }
         numberOfDive = 3;
@@ -294,12 +307,14 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             s3v.setVisibility(View.VISIBLE);
             s3.setVisibility(View.VISIBLE);
             s3.setText(failDive);
+            diveNumberSpinner.setSelection(4);
         }else {
             if(sc3 != 0.0){
                 t3.setVisibility(View.VISIBLE);
                 s3v.setVisibility(View.VISIBLE);
                 s3.setVisibility(View.VISIBLE);
                 s3.setText(score3);
+                diveNumberSpinner.setSelection(4);
             }
         }
         numberOfDive = 4;
@@ -311,12 +326,14 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             s4v.setVisibility(View.VISIBLE);
             s4.setVisibility(View.VISIBLE);
             s4.setText(failDive);
+            diveNumberSpinner.setSelection(5);
         }else {
             if(sc4 != 0.0){
                 t4.setVisibility(View.VISIBLE);
                 s4v.setVisibility(View.VISIBLE);
                 s4.setVisibility(View.VISIBLE);
                 s4.setText(score4);
+                diveNumberSpinner.setSelection(5);
             }
         }
         numberOfDive = 5;
@@ -328,12 +345,14 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             s5v.setVisibility(View.VISIBLE);
             s5.setVisibility(View.VISIBLE);
             s5.setText(failDive);
+            diveNumberSpinner.setSelection(6);
         }else {
             if(sc5 != 0.0){
                 t5.setVisibility(View.VISIBLE);
                 s5v.setVisibility(View.VISIBLE);
                 s5.setVisibility(View.VISIBLE);
                 s5.setText(score5);
+                diveNumberSpinner.setSelection(6);
             }
         }
         numberOfDive = 6;
@@ -345,12 +364,14 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             s6v.setVisibility(View.VISIBLE);
             s6.setVisibility(View.VISIBLE);
             s6.setText(failDive);
+            diveNumberSpinner.setSelection(7);
         }else {
             if(sc6 != 0.0){
                 t6.setVisibility(View.VISIBLE);
                 s6v.setVisibility(View.VISIBLE);
                 s6.setVisibility(View.VISIBLE);
                 s6.setText(score6);
+                diveNumberSpinner.setSelection(7);
             }
         }
         if((sc6 != 0.0 || failed) && diveTotal == 6){
@@ -359,6 +380,7 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
                             " total score is " + totalString + " ." +
                             "You can still choose a dive to edit it if needed.",
                     Toast.LENGTH_LONG).show();
+            diveNumberSpinner.setSelection(1);
             return;
         }
         numberOfDive = 7;
@@ -370,12 +392,14 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             s7v.setVisibility(View.VISIBLE);
             s7.setVisibility(View.VISIBLE);
             s7.setText(failDive);
+            diveNumberSpinner.setSelection(8);
         }else {
             if(sc7 != 0.0){
                 t7.setVisibility(View.VISIBLE);
                 s7v.setVisibility(View.VISIBLE);
                 s7.setVisibility(View.VISIBLE);
                 s7.setText(score7);
+                diveNumberSpinner.setSelection(8);
             }
         }
         numberOfDive = 8;
@@ -387,12 +411,14 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             s8v.setVisibility(View.VISIBLE);
             s8.setVisibility(View.VISIBLE);
             s8.setText(failDive);
+            diveNumberSpinner.setSelection(9);
         }else {
             if(sc8 != 0.0){
                 t8.setVisibility(View.VISIBLE);
                 s8v.setVisibility(View.VISIBLE);
                 s8.setVisibility(View.VISIBLE);
                 s8.setText(score8);
+                diveNumberSpinner.setSelection(9);
             }
         }
         numberOfDive = 9;
@@ -404,12 +430,14 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             s9v.setVisibility(View.VISIBLE);
             s9.setVisibility(View.VISIBLE);
             s9.setText(failDive);
+            diveNumberSpinner.setSelection(10);
         }else {
             if(sc9 != 0.0){
                 t9.setVisibility(View.VISIBLE);
                 s9v.setVisibility(View.VISIBLE);
                 s9.setVisibility(View.VISIBLE);
                 s9.setText(score9);
+                diveNumberSpinner.setSelection(10);
             }
         }
         numberOfDive = 10;
@@ -421,12 +449,14 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             s10v.setVisibility(View.VISIBLE);
             s10.setVisibility(View.VISIBLE);
             s10.setText(failDive);
+            diveNumberSpinner.setSelection(11);
         }else {
             if(sc10 != 0.0){
                 t10.setVisibility(View.VISIBLE);
                 s10v.setVisibility(View.VISIBLE);
                 s10.setVisibility(View.VISIBLE);
                 s10.setText(score10);
+                diveNumberSpinner.setSelection(11);
             }
         }
         numberOfDive = 11;
@@ -452,6 +482,7 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
                     " total score is " + totalString + " ." +
                     "You can still choose a dive to edit it if needed.",
                     Toast.LENGTH_LONG).show();
+            diveNumberSpinner.setSelection(1);
         }
     }
 
@@ -521,15 +552,11 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
         diveTotal = search.doInBackground();
     }
 
-//    private void getDiveNumber(){
-//        GetDiveNumber num = new GetDiveNumber();
-//        diveNumber = num.doInBackground();
-//    }
-
     private void setUpView(){
         diveNumberSpinner = (Spinner)findViewById(R.id.spinnerDiveNumber);
         btnJudgeScore = (Button)findViewById(R.id.buttonJudgeScore);
         btnTotalScore = (Button)findViewById(R.id.buttonTotalScore);
+        btnSwitchDiver = (Button)findViewById(R.id.buttonSwitchDiver);
         name = (TextView)findViewById(R.id.divername);
         meetName = (TextView)findViewById(R.id.meetname);
         total = (TextView)findViewById(R.id.scoreTotal);
@@ -580,6 +607,7 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
         t9 = (TableRow)findViewById(R.id.tableRow9);
         t10 = (TableRow)findViewById(R.id.tableRow10);
         t11 = (TableRow)findViewById(R.id.tableRow11);
+        layoutScores = findViewById(R.id.layoutScores);
     }
 
     @Override
@@ -614,16 +642,6 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
         @Override
         protected Integer doInBackground(Integer... params) {
             return db.searchTotals(meetId, diverId);
-        }
-    }
-
-    private class CheckMultiplier extends AsyncTask<Double, Object, Object>{
-        JudgeScoreDatabase db = new JudgeScoreDatabase(getApplicationContext());
-        double multi;
-
-        @Override
-        protected Double doInBackground(Double... params) {
-            return multi = db.getMultiplier(meetId, diverId, showDiveNumber);
         }
     }
 
@@ -669,14 +687,4 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             return scoreList = db.getResultsList(meetId, diverId);
         }
     }
-
-//    private class GetDiveNumber extends AsyncTask<Integer, Object, Object>{
-//        DiveNumberDatabase db =  new DiveNumberDatabase(getApplicationContext());
-//        int number;
-//
-//        @Override
-//        protected Integer doInBackground(Integer... params) {
-//            return number = db.getDiveNumber(meetId, diverId);
-//        }
-//    }
 }

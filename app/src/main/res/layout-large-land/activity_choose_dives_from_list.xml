@@ -1,0 +1,919 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="16dp"
+            android:paddingEnd="16dp"
+            android:background="@drawable/layer_card_background">
+
+            <Spinner
+                android:id="@+id/spinnerDiveNumber"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/primary_light">
+
+                <Button
+                    android:id="@+id/buttonJudgeScore"
+                    android:text="@string/enter_judge_scores"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textColor="@color/primary"/>
+
+                <Button
+                    android:id="@+id/buttonTotalScore"
+                    android:text="@string/enter_total_score"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textColor="@color/primary"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout1"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="16dp"
+            android:paddingEnd="16dp"
+            android:background="@drawable/layer_card_background">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/primary_light">
+
+                <TextView
+                    android:id="@+id/dbName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/View0"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/diver_name"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/secondary_text"
+                    android:background="@color/primary_light"/>
+
+                <TextView
+                    android:id="@+id/divername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/dbName"
+                    android:layout_below="@id/View0"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/dbName"
+                    android:layout_toEndOf="@id/dbName"
+                    android:text=""
+                    android:textSize="@dimen/text_size_medium"
+                    android:textColor="@color/primary_text"
+                    android:background="@color/primary_light"/>
+
+                <TextView
+                    android:id="@+id/dbMeet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dbName"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/meet_name"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/secondary_text"
+                    android:background="@color/primary_light"/>
+
+                <TextView
+                    android:id="@+id/meetname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/dbMeet"
+                    android:layout_below="@id/divername"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/dbName"
+                    android:layout_toEndOf="@+id/dbName"
+                    android:text=""
+                    android:textSize="@dimen/text_size_medium"
+                    android:textColor="@color/primary_text"
+                    android:background="@color/primary_light"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/buttonSwitchDiver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_gravity="end"
+                android:text="@string/switch_diver"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/primary"
+                android:background="@color/primary_light"
+                style="?android:attr/borderlessButtonStyle"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutScores"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout3"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="16dp"
+            android:paddingEnd="16dp"
+            android:background="@drawable/layer_card_background"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:id="@+id/layouts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/primary_light">
+
+                <TextView
+                    android:id="@+id/total2view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/score_total"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textColor="@color/secondary_text"
+                    android:visibility="invisible"
+                    android:background="@color/primary_light"/>
+
+                <TextView
+                    android:id="@+id/scoreTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text=""
+                    android:textSize="@dimen/text_size_medium"
+                    android:textColor="@color/primary_text"
+                    android:visibility="invisible"
+                    android:background="@color/primary_light"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/primary_light"/>
+
+                <TextView
+                    android:id="@+id/diveType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/type_of_dives"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textColor="@color/secondary_text"
+                    android:visibility="invisible"
+                    android:background="@color/primary_light"/>
+
+                <TextView
+                    android:id="@+id/theType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text=""
+                    android:textSize="@dimen/text_size_medium"
+                    android:textColor="@color/primary_text"
+                    android:visibility="invisible"
+                    android:background="@color/primary_light"/>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/View3"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/primary" />
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@color/primary_light">
+
+                <TableLayout
+                    android:id="@+id/tableLayout1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/primary_light">
+
+                    <TableRow
+                        android:id="@+id/tableRow1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dip"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"
+                        android:background="@color/primary_light">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score1view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/dive_1"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/diveInfo1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dip"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"
+                        android:background="@color/primary_light">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score2view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/dive_2"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/diveInfo2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dip"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"
+                        android:background="@color/primary_light">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score3view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/dive_3"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/diveInfo3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dip"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"
+                        android:background="@color/primary_light">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score4view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/dive_4"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/diveInfo4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dip"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"
+                        android:background="@color/primary_light">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score5view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/dive_5"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/diveInfo5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dip"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"
+                        android:background="@color/primary_light">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score6view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/dive_6"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/diveInfo6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dip"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"
+                        android:background="@color/primary_light">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score7view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/dive_7"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/diveInfo7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dip"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"
+                        android:background="@color/primary_light">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score8view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/dive_8"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/diveInfo8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dip"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"
+                        android:background="@color/primary_light">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score9view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/dive_9"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/diveInfo9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dip"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"
+                        android:background="@color/primary_light">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score10view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/dive_10"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/diveInfo10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dip"
+                        android:layout_marginBottom="4dp"
+                        android:visibility="gone"
+                        android:background="@color/primary_light">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score11view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/dive_11"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/score11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                        <TextView
+                            android:id="@+id/diveInfo11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:background="@color/primary_light"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/primary_light"/>
+
+                    </TableRow>
+
+                </TableLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

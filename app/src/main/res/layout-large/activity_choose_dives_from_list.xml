@@ -12,12 +12,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingStart="8dp"
-        android:paddingRight="8dp"
-        android:paddingEnd="8dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
         android:background="@drawable/layer_card_background">
 
         <Spinner
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary"/>
 
             <Button
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary"/>
 
         </LinearLayout>
@@ -66,12 +66,12 @@
         android:layout_below="@id/layout1"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingStart="8dp"
-        android:paddingRight="8dp"
-        android:paddingEnd="8dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
         android:background="@drawable/layer_card_background">
 
         <RelativeLayout
@@ -88,7 +88,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/diver_name"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
@@ -104,7 +104,7 @@
                 android:layout_toRightOf="@id/dbName"
                 android:layout_toEndOf="@id/dbName"
                 android:text=""
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary_text"
                 android:background="@color/primary_light"/>
 
@@ -117,7 +117,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/meet_name"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
@@ -133,7 +133,7 @@
                 android:layout_toRightOf="@+id/dbName"
                 android:layout_toEndOf="@+id/dbName"
                 android:text=""
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary_text"
                 android:background="@color/primary_light"/>
 
@@ -161,12 +161,12 @@
         android:layout_below="@id/layout3"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingStart="8dp"
-        android:paddingRight="8dp"
-        android:paddingEnd="8dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
         android:background="@drawable/layer_card_background"
         android:visibility="invisible">
 
@@ -185,7 +185,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/score_total"
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/secondary_text"
                 android:visibility="invisible"
                 android:background="@color/primary_light"/>
@@ -198,7 +198,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text=""
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary_text"
                 android:visibility="invisible"
                 android:background="@color/primary_light"/>
@@ -217,7 +217,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/type_of_dives"
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/secondary_text"
                 android:visibility="invisible"
                 android:background="@color/primary_light"/>
@@ -232,7 +232,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
                 android:text=""
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary_text"
                 android:visibility="invisible"
                 android:background="@color/primary_light"/>
