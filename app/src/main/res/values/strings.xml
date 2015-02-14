@@ -337,7 +337,7 @@
     <string name="home_reports_text">I need to score a detailed meet before I can generate reports or share the results through email\/social media.</string>
     <string name="title_activity_meets_divers">MeetsDivers</string>
     <string name="enter_diver_meets">Enter:</string>
-    <string name="view_meets_divers">View:</string>
+    <string name="view_meets_divers">Meet Info:</string>
     <string name="radio_judge_two">2</string>
     <string name="title_activity_date_picker_custom">DatePickerCustom</string>
     <string name="done">Done</string>

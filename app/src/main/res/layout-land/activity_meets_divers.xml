@@ -103,7 +103,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <Button
                     android:id="@+id/buttonDiverHistory"
@@ -156,7 +156,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <Button
                     android:id="@+id/buttonMeetHistory"

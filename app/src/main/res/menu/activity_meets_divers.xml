@@ -6,4 +6,9 @@
         android:orderInCategory="200"
         divingscores:showAsAction="collapseActionView" />
 
+    <item android:id="@+id/menu_detailed_scores"
+        android:title="@string/start_meet"
+        android:orderInCategory="200"
+        divingscores:showAsAction="collapseActionView" />
+
 </menu>

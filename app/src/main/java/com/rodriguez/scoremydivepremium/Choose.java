@@ -433,7 +433,8 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         {
             case android.R.id.home:
                 //NavUtils.navigateUpFromSameTask(this);
-                finish();
+                //finish();
+                onBackPressed();
                 return true;
             case R.id.menu_enter_diver:
                 Intent intent = new Intent(context, EnterDiver.class);

@@ -28,8 +28,9 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
     private Spinner spinnerName, spinnerMeet;
     private Button diverHistory, diverEdit, diverDelete, meetResult, meetEdit, meetDelete,
             btnNewDiver, btnNewMeet;
-    private View layout2, layout3;
-    private int diveCount = 0, meetCount = 0, diverId = 0, meetId = 0;
+    //private View layout2, layout3;
+    private int diverId = 0, meetId = 0;
+    private boolean diverCheck = false, meetCheck = false;
     private String stringId = "";
     private final Context context = this;
 
@@ -92,6 +93,124 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
                 startActivity(intent);
             }
         });
+
+        diverHistory.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                ArrayList<String> meetInfo;
+
+                // calling a separate thread for the db select
+                MeetHistoryThread his = new MeetHistoryThread();
+                meetInfo = his.doInBackground(diverId);
+                if(!meetInfo.isEmpty()) {
+                    Intent intent = new Intent(getBaseContext(), DiverHistory.class);
+                    Bundle b = new Bundle();
+                    b.putInt("key", diverId);
+                    intent.putExtras(b);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Diver has not been in any meets yet",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        diverEdit.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                if(diverId > 0) {
+                    Intent intent = new Intent(getBaseContext(), DiverEdit.class);
+                    Bundle b = new Bundle();
+                    b.putInt("key", diverId);
+                    intent.putExtras(b);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Please Choose a Diver",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        diverDelete.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                if(diverId > 0) {
+                    Intent intent = new Intent(getBaseContext(), DiverDelete.class);
+                    Bundle b = new Bundle();
+                    b.putInt("key", diverId);
+                    intent.putExtras(b);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Please Choose a Diver",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        meetResult.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                ArrayList<String> diverInfo;
+
+                // calls a separate thread to get the database info
+                DiverHistoryThread his = new DiverHistoryThread();
+                diverInfo = his.doInBackground(meetId);
+                if(!diverInfo.isEmpty()) {
+                    Intent intent = new Intent(getBaseContext(), MeetResults.class);
+                    Bundle b = new Bundle();
+                    b.putInt("key", meetId);
+                    intent.putExtras(b);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Meet has no divers associated with it",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        meetEdit.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                if(meetId > 0) {
+                    Intent intent = new Intent(getBaseContext(), MeetEdit.class);
+                    Bundle b = new Bundle();
+                    b.putInt("key", meetId);
+                    intent.putExtras(b);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Please Choose a Meet",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        meetDelete.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                if(meetId > 0) {
+                    Intent intent = new Intent(getBaseContext(), MeetDelete.class);
+                    Bundle b = new Bundle();
+                    b.putInt("key", meetId);
+                    intent.putExtras(b);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Please Choose a Meet",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, final int position,
@@ -102,58 +221,13 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
 
             String nameSpinner = "name";
             diverId = getDiverId(nameSpinner);
-            if(diveCount == 0){
-                // counter used to keep track if the spinner has been hit and only adds the buttons once
-                diveCount ++;
-                layout2.setVisibility(View.VISIBLE);
-
-                diverHistory.setOnClickListener(new View.OnClickListener(){
-
-                    @Override
-                    public void onClick(View v) {
-                        ArrayList<String> meetInfo;
-
-                        // calling a separate thread for the db select
-                        MeetHistoryThread his = new MeetHistoryThread();
-                        meetInfo = his.doInBackground(diverId);
-                        if(!meetInfo.isEmpty()) {
-                            Intent intent = new Intent(getBaseContext(), DiverHistory.class);
-                            Bundle b = new Bundle();
-                            b.putInt("key", diverId);
-                            intent.putExtras(b);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(getApplicationContext(),
-                                    "Diver has not been in any meets yet",
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-
-                diverEdit.setOnClickListener(new View.OnClickListener(){
-
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getBaseContext(), DiverEdit.class);
-                        Bundle b = new Bundle();
-                        b.putInt("key", diverId);
-                        intent.putExtras(b);
-                        startActivity(intent);
-                    }
-                });
-
-                diverDelete.setOnClickListener(new View.OnClickListener(){
-
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getBaseContext(), DiverDelete.class);
-                        Bundle b = new Bundle();
-                        b.putInt("key", diverId);
-                        intent.putExtras(b);
-                        startActivity(intent);
-                    }
-                });
-            }
+//            if(diveCount == 0){
+//                // counter used to keep track if the spinner has been hit and only adds the buttons once
+//                diveCount ++;
+//                layout2.setVisibility(View.VISIBLE);
+//
+//
+//            }
         }
 
         if(spinner.getId() == R.id.spinnerMeetNameW && position >= 1){
@@ -161,58 +235,13 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
             String meetSpinner = "meet";
             meetId = getDiverId(meetSpinner);
 
-            if(meetCount == 0){
-                // counter used to keep track if the spinner has been hit and only adds the buttons once
-                meetCount ++;
-                layout3.setVisibility(View.VISIBLE);
-
-                meetResult.setOnClickListener(new View.OnClickListener(){
-
-                    @Override
-                    public void onClick(View v) {
-                        ArrayList<String> diverInfo;
-
-                        // calls a separate thread to get the database info
-                        DiverHistoryThread his = new DiverHistoryThread();
-                        diverInfo = his.doInBackground(meetId);
-                        if(!diverInfo.isEmpty()) {
-                            Intent intent = new Intent(getBaseContext(), MeetResults.class);
-                            Bundle b = new Bundle();
-                            b.putInt("key", meetId);
-                            intent.putExtras(b);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(getApplicationContext(),
-                                    "Meet has no divers associated with it",
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-
-                meetEdit.setOnClickListener(new View.OnClickListener(){
-
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getBaseContext(), MeetEdit.class);
-                        Bundle b = new Bundle();
-                        b.putInt("key", meetId);
-                        intent.putExtras(b);
-                        startActivity(intent);
-                    }
-                });
-
-                meetDelete.setOnClickListener(new View.OnClickListener(){
-
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getBaseContext(), MeetDelete.class);
-                        Bundle b = new Bundle();
-                        b.putInt("key", meetId);
-                        intent.putExtras(b);
-                        startActivity(intent);
-                    }
-                });
-            }
+//            if(meetCount == 0){
+//                // counter used to keep track if the spinner has been hit and only adds the buttons once
+//                meetCount ++;
+//                layout3.setVisibility(View.VISIBLE);
+//
+//
+//            }
         }
     }
 
@@ -249,8 +278,8 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
         meetResult = (Button) findViewById(R.id.buttonMeetHistory);
         meetEdit = (Button) findViewById(R.id.buttonMeetEdit);
         meetDelete = (Button) findViewById(R.id.buttonMeetDelete);
-        layout2 = findViewById(R.id.layout2);
-        layout3 = findViewById(R.id.layout3);
+//        layout2 = findViewById(R.id.layout2);
+//        layout3 = findViewById(R.id.layout3);
     }
 
     @Override
@@ -271,6 +300,33 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
             case R.id.menu_rankings:
                 Intent intent1 = new Intent(context, Rankings.class);
                 startActivity(intent1);
+                break;
+            case R.id.menu_detailed_scores:
+                CheckDiver diver = new CheckDiver();
+                diverCheck = diver.doInBackground();
+                CheckMeet meet = new CheckMeet();
+                meetCheck = meet.doInBackground();
+
+                if(diverCheck && meetCheck) {
+                    Intent intent = new Intent(context, Choose.class);
+                    startActivity(intent);
+                } else {
+                    if (!diverCheck && meetCheck) {
+                        Toast.makeText(getApplicationContext(),
+                                "Please add a diver and a meet",
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    if(!diverCheck){
+                        Toast.makeText(getApplicationContext(),
+                                "Please add a diver before starting a meet",
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    Toast.makeText(getApplicationContext(),
+                            "There have been no meets added yet",
+                            Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -339,6 +395,26 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
         @Override
         protected Integer doInBackground(String... params) {
             return ids = db.getId(stringId);
+        }
+    }
+
+    private class CheckDiver extends AsyncTask<Boolean, Object, Object> {
+        DiverDatabase db = new DiverDatabase(getApplicationContext());
+        Boolean diver;
+
+        @Override
+        protected Boolean doInBackground(Boolean... params) {
+            return diver = db.checkDiver();
+        }
+    }
+
+    private class CheckMeet extends AsyncTask<Boolean, Object, Object> {
+        MeetDatabase db = new MeetDatabase(getApplicationContext());
+        Boolean meet;
+
+        @Override
+        protected Boolean doInBackground(Boolean... params) {
+            return meet = db.checkMeet();
         }
     }
 
