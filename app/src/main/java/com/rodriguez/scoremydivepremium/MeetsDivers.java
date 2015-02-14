@@ -309,6 +309,7 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
 
                 if(diverCheck && meetCheck) {
                     Intent intent = new Intent(context, Choose.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 } else {
                     if (!diverCheck && meetCheck) {

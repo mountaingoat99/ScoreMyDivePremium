@@ -228,6 +228,7 @@ public class MeetEdit extends ActionBarActivity implements
                                 + judges, Toast.LENGTH_LONG
                 ).show();
                 Intent intent = new Intent(context, MeetsDivers.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

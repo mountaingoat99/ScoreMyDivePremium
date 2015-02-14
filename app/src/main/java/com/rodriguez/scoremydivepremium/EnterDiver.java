@@ -68,6 +68,7 @@ public class EnterDiver extends ActionBarActivity {
     	        	Toast.makeText(getApplicationContext(),
     	        			"Diver has been saved", Toast.LENGTH_SHORT).show();
     	        	Intent intent = new Intent(context, MeetsDivers.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         			startActivity(intent);
     	        } 
     		}

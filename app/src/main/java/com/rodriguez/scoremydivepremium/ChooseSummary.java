@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.info.sqlite.helper.DiveListDatabase;
 import com.info.sqlite.helper.DiveNumberDatabase;
 import com.info.sqlite.helper.DiveTotalDatabase;
 import com.info.sqlite.helper.DiverDatabase;
@@ -32,7 +33,7 @@ public class ChooseSummary extends ActionBarActivity {
                     totalView, diveTypeText, diveTypeShow, diveInfo1, diveInfo2,
                     diveInfo3, diveInfo4, diveInfo5, diveInfo6, diveInfo7, diveInfo8,
                     diveInfo9, diveInfo10, diveInfo11;
-    private Button btnType, btnChooseDives;
+    private Button btnType, btnChooseDives, btnSwitchDiver;
 	private int diverId, meetId, diveTotal, diveNumber;
     private double boardType;
     private String s1String, s2String, s3String, s4String, s5String, s6String, s7String,
@@ -40,7 +41,7 @@ public class ChooseSummary extends ActionBarActivity {
     private String infoString1, infoString2, infoString3, infoString4, infoString5,
                     infoString6, infoString7, infoString8, infoString9, infoString10, infoString11;
     private String typeString, noDive = "There are no scores entered yet.";
-    private Boolean failed, hasList;
+    private Boolean failed, hasList, checkList;
     private Double totalScore;
     final Context context = this;
 
@@ -67,7 +68,19 @@ public class ChooseSummary extends ActionBarActivity {
 		fillText();
         fillScores();
         addListenerOnButton();
+        checkDiveList();
+        if(!checkList) {
+            // first we need to write a divelist record
+            DiveListDatabase dldb = new DiveListDatabase(getApplicationContext());
+            dldb.createNewDiveList(meetId, diverId, 0, 0);
+        }
 	}
+
+    // here we are creating an empty List record
+    private void checkDiveList(){
+        CheckDiveList check = new CheckDiveList();
+        checkList = check.doInBackground();
+    }
 
     @Override
     public void onBackPressed(){
@@ -113,8 +126,19 @@ public class ChooseSummary extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-    }
 
+        btnSwitchDiver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(context, SwitchDivers.class);
+                Bundle b = new Bundle();
+                b.putInt("keyMeet", meetId);
+                b.putString("sendingClass", "ChooseSummary");
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+    }
 
     private void getDiveTotals(){
         SearchDiveTotals total = new SearchDiveTotals();
@@ -464,6 +488,7 @@ public class ChooseSummary extends ActionBarActivity {
         diveInfo11 = (TextView)findViewById(R.id.diveInfo11);
         btnType = (Button)findViewById(R.id.buttonTypeNumber);
         btnChooseDives = (Button)findViewById(R.id.buttonChooseDives);
+        btnSwitchDiver = (Button)findViewById(R.id.buttonSwitchDiver);
     }
 	
 	@Override
@@ -564,6 +589,15 @@ public class ChooseSummary extends ActionBarActivity {
         @Override
         protected Double doInBackground(Double... params) {
             return type = db.getType(meetId, diverId);
+        }
+    }
+    private class CheckDiveList extends AsyncTask<Boolean, Object, Object>{
+        DiveListDatabase db = new DiveListDatabase(getApplicationContext());
+        boolean check;
+
+        @Override
+        protected Boolean doInBackground(Boolean... params) {
+            return check = db.checkList(meetId, diverId);
         }
     }
 }

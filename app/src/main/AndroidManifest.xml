@@ -400,6 +400,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DiveChoose" />
         </activity>
+        <activity
+            android:name=".SwitchDivers"
+            android:theme="@style/Theme.DialogTheme" >
+            <intent-filter>
+                <action android:name="com.rodriguez.Home.SwitchDivers" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

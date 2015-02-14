@@ -59,6 +59,25 @@ public class DiverDatabase extends DatabaseHelper {
         db.close();
 		return diverNames;			
 	}
+
+    //------------get the drivers who are currently not on a list-----------------------------//
+    public List<String>GetDiveNamesForNoListSwitch(){
+        List<String> diverNames = new ArrayList<>();
+        String selectQuery = "SELECT " + getDiverName() + " FROM " + getTableDiverName();
+        Log.e(getLog(), selectQuery);
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c.moveToFirst()){
+            do{
+                DiverNameDB t = new DiverNameDB();
+                diverNames.add("  " +  t.setName(c.getString(c.getColumnIndex(getDiverName()))));
+            }while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+        return diverNames;
+    }
 	
 	//--------------get the driver id from the spinner-----------------------------------------//
 	public int getId(String stringId){

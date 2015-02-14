@@ -194,6 +194,7 @@ public class DiveNumberEnter extends ActionBarActivity {
                     // position String
                     b.putString("postionString", divePosString);
                     intent.putExtras(b);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
 
                 } else {
@@ -244,6 +245,7 @@ public class DiveNumberEnter extends ActionBarActivity {
                     // position String
                     b.putString("postionString", divePosString);
                     intent.putExtras(b);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
 
                 } else {
@@ -285,6 +287,7 @@ public class DiveNumberEnter extends ActionBarActivity {
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
                     intent.putExtras(b);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
 
                 }else{

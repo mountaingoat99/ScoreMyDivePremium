@@ -62,7 +62,7 @@ public class MeetResults extends ActionBarActivity {
     			Toast.LENGTH_LONG).show();
     }	
 	
-	public void fillText(){
+	public void fillText(){      //TODO need to fox this date, not showing on the screen
         ArrayList<String> meetInfo;
         GetMeetInfo info = new GetMeetInfo();
 		meetInfo = info.doInBackground();
@@ -113,7 +113,7 @@ public class MeetResults extends ActionBarActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-                stringId = myList.getItemAtPosition(position).toString();
+                stringId = myList.getItemAtPosition(position).toString();  //TODO this may be redundant
                 GetDiverId diveid = new GetDiverId();
                 diverId = diveid.doInBackground();
                 getDiveNumber();

@@ -75,6 +75,7 @@ public class FailedDive extends ActionBarActivity {
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
                     intent.putExtras(b);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
             });
@@ -92,6 +93,7 @@ public class FailedDive extends ActionBarActivity {
                     b.putInt("keyMeet", meetId);
                     Intent intent = new Intent(context, ChooseDivesFromList.class);
                     intent.putExtras(b);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
             });

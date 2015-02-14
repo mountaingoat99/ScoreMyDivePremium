@@ -133,6 +133,7 @@ OnClickListener {
                     Toast.makeText(getApplicationContext(),
                             "Meet has been saved", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, MeetsDivers.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
             }

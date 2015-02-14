@@ -47,7 +47,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
 	private int meetSpinPosition, meetId = 0, diverSpinnerPosition, diverId = 0, diveTotal = 6;;
     private double boardType = 1;
     private boolean checkResult, checkTotals, checkBoardType, checkDiveNumber;
-    private boolean checkListYes, checkList;
+    private boolean checkListYes;
     private String showDiveTotal, stringId;
     final Context context = this;
     public boolean firstAlertChooseDiver;
@@ -148,12 +148,12 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
    {
        btnNext.setOnClickListener(new OnClickListener() {
            public void onClick(View arg0) {
-               checkDiveList();
-               if(!checkList) {
-                   // first we need to write a divelist record
-                   DiveListDatabase dldb = new DiveListDatabase(getApplicationContext());
-                   dldb.createNewDiveList(meetId, diverId, 0, 0);
-               }
+//               checkDiveList();
+//               if(!checkList) {
+//                   // first we need to write a divelist record
+//                   DiveListDatabase dldb = new DiveListDatabase(getApplicationContext());
+//                   dldb.createNewDiveList(meetId, diverId, 0, 0);
+//               }
                if (diverId != 0 && meetId != 0) {
                    // checks to see if a diver and meet are attached to results yet
                    CheckTheResults checks = new CheckTheResults();
@@ -191,12 +191,12 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
            @Override
            public void onClick(View v) {
                // first we need to see if there is a dive list record
-               checkDiveList();
-               if(!checkList) {
-                   // then we need to write a divelist record
-                   DiveListDatabase dldb = new DiveListDatabase(getApplicationContext());
-                   dldb.createNewDiveList(meetId, diverId, 0, 0);
-               }
+//               checkDiveList();
+//               if(!checkList) {
+//                   // then we need to write a divelist record
+//                   DiveListDatabase dldb = new DiveListDatabase(getApplicationContext());
+//                   dldb.createNewDiveList(meetId, diverId, 0, 0);
+//               }
                if (diverId != 0 && meetId != 0) {
                    // checks to see if a diver and meet are attached to results yet
                    CheckTheResults checks = new CheckTheResults();
@@ -264,12 +264,10 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
 	   return id;
 	}
 
-    // if they have started scoring a meet without a list then then List button will
-    // be hidden
-    private void checkDiveList(){
-        CheckDiveList check = new CheckDiveList();
-        checkList = check.doInBackground();
-    }
+//    private void checkDiveList(){
+//        CheckDiveList check = new CheckDiveList();
+//        checkList = check.doInBackground();
+//    }
 
     private void enterDiveTotal(){
         CheckDiveTotals check = new CheckDiveTotals();
@@ -331,7 +329,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         CheckForYesList noListCheck = new CheckForYesList();
         checkListYes = noListCheck.doInBackground();
         if(checkListYes){
-            btnList.setVisibility(View.GONE);
+            btnList.setVisibility(View.GONE);    // this is Enter List
         }else{
             btnList.setVisibility(View.VISIBLE);
 
@@ -345,7 +343,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         CheckDiveListComplete check = new CheckDiveListComplete();
         int isComplete = check.doInBackground();
         if(isComplete == 1 || isComplete == 2) {
-            btnNext.setVisibility(View.GONE);
+            btnNext.setVisibility(View.GONE);   // this is Enter Scores
         }else{
             btnNext.setVisibility(View.VISIBLE);
         }
@@ -526,15 +524,15 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         }
     }
 
-    private class CheckDiveList extends AsyncTask<Boolean, Object, Object>{
-        DiveListDatabase db = new DiveListDatabase(getApplicationContext());
-        boolean check;
-
-        @Override
-        protected Boolean doInBackground(Boolean... params) {
-            return check = db.checkList(meetId, diverId);
-        }
-    }
+//    private class CheckDiveList extends AsyncTask<Boolean, Object, Object>{
+//        DiveListDatabase db = new DiveListDatabase(getApplicationContext());
+//        boolean check;
+//
+//        @Override
+//        protected Boolean doInBackground(Boolean... params) {
+//            return check = db.checkList(meetId, diverId);
+//        }
+//    }
 
     private class CheckTheResults extends AsyncTask<Boolean, Object, Object>{
         ResultDatabase db = new ResultDatabase(getApplicationContext());
@@ -625,7 +623,6 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
 
     private class CheckForYesList extends AsyncTask<Boolean, Object, Object>{
         DiveListDatabase db = new DiveListDatabase(getApplicationContext());
-        boolean check;
 
         @Override
         protected Boolean doInBackground(Boolean... params) {

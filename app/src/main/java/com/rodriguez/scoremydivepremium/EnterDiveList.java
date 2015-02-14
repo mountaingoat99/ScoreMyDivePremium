@@ -55,10 +55,10 @@ public class EnterDiveList extends ActionBarActivity {
                     diveInfo7, diveInfo8, diveInfo9, diveInfo10, diveInfo11, diverName, meetName;
     private View view1, layoutScores;
     private TableRow row1, row2, row3, row4,row5, row6, row7, row8, row9, row10, row11 ;
-    private Button btnScore, btnChooseDive, btnTypeNumber;
+    private Button btnScore, btnChooseDive, btnTypeNumber, btnSwitchDiver;
     private int diverId, meetId, diveTotal, diveNumber = 0;
     private double boardType;
-    private boolean hasList;
+    private boolean hasList, checkList;
     private String infoString1 = "", infoString2 = "", infoString3 = "", infoString4 = "", infoString5 = "",
             infoString6 = "", infoString7 = "", infoString8 = "", infoString9 = "", infoString10 = "", infoString11 = "";
 
@@ -90,11 +90,24 @@ public class EnterDiveList extends ActionBarActivity {
         addListenerOnButton();
         setUpLongPress();
 
+        checkDiveList();
+        if(!checkList) {
+            // first we need to write a divelist record
+            DiveListDatabase dldb = new DiveListDatabase(getApplicationContext());
+            dldb.createNewDiveList(meetId, diverId, 0, 0);
+        }
+
         // shared preference for the alert dialog
         loadSavedPreferences();
         if (!firstAlertEditDiveList) {
             showAlert();
         }
+    }
+
+    // here we are creating an empty List record
+    private void checkDiveList(){
+        CheckDiveList check = new CheckDiveList();
+        checkList = check.doInBackground();
     }
 
     private void loadSavedPreferences(){
@@ -197,6 +210,18 @@ public class EnterDiveList extends ActionBarActivity {
                 Bundle b = new Bundle();
                 b.putInt("keyDiver", diverId);
                 b.putInt("keyMeet", meetId);
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+
+        btnSwitchDiver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(context, SwitchDivers.class);
+                Bundle b = new Bundle();
+                b.putInt("keyMeet", meetId);
+                b.putString("sendingClass", "EnterDiveList");
                 intent.putExtras(b);
                 startActivity(intent);
             }
@@ -553,6 +578,7 @@ public class EnterDiveList extends ActionBarActivity {
         btnTypeNumber = (Button)findViewById(R.id.buttonTypeNumber);
         view1 = findViewById(R.id.view1);
         layoutScores = findViewById(R.id.layoutScores);
+        btnSwitchDiver = (Button)findViewById(R.id.buttonSwitchDiver);
     }
 
     @Override
@@ -628,6 +654,16 @@ public class EnterDiveList extends ActionBarActivity {
         @Override
         protected List<Integer> doInBackground(Integer... params) {
             return number = db.getDiveNumbers(meetId, diverId);
+        }
+    }
+
+    private class CheckDiveList extends AsyncTask<Boolean, Object, Object>{
+        DiveListDatabase db = new DiveListDatabase(getApplicationContext());
+        boolean check;
+
+        @Override
+        protected Boolean doInBackground(Boolean... params) {
+            return check = db.checkList(meetId, diverId);
         }
     }
 }

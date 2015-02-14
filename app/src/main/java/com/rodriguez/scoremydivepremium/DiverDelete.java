@@ -91,6 +91,7 @@ public class DiverDelete extends ActionBarActivity {
                         "Diver " + nameString + " has been deleted",
                         Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(context, MeetsDivers.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

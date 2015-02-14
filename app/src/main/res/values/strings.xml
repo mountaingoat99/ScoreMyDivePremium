@@ -355,6 +355,7 @@
     <string name="dive_number_hint">103</string>
     <string name="dive_position_hint">B</string>
     <string name="add_dive_to_list">Add Dive</string>
-
+    <string name="switch_diver">Switch Diver</string>
+    <string name="title_activity_switch_divers">Switch Divers</string>
 
 </resources>
