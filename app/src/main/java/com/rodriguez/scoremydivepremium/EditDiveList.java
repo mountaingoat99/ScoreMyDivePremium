@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,21 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.info.Helpers.DiveStyleSpinner;
+import com.info.controls.DiveChooseController;
 import com.info.controls.SpinnerDiveStyleCustomBaseAdpater;
-import com.info.sqlite.helper.ArmstandPlatformDatabase;
-import com.info.sqlite.helper.BackDatabase;
-import com.info.sqlite.helper.BackPlatformDatabase;
 import com.info.sqlite.helper.DivesDatabase;
-import com.info.sqlite.helper.ForwardDatabase;
-import com.info.sqlite.helper.ForwardPlatformDatabase;
-import com.info.sqlite.helper.InwardDatabase;
-import com.info.sqlite.helper.InwardPlatformDatabase;
 import com.info.sqlite.helper.JudgeScoreDatabase;
 import com.info.sqlite.helper.PlatformDivesDatabase;
-import com.info.sqlite.helper.ReverseDatabase;
-import com.info.sqlite.helper.ReversePlatformDatabase;
-import com.info.sqlite.helper.TwistDatabase;
-import com.info.sqlite.helper.TwistPlatformDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,27 +39,29 @@ public class EditDiveList extends ActionBarActivity implements AdapterView.OnIte
     private double boardType, multiplier = 0.0;
     private ArrayList<DiveStyleSpinner> searchDives;
     private String stringId, ddString;
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_dive_list);
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
-        }
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setUpView();
         diveCategory.setOnItemSelectedListener(this);
         diveStyle.setOnItemSelectedListener(this);
 
         Bundle b = getIntent().getExtras();
-        diverId = b.getInt("keyDiver");
-        meetId = b.getInt("keyMeet");
-        diverSpinnerPosition = b.getInt("keySpin");
-        diveNumber = b.getInt("keyDiveNumber");
-        boardType = b.getDouble("keyBoardType");
+        if (b!= null) {
+            diverId = b.getInt("keyDiver");
+            meetId = b.getInt("keyMeet");
+            diverSpinnerPosition = b.getInt("keySpin");
+            diveNumber = b.getInt("keyDiveNumber");
+            boardType = b.getDouble("keyBoardType");
+        }
+
         loadCategorySpinnerData();
         getMultiplier();
         checkRadios();
@@ -87,6 +80,7 @@ public class EditDiveList extends ActionBarActivity implements AdapterView.OnIte
                     b.putInt("keyMeet", meetId);
                     b.putInt("keySpin", diverSpinnerPosition);
                     intent.putExtras(b);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(),
@@ -169,28 +163,18 @@ public class EditDiveList extends ActionBarActivity implements AdapterView.OnIte
 
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                     R.layout.spinner_item, diveName);
-
-            dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
+            dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
             dataAdapter.insert("  Choose a Dive Category", 0);
             diveCategory.setAdapter(dataAdapter);
-//            diveCategory.setAdapter(
-//                    new NothingSelectedSpinnerAdapter(
-//                            dataAdapter, R.layout.dive_type_spinner_row_nothing_selected, this)
-//            );
         } else {
             GetPlatformDiveName divesP = new GetPlatformDiveName();
             List<String> diveName = divesP.doInBackground();
 
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                     R.layout.spinner_item, diveName);
-
-            dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
+            dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
             dataAdapter.insert("  Choose a Dive Category", 0);
             diveCategory.setAdapter(dataAdapter);
-//            diveCategory.setAdapter(
-//                    new NothingSelectedSpinnerAdapter(
-//                            dataAdapter, R.layout.dive_type_spinner_row_nothing_selected, this)
-//            );
         }
         if (diveCategory.getSelectedItemPosition() == 0){
             diveCategory.setSelection(1);
@@ -202,210 +186,20 @@ public class EditDiveList extends ActionBarActivity implements AdapterView.OnIte
 
         // DiveStyle Spinner
         newDiveType = diveType;
-        switch (diveType) {
-            // Springboard Dives
-            case 1:
-                if (boardType == 1) {
-                    GetForwardOneNames f1Name = new GetForwardOneNames();
-                    searchDives = f1Name.doInBackground();
-                    break;
-                } else {
-                    GetForwardThreeNames f3Name = new GetForwardThreeNames();
-                    searchDives = f3Name.doInBackground();
-                    break;
-                }
-            case 2:
-                if (boardType == 1) {
-                    GetBackOneNames b1Name = new GetBackOneNames();
-                    searchDives = b1Name.doInBackground();
-                    break;
-                } else {
-                    GetBackThreeNames b3Name = new GetBackThreeNames();
-                    searchDives = b3Name.doInBackground();
-                    break;
-                }
-            case 3:
-                if (boardType == 1) {
-                    GetReverseOneNames r1Name = new GetReverseOneNames();
-                    searchDives = r1Name.doInBackground();
-                    break;
-                } else {
-                    GetReverseThreeNames r3Name = new GetReverseThreeNames();
-                    searchDives = r3Name.doInBackground();
-                    break;
-                }
-            case 4:
-                if (boardType == 1) {
-                    GetInwardOneNames i1Name = new GetInwardOneNames();
-                    searchDives = i1Name.doInBackground();
-                    break;
-                } else {
-                    GetInwardThreeNames i3Name = new GetInwardThreeNames();
-                    searchDives = i3Name.doInBackground();
-                    break;
-                }
-            case 5:
-                if (boardType == 1) {
-                    GetTwistOneNames t1Name = new GetTwistOneNames();
-                    searchDives = t1Name.doInBackground();
-                    break;
-                } else {
-                    GetTwistThreeNames t3Name = new GetTwistThreeNames();
-                    searchDives = t3Name.doInBackground();
-                    break;
-                }
-                //platform dives
-            case 6:
-                if (boardType == 10) {
-                    GetFrontTenNames f10 = new GetFrontTenNames();
-                    searchDives = f10.doInBackground();
-                    break;
-                } else if (boardType == 7.5) {
-                    GetFrontSevenNames f7 = new GetFrontSevenNames();
-                    searchDives = f7.doInBackground();
-                    break;
-                } else {
-                    GetFrontFiveNames f5 = new GetFrontFiveNames();
-                    searchDives = f5.doInBackground();
-                    break;
-                }
-            case 7:
-                if (boardType == 10) {
-                    GetBackTenNames b10 = new GetBackTenNames();
-                    searchDives = b10.doInBackground();
-                    break;
-                } else if (boardType == 7.5) {
-                    GetBackSevenNames b7 = new GetBackSevenNames();
-                    searchDives = b7.doInBackground();
-                    break;
-                } else {
-                    GetBackFiveNames b5 = new GetBackFiveNames();
-                    searchDives = b5.doInBackground();
-                    break;
-                }
-            case 8:
-                if (boardType == 10) {
-                    GetReverseTenNames r10 = new GetReverseTenNames();
-                    searchDives = r10.doInBackground();
-                    break;
-                } else if (boardType == 7.5) {
-                    GetReverseSevenNames r7 = new GetReverseSevenNames();
-                    searchDives = r7.doInBackground();
-                    break;
-                } else {
-                    GetReverseFiveNames r5 = new GetReverseFiveNames();
-                    searchDives = r5.doInBackground();
-                    break;
-                }
-            case 9:
-                if (boardType == 10) {
-                    GetInwardTenNames ip10 = new GetInwardTenNames();
-                    searchDives = ip10.doInBackground();
-                    break;
-                } else if (boardType == 7.5) {
-                    GetInwardSevenNames ip7 = new GetInwardSevenNames();
-                    searchDives = ip7.doInBackground();
-                    break;
-                } else {
-                    GetInwardFiveNames ip5 = new GetInwardFiveNames();
-                    searchDives = ip5.doInBackground();
-                    break;
-                }
-            case 10:
-                if (boardType == 10) {
-                    GetTwistTenNames tp10 = new GetTwistTenNames();
-                    searchDives = tp10.doInBackground();
-                    break;
-                } else if (boardType == 7.5) {
-                    GetTwistSevenNames tp7 = new GetTwistSevenNames();
-                    searchDives = tp7.doInBackground();
-                    break;
-                } else {
-                    GetTwistFiveNames tp5 = new GetTwistFiveNames();
-                    searchDives = tp5.doInBackground();
-                    break;
-                }
-            case 11:
-                if (boardType == 10) {
-                    GetArmstandTenNames a10 = new GetArmstandTenNames();
-                    searchDives = a10.doInBackground();
-                    break;
-                } else if (boardType == 7.5) {
-                    GetArmstandSevenNames a7 = new GetArmstandSevenNames();
-                    searchDives = a7.doInBackground();
-                    break;
-                } else {
-                    GetArmstandFiveNames a5 = new GetArmstandFiveNames();
-                    searchDives = a5.doInBackground();
-                    break;
-                }
-        }
-
+        DiveChooseController dive = new DiveChooseController();
+        searchDives = dive.GetDiveCat(diveType, boardType, context);
         diveStyle.setAdapter(new SpinnerDiveStyleCustomBaseAdpater(this, searchDives));
     }
 
     private void getMultiplier(){
-        int diveId;
+        //int diveId;
         name = (TextView) findViewById(R.id.diveStyle);
         if(name != null && divePosition != 0) {
             stringId = name.getText().toString();
-            switch (diveType) {
-                case 1:
-                    ForwardDatabase fdb = new ForwardDatabase(getApplicationContext());
-                    diveId = fdb.getDiveId(stringId);
-                    multiplier = fdb.getDOD(diveId, divePosition, boardType);
-                    break;
-                case 2:
-                    BackDatabase bdb = new BackDatabase(getApplicationContext());
-                    diveId = bdb.getDiveId(stringId);
-                    multiplier = bdb.getDOD(diveId, divePosition, boardType);
-                    break;
-                case 3:
-                    ReverseDatabase rdb = new ReverseDatabase(getApplicationContext());
-                    diveId = rdb.getDiveId(stringId);
-                    multiplier = rdb.getDOD(diveId, divePosition, boardType);
-                    break;
-                case 4:
-                    InwardDatabase idb = new InwardDatabase(getApplicationContext());
-                    diveId = idb.getDiveId(stringId);
-                    multiplier = idb.getDOD(diveId, divePosition, boardType);
-                    break;
-                case 5:
-                    TwistDatabase tdb = new TwistDatabase(getApplicationContext());
-                    diveId = tdb.getDiveId(stringId);
-                    multiplier = tdb.getDOD(diveId, divePosition, boardType);
-                    break;
-                case 6:
-                    ForwardPlatformDatabase fpdb = new ForwardPlatformDatabase(getApplicationContext());
-                    diveId = fpdb.getDiveId(stringId);
-                    multiplier = fpdb.getDOD(diveId, divePosition, boardType);
-                    break;
-                case 7:
-                    BackPlatformDatabase bpdb = new BackPlatformDatabase(getApplicationContext());
-                    diveId = bpdb.getDiveId(stringId);
-                    multiplier = bpdb.getDOD(diveId, divePosition, boardType);
-                    break;
-                case 8:
-                    ReversePlatformDatabase rpdb = new ReversePlatformDatabase(getApplicationContext());
-                    diveId = rpdb.getDiveId(stringId);
-                    multiplier = rpdb.getDOD(diveId, divePosition, boardType);
-                    break;
-                case 9:
-                    InwardPlatformDatabase ipdb = new InwardPlatformDatabase(getApplicationContext());
-                    diveId = ipdb.getDiveId(stringId);
-                    multiplier = ipdb.getDOD(diveId, divePosition, boardType);
-                    break;
-                case 10:
-                    TwistPlatformDatabase tpdb = new TwistPlatformDatabase(getApplicationContext());
-                    diveId = tpdb.getDiveId(stringId);
-                    multiplier = tpdb.getDOD(diveId, divePosition, boardType);
-                    break;
-                case 11:
-                    ArmstandPlatformDatabase apdb = new ArmstandPlatformDatabase(getApplicationContext());
-                    diveId = apdb.getDiveId(stringId);
-                    multiplier = apdb.getDOD(diveId, divePosition, boardType);
-                    break;
-            }
+
+            DiveChooseController dive = new DiveChooseController();
+            multiplier = dive.GetMultiplier(stringId, diveType, divePosition, boardType, context);
+
             ddString = "Dive DD: " + multiplier;
             DODView.setText(ddString);
         } else {
@@ -462,141 +256,52 @@ public class EditDiveList extends ActionBarActivity implements AdapterView.OnIte
     }
 
     private void DisableRadioButtons(){
-        int diveId;
-        double testS = 0.0;
-        double testP = 0.0;
-        double testT = 0.0;
-        double testF = 0.0;
 
+        DiveChooseController dive = new DiveChooseController();
+        ArrayList<Double> ddList = dive.GetTheDD(stringId, diveType, boardType, context);
 
-        switch (diveType) {
-            case 1:
-                ForwardDatabase fdb = new ForwardDatabase(getApplicationContext());
-                diveId = fdb.getDiveId(stringId);
-                testS = fdb.getDOD(diveId, 1, boardType);
-                testP = fdb.getDOD(diveId, 2, boardType);
-                testT = fdb.getDOD(diveId, 3, boardType);
-                testF = fdb.getDOD(diveId, 4, boardType);
-                break;
-            case 2:
-                BackDatabase bdb = new BackDatabase(getApplicationContext());
-                diveId = bdb.getDiveId(stringId);
-                testS = bdb.getDOD(diveId, 1, boardType);
-                testP = bdb.getDOD(diveId, 2, boardType);
-                testT = bdb.getDOD(diveId, 3, boardType);
-                testF = bdb.getDOD(diveId, 4, boardType);
-                break;
-            case 3:
-                ReverseDatabase rdb = new ReverseDatabase(getApplicationContext());
-                diveId = rdb.getDiveId(stringId);
-                testS = rdb.getDOD(diveId, 1, boardType);
-                testP = rdb.getDOD(diveId, 2, boardType);
-                testT = rdb.getDOD(diveId, 3, boardType);
-                testF = rdb.getDOD(diveId, 4, boardType);
-                break;
-            case 4:
-                InwardDatabase idb = new InwardDatabase(getApplicationContext());
-                diveId = idb.getDiveId(stringId);
-                testS = idb.getDOD(diveId, 1, boardType);
-                testP = idb.getDOD(diveId, 2, boardType);
-                testT = idb.getDOD(diveId, 3, boardType);
-                testF = idb.getDOD(diveId, 4, boardType);
-                break;
-            case 5:
-                TwistDatabase tdb = new TwistDatabase(getApplicationContext());
-                diveId = tdb.getDiveId(stringId);
-                testS = tdb.getDOD(diveId, 1, boardType);
-                testP = tdb.getDOD(diveId, 2, boardType);
-                testT = tdb.getDOD(diveId, 3, boardType);
-                testF = tdb.getDOD(diveId, 4, boardType);
-                break;
-            case 6:
-                ForwardPlatformDatabase fpdb = new ForwardPlatformDatabase(getApplicationContext());
-                diveId = fpdb.getDiveId(stringId);
-                testS = fpdb.getDOD(diveId, 1, boardType);
-                testP = fpdb.getDOD(diveId, 2, boardType);
-                testT = fpdb.getDOD(diveId, 3, boardType);
-                testF = fpdb.getDOD(diveId, 4, boardType);
-                break;
-            case 7:
-                BackPlatformDatabase bpdb = new BackPlatformDatabase(getApplicationContext());
-                diveId = bpdb.getDiveId(stringId);
-                testS = bpdb.getDOD(diveId, 1, boardType);
-                testP = bpdb.getDOD(diveId, 2, boardType);
-                testT = bpdb.getDOD(diveId, 3, boardType);
-                testF = bpdb.getDOD(diveId, 4, boardType);
-                break;
-            case 8:
-                ReversePlatformDatabase rpdb = new ReversePlatformDatabase(getApplicationContext());
-                diveId = rpdb.getDiveId(stringId);
-                testS = rpdb.getDOD(diveId, 1, boardType);
-                testP = rpdb.getDOD(diveId, 2, boardType);
-                testT = rpdb.getDOD(diveId, 3, boardType);
-                testF = rpdb.getDOD(diveId, 4, boardType);
-                break;
-            case 9:
-                InwardPlatformDatabase ipdb = new InwardPlatformDatabase(getApplicationContext());
-                diveId = ipdb.getDiveId(stringId);
-                testS = ipdb.getDOD(diveId, 1, boardType);
-                testP = ipdb.getDOD(diveId, 2, boardType);
-                testT = ipdb.getDOD(diveId, 3, boardType);
-                testF = ipdb.getDOD(diveId, 4, boardType);
-                break;
-            case 10:
-                TwistPlatformDatabase tpdb = new TwistPlatformDatabase(getApplicationContext());
-                diveId = tpdb.getDiveId(stringId);
-                testS = tpdb.getDOD(diveId, 1, boardType);
-                testP = tpdb.getDOD(diveId, 2, boardType);
-                testT = tpdb.getDOD(diveId, 3, boardType);
-                testF = tpdb.getDOD(diveId, 4, boardType);
-                break;
-            case 11:
-                ArmstandPlatformDatabase apdb = new ArmstandPlatformDatabase(getApplicationContext());
-                diveId = apdb.getDiveId(stringId);
-                testS = apdb.getDOD(diveId, 1, boardType);
-                testP = apdb.getDOD(diveId, 2, boardType);
-                testT = apdb.getDOD(diveId, 3, boardType);
-                testF = apdb.getDOD(diveId, 4, boardType);
-                break;
-        }
+        double testS = ddList.get(0);
+        double testP = ddList.get(1);
+        double testT = ddList.get(2);
+        double testF = ddList.get(3);
 
         if (testS == 0.0){
             radioStraight.setEnabled(false);
-            radioStraight.setTextColor(this.getResources().getColor(R.color.static_text));
+            radioStraight.setTextColor(this.getResources().getColor(R.color.secondary_text));
         }else {
             radioStraight.setEnabled(true);
-            radioStraight.setTextColor(this.getResources().getColor(R.color.random_text));
+            radioStraight.setTextColor(this.getResources().getColor(R.color.primary_text));
         }
 
         if (testP == 0.0){
             radioPike.setEnabled(false);
-            radioPike.setTextColor(this.getResources().getColor(R.color.static_text));
+            radioPike.setTextColor(this.getResources().getColor(R.color.secondary_text));
         }else {
             radioPike.setEnabled(true);
-            radioPike.setTextColor(this.getResources().getColor(R.color.random_text));
+            radioPike.setTextColor(this.getResources().getColor(R.color.primary_text));
         }
 
         if (testT == 0.0){
             radioTuck.setEnabled(false);
-            radioTuck.setTextColor(this.getResources().getColor(R.color.static_text));
+            radioTuck.setTextColor(this.getResources().getColor(R.color.secondary_text));
         }else {
             radioTuck.setEnabled(true);
-            radioTuck.setTextColor(this.getResources().getColor(R.color.random_text));
+            radioTuck.setTextColor(this.getResources().getColor(R.color.primary_text));
         }
 
         if (testF == 0.0){
             radioFree.setEnabled(false);
-            radioFree.setTextColor(this.getResources().getColor(R.color.static_text));
+            radioFree.setTextColor(this.getResources().getColor(R.color.secondary_text));
         }else {
             radioFree.setEnabled(true);
-            radioFree.setTextColor(this.getResources().getColor(R.color.random_text));
+            radioFree.setTextColor(this.getResources().getColor(R.color.primary_text));
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.edit_dive_list, menu);
+        //getMenuInflater().inflate(R.menu.edit_dive_list, menu);
         return true;
     }
 
@@ -629,7 +334,6 @@ public class EditDiveList extends ActionBarActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         diveType = diveCategory.getSelectedItemPosition();
-        //divestyle = diveStyle.getSelectedItemPosition();
 
         if(diveType != newDiveType){
             loadStyleSpinnerData();
@@ -666,315 +370,6 @@ public class EditDiveList extends ActionBarActivity implements AdapterView.OnIte
         @Override
         protected final List<String> doInBackground(List<String>... params) {
             return dives = db.getPlatformDiveNames();
-        }
-    }
-
-    // SpringBoard Dives
-    private class GetForwardOneNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ForwardDatabase db = new ForwardDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getForwardOneNames();
-        }
-    }
-
-    private class GetForwardThreeNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ForwardDatabase db = new ForwardDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getForwardThreeNames();
-        }
-    }
-
-    private class GetBackOneNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        BackDatabase db = new BackDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getBackOneNames();
-        }
-    }
-
-    private class GetBackThreeNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        BackDatabase db = new BackDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getBackThreeNames();
-        }
-    }
-
-    private class GetReverseOneNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ReverseDatabase db = new ReverseDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getReverseOneNames();
-        }
-    }
-
-    private class GetReverseThreeNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ReverseDatabase db = new ReverseDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getReverseThreeNames();
-        }
-    }
-
-    private class GetInwardOneNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        InwardDatabase db = new InwardDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getInwardOneNames();
-        }
-    }
-
-    private class GetInwardThreeNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        InwardDatabase db = new InwardDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getInwardThreeNames();
-        }
-    }
-
-    private class GetTwistOneNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        TwistDatabase db = new TwistDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getTwistOneNames();
-        }
-    }
-
-    private class GetTwistThreeNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        TwistDatabase db = new TwistDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getTwistThreeNames();
-        }
-    }
-
-    // Platform dives
-    private class GetFrontTenNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ForwardPlatformDatabase db = new ForwardPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getFrontPlatformTenNames();
-        }
-    }
-
-    private class GetFrontSevenNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ForwardPlatformDatabase db = new ForwardPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getFrontPlatformSevenFiveNames();
-        }
-    }
-
-    private class GetFrontFiveNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ForwardPlatformDatabase db = new ForwardPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getFrontPlatformFiveNames();
-        }
-    }
-
-    private class GetBackTenNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        BackPlatformDatabase db = new BackPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getBackPlatformTenNames();
-        }
-    }
-
-    private class GetBackSevenNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        BackPlatformDatabase db = new BackPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getBackPlatformSevenFiveNames();
-        }
-    }
-    private class GetBackFiveNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        BackPlatformDatabase db = new BackPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getBackPlatformFiveNames();
-        }
-    }
-
-    private class GetReverseTenNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ReversePlatformDatabase db = new ReversePlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getReversePlatformTenNames();
-        }
-    }
-
-    private class GetReverseSevenNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ReversePlatformDatabase db = new ReversePlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getReversePlatformSevenFiveNames();
-        }
-    }
-
-    private class GetReverseFiveNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ReversePlatformDatabase db = new ReversePlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getReversePlatformFiveNames();
-        }
-    }
-
-    private class GetInwardTenNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        InwardPlatformDatabase db = new InwardPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getInwardPlatformTenNames();
-        }
-    }
-
-    private class GetInwardSevenNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        InwardPlatformDatabase db = new InwardPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getInwardPlatformSevenFiveNames();
-        }
-    }
-
-    private class GetInwardFiveNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        InwardPlatformDatabase db = new InwardPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getInwardPlatformFiveNames();
-        }
-    }
-
-    private class GetTwistTenNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        TwistPlatformDatabase db = new TwistPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getTwistPlatformTenNames();
-        }
-    }
-
-    private class GetTwistSevenNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        TwistPlatformDatabase db = new TwistPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getTwistPlatformSevenFiveNames();
-        }
-    }
-
-    private class GetTwistFiveNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        TwistPlatformDatabase db = new TwistPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getTwistPlatformFiveNames();
-        }
-    }
-
-    private class GetArmstandTenNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ArmstandPlatformDatabase db = new ArmstandPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getArmstandTenNames();
-        }
-    }
-
-    private class GetArmstandSevenNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ArmstandPlatformDatabase db = new ArmstandPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getArmstandSevenFiveNames();
-        }
-    }
-
-    private class GetArmstandFiveNames extends AsyncTask<ArrayList<DiveStyleSpinner>, Object, Object>{
-        ArmstandPlatformDatabase db = new ArmstandPlatformDatabase(getApplicationContext());
-        ArrayList<DiveStyleSpinner> names;
-
-        @SafeVarargs
-        @Override
-        protected final ArrayList<DiveStyleSpinner> doInBackground(ArrayList<DiveStyleSpinner>... params) {
-            return names = db.getArmstandFiveNames();
         }
     }
 }

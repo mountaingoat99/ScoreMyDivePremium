@@ -316,7 +316,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ChooseDivesFromList" />
         </activity>
-        <activity android:name=".EditDiveList" >
+        <activity android:name=".EditDiveList"
+            android:theme="@style/Theme.DialogTheme" >
             <intent-filter>
                 <action android:name="com.rodriguez.Home.EditDiveList" />
 
