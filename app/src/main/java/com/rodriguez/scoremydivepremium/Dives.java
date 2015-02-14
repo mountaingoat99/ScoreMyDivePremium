@@ -65,13 +65,6 @@ public class Dives extends ActionBarActivity {
             divePosString = b.getString("postionString");
         }
 
-//        score1.setOnItemSelectedListener(this);
-//        score2.setOnItemSelectedListener(this);
-//        score3.setOnItemSelectedListener(this);
-//        score4.setOnItemSelectedListener(this);
-//        score5.setOnItemSelectedListener(this);
-//        score6.setOnItemSelectedListener(this);
-//        score7.setOnItemSelectedListener(this);
         loadScoreSpinners();
         setTitle();
         getJudges();
@@ -137,9 +130,7 @@ public class Dives extends ActionBarActivity {
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(),
-                                "Scores entered are not valid. Please enter an accurate score," +
-                                        "or use the menu button to fail the dive " +
-                                        "or score a 2 Judge Meet.",
+                                "Scores entered are not valid. Please enter an accurate score,",
                                 Toast.LENGTH_LONG).show();
                     }
                 }else{
@@ -173,7 +164,7 @@ public class Dives extends ActionBarActivity {
         Scores.toArray(theScores);
         Arrays.sort(theScores);
 
-        if(judges == 3){
+        if(judges == 3 || judges == 2){
             if(sc1 == 0.0 || sc2 == 0.0 || sc3 == 0.0){
                 ifZeroTotal = false;
                 return;
@@ -340,16 +331,31 @@ public class Dives extends ActionBarActivity {
 
     private void getScoreText(){
         Scores.clear();
-        sc1 = Double.parseDouble(score1.getSelectedItem().toString().trim());
-        Scores.add(sc1);
-        sc2 = Double.parseDouble(score2.getSelectedItem().toString().trim());
-        Scores.add(sc2);
-        sc3 = Double.parseDouble(score3.getSelectedItem().toString().trim());
-        Scores.add(sc3);
-        sc4 = 0.0;
-        sc5 = 0.0;
-        sc6 = 0.0;
-        sc7 = 0.0;
+
+        if(judges == 2) {
+            double roundedScore;
+            sc1 = Double.parseDouble(score1.getSelectedItem().toString().trim());
+            sc2 = Double.parseDouble(score2.getSelectedItem().toString().trim());
+            roundedScore = (sc1 + sc2) / 2;
+            sc3 = roundedScore;
+            sc4 = 0.0;
+            sc5 = 0.0;
+            sc6 = 0.0;
+            sc7 = 0.0;
+        }
+
+        if(judges == 3) {
+            sc1 = Double.parseDouble(score1.getSelectedItem().toString().trim());
+            Scores.add(sc1);
+            sc2 = Double.parseDouble(score2.getSelectedItem().toString().trim());
+            Scores.add(sc2);
+            sc3 = Double.parseDouble(score3.getSelectedItem().toString().trim());
+            Scores.add(sc3);
+            sc4 = 0.0;
+            sc5 = 0.0;
+            sc6 = 0.0;
+            sc7 = 0.0;
+        }
 
         if(judges == 5){
             sc4 = Double.parseDouble(score4.getSelectedItem().toString().trim());
@@ -383,7 +389,18 @@ public class Dives extends ActionBarActivity {
     }
 
     private void showScores(){
-        if(judges == 3){
+        if(judges == 2){
+            score3.setVisibility(View.VISIBLE);
+            view4.setVisibility(View.VISIBLE);
+            score4.setVisibility(View.INVISIBLE);
+            view4.setVisibility(View.INVISIBLE);
+            score5.setVisibility(View.INVISIBLE);
+            view5.setVisibility(View.INVISIBLE);
+            score6.setVisibility(View.INVISIBLE);
+            view6.setVisibility(View.INVISIBLE);
+            score7.setVisibility(View.INVISIBLE);
+            view7.setVisibility(View.INVISIBLE);
+        } else if(judges == 3){
             score4.setVisibility(View.INVISIBLE);
             view4.setVisibility(View.INVISIBLE);
             score5.setVisibility(View.INVISIBLE);
