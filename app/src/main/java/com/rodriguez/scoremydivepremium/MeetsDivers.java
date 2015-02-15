@@ -312,7 +312,7 @@ public class MeetsDivers extends ActionBarActivity implements AdapterView.OnItem
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 } else {
-                    if (!diverCheck && meetCheck) {
+                    if (!diverCheck && !meetCheck) {
                         Toast.makeText(getApplicationContext(),
                                 "Please add a diver and a meet",
                                 Toast.LENGTH_SHORT).show();
