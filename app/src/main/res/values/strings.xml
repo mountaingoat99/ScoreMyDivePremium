@@ -358,5 +358,6 @@
     <string name="switch_diver">Switch Diver</string>
     <string name="title_activity_switch_divers">Switch Divers</string>
     <string name="enter_dives_scores">Enter Dives</string>
+    <string name="failed_dive_button">Failed</string>
 
 </resources>

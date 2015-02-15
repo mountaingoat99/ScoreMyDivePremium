@@ -358,6 +358,12 @@ public class Dives extends ActionBarActivity {
         }
 
         if(judges == 5){
+            sc1 = Double.parseDouble(score1.getSelectedItem().toString().trim());
+            Scores.add(sc1);
+            sc2 = Double.parseDouble(score2.getSelectedItem().toString().trim());
+            Scores.add(sc2);
+            sc3 = Double.parseDouble(score3.getSelectedItem().toString().trim());
+            Scores.add(sc3);
             sc4 = Double.parseDouble(score4.getSelectedItem().toString().trim());
             Scores.add(sc4);
             sc5 = Double.parseDouble(score5.getSelectedItem().toString().trim());
@@ -367,6 +373,12 @@ public class Dives extends ActionBarActivity {
 
         }
         if(judges == 7){
+            sc1 = Double.parseDouble(score1.getSelectedItem().toString().trim());
+            Scores.add(sc1);
+            sc2 = Double.parseDouble(score2.getSelectedItem().toString().trim());
+            Scores.add(sc2);
+            sc3 = Double.parseDouble(score3.getSelectedItem().toString().trim());
+            Scores.add(sc3);
             sc4 = Double.parseDouble(score4.getSelectedItem().toString().trim());
             Scores.add(sc4);
             sc5 = Double.parseDouble(score5.getSelectedItem().toString().trim());

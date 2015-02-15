@@ -57,7 +57,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:layout_weight="1"
-            android:text="@string/delete"
+            android:text="@string/failed_dive_button"
             android:textSize="@dimen/button_text_medium"
             android:textColor="@color/primary"/>
 

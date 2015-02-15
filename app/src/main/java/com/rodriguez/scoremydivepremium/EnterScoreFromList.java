@@ -29,12 +29,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class EnterScoreFromList extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
+public class EnterScoreFromList extends ActionBarActivity {
 
     private Spinner score1, score2, score3, score4, score5, score6, score7;
     private TextView header, view4, view5, view6, view7;
     private Button btnTotal;
-    private int judges, diverId, meetId, diveNumber, dbDiveNumber, diverSpinnerPosition, totalDives;
+    private int judges, diverId, meetId, diveNumber, dbDiveNumber, totalDives;
     private double sc1, sc2, sc3, sc4, sc5, sc6, sc7, diveScoreTotal = 0.0,
             multiplier = 0.0, diveTotal = 0.0, oldTotalScore, newTotalScore, total;
     private ArrayList<Double> Scores = new ArrayList<>();
@@ -58,19 +58,19 @@ public class EnterScoreFromList extends ActionBarActivity implements AdapterView
         setUpView();
 
         Bundle b = getIntent().getExtras();
+        if(b != null) {
+            diverId = b.getInt("keyDiver");
+            meetId = b.getInt("keyMeet");
+            diveNumber = b.getInt("diveNumber");
+        }
 
-        diverId = b.getInt("keyDiver");
-        meetId = b.getInt("keyMeet");
-        diveNumber = b.getInt("diveNumber");
-        diverSpinnerPosition = b.getInt("keySpin");
-
-        score1.setOnItemSelectedListener(this);
-        score2.setOnItemSelectedListener(this);
-        score3.setOnItemSelectedListener(this);
-        score4.setOnItemSelectedListener(this);
-        score5.setOnItemSelectedListener(this);
-        score6.setOnItemSelectedListener(this);
-        score7.setOnItemSelectedListener(this);
+//        score1.setOnItemSelectedListener(this);
+//        score2.setOnItemSelectedListener(this);
+//        score3.setOnItemSelectedListener(this);
+//        score4.setOnItemSelectedListener(this);
+//        score5.setOnItemSelectedListener(this);
+//        score6.setOnItemSelectedListener(this);
+//        score7.setOnItemSelectedListener(this);
         loadScoreSpinners();
         checkMultiplier();
         setTitle();
@@ -94,15 +94,12 @@ public class EnterScoreFromList extends ActionBarActivity implements AdapterView
                     Bundle b = new Bundle();
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
-                    b.putInt("keySpin", diverSpinnerPosition);
                     Intent intent = new Intent(context, ChooseDivesFromList.class);
                     intent.putExtras(b);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(),
-                            "Scores entered are not valid. Please enter an accurate score," +
-                                    "or use the menu button to fail the dive " +
-                                    "or score a 2 Judge Meet.",
+                            "Scores entered are not valid. Please enter an accurate score,",
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -131,34 +128,41 @@ public class EnterScoreFromList extends ActionBarActivity implements AdapterView
         }
     }
 
-    // this is used when a meet only has two judges
-    private void getTwoJudgeScoreText(){
-        double score;
-        sc1 = Double.parseDouble(score1.getSelectedItem().toString().trim());
-        sc2 = Double.parseDouble(score2.getSelectedItem().toString().trim());
-        score = (sc1 + sc2) / 2;
-        //roundedScore = .5 * Math.round(((sc1 + sc2) / 2) * 2);
-        sc3 = score;
-        sc4 = 0.0;
-        sc5 = 0.0;
-        sc6 = 0.0;
-        sc7 = 0.0;
-    }
-
     private void getScoreText(){
         Scores.clear();
-        sc1 = Double.parseDouble(score1.getSelectedItem().toString().trim());
-        Scores.add(sc1);
-        sc2 = Double.parseDouble(score2.getSelectedItem().toString().trim());
-        Scores.add(sc2);
-        sc3 = Double.parseDouble(score3.getSelectedItem().toString().trim());
-        Scores.add(sc3);
-        sc4 = 0.0;
-        sc5 = 0.0;
-        sc6 = 0.0;
-        sc7 = 0.0;
+
+        if(judges == 2){
+            double score;
+            sc1 = Double.parseDouble(score1.getSelectedItem().toString().trim());
+            sc2 = Double.parseDouble(score2.getSelectedItem().toString().trim());
+            score = (sc1 + sc2) / 2;
+            sc3 = score;
+            sc4 = 0.0;
+            sc5 = 0.0;
+            sc6 = 0.0;
+            sc7 = 0.0;
+        }
+
+        if(judges == 3) {
+            sc1 = Double.parseDouble(score1.getSelectedItem().toString().trim());
+            Scores.add(sc1);
+            sc2 = Double.parseDouble(score2.getSelectedItem().toString().trim());
+            Scores.add(sc2);
+            sc3 = Double.parseDouble(score3.getSelectedItem().toString().trim());
+            Scores.add(sc3);
+            sc4 = 0.0;
+            sc5 = 0.0;
+            sc6 = 0.0;
+            sc7 = 0.0;
+        }
 
         if(judges == 5){
+            sc1 = Double.parseDouble(score1.getSelectedItem().toString().trim());
+            Scores.add(sc1);
+            sc2 = Double.parseDouble(score2.getSelectedItem().toString().trim());
+            Scores.add(sc2);
+            sc3 = Double.parseDouble(score3.getSelectedItem().toString().trim());
+            Scores.add(sc3);
             sc4 = Double.parseDouble(score4.getSelectedItem().toString().trim());
             Scores.add(sc4);
             sc5 = Double.parseDouble(score5.getSelectedItem().toString().trim());
@@ -168,6 +172,12 @@ public class EnterScoreFromList extends ActionBarActivity implements AdapterView
 
         }
         if(judges == 7){
+            sc1 = Double.parseDouble(score1.getSelectedItem().toString().trim());
+            Scores.add(sc1);
+            sc2 = Double.parseDouble(score2.getSelectedItem().toString().trim());
+            Scores.add(sc2);
+            sc3 = Double.parseDouble(score3.getSelectedItem().toString().trim());
+            Scores.add(sc3);
             sc4 = Double.parseDouble(score4.getSelectedItem().toString().trim());
             Scores.add(sc4);
             sc5 = Double.parseDouble(score5.getSelectedItem().toString().trim());
@@ -186,13 +196,13 @@ public class EnterScoreFromList extends ActionBarActivity implements AdapterView
         Scores.toArray(theScores);
         Arrays.sort(theScores);
 
-        if(judges == 3){
+        if(judges == 3 || judges == 2){
             if(sc1 == 0.0 || sc2 == 0.0 || sc3 == 0.0){
             ifZeroTotal = false;
             return;
-        }else {
-            diveScoreTotal = sc1 + sc2 + sc3;
-        }
+            }else {
+                diveScoreTotal = sc1 + sc2 + sc3;
+            }
         }else if (judges == 5){
             // converts the sorted array to a list and removes the smallest and largest scores
             List<Double> list = new ArrayList<>(Arrays.asList(theScores));
@@ -222,18 +232,14 @@ public class EnterScoreFromList extends ActionBarActivity implements AdapterView
 
         //roundedDiveTotal = .5 * Math.round(diveTotal * 2);
 
-
-
         if(diveTotal < .5){
             ifZeroTotal = false;
             return;
         }
 
-
         // Get the old score, even if it is the first entry
         GetDiveScore oldS = new GetDiveScore();
         oldTotalScore = oldS.doInBackground();
-
 
         // grabbing the old total score here
         GetTotalScore tScore = new GetTotalScore();
@@ -243,7 +249,6 @@ public class EnterScoreFromList extends ActionBarActivity implements AdapterView
         // had to do it this way incase they change a dive score. Old way was incrementing edited totals
         double scoreTemp = total - oldTotalScore;
         newTotalScore = scoreTemp + diveTotal;
-
 
         ResultDatabase db = new ResultDatabase(getApplicationContext());
         int resultIndex;
@@ -304,7 +309,7 @@ public class EnterScoreFromList extends ActionBarActivity implements AdapterView
     }
 
     private void setTitle() {
-        setTitle("Enter Scores");
+
         String info = getDiveInfoFromDB(diveNumber);
         header.setText(info);
     }
@@ -341,10 +346,10 @@ public class EnterScoreFromList extends ActionBarActivity implements AdapterView
         outState.putString(KEY_TEXT_VALUE, stringId);
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//
+//    }
 
     //loads the spinners for the scores
     private void loadScoreSpinners(){
@@ -429,63 +434,17 @@ public class EnterScoreFromList extends ActionBarActivity implements AdapterView
                 b.putInt("keyDiver", diverId);
                 b.putInt("keyMeet", meetId);
                 b.putInt("diveNumber", diveNumber);
-                b.putInt("keySpin", diverSpinnerPosition);
                 intent.putExtras(b);
                 startActivity(intent);
                 break;
-            case R.id.menu_two_judge_option:
-                if (judges == 3) {
-                    checkMultiplier();
-                    if (multiplier != 0.0) {
-                        Double test3Spin;
-                        test3Spin = Double.parseDouble(score3.getSelectedItem().toString().trim());
-                        if (test3Spin == 0.0){
-                            getTwoJudgeScoreText();
-                            calcScores();
-                            if(ifZeroTotal) {
-                                updateJudgeScores();
-                                Bundle bundle = new Bundle();
-                                bundle.putInt("keyDiver", diverId);
-                                bundle.putInt("keyMeet", meetId);
-                                bundle.putInt("keySpin", diverSpinnerPosition);
-                                Intent intents = new Intent(context, ChooseDivesFromList.class);
-                                intents.putExtras(bundle);
-                                startActivity(intents);
-                                break;
-                            } else {
-                                Toast.makeText(getApplicationContext(),
-                                        "Scores entered will be 0. Please enter accurate score" +
-                                                " or fail the dive using the menu button.",
-                                        Toast.LENGTH_LONG).show();
-                                break;
-                            }
-                        }else{
-                            Toast.makeText(getApplicationContext(),
-                                    "Please set the 3rd score to 0.0",
-                                    Toast.LENGTH_LONG).show();
-                            break;
-                        }
-                    }else{
-                        Toast.makeText(getApplicationContext(),
-                                "Dive and Position is not valid, " +
-                                        "Please Choose a Valid Combination.",
-                                Toast.LENGTH_LONG).show();
-                        break;
-                    }
-                }else{
-                    Toast.makeText(getApplicationContext(),
-                            "This can only be used on meets with 3 judges.",
-                            Toast.LENGTH_LONG).show();
-                    break;
-                }
             }
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+//    @Override
+//    public void onNothingSelected(AdapterView<?> parent) {
+//
+//    }
 
     private class GetScoreNames extends AsyncTask<List<String>, Object, Object> {
         ScoresDatabase db = new ScoresDatabase(getApplicationContext());

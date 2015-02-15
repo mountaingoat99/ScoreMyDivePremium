@@ -71,7 +71,7 @@
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_1"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/static_text"
+                android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
             <Spinner
@@ -79,7 +79,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/random_text"
+                android:textColor="@color/primary_text"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="none"
                 android:background="@color/primary_light">
@@ -99,7 +99,7 @@
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_2"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/static_text"
+                android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
             <Spinner
@@ -107,7 +107,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/random_text"
+                android:textColor="@color/primary_text"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="none"
                 android:background="@color/primary_light">
@@ -127,7 +127,7 @@
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_3"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/static_text"
+                android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
             <Spinner
@@ -135,7 +135,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/random_text"
+                android:textColor="@color/primary_text"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="none"
                 android:background="@color/primary_light">
@@ -170,7 +170,7 @@
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_4"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/static_text"
+                android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
             <Spinner
@@ -178,7 +178,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/random_text"
+                android:textColor="@color/primary_text"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="none"
                 android:background="@color/primary_light">
@@ -198,7 +198,7 @@
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_5"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/static_text"
+                android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
             <Spinner
@@ -206,7 +206,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/random_text"
+                android:textColor="@color/primary_text"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="none"
                 android:background="@color/primary_light">
@@ -226,7 +226,7 @@
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_6"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/static_text"
+                android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
             <Spinner
@@ -234,7 +234,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/random_text"
+                android:textColor="@color/primary_text"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="none"
                 android:background="@color/primary_light">
@@ -269,7 +269,7 @@
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_7"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/static_text"
+                android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
             <Spinner
@@ -277,7 +277,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/random_text"
+                android:textColor="@color/primary_text"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="none"
                 android:background="@color/primary_light">
@@ -296,7 +296,7 @@
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_6"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/static_text"
+                android:textColor="@color/secondary_text"
                 android:visibility="invisible"
                 android:background="@color/primary_light"/>
 
@@ -304,7 +304,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/random_text"
+                android:textColor="@color/primary_text"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="none"
                 android:visibility="invisible"
@@ -324,7 +324,7 @@
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_6"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/static_text"
+                android:textColor="@color/secondary_text"
                 android:visibility="invisible"
                 android:background="@color/primary_light"/>
 
@@ -332,7 +332,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/random_text"
+                android:textColor="@color/primary_text"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="none"
                 android:visibility="invisible"

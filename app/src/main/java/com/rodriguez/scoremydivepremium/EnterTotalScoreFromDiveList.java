@@ -28,7 +28,7 @@ public class EnterTotalScoreFromDiveList extends ActionBarActivity {
     private EditText score1;
     private Button btnTotal;
     private String className = "EnterScoreFromList";
-    private int diverId, meetId, diveNumber, dbDiveNumber, diverSpinnerPosition, totalDives;
+    private int diverId, meetId, diveNumber, dbDiveNumber, totalDives;
     private double sc1 = 0.0, total = 0.0, scr1 = 0.0, sc2 = 0.0,
             sc3 = 0.0, sc4 = 0.0, sc5 = 0.0, sc6 = 0.0, sc7 = 0.0;
 
@@ -45,12 +45,12 @@ public class EnterTotalScoreFromDiveList extends ActionBarActivity {
         setUpView();
 
         Bundle b = getIntent().getExtras();
-        diverId = b.getInt("keyDiver");
-        meetId = b.getInt("keyMeet");
-        diveNumber = b.getInt("diveNumber");
-        diverSpinnerPosition = b.getInt("keySpin");
+        if(b != null) {
+            diverId = b.getInt("keyDiver");
+            meetId = b.getInt("keyMeet");
+            diveNumber = b.getInt("diveNumber");
+        }
 
-        //checkMultiplier();
         setTitle();
         checkDiveTotal();
         getDiveNumber();
@@ -71,7 +71,6 @@ public class EnterTotalScoreFromDiveList extends ActionBarActivity {
                     Bundle b = new Bundle();
                     b.putInt("keyDiver", diverId);
                     b.putInt("keyMeet", meetId);
-                    b.putInt("keySpin", diverSpinnerPosition);
                     Intent intent = new Intent(context, ChooseDivesFromList.class);
                     intent.putExtras(b);
                     startActivity(intent);
@@ -165,13 +164,10 @@ public class EnterTotalScoreFromDiveList extends ActionBarActivity {
     }
 
     private void getScoreText(){
-        //double roundedNumber;
         String testNumber = score1.getText().toString();
         if(testNumber.equals("")){
             testNumber = "0.0";
         }
-        //roundedNumber = Double.parseDouble(testNumber);
-        //sc1 = .5 * Math.round(roundedNumber * 2);
         sc1 = Double.parseDouble(testNumber);
     }
 
@@ -236,7 +232,6 @@ public class EnterTotalScoreFromDiveList extends ActionBarActivity {
                 b.putInt("keyDiver", diverId);
                 b.putInt("keyMeet", meetId);
                 b.putInt("diveNumber", diveNumber);
-                b.putInt("keySpin", diverSpinnerPosition);
                 intent.putExtras(b);
                 startActivity(intent);
                 break;
@@ -244,16 +239,6 @@ public class EnterTotalScoreFromDiveList extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-//    private class CheckMultiplier extends AsyncTask<Double, Object, Object> {
-//        JudgeScoreDatabase db = new JudgeScoreDatabase(getApplicationContext());
-//        double multi;
-//
-//        @Override
-//        protected Double doInBackground(Double... params) {
-//            return multi = db.getMultiplier(meetId, diverId, diveNumber);
-//        }
-//    }
 
     private class GetDiveNumber extends AsyncTask<Integer, Object, Object>{
         DiveNumberDatabase db =  new DiveNumberDatabase(getApplicationContext());
@@ -296,13 +281,13 @@ public class EnterTotalScoreFromDiveList extends ActionBarActivity {
         }
     }
 
-        private class SearchDiveTotals extends AsyncTask<Integer, Object, Object>{
-            DiveTotalDatabase db = new DiveTotalDatabase(getApplicationContext());
-            int number;
+    private class SearchDiveTotals extends AsyncTask<Integer, Object, Object>{
+        DiveTotalDatabase db = new DiveTotalDatabase(getApplicationContext());
+        int number;
 
-            @Override
-            protected Integer doInBackground(Integer... params) {
-                return number = db.searchTotals(meetId, diverId);
-            }
+        @Override
+        protected Integer doInBackground(Integer... params) {
+            return number = db.searchTotals(meetId, diverId);
         }
+    }
 }

@@ -20,25 +20,13 @@
         android:background="@drawable/layer_card_background">
 
         <TextView
-            android:id="@+id/diveDDString"
+            android:id="@+id/textView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginTop="8dp"
             android:gravity="start"
-            android:text="DD: 1.6"
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/secondary_text"
-            android:background="@color/primary_light"/>
-
-        <TextView
-            android:id="@+id/diveNameString"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="8dp"
-            android:gravity="start"
-            android:text="103B - Forward Dive"
+            android:text=""
             android:textSize="@dimen/text_size_small"
             android:textColor="@color/secondary_text"
             android:background="@color/primary_light"/>
@@ -70,7 +58,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_1"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
@@ -98,7 +86,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_2"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
@@ -126,7 +114,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_3"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
@@ -154,7 +142,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="@color/primary_light">
+            android:background="@color/primary_light" >
 
             <View
                 android:layout_width="0dp"
@@ -169,7 +157,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_4"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
@@ -197,7 +185,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_5"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
@@ -225,7 +213,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_6"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
@@ -268,7 +256,7 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_7"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:background="@color/primary_light"/>
 
@@ -295,14 +283,14 @@
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_6"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:visibility="invisible"
                 android:background="@color/primary_light"/>
 
             <Spinner
                 android:layout_width="75dp"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/primary_text"
                 android:scrollbarStyle="insideInset"
@@ -316,21 +304,20 @@
                 android:layout_height="1dp"
                 android:layout_weight="1"
                 android:background="@color/primary_light"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="6dp"
                 android:layout_marginEnd="6dp"
                 android:text="@string/score_6"
-                android:textSize="@dimen/text_size_mini"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/secondary_text"
                 android:visibility="invisible"
                 android:background="@color/primary_light"/>
 
             <Spinner
                 android:layout_width="75dp"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/primary_text"
                 android:scrollbarStyle="insideInset"
