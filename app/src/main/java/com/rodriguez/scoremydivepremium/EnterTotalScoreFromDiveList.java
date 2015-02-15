@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,6 +57,17 @@ public class EnterTotalScoreFromDiveList extends ActionBarActivity {
         checkDiveTotal();
         getDiveNumber();
         addListenerOnButton();
+    }
+
+    @Override
+    public void onBackPressed(){
+        final Context context = this;
+        Intent intent = new Intent(context, ChooseDivesFromList.class);
+        Bundle b = new Bundle();
+        b.putInt("keyDiver", diverId);
+        b.putInt("keyMeet", meetId);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 
     public void addListenerOnButton(){
@@ -226,7 +236,7 @@ public class EnterTotalScoreFromDiveList extends ActionBarActivity {
         final Context context = this;
         switch (item.getItemId()){
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                onBackPressed();
                 return true;
             case R.id.menu_failed_dive:
                 Intent intent = new Intent(context, FailedDive.class);

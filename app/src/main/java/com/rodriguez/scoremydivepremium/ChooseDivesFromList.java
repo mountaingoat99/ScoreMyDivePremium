@@ -628,7 +628,6 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case android.R.id.home:
-                //NavUtils.navigateUpFromSameTask(this);
                 onBackPressed();
                 return true;
         }

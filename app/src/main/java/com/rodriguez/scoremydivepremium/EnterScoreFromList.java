@@ -4,13 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -27,12 +25,11 @@ import com.info.sqlite.helper.ScoresDatabase;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class EnterScoreFromList extends ActionBarActivity {
 
     private Spinner score1, score2, score3, score4, score5, score6, score7;
-    private TextView header, view4, view5, view6, view7;
+    private TextView header, view3, view4, view5, view6, view7;
     private Button btnTotal;
     private int judges, diverId, meetId, diveNumber, dbDiveNumber, totalDives;
     private double sc1, sc2, sc3, sc4, sc5, sc6, sc7, diveScoreTotal = 0.0,
@@ -67,13 +64,6 @@ public class EnterScoreFromList extends ActionBarActivity {
             diveNumber = b.getInt("diveNumber");
         }
 
-//        score1.setOnItemSelectedListener(this);
-//        score2.setOnItemSelectedListener(this);
-//        score3.setOnItemSelectedListener(this);
-//        score4.setOnItemSelectedListener(this);
-//        score5.setOnItemSelectedListener(this);
-//        score6.setOnItemSelectedListener(this);
-//        score7.setOnItemSelectedListener(this);
         loadScoreSpinners();
         checkMultiplier();
         setTitle();
@@ -81,6 +71,17 @@ public class EnterScoreFromList extends ActionBarActivity {
         checkDiveTotal();
         getDiveNumber();
         addListenerOnButton();
+    }
+
+    @Override
+    public void onBackPressed(){
+        final Context context = this;
+        Intent intent = new Intent(context, ChooseDivesFromList.class);
+        Bundle b = new Bundle();
+        b.putInt("keyDiver", diverId);
+        b.putInt("keyMeet", meetId);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 
     public void addListenerOnButton(){
@@ -233,8 +234,6 @@ public class EnterScoreFromList extends ActionBarActivity {
             diveTotal = diveScoreTotal;
         }
 
-        //roundedDiveTotal = .5 * Math.round(diveTotal * 2);
-
         if(diveTotal < .5){
             ifZeroTotal = false;
             return;
@@ -349,11 +348,6 @@ public class EnterScoreFromList extends ActionBarActivity {
         outState.putString(KEY_TEXT_VALUE, stringId);
     }
 
-//    @Override
-//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//
-//    }
-
     //loads the spinners for the scores
     private void loadScoreSpinners(){
         int spinnerPosition = 10;
@@ -383,6 +377,19 @@ public class EnterScoreFromList extends ActionBarActivity {
         GetJudgeTotal jt = new GetJudgeTotal();
         judges = jt.doInBackground();
 
+        if(judges == 2){
+            score3.setVisibility(View.INVISIBLE);
+            view3.setVisibility(View.INVISIBLE);
+            score4.setVisibility(View.INVISIBLE);
+            view4.setVisibility(View.INVISIBLE);
+            score5.setVisibility(View.INVISIBLE);
+            view5.setVisibility(View.INVISIBLE);
+            score6.setVisibility(View.INVISIBLE);
+            view6.setVisibility(View.INVISIBLE);
+            score7.setVisibility(View.INVISIBLE);
+            view7.setVisibility(View.INVISIBLE);
+        }
+
         if(judges == 3){
             score4.setVisibility(View.INVISIBLE);
             view4.setVisibility(View.INVISIBLE);
@@ -410,6 +417,7 @@ public class EnterScoreFromList extends ActionBarActivity {
         score7 = (Spinner)findViewById(R.id.editScore7);
         header = (TextView)findViewById(R.id.textView);
         btnTotal = (Button)findViewById(R.id.buttonScore);
+        view3 = (TextView)findViewById(R.id.score3);
         view4 =  (TextView)findViewById(R.id.score4);
         view5 =  (TextView)findViewById(R.id.score5);
         view6 =  (TextView)findViewById(R.id.score6);
@@ -428,7 +436,7 @@ public class EnterScoreFromList extends ActionBarActivity {
         final Context context = this;
         switch (item.getItemId()){
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                onBackPressed();
                 return true;
             case R.id.menu_failed_dive:
                 Intent intent = new Intent(context, FailedDive.class);
@@ -443,11 +451,6 @@ public class EnterScoreFromList extends ActionBarActivity {
             }
         return super.onOptionsItemSelected(item);
     }
-
-//    @Override
-//    public void onNothingSelected(AdapterView<?> parent) {
-//
-//    }
 
     private class GetScoreNames extends AsyncTask<List<String>, Object, Object> {
         ScoresDatabase db = new ScoresDatabase(getApplicationContext());

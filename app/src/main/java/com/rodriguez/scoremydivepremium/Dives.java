@@ -405,8 +405,8 @@ public class Dives extends ActionBarActivity {
 
     private void showScores(){
         if(judges == 2){
-            score3.setVisibility(View.VISIBLE);
-            view4.setVisibility(View.VISIBLE);
+            score3.setVisibility(View.INVISIBLE);
+            view4.setVisibility(View.INVISIBLE);
             score4.setVisibility(View.INVISIBLE);
             view4.setVisibility(View.INVISIBLE);
             score5.setVisibility(View.INVISIBLE);

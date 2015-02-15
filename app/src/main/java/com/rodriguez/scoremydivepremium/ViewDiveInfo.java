@@ -120,7 +120,7 @@ public class ViewDiveInfo extends ActionBarActivity {
         s6String = Double.toString(scores.get(5));
         s7String = Double.toString(scores.get(6));
 
-        if (judgeTotal >= 3) {
+        if (judgeTotal >= 2) {
             s1.setText(s1String);
             s2.setText(s2String);
             s3.setText(s3String);
