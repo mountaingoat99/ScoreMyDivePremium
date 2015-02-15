@@ -427,23 +427,7 @@
                         android:layout_height="1dp"
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
-        
-                </TableRow>
-        
-                <TableRow
-                    android:id="@+id/tableRow2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dip"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/primary_light">
-        
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_weight="1"
-                        android:background="@color/primary_light"/>
-        
+
                     <TextView
                         android:id="@+id/score3view"
                         android:layout_width="wrap_content"
@@ -462,7 +446,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:background="@color/primary_light">
-        
+
                         <TextView
                             android:id="@+id/score3"
                             android:layout_width="wrap_content"
@@ -483,13 +467,29 @@
                             android:background="@color/primary"/>
 
                     </LinearLayout>
-        
+
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
         
+                </TableRow>
+        
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/primary_light">
+        
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+
                     <TextView
                         android:id="@+id/score4view"
                         android:layout_width="wrap_content"
@@ -535,23 +535,7 @@
                         android:layout_height="1dp"
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
-        
-                </TableRow>
-        
-                <TableRow
-                    android:id="@+id/tableRow3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dip"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/primary_light">
-        
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_weight="1"
-                        android:background="@color/primary_light"/>
-        
+
                     <TextView
                         android:id="@+id/score5view"
                         android:layout_width="wrap_content"
@@ -570,7 +554,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:background="@color/primary_light">
-        
+
                         <TextView
                             android:id="@+id/score5"
                             android:layout_width="wrap_content"
@@ -591,13 +575,13 @@
                             android:background="@color/primary"/>
 
                     </LinearLayout>
-        
+
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
-        
+
                     <TextView
                         android:id="@+id/score6view"
                         android:layout_width="wrap_content"
@@ -616,7 +600,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:background="@color/primary_light">
-        
+
                         <TextView
                             android:id="@+id/score6"
                             android:layout_width="wrap_content"
@@ -637,7 +621,7 @@
                             android:background="@color/primary"/>
 
                     </LinearLayout>
-        
+
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
@@ -645,7 +629,7 @@
                         android:background="@color/primary_light"/>
         
                 </TableRow>
-        
+
                 <TableRow
                     android:id="@+id/tableRow4"
                     android:layout_width="wrap_content"
@@ -751,23 +735,7 @@
                         android:layout_height="1dp"
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
-        
-                 </TableRow>
-        
-                <TableRow
-                    android:id="@+id/tableRow5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dip"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/primary_light">
-        
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_weight="1"
-                        android:background="@color/primary_light"/>
-        
+
                     <TextView
                         android:id="@+id/score9view"
                         android:layout_width="wrap_content"
@@ -786,7 +754,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:background="@color/primary_light">
-        
+
                         <TextView
                             android:id="@+id/score9"
                             android:layout_width="wrap_content"
@@ -807,6 +775,22 @@
                             android:background="@color/primary"/>
 
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+        
+                 </TableRow>
+        
+                <TableRow
+                    android:id="@+id/tableRow5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/primary_light">
         
                     <View
                         android:layout_width="0dp"
@@ -859,23 +843,7 @@
                         android:layout_height="1dp"
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
-        
-                </TableRow>
-        
-                <TableRow
-                    android:id="@+id/tableRow6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dip"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/primary_light">
-        
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_weight="1"
-                        android:background="@color/primary_light"/>
-        
+
                     <TextView
                         android:id="@+id/score11view"
                         android:layout_width="wrap_content"
@@ -894,7 +862,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:background="@color/primary_light">
-        
+
                         <TextView
                             android:id="@+id/score11"
                             android:layout_width="wrap_content"
@@ -915,13 +883,13 @@
                             android:background="@color/primary"/>
 
                     </LinearLayout>
-        
+
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
-        
+
                     <TextView
                         android:id="@+id/fake"
                         android:layout_width="wrap_content"
@@ -933,7 +901,7 @@
                         android:textColor="@color/secondary_text"
                         android:visibility="invisible"
                         android:background="@color/primary_light" />
-        
+
                     <TextView
                         android:id="@+id/fake1"
                         android:layout_width="wrap_content"
@@ -943,7 +911,7 @@
                         android:textColor="@color/primary_text"
                         android:visibility="invisible"
                         android:background="@color/primary_light" />
-        
+
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
@@ -951,7 +919,7 @@
                         android:background="@color/primary_light"/>
         
                 </TableRow>
-        
+
             </TableLayout>
         
         </LinearLayout>

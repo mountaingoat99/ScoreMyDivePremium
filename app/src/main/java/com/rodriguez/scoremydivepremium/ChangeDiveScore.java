@@ -222,12 +222,12 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
                     } else {
                         Toast.makeText(getApplicationContext(),
                                 "Please enter a number",
-                                Toast.LENGTH_LONG).show();
+                                Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Toast.makeText(getApplicationContext(),
                             "Please Choose a Dive Number",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });

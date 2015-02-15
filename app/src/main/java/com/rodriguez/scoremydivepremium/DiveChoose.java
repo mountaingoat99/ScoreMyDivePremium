@@ -131,7 +131,7 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
                     Toast.makeText(getApplicationContext(),
                             "Dive and Position is not valid, " +
                                     "Please Choose a Valid Combination.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -180,7 +180,7 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
                     Toast.makeText(getApplicationContext(),
                             "Dive and Position is not valid, " +
                                     "Please Choose a Valid Combination.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -220,7 +220,7 @@ public class DiveChoose extends ActionBarActivity implements AdapterView.OnItemS
                     Toast.makeText(getApplicationContext(),
                             "Dive and Position is not valid, " +
                                     "Please Choose a Valid Combination.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -74,18 +74,18 @@ public class Home extends ActionBarActivity {
                     if (!diverCheck && meetCheck) {
                         Toast.makeText(getApplicationContext(),
                                 "Please add a diver and a meet",
-                                Toast.LENGTH_LONG).show();
+                                Toast.LENGTH_SHORT).show();
                         return;
                     }
                     if(!diverCheck){
                         Toast.makeText(getApplicationContext(),
                                 "Please add a diver before starting a meet",
-                                Toast.LENGTH_LONG).show();
+                                Toast.LENGTH_SHORT).show();
                         return;
                     }
                     Toast.makeText(getApplicationContext(),
                             "There have been no meets added yet",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -111,7 +111,7 @@ public class Home extends ActionBarActivity {
                 }else{
                     Toast.makeText(getApplicationContext(),
                             "No scores have been entered, so no reports can be generated",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });

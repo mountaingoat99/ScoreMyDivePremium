@@ -64,7 +64,7 @@ public class RankingsByMeet extends ActionBarActivity {
 
         Toast.makeText(getApplicationContext(),
                 "Click a diver to see their scores",
-                Toast.LENGTH_LONG).show();
+                Toast.LENGTH_SHORT).show();
     }
 
     private void populateListViewFromDB() {
@@ -87,7 +87,7 @@ public class RankingsByMeet extends ActionBarActivity {
                 if(diveNumber == 0){
                     Toast.makeText(getApplicationContext(),
                             "Diver has no scores at this meet yet",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getBaseContext(), MeetScores.class);
                     Bundle b = new Bundle();

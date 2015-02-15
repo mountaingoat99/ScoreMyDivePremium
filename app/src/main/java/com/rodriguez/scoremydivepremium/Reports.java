@@ -74,7 +74,7 @@ public class Reports extends ActionBarActivity implements OnItemSelectedListener
                         if (diverId == 0 && (reportId == 2 || reportId == 3)) {
                             Toast.makeText(getApplicationContext(),
                                     "Please Choose a diver",
-                                    Toast.LENGTH_LONG).show();
+                                    Toast.LENGTH_SHORT).show();
                         } else {
                             if (reportId == 2) {
                                 printDiverScoreTotalsMeet();
@@ -87,7 +87,7 @@ public class Reports extends ActionBarActivity implements OnItemSelectedListener
                 }else{
                     Toast.makeText(getApplicationContext(),
                             "Please choose both a meet and a report",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });

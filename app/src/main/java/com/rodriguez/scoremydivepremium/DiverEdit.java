@@ -71,7 +71,7 @@ public class DiverEdit extends ActionBarActivity {
 		{
 			Toast.makeText(getApplicationContext(),
         			"Diver is corrupted, please delete and add again",
-        			Toast.LENGTH_LONG).show();
+        			Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(getBaseContext(), MeetsDivers.class);
 			startActivity(intent);
 		}
@@ -131,7 +131,7 @@ public class DiverEdit extends ActionBarActivity {
                 if (nameEdit.isEmpty() || ageEdit.isEmpty()
                         || gradeEdit.isEmpty() || schoolEdit.isEmpty()) {
                     Toast.makeText(getApplicationContext(),
-                            "Please make an entry in all fields", Toast.LENGTH_LONG).show();
+                            "Please make an entry in all fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!nameEdit.equals(nameString)) {
@@ -153,7 +153,7 @@ public class DiverEdit extends ActionBarActivity {
                 Toast.makeText(getApplicationContext(),
                         "Diver has been edited to " + nameEdit + ", "
                                 + ageEdit + ", " + gradeEdit + ", "
-                                + schoolEdit, Toast.LENGTH_LONG
+                                + schoolEdit, Toast.LENGTH_SHORT
                 ).show();
                 Intent intent = new Intent(context, MeetsDivers.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

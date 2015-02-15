@@ -104,7 +104,7 @@ public class EnterScoreFromList extends ActionBarActivity {
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "Scores entered are not valid. Please enter an accurate score,",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });

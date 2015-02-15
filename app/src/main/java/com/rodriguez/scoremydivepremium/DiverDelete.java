@@ -68,7 +68,7 @@ public class DiverDelete extends ActionBarActivity {
 		{
 			Toast.makeText(getApplicationContext(),
         			"Diver if is corrupted, please edit or add again",
-        			Toast.LENGTH_LONG).show();
+        			Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(getBaseContext(), MeetsDivers.class);
 			startActivity(intent);
 		}
@@ -89,7 +89,7 @@ public class DiverDelete extends ActionBarActivity {
 
                 Toast.makeText(getApplicationContext(),
                         "Diver " + nameString + " has been deleted",
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, MeetsDivers.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

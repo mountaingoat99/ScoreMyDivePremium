@@ -289,7 +289,7 @@ public class ChooseSummary extends ActionBarActivity {
             Toast.makeText(getApplicationContext(),
                     "Congratulations, all six dives are complete," +
                             " total score is " + totalString,
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
             layout11.setVisibility(View.GONE);
             return;
         }
@@ -373,7 +373,7 @@ public class ChooseSummary extends ActionBarActivity {
             Toast.makeText(getApplicationContext(),
                     "Congratulations, all eleven dives are complete," +
                             " total score is " + totalString,
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
             layout11.setVisibility(View.GONE);
         }
     }
@@ -514,7 +514,7 @@ public class ChooseSummary extends ActionBarActivity {
                 if(diveNumber == 0){
                     Toast.makeText(getApplicationContext(),
                             "This Diver has no scores yet",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                     break;
                 } else {
                     Bundle b = new Bundle();

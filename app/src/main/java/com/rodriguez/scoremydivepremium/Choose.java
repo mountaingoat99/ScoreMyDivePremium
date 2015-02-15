@@ -187,7 +187,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
                } else {
                    Toast.makeText(getApplicationContext(),
                            "Please Choose a Meet and a Diver",
-                           Toast.LENGTH_LONG).show();
+                           Toast.LENGTH_SHORT).show();
                }
            }
        });
@@ -230,7 +230,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
                } else {
                    Toast.makeText(getApplicationContext(),
                            "Please Choose a Diver",
-                           Toast.LENGTH_LONG).show();
+                           Toast.LENGTH_SHORT).show();
                }
            }
        });
@@ -475,7 +475,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
                 }else{
                     Toast.makeText(getApplicationContext(),
                             "Please Choose a Diver and a Meet",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                     break;
                 }
             case R.id.menu_how_to:

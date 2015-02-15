@@ -46,6 +46,7 @@ public class MeetScores extends ActionBarActivity {
                         grade, school, total, Type, score1, score2, score3, score4, score5,
                         score6, score7, score8, score9, score10, score11, s1, s2, s3, s4,
                         s5, s6, s7, s8, s9, s10, s11;
+    private View v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11;
     private int diverId, meetId, diveNumberFromDB, diveNumber = 0;
     private String score1String, score2String, score3String, score4String, score5String, score6String,
                         score7String, score8String, score9String, score10String, score11String, totalString;
@@ -555,59 +556,70 @@ public class MeetScores extends ActionBarActivity {
         if(diveNumberFromDB >= 1) {
             total.setText(totalString);
             s1.setVisibility(View.VISIBLE);
+            v1.setVisibility(View.VISIBLE);
             score1.setVisibility(View.VISIBLE);
             score1.setText(score1String);
         } else {
             Toast.makeText(getApplicationContext(),
                     "This diver has no scores in this meet yet.",
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
         }
         if(diveNumberFromDB >= 2) {
             s2.setVisibility(View.VISIBLE);
+            v2.setVisibility(View.VISIBLE);
             score2.setVisibility(View.VISIBLE);
             score2.setText(score2String);
         }
         if(diveNumberFromDB >= 3) {
+            v3.setVisibility(View.VISIBLE);
             s3.setVisibility(View.VISIBLE);
             score3.setVisibility(View.VISIBLE);
             score3.setText(score3String);
         }
         if(diveNumberFromDB >= 4) {
+            v4.setVisibility(View.VISIBLE);
             s4.setVisibility(View.VISIBLE);
             score4.setVisibility(View.VISIBLE);
             score4.setText(score4String);
         }
         if(diveNumberFromDB >= 5) {
+            v5.setVisibility(View.VISIBLE);
             s5.setVisibility(View.VISIBLE);
             score5.setVisibility(View.VISIBLE);
             score5.setText(score5String);
         }
         if(diveNumberFromDB >= 6) {
+            v6.setVisibility(View.VISIBLE);
             s6.setVisibility(View.VISIBLE);
             score6.setVisibility(View.VISIBLE);
             score6.setText(score6String);
         }
         if(diveNumberFromDB >= 7) {
+            v7.setVisibility(View.VISIBLE);
             s7.setVisibility(View.VISIBLE);
             score7.setVisibility(View.VISIBLE);
             score7.setText(score7String);
         }
         if(diveNumberFromDB >= 8) {
+            v8.setVisibility(View.VISIBLE);
             s8.setVisibility(View.VISIBLE);
             score8.setVisibility(View.VISIBLE);
             score8.setText(score8String);
         }
         if(diveNumberFromDB >= 9) {
+            v9.setVisibility(View.VISIBLE);
             s9.setVisibility(View.VISIBLE);
             score9.setVisibility(View.VISIBLE);
             score9.setText(score9String);
         }
         if(diveNumberFromDB >= 10) {
+            v10.setVisibility(View.VISIBLE);
             s10.setVisibility(View.VISIBLE);
             score10.setVisibility(View.VISIBLE);
             score10.setText(score10String);
         }
         if(diveNumberFromDB == 11) {
+            v11.setVisibility(View.VISIBLE);
             s11.setVisibility(View.VISIBLE);
             score11.setVisibility(View.VISIBLE);
             score11.setText(score11String);
@@ -660,6 +672,17 @@ public class MeetScores extends ActionBarActivity {
         s9 = (TextView)findViewById(R.id.score9view);
         s10 = (TextView)findViewById(R.id.score10view);
         s11 = (TextView)findViewById(R.id.score11view);
+        v1 = findViewById(R.id.view1);
+        v2 = findViewById(R.id.view2);
+        v3 = findViewById(R.id.view3);
+        v4 = findViewById(R.id.view4);
+        v5 = findViewById(R.id.view5);
+        v6 = findViewById(R.id.view6);
+        v7 = findViewById(R.id.view7);
+        v8 = findViewById(R.id.view8);
+        v9 = findViewById(R.id.view9);
+        v10 = findViewById(R.id.view10);
+        v11 = findViewById(R.id.view11);
     }
 	
 	@Override

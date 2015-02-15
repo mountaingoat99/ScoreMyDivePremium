@@ -42,7 +42,7 @@ public class Rankings extends ActionBarActivity {
 
         Toast.makeText(getApplicationContext(),
                 "Click a meet to see the rankings",
-                Toast.LENGTH_LONG).show();
+                Toast.LENGTH_SHORT).show();
     }
 
     private void populateListViewFromDB() {
@@ -74,7 +74,7 @@ public class Rankings extends ActionBarActivity {
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "There are no scores in this meet yet",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });

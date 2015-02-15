@@ -90,7 +90,7 @@ public class EnterTotalScoreFromDiveList extends ActionBarActivity {
                 }else {
                     Toast.makeText(getApplicationContext(),
                             "Please enter a score or use the menu to fail the dive",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });

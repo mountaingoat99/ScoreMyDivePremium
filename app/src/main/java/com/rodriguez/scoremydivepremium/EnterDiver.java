@@ -60,7 +60,7 @@ public class EnterDiver extends ActionBarActivity {
     	        		|| gradeString.isEmpty() || schoolString.isEmpty())
     	        {
     	        	Toast.makeText(getApplicationContext(),
-    	        			"Please make an entry in all fields", Toast.LENGTH_LONG).show();
+    	        			"Please make an entry in all fields", Toast.LENGTH_SHORT).show();
     	        }
     	        else{
                     // calls a separate thread to write to the db

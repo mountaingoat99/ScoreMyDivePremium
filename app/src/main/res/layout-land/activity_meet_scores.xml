@@ -139,36 +139,30 @@
             android:paddingRight="8dp"
             android:paddingEnd="8dp"
             android:background="@drawable/layer_card_background">
-
+       
+             <TextView
+                 android:id="@+id/meetName"
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:text=""
+                 android:textSize="@dimen/text_size_small"
+                 android:textColor="@color/primary_text"
+                 android:background="@color/primary_light"/>
+             
              <LinearLayout
                  android:id="@+id/layout2"
                  android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
-                 android:orientation="horizontal"
+                 android:layout_marginTop="8dp"
                  android:background="@color/primary_light" >
-
-                 <View
-                     android:layout_width="0dp"
-                     android:layout_height="1dp"
-                     android:layout_weight="1"
-                     android:background="@color/primary_light"/>
-
-                 <TextView
-                     android:id="@+id/meetName"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:gravity="center"
-                     android:text=""
-                     android:textSize="@dimen/text_size_small"
-                     android:textColor="@color/primary_text"
-                     android:background="@color/primary_light"/>
-
+            
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="1"
                     android:background="@color/primary_light"/>
-
+            
                  <TextView
                      android:id="@+id/meetSchool"
                      android:layout_width="wrap_content"
@@ -177,13 +171,7 @@
                      android:textSize="@dimen/text_size_small"
                      android:textColor="@color/primary_text"
                      android:background="@color/primary_light"/>
-
-                 <View
-                     android:layout_width="0dp"
-                     android:layout_height="1dp"
-                     android:layout_weight="1"
-                     android:background="@color/primary_light"/>
-
+            
                  <TextView
                      android:id="@+id/meetDate"
                      android:layout_width="wrap_content"
@@ -192,15 +180,15 @@
                      android:textSize="@dimen/text_size_small"
                      android:textColor="@color/primary_text"
                      android:background="@color/primary_light"/>
-
+                 
                  <View
                      android:layout_width="0dp"
                      android:layout_height="1dp"
                      android:layout_weight="1"
                      android:background="@color/primary_light"/>
-
-             </LinearLayout>
-
+             
+             </LinearLayout>   
+             
              <LinearLayout
                  android:id="@+id/layout3"
                  android:layout_width="fill_parent"
@@ -262,12 +250,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/primary_light">
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="@color/primary_light"/>
         
                 <TextView
                     android:id="@+id/totalScore"
@@ -324,12 +306,6 @@
                     android:textSize="@dimen/text_size_small"
                     android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="@color/primary_light"/>
         
             </LinearLayout>
 
@@ -372,17 +348,33 @@
                         android:visibility="invisible"
                         android:clickable="true"
                         android:background="@color/primary_light"/>
-        
-                    <TextView
-                        android:id="@+id/score1"
-                        android:layout_width="wrap_content"
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="@dimen/text_size_medium"
-                        android:textColor="@color/primary_text"
-                        android:visibility="invisible"
-                        android:clickable="true"
-                        android:background="@color/primary_light"/>
+                        android:orientation="vertical"
+                        android:background="@color/primary_light">
+        
+                        <TextView
+                            android:id="@+id/score1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:clickable="true"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="center"/>
+
+                        <View
+                            android:id="@+id/view1"
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/primary"/>
+
+                    </LinearLayout>
         
                     <View
                         android:layout_width="0dp"
@@ -402,17 +394,33 @@
                         android:visibility="invisible"
                         android:clickable="true"
                         android:background="@color/primary_light"/>
-        
-                    <TextView
-                        android:id="@+id/score2"
-                        android:layout_width="wrap_content"
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="@dimen/text_size_medium"
-                        android:textColor="@color/primary_text"
-                        android:visibility="invisible"
-                        android:clickable="true"
-                        android:background="@color/primary_light"/>
+                        android:orientation="vertical"
+                        android:background="@color/primary_light">
+        
+                        <TextView
+                            android:id="@+id/score2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:clickable="true"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="center"/>
+
+                        <View
+                            android:id="@+id/view2"
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/primary"/>
+
+                    </LinearLayout>
         
                     <View
                         android:layout_width="0dp"
@@ -433,16 +441,32 @@
                         android:clickable="true"
                         android:background="@color/primary_light"/>
 
-                    <TextView
-                        android:id="@+id/score3"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="@dimen/text_size_medium"
-                        android:textColor="@color/primary_text"
-                        android:visibility="invisible"
-                        android:clickable="true"
-                        android:background="@color/primary_light"/>
+                        android:orientation="vertical"
+                        android:background="@color/primary_light">
+
+                        <TextView
+                            android:id="@+id/score3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:clickable="true"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="center"/>
+
+                        <View
+                            android:id="@+id/view3"
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/primary"/>
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="0dp"
@@ -478,18 +502,34 @@
                         android:visibility="invisible"
                         android:clickable="true"
                         android:background="@color/primary_light"/>
-        
-                    <TextView
-                        android:id="@+id/score4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="@dimen/text_size_medium"
-                        android:textColor="@color/primary_text"
-                        android:visibility="invisible"
-                        android:clickable="true"
-                        android:background="@color/primary_light"/>
 
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@color/primary_light">
+        
+                        <TextView
+                            android:id="@+id/score4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:clickable="true"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="center"/>
+
+                        <View
+                            android:id="@+id/view4"
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/primary"/>
+
+                    </LinearLayout>
+        
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
@@ -509,16 +549,32 @@
                         android:clickable="true"
                         android:background="@color/primary_light"/>
 
-                    <TextView
-                        android:id="@+id/score5"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="@dimen/text_size_medium"
-                        android:textColor="@color/primary_text"
-                        android:visibility="invisible"
-                        android:clickable="true"
-                        android:background="@color/primary_light"/>
+                        android:orientation="vertical"
+                        android:background="@color/primary_light">
+
+                        <TextView
+                            android:id="@+id/score5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:clickable="true"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="center"/>
+
+                        <View
+                            android:id="@+id/view5"
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/primary"/>
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="0dp"
@@ -539,16 +595,32 @@
                         android:clickable="true"
                         android:background="@color/primary_light"/>
 
-                    <TextView
-                        android:id="@+id/score6"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="@dimen/text_size_medium"
-                        android:textColor="@color/primary_text"
-                        android:visibility="invisible"
-                        android:clickable="true"
-                        android:background="@color/primary_light"/>
+                        android:orientation="vertical"
+                        android:background="@color/primary_light">
+
+                        <TextView
+                            android:id="@+id/score6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:clickable="true"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="center"/>
+
+                        <View
+                            android:id="@+id/view6"
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/primary"/>
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="0dp"
@@ -557,21 +629,21 @@
                         android:background="@color/primary_light"/>
         
                 </TableRow>
-        
+
                 <TableRow
-                    android:id="@+id/tableRow3"
+                    android:id="@+id/tableRow4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dip"
                     android:layout_marginTop="8dp"
                     android:background="@color/primary_light">
-
+        
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
-
+        
                     <TextView
                         android:id="@+id/score7view"
                         android:layout_width="wrap_content"
@@ -585,23 +657,39 @@
                         android:clickable="true"
                         android:background="@color/primary_light"/>
 
-                    <TextView
-                        android:id="@+id/score7"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="@dimen/text_size_medium"
-                        android:textColor="@color/primary_text"
-                        android:visibility="invisible"
-                        android:clickable="true"
-                        android:background="@color/primary_light"/>
+                        android:orientation="vertical"
+                        android:background="@color/primary_light">
+        
+                        <TextView
+                            android:id="@+id/score7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:clickable="true"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="center"/>
 
+                        <View
+                            android:id="@+id/view7"
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/primary"/>
+
+                    </LinearLayout>
+        
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
-
+        
                     <TextView
                         android:id="@+id/score8view"
                         android:layout_width="wrap_content"
@@ -615,17 +703,33 @@
                         android:clickable="true"
                         android:background="@color/primary_light"/>
 
-                    <TextView
-                        android:id="@+id/score8"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="@dimen/text_size_medium"
-                        android:textColor="@color/primary_text"
-                        android:visibility="invisible"
-                        android:clickable="true"
-                        android:background="@color/primary_light"/>
+                        android:orientation="vertical"
+                        android:background="@color/primary_light">
+        
+                        <TextView
+                            android:id="@+id/score8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:clickable="true"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="center"/>
 
+                        <View
+                            android:id="@+id/view8"
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/primary"/>
+
+                    </LinearLayout>
+        
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
@@ -645,16 +749,32 @@
                         android:clickable="true"
                         android:background="@color/primary_light"/>
 
-                    <TextView
-                        android:id="@+id/score9"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="@dimen/text_size_medium"
-                        android:textColor="@color/primary_text"
-                        android:visibility="invisible"
-                        android:clickable="true"
-                        android:background="@color/primary_light"/>
+                        android:orientation="vertical"
+                        android:background="@color/primary_light">
+
+                        <TextView
+                            android:id="@+id/score9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:clickable="true"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="center"/>
+
+                        <View
+                            android:id="@+id/view9"
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/primary"/>
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="0dp"
@@ -662,22 +782,22 @@
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
         
-                </TableRow>
+                 </TableRow>
         
                 <TableRow
-                    android:id="@+id/tableRow4"
+                    android:id="@+id/tableRow5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dip"
                     android:layout_marginTop="8dp"
                     android:background="@color/primary_light">
-
+        
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
-
+        
                     <TextView
                         android:id="@+id/score10view"
                         android:layout_width="wrap_content"
@@ -691,17 +811,33 @@
                         android:clickable="true"
                         android:background="@color/primary_light"/>
 
-                    <TextView
-                        android:id="@+id/score10"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="@dimen/text_size_medium"
-                        android:textColor="@color/primary_text"
-                        android:visibility="invisible"
-                        android:clickable="true"
-                        android:background="@color/primary_light"/>
+                        android:orientation="vertical"
+                        android:background="@color/primary_light">
+        
+                        <TextView
+                            android:id="@+id/score10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:clickable="true"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="center"/>
 
+                        <View
+                            android:id="@+id/view10"
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/primary"/>
+
+                    </LinearLayout>
+        
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
@@ -721,22 +857,32 @@
                         android:clickable="true"
                         android:background="@color/primary_light"/>
 
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_weight="1"
-                        android:background="@color/primary_light"/>
-
-                    <TextView
-                        android:id="@+id/score11"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="@dimen/text_size_medium"
-                        android:textColor="@color/primary_text"
-                        android:visibility="invisible"
-                        android:clickable="true"
-                        android:background="@color/primary_light"/>
+                        android:orientation="vertical"
+                        android:background="@color/primary_light">
+
+                        <TextView
+                            android:id="@+id/score11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/primary_text"
+                            android:visibility="invisible"
+                            android:clickable="true"
+                            android:background="@color/primary_light"
+                            android:layout_gravity="center"/>
+
+                        <View
+                            android:id="@+id/view11"
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/primary"/>
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="0dp"
@@ -772,7 +918,7 @@
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
         
-                 </TableRow>
+                </TableRow>
 
             </TableLayout>
         

@@ -118,7 +118,7 @@ OnClickListener {
                 if (nameString.isEmpty() || schoolString.isEmpty()
                         || stateString.isEmpty() || dateString.isEmpty()) {
                     Toast.makeText(getApplicationContext(),
-                            "Please make an entry in all fields", Toast.LENGTH_LONG).show();
+                            "Please make an entry in all fields", Toast.LENGTH_SHORT).show();
                 } else {
                     WriteNewMeet newmeet = new WriteNewMeet();
                     newmeet.doInBackground();

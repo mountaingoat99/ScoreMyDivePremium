@@ -62,7 +62,7 @@ public class MeetResults extends ActionBarActivity {
 
         Toast.makeText(getApplicationContext(),
     			"Click a diver to see the scores",
-    			Toast.LENGTH_LONG).show();
+    			Toast.LENGTH_SHORT).show();
     }	
 	
 	public void fillText(){      //TODO need to fox this date, not showing on the screen
@@ -97,7 +97,7 @@ public class MeetResults extends ActionBarActivity {
 		}else{
 			Toast.makeText(getApplicationContext(),
         			"Meet is corrupted, please delete and add again",
-        			Toast.LENGTH_LONG).show();
+        			Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(getBaseContext(), MeetsDivers.class);
 			startActivity(intent);
 		}
@@ -123,7 +123,7 @@ public class MeetResults extends ActionBarActivity {
                 if(diveNumber == 0){
                     Toast.makeText(getApplicationContext(),
                             "Diver has no scores at this meet yet",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     stringId = myList.getItemAtPosition(position).toString();
                     diverId = diveid.doInBackground();

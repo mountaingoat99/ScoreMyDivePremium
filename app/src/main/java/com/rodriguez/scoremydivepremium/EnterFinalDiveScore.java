@@ -117,13 +117,13 @@ public class EnterFinalDiveScore extends ActionBarActivity {
                     }else {
                         Toast.makeText(getApplicationContext(),
                                 "Please enter a score or use the menu to fail the dive",
-                                Toast.LENGTH_LONG).show();
+                                Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Toast.makeText(getApplicationContext(),
                             "Dive and Position is not valid, " +
                                     "Please Choose a Valid Combination.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -316,7 +316,7 @@ public class EnterFinalDiveScore extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(),
                             "Dive and Position is not valid, " +
                                     "Please Choose a Valid Combination.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                     break;
                 }
         }

@@ -86,7 +86,7 @@ public class EditDiveList extends ActionBarActivity implements AdapterView.OnIte
                     Toast.makeText(getApplicationContext(),
                             "Dive and Position is not valid, " +
                                     "Please Choose a Valid Combination.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });

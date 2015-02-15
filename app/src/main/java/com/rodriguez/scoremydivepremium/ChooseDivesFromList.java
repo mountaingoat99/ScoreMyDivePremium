@@ -109,7 +109,7 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
                 }else{
                     Toast.makeText(getApplicationContext(),
                             "Please choose a dive!",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -129,7 +129,7 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
                 }else{
                     Toast.makeText(getApplicationContext(),
                             "Please choose a dive!",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -383,7 +383,7 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
                     "Congratulations, all six dives are complete," +
                             " total score is " + totalString + " ." +
                             "You can still choose a dive to edit it if needed.",
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
             diveNumberSpinner.setSelection(1);
             return;
         }
@@ -485,7 +485,7 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
                     "Congratulations, all eleven dives are complete," +
                     " total score is " + totalString + " ." +
                     "You can still choose a dive to edit it if needed.",
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
             diveNumberSpinner.setSelection(1);
         }
     }

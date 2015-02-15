@@ -512,7 +512,7 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
             } else {
                 Toast.makeText(getApplicationContext(),
                         "Please choose a dive sheet first",
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -529,7 +529,7 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
             } else {
                 Toast.makeText(getApplicationContext(),
                         "Please choose a dive sheet first",
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -539,7 +539,7 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
             } else {
                 Toast.makeText(getApplicationContext(),
                         "Please choose a dive sheet first",
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
             }
         }
 

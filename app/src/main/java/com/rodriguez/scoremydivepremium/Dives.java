@@ -134,13 +134,13 @@ public class Dives extends ActionBarActivity {
                     } else {
                         Toast.makeText(getApplicationContext(),
                                 "Scores entered are not valid. Please enter an accurate score,",
-                                Toast.LENGTH_LONG).show();
+                                Toast.LENGTH_SHORT).show();
                     }
                 }else{
                     Toast.makeText(getApplicationContext(),
                             "Dive and Position is not valid, " +
                                     "Please Choose a Valid Combination.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -486,7 +486,7 @@ public class Dives extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(),
                             "Dive and Position is not valid, " +
                                     "Please Choose a Valid Combination.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                     break;
                 }
         }

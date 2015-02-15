@@ -164,7 +164,7 @@ public class MeetEdit extends ActionBarActivity implements
 		{
 			Toast.makeText(getApplicationContext(),
         			"Meet is corrupted, please delete and add again",
-        			Toast.LENGTH_LONG).show();
+        			Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(getBaseContext(), MeetsDivers.class);
 			startActivity(intent);
 		}
@@ -199,7 +199,7 @@ public class MeetEdit extends ActionBarActivity implements
                         || cityEdit.isEmpty() || stateEdit.isEmpty()
                         || dateEdit.isEmpty()) {
                     Toast.makeText(getApplicationContext(),
-                            "Please make an entry in all fields", Toast.LENGTH_LONG).show();
+                            "Please make an entry in all fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!nameEdit.equals(nameString)) {
@@ -228,7 +228,7 @@ public class MeetEdit extends ActionBarActivity implements
                         "Diver has been edited to " + nameEdit + ", "
                                 + schoolEdit + ", " + cityEdit + ", "
                                 + stateEdit + ", " + dateEdit + ", Judges: "
-                                + judges, Toast.LENGTH_LONG
+                                + judges, Toast.LENGTH_SHORT
                 ).show();
                 Intent intent = new Intent(context, MeetsDivers.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

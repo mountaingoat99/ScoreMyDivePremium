@@ -57,7 +57,7 @@ public class DiverHistory extends ActionBarActivity {
 
         Toast.makeText(getApplicationContext(),
     			"Click a meet to see the scores",
-    			Toast.LENGTH_LONG).show();		
+    			Toast.LENGTH_SHORT).show();
     }	
 		
 	public void fillText(){
@@ -80,7 +80,7 @@ public class DiverHistory extends ActionBarActivity {
 		{
 			Toast.makeText(getApplicationContext(),
         			"Diver is corrupted, please delete and add again",
-        			Toast.LENGTH_LONG).show();
+        			Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(getBaseContext(), MeetsDivers.class);
 			startActivity(intent);
 		}
@@ -106,7 +106,7 @@ public class DiverHistory extends ActionBarActivity {
                 if(diveNumber == 0){
                     Toast.makeText(getApplicationContext(),
                             "Diver has no scores at this meet yet",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     stringId = myList.getItemAtPosition(position).toString();
                     meetId = ID.doInBackground(stringId);
