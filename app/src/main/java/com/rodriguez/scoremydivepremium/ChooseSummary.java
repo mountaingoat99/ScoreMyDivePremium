@@ -33,6 +33,7 @@ public class ChooseSummary extends ActionBarActivity {
                     totalView, diveTypeText, diveTypeShow, diveInfo1, diveInfo2,
                     diveInfo3, diveInfo4, diveInfo5, diveInfo6, diveInfo7, diveInfo8,
                     diveInfo9, diveInfo10, diveInfo11;
+    private View layout11;
     private Button btnType, btnChooseDives, btnSwitchDiver;
 	private int diverId, meetId, diveTotal, diveNumber;
     private double boardType;
@@ -289,8 +290,7 @@ public class ChooseSummary extends ActionBarActivity {
                     "Congratulations, all six dives are complete," +
                             " total score is " + totalString,
                     Toast.LENGTH_LONG).show();
-            btnType.setEnabled(false);
-            btnChooseDives.setEnabled(false);
+            layout11.setVisibility(View.GONE);
             return;
         }
         numberOfDive = 7;
@@ -374,8 +374,7 @@ public class ChooseSummary extends ActionBarActivity {
                     "Congratulations, all eleven dives are complete," +
                             " total score is " + totalString,
                     Toast.LENGTH_LONG).show();
-            btnType.setEnabled(false);
-            btnChooseDives.setEnabled(false);
+            layout11.setVisibility(View.GONE);
         }
     }
 
@@ -492,6 +491,7 @@ public class ChooseSummary extends ActionBarActivity {
         btnType = (Button)findViewById(R.id.buttonTypeNumber);
         btnChooseDives = (Button)findViewById(R.id.buttonChooseDives);
         btnSwitchDiver = (Button)findViewById(R.id.buttonSwitchDiver);
+        layout11 = findViewById(R.id.layout11);
     }
 	
 	@Override
