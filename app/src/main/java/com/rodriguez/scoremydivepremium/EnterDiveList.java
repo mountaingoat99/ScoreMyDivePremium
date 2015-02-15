@@ -53,7 +53,7 @@ public class EnterDiveList extends ActionBarActivity {
 
     private TextView diveInfo1, diveInfo2, diveInfo3, diveInfo4, diveInfo5, diveInfo6,
                     diveInfo7, diveInfo8, diveInfo9, diveInfo10, diveInfo11, diverName, meetName;
-    private View view1, layoutScores;
+    private View view1, layoutScores, layout11;
     private TableRow row1, row2, row3, row4,row5, row6, row7, row8, row9, row10, row11 ;
     private Button btnScore, btnChooseDive, btnTypeNumber, btnSwitchDiver;
     private int diverId, meetId, diveTotal, diveNumber = 0;
@@ -425,6 +425,7 @@ public class EnterDiveList extends ActionBarActivity {
                     Toast.LENGTH_SHORT).show();
             view1.setVisibility(View.VISIBLE);
             btnScore.setVisibility(View.VISIBLE);
+            layout11.setVisibility(View.GONE);
             return;
         }
 
@@ -466,6 +467,7 @@ public class EnterDiveList extends ActionBarActivity {
                     Toast.LENGTH_SHORT).show();
             view1.setVisibility(View.VISIBLE);
             btnScore.setVisibility(View.VISIBLE);
+            layout11.setVisibility(View.GONE);
         }
     }
 
@@ -560,6 +562,7 @@ public class EnterDiveList extends ActionBarActivity {
         btnTypeNumber = (Button)findViewById(R.id.buttonTypeNumber);
         view1 = findViewById(R.id.view1);
         layoutScores = findViewById(R.id.layoutScores);
+        layout11 = findViewById(R.id.layout11);
         btnSwitchDiver = (Button)findViewById(R.id.buttonSwitchDiver);
     }
 
