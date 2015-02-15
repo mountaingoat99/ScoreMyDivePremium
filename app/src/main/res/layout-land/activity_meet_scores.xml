@@ -45,7 +45,7 @@
                     android:layout_weight="1"
                     android:text=""
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
             
                 <View
@@ -62,7 +62,7 @@
                     android:layout_weight="1"
                     android:text=""
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
             
                 <View
@@ -94,7 +94,7 @@
                     android:layout_weight="1"
                     android:text=""
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
         
                 <View
@@ -111,7 +111,7 @@
                     android:layout_weight="1"
                     android:text=""
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
         
                 <View
@@ -160,7 +160,7 @@
                      android:gravity="center"
                      android:text=""
                      android:textSize="@dimen/text_size_small"
-                     android:textColor="@color/secondary_text"
+                     android:textColor="@color/primary_text"
                      android:background="@color/primary_light"/>
 
                 <View
@@ -175,7 +175,7 @@
                      android:layout_height="wrap_content"
                      android:text=""
                      android:textSize="@dimen/text_size_small"
-                     android:textColor="@color/secondary_text"
+                     android:textColor="@color/primary_text"
                      android:background="@color/primary_light"/>
 
                  <View
@@ -190,7 +190,7 @@
                      android:layout_height="wrap_content"
                      android:text=""
                      android:textSize="@dimen/text_size_small"
-                     android:textColor="@color/secondary_text"
+                     android:textColor="@color/primary_text"
                      android:background="@color/primary_light"/>
 
                  <View
@@ -220,7 +220,7 @@
                      android:layout_height="wrap_content"
                      android:text=""
                      android:textSize="@dimen/text_size_small"
-                     android:textColor="@color/secondary_text"
+                     android:textColor="@color/primary_text"
                      android:background="@color/primary_light"/>
                  
                  <TextView
@@ -229,7 +229,7 @@
                      android:layout_height="wrap_content"
                      android:text=""
                      android:textSize="@dimen/text_size_small"
-                     android:textColor="@color/secondary_text"
+                     android:textColor="@color/primary_text"
                      android:background="@color/primary_light"/>
                  
                  <View
