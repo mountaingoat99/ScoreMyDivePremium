@@ -56,7 +56,7 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
         setContentView(R.layout.activity_choose_dives_from_list);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setUpView();
