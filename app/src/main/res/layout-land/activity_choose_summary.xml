@@ -101,7 +101,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/dbName"
-                    android:layout_below="@id/View0"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_toRightOf="@id/dbName"
@@ -181,7 +180,6 @@
                     android:id="@+id/layouts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/View2C"
                     android:background="@color/primary_light">
 
                     <TextView

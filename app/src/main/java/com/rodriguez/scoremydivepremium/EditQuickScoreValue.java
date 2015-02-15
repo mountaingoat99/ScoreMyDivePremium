@@ -63,7 +63,7 @@ public class EditQuickScoreValue extends ActionBarActivity {
             sheetName.setVisibility(View.VISIBLE);
             view1.setVisibility(View.VISIBLE);
             sheetName.setHint(Name);
-            sheetName.setHintTextColor(getResources().getColor(R.color.secondary_text));
+            sheetName.setHintTextColor(getResources().getColor(R.color.LightSteelBlue));
             score.setVisibility(View.INVISIBLE);
             view2.setVisibility(View.INVISIBLE);
         }else{
@@ -73,7 +73,7 @@ public class EditQuickScoreValue extends ActionBarActivity {
             score.setVisibility(View.VISIBLE);
             view2.setVisibility(View.VISIBLE);
             score.setHint(Name);
-            score.setHintTextColor(getResources().getColor(R.color.secondary_text));
+            score.setHintTextColor(getResources().getColor(R.color.LightSteelBlue));
         }
     }
 
@@ -108,12 +108,13 @@ public class EditQuickScoreValue extends ActionBarActivity {
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle b = new Bundle();
-                b.putInt("keySheet", sheetId);
-                Intent intent = new Intent(context, QuickScore.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtras(b);
-                startActivity(intent);
+                finish();
+//                Bundle b = new Bundle();
+//                b.putInt("keySheet", sheetId);
+//                Intent intent = new Intent(context, QuickScore.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.putExtras(b);
+//                startActivity(intent);
             }
         });
     }

@@ -170,7 +170,7 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
             s6String = Double.toString(e6 = scores.get(5));
             s7String = Double.toString(e7 = scores.get(6));
 
-            if (judgeTotal >= 3) {
+            if(judgeTotal >= 2) {
                 s1v.setVisibility(View.VISIBLE);
                 s1.setVisibility(View.VISIBLE);
                 s1.setText(s1String);
@@ -178,7 +178,9 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
                 s2v.setVisibility(View.VISIBLE);
                 s2.setVisibility(View.VISIBLE);
                 s2.setText(s2String);
+            }
 
+            if (judgeTotal >= 3) {
                 s3v.setVisibility(View.VISIBLE);
                 s3.setVisibility(View.VISIBLE);
                 s3.setText(s3String);
@@ -256,11 +258,16 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
         editTotal = testNumber;
 
         if(multiplier != 0.0) {
-            if (judgeTotal >= 3) {
+            if (judgeTotal >= 2) {
+                double roundedScore;
                 edit1 = s1.getText().toString().trim();
                 e1 = Double.parseDouble(edit1);
                 edit2 = s2.getText().toString().trim();
                 e2 = Double.parseDouble(edit2);
+                roundedScore = (e1 + e2) / 2;
+                e3 = roundedScore;
+            }
+            if (judgeTotal >= 3) {
                 edit3 = s3.getText().toString().trim();
                 e3 = Double.parseDouble(edit3);
             }
@@ -359,14 +366,6 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_change_score_warning);
-        Button okButton = (Button) dialog.findViewById(R.id.buttonOkay);
-
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        });
 
         dialog.show();
     }
@@ -381,7 +380,7 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
         ArrayList<Double> Scores = new ArrayList<>();
 
         // only add as many scores to the array as there are judges
-        if (judgeTotal == 3) {
+        if (judgeTotal == 3 || judgeTotal == 2) {
             Scores.add(e1);
             Scores.add(e2);
             Scores.add(e3);
@@ -405,7 +404,7 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
         Scores.toArray(theScores);
         Arrays.sort(theScores);
 
-        if(judgeTotal == 3){
+        if(judgeTotal == 3 || judgeTotal == 2){
             score = e1 + e2 + e3;
         }else if (judgeTotal == 5){
             // converts the sorted array to a list and removes the smallest and largest scores
@@ -431,8 +430,6 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
         if(multiplier != 0.0) {
             score = score * multiplier;
         }
-
-        //roundedDiveTotal = .5 *Math.round(score * 2);
 
         return  score;
     }

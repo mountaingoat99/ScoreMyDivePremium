@@ -90,6 +90,7 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
         loadSavedPreferences();
         if (!firstAlertQuickEdit) {
             showAlert();
+            savePreferences("firstAlertWelcome", true);
         }
     }
 
@@ -115,7 +116,7 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
         editor.apply();
     }
 
-    private void savePreferences(String key, int value){
+    private void saveSheetPreferences(String key, int value){
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sp.edit();
         editor.putInt(key, value);
@@ -319,7 +320,7 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
 
     private int createNewSheet(){
         newSheet ++;
-        savePreferences("newSheet", newSheet);
+        saveSheetPreferences("newSheet", newSheet);
         CreateNewSheet newSheet = new CreateNewSheet();
         return newSheet.doInBackground();
     }
