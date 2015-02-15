@@ -359,5 +359,19 @@
     <string name="title_activity_switch_divers">Switch Divers</string>
     <string name="enter_dives_scores">Enter Dives</string>
     <string name="failed_dive_button">Failed</string>
+    <string name="diver_history">Diver History</string>
+    <string name="edit_diver">Edit Diver</string>
+    <string name="meet_history">Meet History</string>
+    <string name="edit_meet">Edit Meet</string>
+    <string name="enter_diver">Enter Diver</string>
+    <string name="enter_meet">Enter Meet</string>
+    <string name="enter_score">Enter Scores</string>
+    <string name="change_score">Change Score</string>
+    <string name="dive_infos">Dive Info</string>
+    <string name="rankings">Rankings</string>
+    <string name="report">Reports</string>
+    <string name="choose_the_dive">Choose Dive</string>
+    <string name="quick_scores">Quick Scores</string>
+    <string name="meet_scores">Meet Scores</string>
 
 </resources>

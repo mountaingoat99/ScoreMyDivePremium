@@ -44,7 +44,7 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
     private View layout2;
     private Spinner spinner;
     private Button btnNewScoreSheet;
-    private int spinPosition, sheetId, scoreNumber, newSheet = 0;
+    private int sheetId, scoreNumber, newSheet = 0;
     private String stringId, string1 = "", string2 = "", string3 = "", string4 = "", string5 = "", string6 = "", string7 = "", string8 = "",
             string9 = "", string10 = "", string11 = "", stringTotal = "", nameMeetString = "";
     ArrayAdapter<String> dataAdapter;
@@ -64,6 +64,9 @@ public class QuickScore extends ActionBarActivity implements AdapterView.OnItemS
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.back_button);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         loadSavedPreferences();

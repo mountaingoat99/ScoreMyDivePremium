@@ -72,6 +72,9 @@ public class EnterDiveList extends ActionBarActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.back_button);
         }
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setUpView();
@@ -581,7 +584,7 @@ public class EnterDiveList extends ActionBarActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 //NavUtils.navigateUpFromSameTask(this);
-                finish();
+                onBackPressed();
                 return true;
             case R.id.menu_how_to:
                 showAlertForHowTo();
