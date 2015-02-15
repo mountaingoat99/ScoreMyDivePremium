@@ -101,6 +101,7 @@ public class EnterDiveList extends ActionBarActivity {
         loadSavedPreferences();
         if (!firstAlertEditDiveList) {
             showAlert();
+            savePreferences("firstAlertEditDiveList", true);
         }
     }
 

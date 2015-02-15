@@ -1,5 +1,6 @@
 package com.rodriguez.scoremydivepremium;
 
+import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -42,7 +44,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
     private RadioButton rbd6, rbd11, rbd1, rbd3, rbd10, rbd75, rbd5;
     private RadioGroup radioGroupTotal;
     private TextView DiveTotal, BoardType;
-    private View layout1, layout2, view1, view2;
+    private View layout1, layout2, view1, view2, layout5;
     private Button btnList, btnNext;
 	private int meetSpinPosition, meetId = 0, diverSpinnerPosition, diverId = 0, diveTotal = 6;;
     private double boardType = 1;
@@ -250,6 +252,13 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
                diverId = 0;
            }
        }
+
+       // here we reset the Layout so when both buttons are shown they are centered
+       // in the check for lists methods we will reset them if a button is hidden
+       LinearLayout.LayoutParams lp =  new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+       lp.gravity = Gravity.CENTER_VERTICAL;
+       layout5.setLayoutParams(lp);
+
        checkDiveTotal();
        checkBoardType();
        checkForYesList();
@@ -330,9 +339,11 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         checkListYes = noListCheck.doInBackground();
         if(checkListYes){
             btnList.setVisibility(View.GONE);    // this is Enter List
+            LinearLayout.LayoutParams lp =  new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.gravity = Gravity.END;
+            layout5.setLayoutParams(lp);
         }else{
             btnList.setVisibility(View.VISIBLE);
-
         }
     }
 
@@ -344,6 +355,9 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         int isComplete = check.doInBackground();
         if(isComplete == 1 || isComplete == 2) {
             btnNext.setVisibility(View.GONE);   // this is Enter Scores
+            LinearLayout.LayoutParams lp =  new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.gravity = Gravity.END;
+            layout5.setLayoutParams(lp);
         }else{
             btnNext.setVisibility(View.VISIBLE);
         }
@@ -473,6 +487,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
         radioGroupTotal = (RadioGroup)findViewById(R.id.radioGroupDives);
         layout1 = findViewById(R.id.layout1);
         layout2 = findViewById(R.id.layout2);
+        layout5 = findViewById(R.id.layout5);
         view1 = findViewById(R.id.view1);
         view2 = findViewById(R.id.view2);
         rbd6 = (RadioButton)findViewById(R.id.radioDives6);
