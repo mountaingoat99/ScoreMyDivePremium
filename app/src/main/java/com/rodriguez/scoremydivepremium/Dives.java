@@ -28,7 +28,7 @@ import java.util.List;
 
 public class Dives extends ActionBarActivity {
 
-    private TextView view4, view5, view6, view7, diveNameView, diveDDView;
+    private TextView view3, view4, view5, view6, view7, diveNameView, diveDDView;
     private Spinner score1, score2, score3, score4, score5, score6, score7;
     private int judges, diverId, meetId, diveType, diveNumber, divePosition, diveId;
     private double boardType = 0.0;
@@ -405,6 +405,7 @@ public class Dives extends ActionBarActivity {
 
     private void showScores(){
         if(judges == 2){
+            view3.setVisibility(View.INVISIBLE);
             score3.setVisibility(View.INVISIBLE);
             view4.setVisibility(View.INVISIBLE);
             score4.setVisibility(View.INVISIBLE);
@@ -446,6 +447,7 @@ public class Dives extends ActionBarActivity {
         score5 = (Spinner)findViewById(R.id.editScore5);
         score6 = (Spinner)findViewById(R.id.editScore6);
         score7 = (Spinner)findViewById(R.id.editScore7);
+        view3 =  (TextView)findViewById(R.id.score3);
         view4 =  (TextView)findViewById(R.id.score4);
         view5 =  (TextView)findViewById(R.id.score5);
         view6 =  (TextView)findViewById(R.id.score6);

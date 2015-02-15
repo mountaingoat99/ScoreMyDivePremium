@@ -78,7 +78,7 @@ public class MeetResults extends ActionBarActivity {
             String dateString = meetInfo.get(4);
 			
 			// formats the date
-			SimpleDateFormat indate = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+			SimpleDateFormat indate = new SimpleDateFormat("MM - dd - yyyy", Locale.US);
 			SimpleDateFormat outdate = new SimpleDateFormat("MMM dd, yyyy", Locale.US);
 			try{
 				Date DateString = indate.parse(dateString);
