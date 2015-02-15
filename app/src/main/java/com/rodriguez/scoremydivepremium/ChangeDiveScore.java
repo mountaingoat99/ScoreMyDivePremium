@@ -45,7 +45,7 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
     private String editTotal = "0.0", edit1 = "0.0", edit2 = "0.0", edit3 = "0.0", edit4 = "0.0",
             edit5 = "0.0", edit6 = "0.0", edit7 = "0.0", editFailed;
     private Double e1 = 0.0, e2 = 0.0, e3 = 0.0, e4 = 0.0, e5 = 0.0, e6 = 0.0, e7 = 0.0, newOverAllScore, allScoreTotal,
-            multiplier = 0.0, roundedDiveTotal;
+            multiplier = 0.0;
     private Boolean noSpinChoice, alert = true;
     final Context context = this;
 
@@ -65,7 +65,6 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
         diverId = b.getInt("keyDiver");
         meetId = b.getInt("keyMeet");
         getJudgeTotal();
-        //getDiveTotals();
         getDiveNumber();
         loadSpinnerData();
         fillText();
@@ -81,12 +80,8 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 R.layout.spinner_item, diveNum);
 
-        dataAdapter.setDropDownViewResource(R.layout.spinner_layout);
+        dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
-        //spinner.setAdapter(
-                //new NothingSelectedSpinnerAdapter(
-                        //dataAdapter, R.layout.diver_number_spinner_row_nothing_selected, this));
-
     }
 
     @Override
@@ -298,7 +293,7 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
     public void updateScores() {
         ResultDatabase rdb = new ResultDatabase(getApplicationContext());
         JudgeScoreDatabase jdb = new JudgeScoreDatabase(getApplicationContext());
-        double newTotal, roundedNumber = 0;
+        double roundedNumber = 0;
         int index = 0;
         switch (showDiveNumber) {
             case 1:
@@ -340,11 +335,9 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
                     || editTotal.equals("00.00") || editTotal.equals("0.00") || editTotal.equals("000.00")) {
                 editFailed = "F";
                 jdb.updateJudgeScoreFailed(meetId, diverId, showDiveNumber, editFailed, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-                //newTotal = 0.0;
             } else {
                 editFailed = "P";
                 roundedNumber = Double.parseDouble(editTotal);
-                //newTotal = .5 * Math.round(roundedNumber * 2);
                 jdb.updateJudgeScoreFailed(meetId, diverId, showDiveNumber, editFailed, roundedNumber, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
             }
@@ -353,7 +346,6 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
             return;
         } else {
             roundedNumber = getMultiplerScore();
-            //newTotal = .5 * Math.round(roundedNumber * 2);
             jdb.updateJudgeScoreFailed(meetId, diverId, showDiveNumber, failedString, roundedNumber, e1, e2, e3, e4, e5, e6, e7);
         }
         allScoreTotal = calcNewOverall(roundedNumber);
@@ -438,11 +430,6 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
         GetJudgeTotal jt = new GetJudgeTotal();
         judgeTotal = jt.doInBackground();
     }
-
-//    private void getDiveTotals(){
-//        DiveTotalDatabase db = new DiveTotalDatabase(getApplicationContext());
-//        diveTotal = db.searchTotals(meetId, diverId);
-//    }
 
     private void getDiveNumber(){
         GetDiveNumber dn = new GetDiveNumber();
