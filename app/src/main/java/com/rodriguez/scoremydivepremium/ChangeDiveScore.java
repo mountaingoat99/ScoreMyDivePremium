@@ -57,7 +57,7 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(false);
         }
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         setUpView();
         spinner.setOnItemSelectedListener(this);
 

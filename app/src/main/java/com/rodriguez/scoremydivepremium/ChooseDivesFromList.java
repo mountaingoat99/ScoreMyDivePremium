@@ -259,6 +259,7 @@ public class ChooseDivesFromList extends ActionBarActivity implements AdapterVie
             diveTypeName.setVisibility(View.GONE);
             total.setVisibility(View.VISIBLE);
             total.setText(noDive);
+            diveNumberSpinner.setSelection(1);
         }
         numberOfDive = 1;
         info1 = getDiveInfoFromDB(1);

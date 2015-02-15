@@ -35,7 +35,7 @@ public class DiverEdit extends ActionBarActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         name = (EditText)findViewById(R.id.editTextNameED);
         age = (EditText)findViewById(R.id.editTextAgeED);
         grade = (EditText)findViewById(R.id.editTextGradeED);

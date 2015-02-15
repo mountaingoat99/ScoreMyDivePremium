@@ -40,7 +40,7 @@ public class DiveNumberEnter extends ActionBarActivity {
         setContentView(R.layout.activity_dive_number_enter);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         setUpViews();
 
         Bundle b = getIntent().getExtras();
