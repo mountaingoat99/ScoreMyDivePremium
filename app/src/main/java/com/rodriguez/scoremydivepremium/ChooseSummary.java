@@ -508,7 +508,7 @@ public class ChooseSummary extends ActionBarActivity {
         switch (item.getItemId())
         {
             case android.R.id.home:
-                finish();
+                onBackPressed();
                 return true;
             case R.id.menu_change_dive_score:
                 if(diveNumber == 0){
