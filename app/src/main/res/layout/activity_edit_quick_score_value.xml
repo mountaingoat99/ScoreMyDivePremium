@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cancel"
-                android:textSize="@dimen/button_text_medium"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary"/>
 
             <Button
@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/save"
-                android:textSize="@dimen/button_text_medium"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary"/>
 
         </LinearLayout>

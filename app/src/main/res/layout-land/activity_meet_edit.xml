@@ -278,7 +278,7 @@
             android:text="@string/edit"
             android:textColor="@color/primary"
             style="?android:attr/borderlessButtonStyle"
-            android:textSize="@dimen/button_text_medium"
+            android:textSize="@dimen/text_size_medium"
             android:layout_gravity="end"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"

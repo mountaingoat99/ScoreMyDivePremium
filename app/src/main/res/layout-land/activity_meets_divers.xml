@@ -45,7 +45,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:text="@string/enter_new_diver_info"
-                android:textSize="@dimen/button_text_medium"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary"
                 android:background="@color/primary_light"/>
 
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/enter_new_meet_info"
-                android:textSize="@dimen/button_text_medium"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/primary"
                 android:background="@color/primary_light"/>
 
@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/history"
-                    android:textSize="@dimen/button_text_medium"
+                    android:textSize="@dimen/text_size_medium"
                     android:textColor="@color/primary"
                     android:background="@color/primary_light"/>
 
@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/edit"
-                    android:textSize="@dimen/button_text_medium"
+                    android:textSize="@dimen/text_size_medium"
                     android:textColor="@color/primary"
                     android:background="@color/primary_light"/>
 
@@ -134,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/delete"
-                    android:textSize="@dimen/button_text_medium"
+                    android:textSize="@dimen/text_size_medium"
                     android:textColor="@color/primary"
                     android:background="@color/primary_light"/>
 
@@ -165,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/history"
-                    android:textSize="@dimen/button_text_medium"
+                    android:textSize="@dimen/text_size_medium"
                     android:textColor="@color/primary"
                     android:background="@color/primary_light"/>
 
@@ -176,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/edit"
-                    android:textSize="@dimen/button_text_medium"
+                    android:textSize="@dimen/text_size_medium"
                     android:textColor="@color/primary"
                     android:background="@color/primary_light"/>
 
@@ -187,7 +187,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/delete"
-                    android:textSize="@dimen/button_text_medium"
+                    android:textSize="@dimen/text_size_medium"
                     android:textColor="@color/primary"
                     android:background="@color/primary_light"/>
 

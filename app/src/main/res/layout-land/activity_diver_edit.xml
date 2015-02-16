@@ -157,7 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/edit"
-            android:textSize="@dimen/button_text_medium"
+            android:textSize="@dimen/text_size_medium"
             android:textColor="@color/primary"
             style="?android:attr/borderlessButtonStyle"
             android:layout_gravity="end"
