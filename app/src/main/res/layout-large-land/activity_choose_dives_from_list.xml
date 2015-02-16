@@ -248,11 +248,11 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/primary" />
 
-            <ScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@color/primary_light">
+            <!--<ScrollView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:background="@color/primary_light">-->
 
                 <TableLayout
                     android:id="@+id/tableLayout1"
@@ -918,7 +918,7 @@
 
                 </TableLayout>
 
-            </ScrollView>
+            <!--</ScrollView>-->
 
         </LinearLayout>
 

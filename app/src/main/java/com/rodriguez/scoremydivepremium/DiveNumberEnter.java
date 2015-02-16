@@ -169,8 +169,6 @@ public class DiveNumberEnter extends ActionBarActivity {
                     diveType = DiveNumberEnterController.firstDigit(firstDigit);
                     // dive Name in string
                     String diveName = db.GetDiveName(Integer.parseInt(editDiveNum.getText().toString().trim()), boardType, context);
-                    // TODO don't need this, we'll do it in next screen
-                    String diveNameToSend = diveTypeName + " - " + diveName;
 
                     Intent intent = new Intent(context, Dives.class);
                     Bundle b = new Bundle();
@@ -220,8 +218,6 @@ public class DiveNumberEnter extends ActionBarActivity {
                     diveType = DiveNumberEnterController.firstDigit(firstDigit);
                     // dive Name in string
                     String diveName = db.GetDiveName(Integer.parseInt(editDiveNum.getText().toString().trim()), boardType, context);
-                    // TODO don't need this, we'll do it in next screen
-                    String diveNameToSend = diveTypeName + " - " + diveName;
 
                     Intent intent = new Intent(context, EnterFinalDiveScore.class);
                     Bundle b = new Bundle();
@@ -343,12 +339,6 @@ public class DiveNumberEnter extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

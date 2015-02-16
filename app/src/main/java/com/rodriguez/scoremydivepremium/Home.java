@@ -17,8 +17,6 @@ import com.info.sqlite.helper.DiverDatabase;
 import com.info.sqlite.helper.JudgeScoreDatabase;
 import com.info.sqlite.helper.MeetDatabase;
 
-import java.util.Objects;
-
 
 public class Home extends ActionBarActivity {
 

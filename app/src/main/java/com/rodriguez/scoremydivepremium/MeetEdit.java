@@ -1,6 +1,5 @@
 package com.rodriguez.scoremydivepremium;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -24,7 +22,6 @@ import android.widget.Toast;
 import com.info.sqlite.helper.MeetDatabase;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class MeetEdit extends ActionBarActivity implements
         OnClickListener{
@@ -268,8 +265,6 @@ public class MeetEdit extends ActionBarActivity implements
 
             checkRadios();
 
-            // works, but testing out pure dialog here
-            boolean fromMeetEnter = true;
             Intent intent = new Intent(context, DatePickerCustom.class);
             Bundle b = new Bundle();
             if (name.getText() != null) {

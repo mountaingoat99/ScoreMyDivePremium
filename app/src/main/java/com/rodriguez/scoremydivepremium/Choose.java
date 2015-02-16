@@ -1,6 +1,5 @@
 package com.rodriguez.scoremydivepremium;
 
-import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -46,7 +44,7 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
     private TextView DiveTotal, BoardType;
     private View layout1, layout2, view1, view2, layout5;
     private Button btnList, btnNext;
-	private int meetSpinPosition, meetId = 0, diverSpinnerPosition, diverId = 0, diveTotal = 6;;
+	private int meetSpinPosition, meetId = 0, diverSpinnerPosition, diverId = 0, diveTotal = 6;
     private double boardType = 1;
     private boolean checkResult, checkTotals, checkBoardType, checkDiveNumber;
     private boolean checkListYes;
@@ -275,11 +273,6 @@ public class Choose extends ActionBarActivity implements OnItemSelectedListener 
        id = ID.doInBackground(stringId);
 	   return id;
 	}
-
-//    private void checkDiveList(){
-//        CheckDiveList check = new CheckDiveList();
-//        checkList = check.doInBackground();
-//    }
 
     private void enterDiveTotal(){
         CheckDiveTotals check = new CheckDiveTotals();

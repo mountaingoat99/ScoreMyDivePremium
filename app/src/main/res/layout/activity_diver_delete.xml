@@ -89,22 +89,20 @@
             android:layout_marginBottom="8dp">
 
             <Button
-                android:id="@+id/buttonDiverDeleteE"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/delete"
-                android:textSize="@dimen/button_text_medium"
-                android:textColor="@color/primary"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_weight="1"/>
-
-            <Button
                 android:id="@+id/buttonDiverCancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cancel"
+                android:textSize="@dimen/button_text_medium"
+                android:textColor="@color/primary"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/buttonDiverDeleteE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delete"
                 android:textSize="@dimen/button_text_medium"
                 android:textColor="@color/primary"
                 style="?android:attr/borderlessButtonStyle"

@@ -59,23 +59,22 @@
             android:background="@color/primary_light">
 
             <Button
-                android:id="@+id/buttonYes"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_weight="1"
-                android:text="@string/delete"
-                android:textSize="@dimen/button_text_medium"
-                android:textColor="@color/primary"/>
-            <Button
                 android:id="@+id/buttonCancel"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cancel"
+                android:textSize="@dimen/button_text_medium"
+                android:textColor="@color/primary"/>
+
+            <Button
+                android:id="@+id/buttonYes"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/delete"
                 android:textSize="@dimen/button_text_medium"
                 android:textColor="@color/primary"/>
 

@@ -248,11 +248,11 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/primary" />
 
-            <ScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@color/primary_light">
+            <!--<ScrollView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:background="@color/primary_light">-->
 
                 <TableLayout
                     android:id="@+id/tableLayout1"
@@ -341,6 +341,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="8dp"
+                            android:layout_marginEnd="8dp"
                             android:text="@string/dive_2"
                             android:textSize="@dimen/text_size_small"
                             android:textColor="@color/secondary_text"
@@ -399,6 +400,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="8dp"
+                            android:layout_marginEnd="8dp"
                             android:text="@string/dive_3"
                             android:textSize="@dimen/text_size_small"
                             android:textColor="@color/secondary_text"
@@ -916,7 +918,7 @@
 
                 </TableLayout>
 
-            </ScrollView>
+            <!--</ScrollView>-->
 
         </LinearLayout>
 

@@ -17,7 +17,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.info.sqlite.helper.DiveNumberDatabase;
 import com.info.sqlite.helper.DiveTotalDatabase;
 import com.info.sqlite.helper.DiverDatabase;
 import com.info.sqlite.helper.JudgeScoreDatabase;
