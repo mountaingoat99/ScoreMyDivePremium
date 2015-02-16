@@ -589,6 +589,34 @@
                         android:layout_weight="1"
                         android:background="@color/primary_light"/>
 
+                    <TextView
+                        android:id="@+id/fake3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/failed"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="invisible"
+                        android:background="@color/primary_light"/>
+
+                    <TextView
+                        android:id="@+id/fake4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/primary_text"
+                        android:visibility="invisible"
+                        android:background="@color/primary_light"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/primary_light"/>
+
                 </TableRow>
 
             </TableLayout>

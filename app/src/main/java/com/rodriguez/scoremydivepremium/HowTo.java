@@ -38,7 +38,7 @@ public class HowTo extends ActionBarActivity {
         link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=jqpI7yi5DnY")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=BIkdmGWxlsg")));
                 Log.i("Video", "Video Playing App Tutorial");
             }
         });

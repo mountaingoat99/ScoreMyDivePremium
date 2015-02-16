@@ -271,7 +271,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="8dp"
                     android:text=""
-                    android:textSize="@dimen/text_size_small"
+                    android:textSize="@dimen/text_size_medium"
                     android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
         
@@ -303,7 +303,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginTop="8dp"
                     android:text=""
-                    android:textSize="@dimen/text_size_small"
+                    android:textSize="@dimen/text_size_medium"
                     android:textColor="@color/primary_text"
                     android:background="@color/primary_light"/>
         
