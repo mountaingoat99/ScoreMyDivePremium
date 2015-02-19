@@ -3,8 +3,11 @@ package com.rodriguez.scoremydivepremium;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,7 +49,8 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
             edit5 = "0.0", edit6 = "0.0", edit7 = "0.0", editFailed;
     private Double e1 = 0.0, e2 = 0.0, e3 = 0.0, e4 = 0.0, e5 = 0.0, e6 = 0.0, e7 = 0.0, newOverAllScore, allScoreTotal,
             multiplier = 0.0;
-    private Boolean noSpinChoice, alert = true;
+    private Boolean noSpinChoice;
+    public Boolean alert;
     final Context context = this;
 
     @Override
@@ -69,7 +73,36 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
         loadSpinnerData();
         fillText();
         addListenerOnButton();
+
+        // shared preference for the alert dialog
+        loadSavedPreferences();
+        if (!alert) {
+            showAlert();
+            savePreferences("alert", true);
+        }
     }
+
+    private void loadSavedPreferences(){
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        alert = sp.getBoolean("alert",false);
+    }
+
+    private void savePreferences(String key, boolean value){
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
+
+    private void showAlert(){
+
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_change_score_warning);
+
+        dialog.show();
+    }
+
 
     private void loadSpinnerData(){
         List<String> diveNum = new ArrayList<>();
@@ -131,7 +164,6 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
             layouts.setVisibility(View.VISIBLE);
             View3.setVisibility(View.VISIBLE);
             updateScoreButton.setVisibility(View.VISIBLE);
-            showAlert();
         }
     }
 
@@ -352,16 +384,6 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
         rdb.writeDiveScore(meetId, diverId, index, roundedNumber, allScoreTotal);
     }
 
-    private void showAlert(){
-        if (!alert)
-            return;
-        final Dialog dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_change_score_warning);
-
-        dialog.show();
-    }
-
     private void checkMultiplier(){
         CheckMultiplier cm = new CheckMultiplier();
         multiplier = cm.doInBackground();
@@ -485,7 +507,7 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.change_dive_score, menu);
+        getMenuInflater().inflate(R.menu.change_dive_score, menu);
         return true;
     }
 
@@ -494,6 +516,14 @@ public class ChangeDiveScore extends ActionBarActivity implements OnItemSelected
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        final Context context = this;
+        switch (item.getItemId()) {
+
+            case R.id.menu_how_to:
+                showAlert();
+                break;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
