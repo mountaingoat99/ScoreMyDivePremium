@@ -373,5 +373,6 @@
     <string name="choose_the_dive">Choose Dive</string>
     <string name="quick_scores">Quick Scores</string>
     <string name="meet_scores">Meet Scores</string>
+    <string name="judges_warning">Meet started, judges cannot be changed. Remove divers from meet.</string>
 
 </resources>

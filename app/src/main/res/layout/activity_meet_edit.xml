@@ -197,6 +197,21 @@
             android:textColor="@color/secondary_text"
             android:background="@color/primary_light"/>
 
+        <TextView
+            android:id="@+id/judgeWarning"
+            android:layout_alignTop="@id/enterJudges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/editTextDateEM"
+            android:layout_alignStart="@id/editTextDateEM"
+            android:layout_below="@id/editTextDateEM"
+            android:gravity="start"
+            android:text="@string/judges_warning"
+            android:textSize="@dimen/text_size_super_mini"
+            android:textColor="@color/primary_text"
+            android:background="@color/primary_light"
+            android:visibility="invisible"/>
+
         <RadioGroup
             android:id="@+id/radioGroupMeet"
             android:layout_width="wrap_content"
@@ -204,7 +219,7 @@
             android:layout_below="@id/enterJudges"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="14dp"
             android:orientation="horizontal"
             android:background="@color/primary_light">
 

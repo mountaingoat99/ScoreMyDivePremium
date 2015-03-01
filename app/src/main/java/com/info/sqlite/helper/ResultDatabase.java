@@ -122,6 +122,23 @@ public class ResultDatabase extends DatabaseHelper {
         db.close();
 		return true;		
 	}
+
+    //-----------------checks to see if a meet is attached to any divers yet---------------------//
+    public Boolean isMeetStarted(int meetid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * from results "
+                            + " WHERE meet_id = " + meetid;
+
+        Cursor c = db.rawQuery(selectQuery, null);
+        if(c.getCount() <= 0){
+            c.close();
+            db.close();
+            return false;
+        }
+        c.close();
+        db.close();
+        return true;
+    }
 	
 	//-----------------creates and empty result row attached to a meet and Diver-----------------//
 	public void createEmptyResult(int meetid, int diverid){

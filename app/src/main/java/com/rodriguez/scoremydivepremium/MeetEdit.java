@@ -20,6 +20,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.info.sqlite.helper.MeetDatabase;
+import com.info.sqlite.helper.ResultDatabase;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,7 @@ public class MeetEdit extends ActionBarActivity implements
     private RadioGroup radioJudgesGroup;
     private RadioButton judge2, judge3, judge5, judge7;
 	private EditText name, school, city, state, date;
+    private View judgeWarning;
 	private String nameString, schoolString, cityString, stateString, dateString, nameEdit,
             schoolEdit, cityEdit, stateEdit, dateEdit, judgeString;
 	private int meetId, judges, judgeChecked;
@@ -85,6 +87,20 @@ public class MeetEdit extends ActionBarActivity implements
 
         addListenerOnButton();
         savePreferences("idMeet", meetId);
+        checkStarted();
+    }
+
+    private void checkStarted() {
+        ResultDatabase db = new ResultDatabase(getApplicationContext());
+
+        if(db.isMeetStarted(meetId)){
+            judgeWarning.setVisibility(View.VISIBLE);
+            radioJudgesGroup.setEnabled(false);
+            judge2.setEnabled(false);
+            judge3.setEnabled(false);
+            judge5.setEnabled(false);
+            judge7.setEnabled(false);
+        }
     }
 
     private void loadSavedPreferences(){
@@ -110,6 +126,7 @@ public class MeetEdit extends ActionBarActivity implements
         judge3 = (RadioButton)findViewById(R.id.radio3J);
         judge5 = (RadioButton)findViewById(R.id.radio5J);
         judge7 = (RadioButton)findViewById(R.id.radio7J);
+        judgeWarning = findViewById(R.id.judgeWarning);
     }
 
     public void fillEditText(){
