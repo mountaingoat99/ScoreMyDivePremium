@@ -13,4 +13,9 @@
         android:orderInCategory="200"
         divingscores:showAsAction="collapseActionView" />
 
+    <item android:id="@+id/menu_end_meet_early"
+        android:title="@string/end_meet_early"
+        android:orderInCategory="300"
+        divingscores:showAsAction="collapseActionView" />
+
 </menu>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -134,7 +135,7 @@ public class ChooseSummary extends ActionBarActivity {
         btnSwitchDiver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent  = new Intent(context, SwitchDivers.class);
+                Intent intent = new Intent(context, SwitchDivers.class);
                 Bundle b = new Bundle();
                 b.putInt("keyMeet", meetId);
                 b.putString("sendingClass", "ChooseSummary");
@@ -448,6 +449,23 @@ public class ChooseSummary extends ActionBarActivity {
         typeString = boardString + " Meters";
     }
 
+    private void EndMeetEarly() {
+       Log.i("ChooseSummary", "Ending the meet early");
+        if (diveNumber >= 1) {
+            for (int count = diveTotal - diveNumber; count < diveTotal; count++) {
+                CreateEmptyDiveRecord(count);
+            }
+        } else {
+            Toast.makeText(getApplicationContext(),
+                    "Please enter at least one dive before ending a meet early",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void CreateEmptyDiveRecord(int count) {
+        Log.i("ChooseSummary", "Creating empty dive record for dive: " + count);
+    }
+
     private void setUpView(){
         name = (TextView)findViewById(R.id.divername);
         meetName = (TextView)findViewById(R.id.meetname);
@@ -528,6 +546,9 @@ public class ChooseSummary extends ActionBarActivity {
             case R.id.menu_rankings:
                 Intent intent2 = new Intent(context, Rankings.class);
                 startActivity(intent2);
+                break;
+            case R.id.menu_end_meet_early:
+                EndMeetEarly();
                 break;
         }
         return super.onOptionsItemSelected(item);
