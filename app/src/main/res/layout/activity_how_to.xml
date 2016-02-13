@@ -62,6 +62,7 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/layout11"
         android:layout_marginTop="8dp"
         android:src="@drawable/youtubeplayappy"
